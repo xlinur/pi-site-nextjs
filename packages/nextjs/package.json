@@ -1,0 +1,39 @@
+{
+  "name": "nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "^20",
+    "npm": "^10"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint . --error-on-unmatched-pattern --fix",
+    "commit": "git-cz",
+    "format": "prettier --write",
+    "test": "vitest watch --sequence.concurrent=true",
+    "test:unit": "vitest --sequence.concurrent=true",
+    "test:no-watch": "vitest run --sequence.concurrent=true",
+    "test:coverage": "vitest run --coverage --sequence.concurrent=true"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "@vitest/coverage-v8": "^1.6.0",
+    "c8": "^7.12.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5",
+    "vitest": "^1.6.0"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "multi-w",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "./node_modules/.bin/husky install",
+    "commit": "git-cz",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "packages/strapi",
+    "packages/nextjs"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "packages/nextjs/**/*.{ts,tsx}": [
+      "npm run lint -w nextjs"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^8.0.2",
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "lint-staged": "^13.2.0",
+    "prettier": "^3.1.0"
+  }
+}
