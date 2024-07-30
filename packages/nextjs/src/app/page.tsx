@@ -1,6 +1,22 @@
 import Image from "next/image";
 
-export default function Home() {
+async function getStrapiTestPage() {
+    try {
+        const res = await fetch(process.env.STRAPI_API + "/api/test-page");
+        const json = await res.json();
+
+        console.log({ json: json });
+
+        return json;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export default async function Home() {
+    const data = await getStrapiTestPage();
+
+    console.dir({ data: data.data.attributes });
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
