@@ -40,3 +40,11 @@ npm run commit
 TODO list:
 
 [] - move out .env file into root for docker-compose.yml 
+
+#### Strapi
+
+Strapi Admin http://195.238.122.248:1337/admin
+Login rgba.panda@gmail.com
+Password Homepage!@qwe1234
+
+
