@@ -14,11 +14,13 @@ function CardFeedback(props) {
             position: "Head of Global Recruitment",
         },
         link = "#",
-        bgWhite,
+        firstSlideTheme,
     } = props;
 
     return (
-        <article className={`${styles.card} ${bgWhite ? styles.bgWhite : ""}`}>
+        <article
+            className={`${styles.card} ${styles[`bg-${firstSlideTheme}`]}`}
+        >
             <div className={styles.cardContent}>
                 <p>
                     <b>{essence}</b>

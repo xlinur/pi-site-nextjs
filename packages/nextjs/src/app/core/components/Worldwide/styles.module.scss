@@ -1,0 +1,20 @@
+.worldwide {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 12px;
+  width: 100%;
+  overflow-x: hidden;
+  margin-top: 16px;
+
+  h4 {
+    color: var(--blue);
+    opacity: 0.2;
+
+    font-size: clamp(18px, 4vw, 38px);
+    font-weight: 700;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

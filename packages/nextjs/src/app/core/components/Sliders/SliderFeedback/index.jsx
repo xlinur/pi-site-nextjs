@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import CardFeedback from "@/app/core/components/Cards/CardFeedback";
 
-export const SliderFeedback = () => {
+export const SliderFeedback = ({ firstSlideTheme }) => {
     const config = {
         slidesPerView: 2,
         spaceBetween: 24,
@@ -14,7 +14,7 @@ export const SliderFeedback = () => {
     return (
         <Swiper {...config}>
             <SwiperSlide>
-                <CardFeedback bgWhite />
+                <CardFeedback firstSlideTheme={firstSlideTheme} />
             </SwiperSlide>
             <SwiperSlide>
                 <CardFeedback />

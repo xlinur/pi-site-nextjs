@@ -10,8 +10,12 @@ $padding: 30px;
   border: 1px solid var(--blue);
   padding: $padding;
 
-  &.bgWhite {
+  &.bg-white {
     background-color: var(--white);
+    border-color: transparent;
+  }
+  &.bg-dark {
+    background-color: var(--light-blue);
     border-color: transparent;
   }
 

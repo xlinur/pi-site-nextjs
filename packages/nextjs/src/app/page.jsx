@@ -13,6 +13,8 @@ import SectionMeetGallery from "@/app/core/components/Sections/SectionMeetGaller
 import Button from "@/app/core/components/Button";
 import ContactForm from "@/app/core/components/ContactForm";
 import CardSocialMedia from "@/app/core/components/Cards/CardSocialMedia";
+import Advantages from "@/app/core/components/Advantages";
+import Worldwide from "@/app/core/components/Worldwide";
 
 import styles from "./styles.module.scss";
 import qs from "qs";
@@ -56,8 +58,10 @@ export default async function Home() {
     return (
         <main className={styles.pageMain}>
             {/* @Component HeroMain */}
-            {/*TODO: request here info for HeroMain as well and pass via props into component */}
-            <HeroMain />
+            <HeroMain>
+                <Advantages />
+                <Worldwide />
+            </HeroMain>
 
             {/* @Component SectionWeCanHelp */}
             <div className={styles.sectionHelpWrapper}>
@@ -150,7 +154,7 @@ export default async function Home() {
 
             {/* @Component SectionFeedbackList */}
             <div className={styles.sectionFeedbackWrapper}>
-                <SectionFeedbackList />
+                <SectionFeedbackList firstSlideTheme="white" />
             </div>
 
             {/* @Component SectionMeetGallery */}
@@ -182,39 +186,6 @@ export default async function Home() {
                             <CardSocialMedia socialName="instagram" />
                             <CardSocialMedia socialName="linkedin" />
                             <CardSocialMedia socialName="facebook" />
-                            {/* <a href="#">
-                                <span>
-                                    <Image
-                                        src={instagramSvg}
-                                        alt="social icon"
-                                        width={20}
-                                        height={20}
-                                    />
-                                </span>
-                                <span>Instagaram</span>
-                            </a>
-                            <a href="#">
-                                <span>
-                                    <Image
-                                        src={linkedinSvg}
-                                        alt="social icon"
-                                        width={20}
-                                        height={20}
-                                    />
-                                </span>
-                                <span>Linkedin</span>
-                            </a>
-                            <a href="#">
-                                <span>
-                                    <Image
-                                        src={facebookSvg}
-                                        alt="social icon"
-                                        width={20}
-                                        height={20}
-                                    />
-                                </span>
-                                <span>Facebook</span>
-                            </a> */}
                         </div>
                     </section>
                 </div>

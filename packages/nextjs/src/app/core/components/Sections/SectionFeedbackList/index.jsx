@@ -3,7 +3,7 @@ import SliderFeedback from "@/app/core/components/Sliders/SliderFeedback";
 
 import styles from "./styles.module.scss";
 
-const SectionFeedbackList = () => {
+const SectionFeedbackList = ({ firstSlideTheme }) => {
     return (
         <section className={styles.sectionFeedback}>
             <div className="container">
@@ -15,7 +15,7 @@ const SectionFeedbackList = () => {
             </div>
 
             <div className={styles.slider}>
-                <SliderFeedback />
+                <SliderFeedback firstSlideTheme={firstSlideTheme} />
             </div>
 
             <div className="container">

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "./styles.module.scss";
+import clsx from "clsx";
 
 const SelectField = ({ options, label, onSelect }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,17 +14,24 @@ const SelectField = ({ options, label, onSelect }) => {
         onSelect(option);
     };
 
+    const classesLabel = clsx(
+        styles.label,
+        isOpen || (selectedOption && styles.active),
+    );
+    const clsxSelectOption = (v) => {
+        return clsx(
+            styles.selectOption,
+            selectedOption && selectedOption.value === v && styles.selected,
+        );
+    };
+
     return (
         <div
             className={styles.container}
             data-empty={selectedOption ? "false" : "true"}
             onClick={() => setIsOpen(!isOpen)}
         >
-            <div
-                className={`${styles.label} ${isOpen || selectedOption ? styles.active : ""}`}
-            >
-                {label}
-            </div>
+            <div className={classesLabel}>{label}</div>
             <input
                 className={styles.input}
                 readOnly
@@ -34,12 +42,7 @@ const SelectField = ({ options, label, onSelect }) => {
                     {options.map((option) => (
                         <li
                             key={option.value}
-                            className={`${styles.selectOption} ${
-                                selectedOption &&
-                                selectedOption.value === option.value
-                                    ? styles.selected
-                                    : ""
-                            }`}
+                            className={clsxSelectOption(option.value)}
                             onClick={() => handleOptionClick(option)}
                         >
                             {option.label}
