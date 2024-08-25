@@ -1,0 +1,26 @@
+@use '../styles.module.scss';
+
+.selectOptions {
+  
+  border: 1px solid var(--gray);
+  border-radius: 30px;
+  position: absolute;
+  width: 100%;
+  top: 60px;
+  background-color: var(--white);
+  z-index: 1000;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.selectOption {
+  padding: 12px 20px;
+  cursor: pointer;
+
+  &:hover,
+  &.selected {
+  background-color: var(--blue);
+  color: #fff;
+}
+}

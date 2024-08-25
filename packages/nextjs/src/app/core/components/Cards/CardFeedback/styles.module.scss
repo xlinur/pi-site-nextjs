@@ -1,0 +1,47 @@
+$padding: 30px;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  row-gap: 38px;
+
+  border-radius: 30px;
+  border: 1px solid var(--blue);
+  padding: $padding;
+
+  &.bgWhite {
+    background-color: var(--white);
+    border-color: transparent;
+  }
+
+  .cardContent {
+    display: inline-flex;
+    flex-direction: column;
+    row-gap: 12px;
+
+    b {
+      font-weight: 600;
+    }
+  }
+
+  .cardUser {
+    .cardUserAbout {
+      display: flex;
+      flex-direction: column;
+      row-gap: 2px;
+      margin-top: 8px;
+    }
+
+    .cardUserPosition {
+      color: var(--dark-gray-alt);
+    }
+  }
+}
+
+.linkReadMore {
+  position: absolute;
+  bottom: $padding;
+  right: $padding;
+  color: var(--blue);
+}

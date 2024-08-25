@@ -1,0 +1,22 @@
+@use '../styles.module.scss';
+
+.container {
+  height: auto;
+
+  textarea {
+    margin-top: 20px;
+  }
+
+  &:has(textarea:focus),
+  &[data-empty="false"] {
+    .label {
+      top: 12px;
+      font-size: 12px;
+      left: 25px;
+    }
+  }
+
+  .label {
+    top: 25px;
+  }
+}

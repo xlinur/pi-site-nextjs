@@ -1,0 +1,54 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+
+  background-color: var(--white);
+  border-radius: 30px;
+  padding: 20px;
+
+  height: 200px;
+
+  &:hover {
+    --icon-bg-color: var(--blue);
+    --icon-arrow-color: var(--white);
+
+    .cardArrowIcon {
+      border-color: var(--white);
+    }
+  }
+
+  .cardText {
+    position: relative;
+    z-index: 1;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 31.2px;
+  }
+
+  .cardArrowIcon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--blue);
+  }
+
+  .cardBgImage {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    opacity: 0.99;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 192px;
+    max-height: 186px;
+  }
+}

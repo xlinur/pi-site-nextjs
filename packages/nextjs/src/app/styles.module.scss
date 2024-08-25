@@ -1,0 +1,109 @@
+@use './styles/mixins.scss' as *;
+
+
+
+.sectionHelpWrapper,
+.sectionRecruitmentProcessWrapper,
+.sectionFeedbackWrapper {
+  background-color: var(--light-blue);
+}
+
+.pageMain {  
+  .sectionPlanetWrapper {
+    padding-top: 160px;
+    padding-bottom: 90px;
+  }
+
+  .sectionPlanet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    > h2 {
+      position: absolute;
+      text-align: center;
+      top: 77px;
+      z-index: 1;
+    }
+
+    .planet {
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1 0 100%;
+      }
+
+      div:nth-child(2) img {
+        position: relative;
+        left: -100%;
+      }
+    }
+  }
+
+  .sectionWhy {
+    position: relative;
+    z-index: 1;
+    padding-top: 90px;
+    padding-bottom: 90px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 1050px;
+      height: 1050px;
+      background-color: var(--light-blue);
+      top: 50%;
+      left: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: -1;
+
+      @include lg {
+        transform: translate(-70%, -50%);
+      }
+    }
+
+    .reasons {
+      margin-top: 86px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 80px;
+
+      .reasonsItem {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-top: 1px solid var(--gray);
+        padding-top: 8px;
+
+        &:last-child {
+          border: none;
+        }
+      }
+    }
+  }
+
+  .sectionSocialMedia {
+    padding-top: 160px;
+    padding-bottom: 160px;
+
+    header {
+      span {
+        color: var(--blue);
+      }
+    }
+
+    .sectionSocialMediaList {
+      display: flex;
+      column-gap: 20px;
+      margin-top: 42px;
+    }
+  }
+}

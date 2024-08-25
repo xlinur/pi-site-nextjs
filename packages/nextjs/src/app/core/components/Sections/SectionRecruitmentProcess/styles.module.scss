@@ -1,0 +1,62 @@
+@use '../../../../styles/mixins.scss' as *;
+
+.sectionRecruitmentProcess {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 80px;
+  padding-bottom: 90px;
+
+  header {
+    align-self: flex-start;
+
+    p {
+      margin-top: 12px;
+    }
+  }
+
+  .steps {
+    margin-top: 74px;
+    margin-bottom: 80px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 86px;
+    column-gap: 13%;
+
+    @include lg {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 70px;
+      column-gap: 30px;
+    }
+
+    .stepsItem {
+      .stepsItemTitle {
+        position: relative;
+        z-index: 1;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: -16px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 82px;
+          height: 82px;
+          background-color: var(--white);
+          border-radius: 50%;
+          z-index: -1;
+        }
+      }
+      .stepsItemText {
+        position: relative;
+        margin-top: 33px;
+
+        span {
+          color: var(--blue);
+        }
+      }
+    }
+  }
+}

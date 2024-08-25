@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  gap: 14px;
+  cursor: pointer;
+  color: #BFBFBF;
+
+  &:hover {
+      .checkWrapper {
+        border-color: #0B0B0C;
+      }
+  }
+
+  .checkWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    background-color: var(--white);
+    border: 1px solid var(--gray);
+    border-radius: 3px;
+
+    &:has(input:checked) {
+      border-color: #0B0B0C;
+      background-color: #0B0B0C;
+
+      .checkmark {
+        display: inline-flex;
+      }
+    }
+  }
+
+  .checkmark {
+    display: none;
+  }
+  .label {
+    user-select: none;
+  }
+}

@@ -1,0 +1,51 @@
+$screen-sm-min: 540px;
+$screen-md-min: 768px;
+$screen-lg-min: 1200px;
+$screen-xl-min: 1440px;
+
+// Small devices
+@mixin sm {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (max-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (max-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+// Custom devices
+@mixin rwd($screen) {
+  @media (max-width: ($screen + 'px')) {
+    @content;
+  }
+}
+
+@mixin clampLine($visibleLineNumber) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: $visibleLineNumber;
+  -webkit-box-orient: vertical;
+  line-clamp: $visibleLineNumber;
+  box-orient: vertical;
+}

@@ -1,0 +1,22 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 52px;
+
+  border-radius: 20px;
+  padding: 20px;
+  background-color: var(--light-blue);
+  width: 100%;
+  max-width: 187px;
+
+  span:first-child {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    background-color: var(--blue);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+}

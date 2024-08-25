@@ -1,0 +1,184 @@
+@use '../../../../../styles/mixins.scss' as *;
+
+.worldwide {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 12px;
+  width: 100%;
+  overflow-x: hidden;
+  margin-top: 16px;
+
+  h4 {
+    color: var(--blue);
+    opacity: 0.2;
+
+    font-size: clamp(18px, 4vw, 38px);
+    font-weight: 700;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.sectionWrapper {
+  position: relative;
+
+  .sectionHeroDecorImage {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    max-height: 901px;
+    max-width: 796px;
+
+    @include md {
+      max-width: 441px;
+      max-height: 525px;
+    }
+
+    @include sm {
+      max-width: 412px;
+      max-height: 360px;
+    }
+  }
+}
+
+.sectionHero {
+  padding-top: 100px;
+  padding-bottom: 160px;
+
+  @include md {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    h1 {
+      font-size: 75px;
+      line-height: 82.5px;
+      span {
+        color: var(--logo-blue);
+      }
+
+      @include md {
+        font-size: 38px;
+        line-height: 38px;
+      }
+    }
+
+    p {
+      font-size: 24px;
+      line-height: 31.2px;
+
+      @include md {
+        font-size: 18px;
+        line-height: 21.6px;
+      }
+    }
+  }
+
+  .sectionHeroActions {
+    display: flex;
+    gap: 12px;
+    margin-top: 70px;
+
+    @include sm {
+      justify-content: space-between;
+    }
+  }
+
+  .sectionHeroAdvantages {
+    display: flex;
+    height: 200px;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 42px;
+    border: 1px solid var(--blue);
+    border-radius: 30px;
+    gap: 20px;
+    background-color: var(--white);
+    font-weight: 400;
+    margin-top: 200px;
+
+    .sectionHeroAdvantagesItem {
+      display: inline-flex;
+      flex-direction: column;
+      text-align: center;
+
+      &:nth-child(1) {
+        span:first-child {
+          font-weight: 700;
+          line-height: 41.8px;
+          font-size: 38px;
+          text-wrap: nowrap;
+
+          @include md {
+            font-size: 24px;
+            line-height: 28.8px;
+          }
+        }
+      }
+      &:nth-child(5) {
+        span:nth-child(2) {
+          font-weight: 700;
+          line-height: 41.8px;
+          font-size: 38px;
+          text-wrap: nowrap;
+
+          @include md {
+            font-size: 24px;
+            line-height: 28.8px;
+          }
+        }
+      }
+      &:nth-child(7) {
+        span:first-child {
+          font-weight: 700;
+          line-height: 41.8px;
+          font-size: 38px;
+          text-wrap: nowrap;
+
+          @include md {
+            font-size: 24px;
+            line-height: 28.8px;
+          }
+        }
+      }
+    }
+
+    .sectionHeroAdvantagesDivider {
+      width: 1px;
+      height: 92px;
+      background-color: var(--blue);
+    }
+
+    @include md {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      grid-template-rows: 1fr 1px 1fr;
+      height: initial;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      margin-top: 68px;
+
+      .sectionHeroAdvantagesDivider {
+        height: 50px;
+        align-self: center;
+        justify-self: center;
+      }
+
+      .sectionHeroAdvantagesDivider:nth-child(4) {
+        grid-column: 1 / 4;
+        height: 1px;
+        width: 100%;
+      }
+    }
+  }
+}

@@ -26,7 +26,6 @@
     ]
   },
   "devDependencies": {
-    "husky": "^8.0.2",
     "commitizen": "^4.2.5",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8",
@@ -34,7 +33,13 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.2",
     "lint-staged": "^13.2.0",
     "prettier": "^3.1.0"
+  },
+  "dependencies": {
+    "qs": "^6.13.0",
+    "sass": "^1.77.8",
+    "swiper": "^11.1.10"
   }
 }

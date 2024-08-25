@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+
+  background-color: var(--white);
+  height: 50px;
+
+  &:has(textarea:focus),
+  &:has(input:focus),
+  &[data-empty="false"] {
+    .label {
+      top: 12px;
+      font-size: 12px;
+      left: 25px;
+    }
+  }
+
+  input, textarea {
+    width: 100%;
+    padding-inline: 20px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: var(--dark-gray-alt);
+    font-size: 14px;
+    transition: all 0.344s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+}
