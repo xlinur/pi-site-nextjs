@@ -35,7 +35,7 @@ export const homePageQuery = qs.stringify({
 
 async function getStrapiHomePage() {
     try {
-        const url = new URL("/api/home-page", process.env.STRAPI_API);
+        const url = new URL("/api/test-page", process.env.STRAPI_API);
 
         url.search = homePageQuery;
 
@@ -118,7 +118,7 @@ export default async function Home() {
             <div className={styles.sectionWhyWrapper}>
                 <div className="container">
                     <section className={styles.sectionWhy}>
-                        <h2>{WhyPersonalInvest.Title}</h2>
+                        <h2>{WhyPersonalInvest.title}</h2>
 
                         <div className={styles.reasons}>
                             {WhyPersonalInvestItems.map(

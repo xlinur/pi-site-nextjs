@@ -16,7 +16,7 @@ export const homePageQuery = qs.stringify({
 
 async function getStrapiHomePage() {
     try {
-        const url = new URL("/api/home-page", process.env.STRAPI_API);
+        const url = new URL("/api/test-page", process.env.STRAPI_API);
 
         url.search = homePageQuery;
 
