@@ -27,7 +27,7 @@ services:
       dockerfile: ./Dockerfile
     image: strapi:latest
     restart: unless-stopped
-    env_file: ./packages/strapi/.env
+    env_file: .env
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
       DATABASE_HOST: strapiDB
@@ -57,15 +57,15 @@ services:
     container_name: strapiDB
     platform: linux/amd64 #for platform error on Apple M1 chips
     restart: unless-stopped
-    env_file: ./packages/strapi/.env
+    env_file: .env
     image: postgres:12.0-alpine
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_DB: ${DATABASE_NAME}
     volumes:
-      - strapi-data:/var/lib/postgresql/data/ #using a volume
-      #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
+      #- strapi-data:/var/lib/postgresql/data/ #using a volume
+      - ./pg-data:/var/lib/postgresql/data/ # if you want to use a bind folder
       - ./packages/strapi/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
 
     ports:
