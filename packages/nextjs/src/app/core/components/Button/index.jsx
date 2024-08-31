@@ -27,6 +27,7 @@ const Button = (props) => {
         theme = "primary", // primary | secondary | default
         disabled = false,
         content,
+        type = "button",
     } = props;
 
     const btnClassNames = `
@@ -41,7 +42,7 @@ const Button = (props) => {
     return (
         <button
             disabled={disabled}
-            type="button"
+            type={type}
             onClick={onClick}
             className={btnClassNames}
         >
