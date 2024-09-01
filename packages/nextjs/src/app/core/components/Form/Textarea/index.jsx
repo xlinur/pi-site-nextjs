@@ -2,15 +2,15 @@
 import { useState } from "react";
 import styles from "./styles.module.scss";
 
-const TextareaField = ({ label, ...props }) => {
-    const [value, setValue] = useState("");
-    const [isEmpty, setIsEmpty] = useState(true);
-
-    const onChange = (event) => {
-        const value = event.target.value;
-        setIsEmpty(value.length === 0);
-        setValue(value);
-    };
+const TextareaField = ({ label, isEmpty, ...props }) => {
+    // const [value, setValue] = useState("");
+    // const [isEmpty, setIsEmpty] = useState(true);
+    //
+    // const onChange = (event) => {
+    //     const value = event.target.value;
+    //     setIsEmpty(value.length === 0);
+    //     setValue(value);
+    // };
 
     return (
         <label
@@ -19,8 +19,6 @@ const TextareaField = ({ label, ...props }) => {
         >
             <textarea
                 className={styles.textarea}
-                onChange={onChange}
-                value={value}
                 rows={6}
                 {...props}
             />

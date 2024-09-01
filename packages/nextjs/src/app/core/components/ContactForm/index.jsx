@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { useForm } from '@mantine/form';
+
 import InputField from "@/app/core/components/Form/Input";
 import SelectField from "@/app/core/components/Form/Select";
 import TextareaField from "@/app/core/components/Form/Textarea";
 import Checkbox from "@/app/core/components/Form/Checkbox";
 import Button from "@/app/core/components/Button";
-
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 import whatsappSVG from "@/app/assets/icons/social/whatsapp.svg";
@@ -17,11 +18,11 @@ import clockSvg from "@/app/assets/icons/clock.svg";
 import styles from "./styles.module.scss";
 
 export const optionsServices = [
-    { value: "1", label: "IT recruitment" },
-    { value: "2", label: "Executive Search" },
-    { value: "3", label: "Business Consulting" },
-    { value: "4", label: "Market Research and Analytics" },
-    { value: "5", label: "Startup Development" },
+    { value: "IT recruitment", label: "IT recruitment" },
+    { value: "Executive Search", label: "Executive Search" },
+    { value: "Business Consulting", label: "Business Consulting" },
+    { value: "Market Research and Analytics", label: "Market Research and Analytics" },
+    { value: "Startup Development", label: "Startup Development" },
 ];
 export const optionsContactPreferences = [
     { value: "whatsapp", label: "Whatsapp" },
@@ -31,15 +32,36 @@ export const optionsContactPreferences = [
 ];
 
 export const ContactForm = () => {
+    const form = useForm({
+        mode: 'uncontrolled',
+        initialValues: {
+            name: '',
+            company: '',
+            email: '',
+            services: '',
+            contactPreference: '',
+            comment: '',
+        },
+    });
+
+    const isNameEmpty = !form.getValues().name;
+    const isCompanyEmpty = !form.getValues().company;
+    const isServiceEmpty = !form.getValues().services;
+    const isContactPreferenceEmpty = !form.getValues().contactPreference;
+    const isEmailEmpty = !form.getValues().email;
+    const isCommentEmpty = !form.getValues().comment;
+
     const { executeRecaptcha } = useGoogleReCaptcha();
 
-    const handleSelect = (option) => {
-        console.log("Selected option:", option);
+    const handleServiceSelectCallback = (option) => {
+        form.setFieldValue('services', option.value);
     };
 
-    const handleSubmitCallback = async (event) => {
-        event.preventDefault();
+    const handleContactPreferencesSelectCallback = (option) => {
+        form.setFieldValue('contactPreference', option.value);
+    };
 
+    const handleSubmitCallback = async (values) => {
         if (!executeRecaptcha) {
             console.log("Not available to proceed recaptcha");
             return;
@@ -61,10 +83,21 @@ export const ContactForm = () => {
 
         if (responseResultJson.success) {
             console.log("Success to verify via recaptcha");
+
+            const responseContactFormResult = await fetch('api/email', {
+                method: "post",
+                body: JSON.stringify(values),
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    "Content-Type": "application/json",
+                },
+            });
+            console.log(responseContactFormResult)
         } else {
             console.log("Failed to verify via recaptcha");
         }
     };
+
     return (
         <div className={styles.formWrapper}>
             <section className={styles.contacts}>
@@ -122,22 +155,47 @@ export const ContactForm = () => {
                 </ul>
             </section>
 
-            <form className={styles.form} onSubmit={handleSubmitCallback}>
-                <InputField type="text" label="Name" />
-                <InputField type="text" label="Company" />
+            <form
+                className={styles.form}
+                onSubmit={form.onSubmit(async (values) => {
+                    await handleSubmitCallback(values);
+                })}
+            >
+                <InputField
+                    type="text" label="Name"
+                    isEmpty={isNameEmpty}
+                    key={form.key('name')}
+                    {...form.getInputProps('name')}
+                />
+                <InputField
+                    type="text"
+                    label="Company"
+                    isEmpty={isCompanyEmpty}
+                    key={form.key('company')}
+                    {...form.getInputProps('company')}
+                />
                 <SelectField
                     options={optionsServices}
-                    onSelect={handleSelect}
+                    onSelect={handleServiceSelectCallback}
                     label="Select services"
                 />
                 <SelectField
                     options={optionsContactPreferences}
-                    onSelect={handleSelect}
+                    onSelect={handleContactPreferencesSelectCallback}
                     label="Contact preferences"
                 />
-                <InputField type="text" label="E-mail or nickname" />
+                <InputField
+                    type="text"
+                    label="E-mail or nickname"
+                    isEmpty={isEmailEmpty}
+                    key={form.key('email')}
+                    {...form.getInputProps('email')}/>
 
-                <TextareaField label="Comments (optional)" />
+                <TextareaField
+                    label="Comments (optional)"
+                    isEmpty={isCommentEmpty}
+                    key={form.key('comment')}
+                    {...form.getInputProps('comment')}/>
 
                 <Checkbox
                     required
