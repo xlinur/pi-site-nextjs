@@ -3,6 +3,10 @@
 .sectionWrapper {
   position: relative;
 
+  @include sm {
+    overflow: hidden;
+  }
+
   .animateBg {
     position: absolute;
     inset: 0;
@@ -27,6 +31,7 @@
     @include sm {
       max-width: 412px;
       max-height: 360px;
+      right: -20%;
     }
   }
 }
@@ -44,6 +49,11 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+    max-width: 798px;
+
+    @include md {
+      gap: 16px;
+    }
 
     h1 {
       font-size: 75px;
@@ -74,8 +84,21 @@
     gap: 12px;
     margin-top: 70px;
 
+    @include md() {
+      margin-top: 44px;
+    }
+
     @include sm {
       justify-content: space-between;
+
+      button {
+        width: 100%;
+
+        span {
+          width: inherit;
+          text-align: center;
+        }
+      }
     }
   }
 }

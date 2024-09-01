@@ -4,6 +4,7 @@ import heroLinesPNG from "@/app/assets/images/hero-lines.png";
 import HeroAnimateBg from "../HeroAnimateBg";
 import styles from "./styles.module.scss";
 import qs from "qs";
+import Markdown from "react-markdown";
 
 // TODO: move into constants.ts within current folder
 export const homePageQuery = qs.stringify({
@@ -31,29 +32,34 @@ async function getStrapiHomePage() {
     }
 }
 
-const HeroMain = async ({ animateBg = false, children }) => {
+const HeroMain = async ({
+    animateBg = false,
+    children,
+    title = "",
+    subtitle = "",
+    actions,
+}) => {
     const data = await getStrapiHomePage();
-
-    const { HeroSection } = data.attributes;
 
     return (
         <div className={styles.sectionWrapper}>
             <div className="container">
                 <section className={styles.sectionHero}>
                     <header>
-                        <h1
-                            dangerouslySetInnerHTML={{
-                                __html: HeroSection.title,
-                            }}
-                        />
-                        <p
-                            dangerouslySetInnerHTML={{
-                                __html: HeroSection.subTitle,
-                            }}
-                        />
+                        <Markdown>
+                            {data?.attributes.HeroSection.title || title}
+                        </Markdown>
+                        <Markdown>
+                            {data?.attributes.HeroSection.subTitle || subtitle}
+                        </Markdown>
                     </header>
 
                     <div className={styles.sectionHeroActions}>
+                        {actions?.map((action, idx) => (
+                            <Button key={idx} theme="primary" size="lg" icon>
+                                {action.title}
+                            </Button>
+                        ))}
                         <Button theme="primary" size="lg" icon>
                             Hire now
                         </Button>

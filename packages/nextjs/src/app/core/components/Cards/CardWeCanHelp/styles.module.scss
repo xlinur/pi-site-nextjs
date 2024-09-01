@@ -1,3 +1,5 @@
+@use "../../../../styles//mixins.scss" as *;
+
 .card {
   display: flex;
   flex-direction: column;
@@ -9,6 +11,12 @@
   padding: 20px;
 
   height: 200px;
+
+  @include md {
+    padding: 10px;
+    border-radius: 15px;
+    height: 128px;
+  }
 
   &:hover {
     --icon-bg-color: var(--blue);
@@ -22,9 +30,6 @@
   .cardText {
     position: relative;
     z-index: 1;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 31.2px;
   }
 
   .cardArrowIcon {
@@ -36,11 +41,22 @@
     justify-content: center;
     border-radius: 50%;
     border: 1px solid var(--blue);
+    z-index: 1;
+    
+    @include md {
+      top: 10px;
+      right: 10px;
+
+      svg {
+        width: 21px;
+        height: 21px;
+      }
+    }
   }
 
   .cardBgImage {
     position: absolute;
-    bottom: 0;
+    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 0;
@@ -50,5 +66,10 @@
     height: 100%;
     max-width: 192px;
     max-height: 186px;
+
+    @include md {
+      max-width: 119px;
+      max-height: 118px;
+    }
   }
 }

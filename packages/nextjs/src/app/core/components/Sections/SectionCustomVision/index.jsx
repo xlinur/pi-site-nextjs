@@ -6,7 +6,10 @@ import styles from "./styles.module.scss";
 const SectionCustomVision = () => {
     return (
         <section className={styles.sectionCustomVision}>
-            <Image src={visionSVG} alt="Image" width={574} height={519} />
+            <div className={styles.imageWrapper}>
+                <Image src={visionSVG} alt="Image" full />
+            </div>
+
             <div className={styles.sectionCustomVisionContent}>
                 <h2>Custom vision of your needs</h2>
 

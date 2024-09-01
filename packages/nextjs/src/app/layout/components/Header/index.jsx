@@ -72,7 +72,7 @@ const Header = ({ setIsOpenSidebar }) => {
                     <a href="/earn-with-us" className={styles.navLink}>
                         Earn with us
                     </a>
-                    <a href="/contact" className={styles.navLink}>
+                    <a href="/contact-us" className={styles.navLink}>
                         Contact
                     </a>
                 </nav>

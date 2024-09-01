@@ -7,6 +7,7 @@ import SectionFeedbackList from "@/app/core/components/Sections/SectionFeedbackL
 import SectionWeCanHelp from "@/app/core/components/Sections/SectionWeCanHelp";
 import ContactForm from "@/app/core/components/ContactForm";
 import CardSocialMedia from "@/app/core/components/Cards/CardSocialMedia";
+import SectionHowWeWork from "../core/components/Sections/SectionHowWeWork";
 
 import founderFace from "@/app/assets/images/founder.jpg";
 import countrymapPng from "@/app/assets/images/countrymap.png";
@@ -27,59 +28,7 @@ export default async function PageAboutUs() {
             </div>
 
             <div className="container">
-                <section className={styles.verticalTreeGrid}>
-                    <header>
-                        <h3>How we work</h3>
-                    </header>
-
-                    <div className={styles.treeGrid}>
-                        <div className={styles.treeGridItem}>
-                            <h5 className={styles.title}>Your application</h5>
-                            <hr />
-                            <p className={styles.text}>
-                                Filling out the standard form and discussing
-                                details (3-5 days)
-                            </p>
-                        </div>
-                        <div className={styles.treeGridItem}>
-                            <h5 className={styles.title}>Your application</h5>
-                            <hr />
-                            <p className={styles.text}>
-                                Filling out the standard form and discussing
-                                details (3-5 days)
-                            </p>
-                        </div>
-                        <div className={styles.treeGridItem}>
-                            <h5 className={styles.title}>Your application</h5>
-                            <hr />
-                            <p className={styles.text}>
-                                Filling out the standard form and discussing
-                                details (3-5 days)
-                            </p>
-                        </div>
-                        <div className={styles.treeGridItem}>
-                            <h5 className={styles.title}>Your application</h5>
-                            <hr />
-                            <p className={styles.text}>
-                                Filling out the standard form and discussing
-                                details (3-5 days)
-                            </p>
-                        </div>
-
-                        <div className={styles.treeGridCount}>
-                            <span>1</span>
-                        </div>
-                        <div className={styles.treeGridCount}>
-                            <span>2</span>
-                        </div>
-                        <div className={styles.treeGridCount}>
-                            <span>3</span>
-                        </div>
-                        <div className={styles.treeGridCount}>
-                            <span>4</span>
-                        </div>
-                    </div>
-                </section>
+                <SectionHowWeWork />
             </div>
 
             <div className="container">

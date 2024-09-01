@@ -1,0 +1,31 @@
+.pageFeedback {
+  header {
+    margin-top: 80px;
+
+    .feedbackSectionLinks {
+      margin-top: 30px;
+      display: flex;
+      gap: 24px;
+    }
+  }
+
+  .feedbackExpandableList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 60px;
+    margin-top: 80px;
+
+    .feedbackExpandableListGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 349px;
+      gap: 20px 24px;
+    }
+  }
+
+  .sectionForm {
+    margin-top: 160px;
+    margin-bottom: 160px;
+  }
+}

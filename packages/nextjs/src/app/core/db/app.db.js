@@ -38,7 +38,7 @@ export const AppDB = {
         },
         contact: {
             label: "Contact",
-            href: "/contact",
+            href: "/contact-us",
         },
         reviews: {
             label: "Reviews",

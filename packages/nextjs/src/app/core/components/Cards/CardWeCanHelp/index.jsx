@@ -40,7 +40,7 @@ export const CardWeCanHelp = (props) => {
         <a href={href} className={styles.card}>
             <span className={styles.cardArrowIcon}>{ArrowIcon()}</span>
 
-            <p className={styles.cardText}>{text}</p>
+            <h5 className={styles.cardText}>{text}</h5>
 
             <span className={styles.cardBgImage}>
                 <Image

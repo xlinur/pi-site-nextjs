@@ -17,13 +17,6 @@ const SectionFeedbackList = ({ firstSlideTheme }) => {
             <div className={styles.slider}>
                 <SliderFeedback firstSlideTheme={firstSlideTheme} />
             </div>
-
-            <div className="container">
-                <div className={styles.controls}>
-                    <Button>1</Button>
-                    <Button>2</Button>
-                </div>
-            </div>
         </section>
     );
 };

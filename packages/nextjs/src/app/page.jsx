@@ -53,7 +53,7 @@ async function getStrapiHomePage() {
 export default async function Home() {
     const data = await getStrapiHomePage();
 
-    const { WhyPersonalInvest, WhyPersonalInvestItems } = data.attributes;
+    const { WhyPersonalInvest, WhyPersonalInvestItems } = data?.attributes;
 
     return (
         <main className={styles.pageMain}>
