@@ -6,6 +6,7 @@ import SidebarMenu from "@/app/layout/components/SidebarMenu";
 import Footer from "@/app/layout/components/Footer";
 import "./globals.scss";
 import { useState } from "react";
+import GoogleCaptchaWrapper from "@/app/GoogleCaptchaWrapper";
 
 const roboto = Roboto({
     subsets: ["latin", "cyrillic"],
@@ -20,7 +21,7 @@ export default function RootLayout({ children }) {
             <body className={roboto.className}>
                 <Header setIsOpenSidebar={setIsOpenSidebar} />
 
-                {children}
+                <GoogleCaptchaWrapper>{children}</GoogleCaptchaWrapper>
 
                 <Footer />
 
