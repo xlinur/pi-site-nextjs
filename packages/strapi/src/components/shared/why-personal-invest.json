@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_why_personal_invests",
+  "info": {
+    "displayName": "Why Personal Invest"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

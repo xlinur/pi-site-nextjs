@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_contact_label_items",
+  "info": {
+    "displayName": "contactLabelItem"
+  },
+  "options": {},
+  "attributes": {
+    "typeLabel": {
+      "type": "string"
+    },
+    "valueLabel": {
+      "type": "string"
+    }
+  }
+}

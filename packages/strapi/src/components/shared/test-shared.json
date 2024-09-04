@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_test_shareds",
+  "info": {
+    "displayName": "test shared"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}
