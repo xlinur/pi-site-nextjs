@@ -1,11 +1,12 @@
 "use client";
 
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-
-import CardFeedback from "@/app/core/components/Cards/CardFeedback";
 import Button from "@/app/core/components/Button";
 import styles from "./styles.module.scss";
+
 import { useEffect, useState } from "react";
+import CardCase from "@/app/cases/[slug]/components/CardCase";
+import clsx from "clsx";
 
 const SwiperButtonNext = ({ children }) => {
     const swiper = useSwiper();
@@ -86,31 +87,37 @@ const SwiperButtonPrev = ({ children }) => {
     );
 };
 
-export const SliderFeedback = ({ firstSlideTheme }) => {
+export default function SliderCase({ data }) {
     const config = {
-        slidesPerView: 2,
+        slidesPerView: 3,
         spaceBetween: 24,
         centeredSlides: true,
     };
 
     return (
         <Swiper {...config} className={styles.slider}>
-            {Array.from(Array(4)).map((_, idx) => (
-                <SwiperSlide key={idx}>
-                    <CardFeedback
-                        firstSlideTheme={idx === 0 ? "dark" : "light"}
+            {data?.map((item, idx) => (
+                <SwiperSlide className={styles.slide} key={idx}>
+                    <CardCase
+                        data={item}
+                        className={clsx(
+                            styles.cardHeight,
+                            idx === 0 && styles.fistItem,
+                        )}
                     />
                 </SwiperSlide>
             ))}
 
             <div className="container">
                 <div className={styles.swiperNavigation}>
-                    <SwiperButtonPrev></SwiperButtonPrev>
-                    <SwiperButtonNext></SwiperButtonNext>
+                    <Button>Contact</Button>
+
+                    <div>
+                        <SwiperButtonPrev></SwiperButtonPrev>
+                        <SwiperButtonNext></SwiperButtonNext>
+                    </div>
                 </div>
             </div>
         </Swiper>
     );
-};
-
-export default SliderFeedback;
+}

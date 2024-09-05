@@ -1,0 +1,107 @@
+.sectionFormWrapper {
+  margin-top: 160px;
+  margin-bottom: 160px;
+}
+
+.firstSection {
+  margin-top: 80px;
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 50%;
+  }
+
+  .firstSectionGrid {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    .firstSectionItem {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--gray);
+      padding-top: 20px;
+      padding-bottom: 20px;
+      span {
+        grid-column: 2;
+      }
+    }
+  }
+
+  .firstSectionFooter {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 40px;
+    border-radius: 30px;
+    background-color: var(--light-blue);
+
+    .actions {
+      display: flex;
+      grid-column: 24px;
+    }
+  }
+}
+
+.sectionCasesNav {
+  display: flex;
+  flex-direction: column;
+  row-gap: 60px;
+  margin-top: 200px;
+
+  .casesNavItem {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+
+    .casesNavItemList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  }
+}
+
+.sectionListLink {
+  margin-top: 160px;
+
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 264px;
+    gap: 24px;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 60px;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid transparent;
+
+      &:hover, &:focus {
+        border: 1px solid var(--blue);
+        background-color: var(--white);
+      }
+    }
+
+    .numbers {
+      display: inline-flex;
+      gap: 6px;
+
+      & > a:hover {
+        background-color: var(--blue);
+        color: var(--white);
+      }
+    }
+  }
+}

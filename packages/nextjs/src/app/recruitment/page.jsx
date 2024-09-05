@@ -146,6 +146,7 @@ export default async function PageRecruitment() {
                                 key={idx}
                             >
                                 <span>
+                                    {/* check-circle svg */}
                                     <svg
                                         width="48"
                                         height="48"
