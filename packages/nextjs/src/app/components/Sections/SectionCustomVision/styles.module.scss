@@ -1,0 +1,62 @@
+@use '../../../styles/mixins.scss' as *;
+
+.sectionCustomVision {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  padding-top: 160px;
+  padding-bottom: 160px;
+
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  @include md {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  @include rwd(767.9) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .imageWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sectionCustomVisionContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 2rem;
+
+    @include lg {
+      gap: 1rem;
+    }
+    @include md {
+      gap: 0;
+    }
+
+    p {
+      margin-top: 40px;
+      margin-bottom: 60px;
+
+      @include md {
+        margin-top: 16px;
+        margin-bottom: 32px;
+      }
+
+      span {
+        color: var(--blue);
+      }
+    }
+  }
+}
