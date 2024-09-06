@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useForm } from '@mantine/form';
+import { useForm } from "@mantine/form";
 
 import InputField from "@/app/core/components/Form/Input";
 import SelectField from "@/app/core/components/Form/Select";
@@ -21,7 +21,10 @@ export const optionsServices = [
     { value: "IT recruitment", label: "IT recruitment" },
     { value: "Executive Search", label: "Executive Search" },
     { value: "Business Consulting", label: "Business Consulting" },
-    { value: "Market Research and Analytics", label: "Market Research and Analytics" },
+    {
+        value: "Market Research and Analytics",
+        label: "Market Research and Analytics",
+    },
     { value: "Startup Development", label: "Startup Development" },
 ];
 export const optionsContactPreferences = [
@@ -33,14 +36,14 @@ export const optionsContactPreferences = [
 
 export const ContactForm = () => {
     const form = useForm({
-        mode: 'uncontrolled',
+        mode: "uncontrolled",
         initialValues: {
-            name: '',
-            company: '',
-            email: '',
-            services: '',
-            contactPreference: '',
-            comment: '',
+            name: "",
+            company: "",
+            email: "",
+            services: "",
+            contactPreference: "",
+            comment: "",
         },
     });
 
@@ -54,11 +57,11 @@ export const ContactForm = () => {
     const { executeRecaptcha } = useGoogleReCaptcha();
 
     const handleServiceSelectCallback = (option) => {
-        form.setFieldValue('services', option.value);
+        form.setFieldValue("services", option.value);
     };
 
     const handleContactPreferencesSelectCallback = (option) => {
-        form.setFieldValue('contactPreference', option.value);
+        form.setFieldValue("contactPreference", option.value);
     };
 
     const handleSubmitCallback = async (values) => {
@@ -84,7 +87,7 @@ export const ContactForm = () => {
         if (responseResultJson.success) {
             console.log("Success to verify via recaptcha");
 
-            const responseContactFormResult = await fetch('api/email', {
+            const responseContactFormResult = await fetch("api/email", {
                 method: "post",
                 body: JSON.stringify(values),
                 headers: {
@@ -92,7 +95,7 @@ export const ContactForm = () => {
                     "Content-Type": "application/json",
                 },
             });
-            console.log(responseContactFormResult)
+            console.log(responseContactFormResult);
         } else {
             console.log("Failed to verify via recaptcha");
         }
@@ -162,17 +165,18 @@ export const ContactForm = () => {
                 })}
             >
                 <InputField
-                    type="text" label="Name"
+                    type="text"
+                    label="Name"
                     isEmpty={isNameEmpty}
-                    key={form.key('name')}
-                    {...form.getInputProps('name')}
+                    key={form.key("name")}
+                    {...form.getInputProps("name")}
                 />
                 <InputField
                     type="text"
                     label="Company"
                     isEmpty={isCompanyEmpty}
-                    key={form.key('company')}
-                    {...form.getInputProps('company')}
+                    key={form.key("company")}
+                    {...form.getInputProps("company")}
                 />
                 <SelectField
                     options={optionsServices}
@@ -188,14 +192,16 @@ export const ContactForm = () => {
                     type="text"
                     label="E-mail or nickname"
                     isEmpty={isEmailEmpty}
-                    key={form.key('email')}
-                    {...form.getInputProps('email')}/>
+                    key={form.key("email")}
+                    {...form.getInputProps("email")}
+                />
 
                 <TextareaField
                     label="Comments (optional)"
                     isEmpty={isCommentEmpty}
-                    key={form.key('comment')}
-                    {...form.getInputProps('comment')}/>
+                    key={form.key("comment")}
+                    {...form.getInputProps("comment")}
+                />
 
                 <Checkbox
                     required

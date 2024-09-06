@@ -1,5 +1,4 @@
-
-import sgMail, { MailDataRequired } from '@sendgrid/mail'
+import sgMail, { MailDataRequired } from "@sendgrid/mail";
 
 /**
  * @param {Object} data
@@ -11,7 +10,7 @@ import sgMail, { MailDataRequired } from '@sendgrid/mail'
  */
 export async function sendEmail(data) {
     sgMail.setApiKey(process.env.NEXT_SENDGRID_API_KEY);
-    console.log({data: data});
+    console.log({ data: data });
     const msg = {
         to: data.to,
         // TODO: change from email strapi
@@ -20,12 +19,12 @@ export async function sendEmail(data) {
         text: data.message,
         templateId: "d-a47d7ce88a4b415d9cedc799fc08ed97",
         dynamicTemplateData: data.dynamicTemplateData,
-    }
+    };
 
     try {
-        await  sgMail.send(msg);
+        await sgMail.send(msg);
     } catch (error) {
-        console.log(error.response.body)
+        console.log(error.response.body);
         console.log("sendEmail() ", error);
     }
 }

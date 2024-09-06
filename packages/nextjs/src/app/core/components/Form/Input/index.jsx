@@ -23,11 +23,7 @@ const InputField = ({ type = "text", label, isEmpty, ...props }) => {
 
     return (
         <label data-empty={isEmpty} className={styles.container}>
-            <input
-                type={type}
-                className={classes}
-                {...props}
-            />
+            <input type={type} className={classes} {...props} />
             <div className={styles.label}>{label}</div>
         </label>
     );

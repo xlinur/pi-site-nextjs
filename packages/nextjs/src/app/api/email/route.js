@@ -1,6 +1,5 @@
-import {NextResponse} from "next/server";
-import {sendEmail} from "../../../lib/sendEmail";
-
+import { NextResponse } from "next/server";
+import { sendEmail } from "../../../lib/sendEmail";
 
 export async function POST(req, _) {
     try {
@@ -14,7 +13,7 @@ export async function POST(req, _) {
          * @property {string} comment
          */
         const jsonPostData = await req.json();
-        console.log({jsonPostData: jsonPostData});
+        console.log({ jsonPostData: jsonPostData });
 
         await sendEmail({
             to: jsonPostData.email,
@@ -22,8 +21,8 @@ export async function POST(req, _) {
             dynamicTemplateData: {
                 name: jsonPostData.name,
                 email: jsonPostData.email,
-                message: jsonPostData.comment
-            }
+                message: jsonPostData.comment,
+            },
         });
 
         return NextResponse.json({

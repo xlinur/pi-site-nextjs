@@ -20,7 +20,7 @@ import styles from "./styles.module.scss";
 import qs from "qs";
 
 // TODO: move into constants.ts within current folder
-export const homePageQuery = qs.stringify({
+const homePageQuery = qs.stringify({
     populate: {
         WhyPersonalInvest: {
             fields: ["title"],
@@ -35,7 +35,7 @@ export const homePageQuery = qs.stringify({
 
 async function getStrapiHomePage() {
     try {
-        const url = new URL("/api/test-page", process.env.STRAPI_API);
+        const url = new URL("/api/test-page", process.env.NEXT_STRAPI_API);
 
         url.search = homePageQuery;
 

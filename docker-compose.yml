@@ -1,24 +1,29 @@
 version: "3"
 services:
-#  nextjs:
-#    container_name: nextjs
-#    build:
-#      context: ./packages/nextjs
-#      dockerfile: ./Dockerfile
-#    image: nextjs:latest
-#    restart: unless-stopped
-#    env_file: ./packages/nextjs/.env
-#    environment:
-#      STRAPI_API: ${STRAPI_API}
-#    volumes:
-#      - ./packages/nextjs:/opt
-#      - ./packages/nextjs/package.json:/opt/package.json
-#    ports:
-#      - "3000:3000"
-#    networks:
-#      - strapi
-#    depends_on:
-#      - strapi
+  nextjs:
+    container_name: nextjs
+    build:
+      context: ./packages/nextjs
+      dockerfile: ./Dockerfile
+    image: nextjs:latest
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      # TODO: when the project is done
+      #       NEXT_STRAPI_API need to be changed on strapi
+      #       to make request into docker container's strapi
+      #
+      #       IMPORTANT! Now NEXT_STRAPI_API is CLOUD HOST
+      NEXT_STRAPI_API: ${NEXT_STRAPI_API}
+      NEXT_PUBLIC_RECAPTCHA_KEY: ${NEXT_PUBLIC_RECAPTCHA_KEY}
+      NEXT_PRIVATE_RECAPTCHA_SECRET_KEY: ${NEXT_PRIVATE_RECAPTCHA_SECRET_KEY}
+      NEXT_SENDGRID_API_KEY: ${NEXT_SENDGRID_API_KEY}
+    ports:
+      - "3000:3000"
+    networks:
+      - strapi
+    depends_on:
+      - strapi
 
   strapi:
     container_name: strapi
@@ -43,7 +48,6 @@ services:
       - ./packages/strapi/config:/opt/app/config
       - ./packages/strapi/src:/opt/app/src
       - ./packages/strapi/package.json:/opt/package.json
-      - ./packages/strapi/yarn.lock:/opt/yarn.lock
       - ./.env:/opt/app/.env
       - ./packages/strapi/public/uploads:/opt/app/public/uploads
     ports:
@@ -64,10 +68,7 @@ services:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_DB: ${DATABASE_NAME}
     volumes:
-      #- strapi-data:/var/lib/postgresql/data/ #using a volume
       - ./pg-data:/var/lib/postgresql/data/ # if you want to use a bind folder
-      - ./packages/strapi/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
-
     ports:
       - "5432:5432"
     networks:

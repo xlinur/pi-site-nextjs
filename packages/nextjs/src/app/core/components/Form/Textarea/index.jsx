@@ -17,11 +17,7 @@ const TextareaField = ({ label, isEmpty, ...props }) => {
             data-empty={isEmpty}
             className={`${styles.container} ${styles["textarea-container"]}`}
         >
-            <textarea
-                className={styles.textarea}
-                rows={6}
-                {...props}
-            />
+            <textarea className={styles.textarea} rows={6} {...props} />
             <div className={styles.label}>{label}</div>
         </label>
     );
