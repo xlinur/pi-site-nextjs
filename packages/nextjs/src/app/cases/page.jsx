@@ -1,6 +1,6 @@
 import Markdown from 'react-markdown';
 import styles from './styles.module.scss';
-import Button from '../core/components/Button';
+import Button from '@/app/components/Button';
 import ContactForm from '@/app/components/ContactForm';
 import CardCase from './[slug]/components/CardCase';
 

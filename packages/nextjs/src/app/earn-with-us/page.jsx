@@ -8,7 +8,7 @@ import Button from '@/app/components/Button';
 import dollarsSVG from '@/app/assets/icons/dollars.svg';
 
 import styles from './styles.module.scss';
-import SectionHowWeWork from '../core/components/Sections/SectionHowWeWork';
+import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 
 export default async function PageEarnWithUs() {
   const mok = {

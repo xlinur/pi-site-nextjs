@@ -12,7 +12,7 @@ type Request = <Response extends object>(
 export const request: Request = async (path, { query }) => {
   const requestQuery = qs.stringify(query);
 
-  const url = new URL(path, process.env.STRAPI_API);
+  const url = new URL(path, process.env.NEXT_STRAPI_API);
 
   url.search = requestQuery;
 

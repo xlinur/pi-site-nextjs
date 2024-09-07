@@ -7,7 +7,7 @@ import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import ContactForm from '@/app/components/ContactForm';
 import CardSocialMedia from '@/app/components/Cards/CardSocialMedia';
-import SectionHowWeWork from '../core/components/Sections/SectionHowWeWork';
+import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 
 import founderFace from '@/app/assets/images/founder.jpg';
 import countrymapPng from '@/app/assets/images/countrymap.png';
