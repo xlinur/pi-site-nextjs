@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_shared_hero_mains",
+  "info": {
+    "displayName": "HeroMain",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "hereNowBtn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button-link"
+    },
+    "candidateBtn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button-link"
+    },
+    "recorWord": {
+      "type": "string"
+    },
+    "advantages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.advantage"
+    }
+  }
+}

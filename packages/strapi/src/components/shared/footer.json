@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_shared_footers",
+  "info": {
+    "displayName": "Footer"
+  },
+  "options": {},
+  "attributes": {
+    "socialMediaTitle": {
+      "type": "richtext"
+    },
+    "supportTitle": {
+      "type": "string"
+    },
+    "ContactsTitle": {
+      "type": "string"
+    },
+    "copywritig": {
+      "type": "string"
+    },
+    "privacyAndPolicy": {
+      "type": "string"
+    }
+  }
+}
