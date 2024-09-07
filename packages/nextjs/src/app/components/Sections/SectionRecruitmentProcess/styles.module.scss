@@ -1,0 +1,90 @@
+@use '../../../styles/mixins.scss' as *;
+
+.sectionRecruitmentProcess {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 80px;
+  padding-bottom: 90px;
+
+  @include md {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-inline: 8px;
+  }
+
+  header {
+    align-self: flex-start;
+    max-width: 520px;
+
+    @include md {
+      max-width: 410px;
+    }
+
+    p {
+      margin-top: 12px;
+    }
+  }
+
+  .steps {
+    margin-top: 74px;
+    margin-bottom: 80px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 86px;
+    column-gap: 13%;
+
+    @include lg {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 70px;
+      column-gap: 43px;
+    }
+    button {
+      width: 100%;
+      max-width: 390px;
+
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+
+    .stepsItem {
+      @include md {
+        padding-left: 12px;
+      }
+      .stepsItemTitle {
+        position: relative;
+        z-index: 1;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: -16px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 82px;
+          height: 82px;
+          background-color: var(--white);
+          border-radius: 50%;
+          z-index: -1;
+
+          @include md {
+            width: 53px;
+            height: 53px;
+            // left: -28px;
+            transform: translateY(-62%);
+          }
+        }
+      }
+      .stepsItemText {
+        position: relative;
+        margin-top: 33px;
+
+        span {
+          color: var(--blue);
+        }
+      }
+    }
+  }
+}

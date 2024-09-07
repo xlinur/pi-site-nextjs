@@ -1,0 +1,34 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--light-blue);
+  border: 1px solid transparent;
+  padding: 30px;
+  border-radius: 30px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--blue);
+    background-color: var(--white);
+  }
+
+  time {
+    color: var(--gray);
+  }
+
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 6px;
+    padding-right: 50px;
+  }
+
+  .arrowSvg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: var(--blue);
+  }
+}
