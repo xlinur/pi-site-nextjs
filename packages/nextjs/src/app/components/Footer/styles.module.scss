@@ -1,0 +1,159 @@
+@use "../../styles/mixins.scss" as *;
+
+.footer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  .footerLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footerContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.8fr 0.8fr;
+    margin-top: 86px;
+  }
+
+  .listWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      li > a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+    }
+
+    .listTitle {
+      font-weight: 600;
+      line-height: 22.4px;
+
+      @include md {
+        line-height: 20.8px;
+      }
+    }
+
+    .listItemLocation a {
+      align-items: initial;
+    }
+  }
+
+  .footerContentPhone {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    h5 {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 130%;
+      text-wrap: nowrap;
+
+      @include md {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .socialMedia {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    gap: 12px;
+    background-color: var(--light-blue);
+    border-radius: 20px;
+  
+    a {
+      display: inline-flex;
+    }
+
+    .supportOption {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+
+  hr {
+    margin-top: 50px;
+  }
+
+  .footerCopyright {
+    display: flex;
+    justify-content: space-between;
+  
+    margin-top: 32px;
+
+    color: #BFBFBF;
+
+
+    .footerCopyrightBlock {
+      display: flex;
+      gap: 24px;
+      max-width: 400px;
+    }
+
+    .footerCopyrightBlockContain {
+      display: contents;
+    }
+  }
+
+  @include md {
+    .footerContent {
+      grid-template-columns: 1fr 1fr 0.6fr;
+    }
+    .footerContentLogo {
+      display: none;
+    }
+
+    .footerCopyright {
+      gap: 10%;
+      align-items: center;
+
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 19.6px;
+      
+      .footerCopyrightBlock {
+        min-width: initial;
+      }
+
+      .footerCopyrightBlockContain {
+        display: flex;
+        flex-direction: column;
+        text-wrap: nowrap;
+        gap: 12px;
+      }
+    }
+  }
+
+  @include sm {
+    .footerContent {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .footerContentPhone {
+      align-items: flex-start;
+      gap: 32px;
+    }
+
+    .footerCopyright {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+  }
+}
