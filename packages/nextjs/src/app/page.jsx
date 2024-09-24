@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 import HeroMain from '@/app/components/Sections/Heros/HeroMain';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
@@ -18,12 +16,17 @@ import homePageRequest from '@/app/api/strapi/homePage/route';
 import styles from './styles.module.scss';
 
 export default async function Home() {
-  const { WhyPersonalInvest, WhyPersonalInvestItems } = await homePageRequest();
+  const {
+    HeroSection,
+    SectionWithIndustriesImage,
+    TrustedMap,
+    WhyInfoSection,
+  } = await homePageRequest();
 
   return (
     <main className={styles.pageMain}>
       {/* @Component HeroMain */}
-      <HeroMain>
+      <HeroMain {...HeroSection}>
         <Advantages />
         <Worldwide />
       </HeroMain>
@@ -38,7 +41,7 @@ export default async function Home() {
       {/* @Component SectionCustomVision */}
       <div className={styles.sectionCustomVisionWrapper}>
         <div className="container">
-          <SectionCustomVision />
+          <SectionCustomVision {...SectionWithIndustriesImage} />
         </div>
       </div>
 
@@ -51,7 +54,7 @@ export default async function Home() {
 
       <div className={styles.sectionPlanetWrapper}>
         <div className="container">
-          <SectionTrustedMap />
+          <SectionTrustedMap {...TrustedMap} />
         </div>
       </div>
 
@@ -59,15 +62,15 @@ export default async function Home() {
       <div className={styles.sectionWhyWrapper}>
         <div className="container">
           <section className={styles.sectionWhy}>
-            <h2>{WhyPersonalInvest.title}</h2>
+            <h2>{WhyInfoSection.title}</h2>
 
             <div className={styles.reasons}>
-              {WhyPersonalInvestItems.map(({ title, description }) => (
+              {/* {WhyInfoSection.reasons.map(({ title, description }) => (
                 <div className={styles.reasonsItem} key={title}>
                   <h5 className={styles.reasonsItemTitle}>{title}</h5>
                   <p className={styles.reasonsItemText}>{description}</p>
                 </div>
-              ))}
+              ))} */}
               <div className={styles.reasonsItem}>
                 <div className={styles.reasonsItemTitle}></div>
                 <div className={styles.reasonsItemText}>

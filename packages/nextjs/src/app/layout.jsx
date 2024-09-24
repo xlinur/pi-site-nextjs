@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Roboto } from 'next/font/google';
+import ErrorBoundary from '@/app/components/ErrorBoundary';
 import Header from '@/app/components/Header';
 import SidebarMenu from '@/app/components/SidebarMenu';
 import Footer from '@/app/components/Footer';
@@ -19,13 +20,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <GoogleCaptchaWrapper>{children}</GoogleCaptchaWrapper>
-        <Header setIsOpenSidebar={setIsOpenSidebar} />
-        <Footer />
-        <SidebarMenu
-          isOpen={isOpenSidebar}
-          setIsOpenSidebar={setIsOpenSidebar}
-        />
+        <ErrorBoundary>
+          <GoogleCaptchaWrapper>{children}</GoogleCaptchaWrapper>
+          <Header setIsOpenSidebar={setIsOpenSidebar} />
+          <Footer />
+          <SidebarMenu
+            isOpen={isOpenSidebar}
+            setIsOpenSidebar={setIsOpenSidebar}
+          />
+        </ErrorBoundary>
       </body>
     </html>
   );

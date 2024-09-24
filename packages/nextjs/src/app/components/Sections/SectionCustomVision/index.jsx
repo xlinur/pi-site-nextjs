@@ -3,7 +3,11 @@ import Button from '@/app/components/Button';
 import visionSVG from '@/app/assets/icons/vision.svg';
 import styles from './styles.module.scss';
 
-export default function SectionCustomVision() {
+export default function SectionCustomVision({
+  title,
+  description,
+  reversedDirection,
+}) {
   return (
     <section className={styles.sectionCustomVision}>
       <div className={styles.imageWrapper}>
@@ -11,7 +15,7 @@ export default function SectionCustomVision() {
       </div>
 
       <div className={styles.sectionCustomVisionContent}>
-        <h2>Custom vision of your needs</h2>
+        <h2>{title}</h2>
 
         <p>
           PersonalInvest is a global Informational Technology partner for
