@@ -20,20 +20,22 @@
     padding-top: 90px;
     padding-bottom: 90px;
 
-    &::before {
-      content: '';
-      position: absolute;
-      width: 1050px;
-      height: 1050px;
-      background-color: var(--light-blue);
-      top: 50%;
-      left: 0;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      z-index: -1;
-
-      @include lg {
-        transform: translate(-70%, -50%);
+    &.withBackground {
+      &::before {
+        content: '';
+        position: absolute;
+        width: 1050px;
+        height: 1050px;
+        background-color: var(--light-blue);
+        top: 50%;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: -1;
+  
+        @include lg {
+          transform: translate(-70%, -50%);
+        }
       }
     }
 

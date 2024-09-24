@@ -13,14 +13,19 @@ import CardSocialMedia from '@/app/components/Cards/CardSocialMedia';
 import homePageRequest from '@/app/api/strapi/homePage/route';
 
 import styles from './styles.module.scss';
+import clsx from 'clsx';
 
 export default async function Home() {
+  const data = await homePageRequest();
   const {
     HeroSection,
     SectionWithIndustriesImage,
     TrustedMap,
     WhyInfoSection,
-  } = await homePageRequest();
+    ExclusiveProcess,
+  } = await data;
+
+  console.log(data);
 
   return (
     <main className={styles.pageMain}>
@@ -44,7 +49,7 @@ export default async function Home() {
       {/* @Component SectionRecruitmentProcess */}
       <div className={styles.sectionRecruitmentProcessWrapper}>
         <div className="container">
-          <SectionRecruitmentProcess />
+          <SectionRecruitmentProcess {...ExclusiveProcess} />
         </div>
       </div>
 
@@ -57,16 +62,21 @@ export default async function Home() {
       {/* @Component */}
       <div className={styles.sectionWhyWrapper}>
         <div className="container">
-          <section className={styles.sectionWhy}>
+          <section
+            className={clsx(
+              WhyInfoSection.withBackground && styles.withBackground,
+              styles.sectionWhy,
+            )}
+          >
             <h2>{WhyInfoSection.title}</h2>
 
             <div className={styles.reasons}>
-              {/* {WhyInfoSection.reasons.map(({ title, description }) => (
+              {WhyInfoSection.reasons?.map(({ title, description }) => (
                 <div className={styles.reasonsItem} key={title}>
                   <h5 className={styles.reasonsItemTitle}>{title}</h5>
                   <p className={styles.reasonsItemText}>{description}</p>
                 </div>
-              ))} */}
+              ))}
               <div className={styles.reasonsItem}>
                 <div className={styles.reasonsItemTitle}></div>
                 <div className={styles.reasonsItemText}>
