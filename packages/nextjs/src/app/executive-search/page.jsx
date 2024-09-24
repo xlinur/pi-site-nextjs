@@ -1,4 +1,4 @@
-import HeroMain from '@/app/components/Sections/Heros/HeroMain';
+import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionInfoWithCards from '@/app/components/Sections/SectionInfoWithCards';
 import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
@@ -124,10 +124,9 @@ export default function ExecutiveSearchPage() {
 
   return (
     <main>
-      <HeroMain
+      <SectionHero
         title={mok.HeroSection.title}
-        subtitle={mok.HeroSection.subtitle}
-        animateBg
+        description={mok.HeroSection.subtitle}
       />
 
       <div className="container">

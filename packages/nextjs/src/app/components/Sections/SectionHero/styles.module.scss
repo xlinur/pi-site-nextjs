@@ -1,0 +1,79 @@
+@use '../../../styles/mixins.scss' as *;
+
+.sectionWrapper {
+  position: relative;
+
+  @include sm {
+    overflow: hidden;
+  }
+
+  .animateBg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+}
+
+.sectionHero {
+  padding-top: 100px;
+  padding-bottom: 160px;
+
+  @include md {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 798px;
+
+    @include md {
+      gap: 16px;
+    }
+
+    h1 {
+      font-size: 75px;
+      line-height: 82.5px;
+
+      @include md {
+        font-size: 38px;
+        line-height: 38px;
+      }
+    }
+
+    p {
+      font-size: 24px;
+      line-height: 31.2px;
+
+      @include md {
+        font-size: 18px;
+        line-height: 21.6px;
+      }
+    }
+  }
+
+  .sectionHeroActions {
+    display: flex;
+    gap: 12px;
+    margin-top: 70px;
+
+    @include md() {
+      margin-top: 44px;
+    }
+
+    @include sm {
+      justify-content: space-between;
+
+      button {
+        width: 100%;
+
+        span {
+          width: inherit;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

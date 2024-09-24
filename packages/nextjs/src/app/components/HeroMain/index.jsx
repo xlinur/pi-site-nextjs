@@ -1,47 +1,48 @@
 import Image from 'next/image';
-import Button from '@/app/components/Button';
-import heroLinesPNG from '@/app/assets/images/hero-lines.png';
-import HeroAnimateBg from '../HeroAnimateBg';
-import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
 
-const HeroMain = async ({
-  animateBg = false,
-  children,
-  title = '',
-  description = '',
-  actions = [],
-}) => {
+import Button from '@/app/components/Button';
+import heroLinesPNG from '@/app/assets/images/hero-lines.png';
+
+import Advantages from '../Advantages';
+import Worldwide from '../Worldwide';
+
+import styles from './styles.module.scss';
+
+export default async function HeroMain({
+  recorWord,
+  title,
+  description,
+  actions,
+  advantages,
+}) {
   return (
     <div className={styles.sectionWrapper}>
       <div className="container">
         <section className={styles.sectionHero}>
           <header>
-            <Markdown>{title}</Markdown>
+            <h1>
+              <Markdown>{title}</Markdown>
+            </h1>
             <Markdown>{description}</Markdown>
           </header>
 
           <div className={styles.sectionHeroActions}>
-            {actions.map((action, idx) => (
+            {actions?.map((action, idx) => (
               <Button key={idx} theme="primary" size="lg" withIcon>
                 {action.title}
               </Button>
             ))}
           </div>
 
-          {children}
+          <Advantages advantages={advantages || []} />
+          <Worldwide recorWord={recorWord} />
         </section>
       </div>
 
-      {!animateBg ? (
-        <div className={styles.sectionHeroDecorImage}>
-          <Image src={heroLinesPNG} alt="decor lines hero block" fill></Image>
-        </div>
-      ) : (
-        <HeroAnimateBg className={styles.animateBg} />
-      )}
+      <div className={styles.sectionHeroDecorImage}>
+        <Image src={heroLinesPNG} alt="decor lines hero block" fill></Image>
+      </div>
     </div>
   );
-};
-
-export default HeroMain;
+}

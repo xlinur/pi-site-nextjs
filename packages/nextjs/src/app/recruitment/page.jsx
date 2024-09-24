@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Markdown from 'react-markdown';
 
-import HeroMain from '@/app/components/Sections/Heros/HeroMain';
+import SectionHero from '@/app/components/Sections/SectionHero';
 import ContactForm from '@/app/components/ContactForm';
 
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
@@ -125,10 +125,9 @@ export default async function PageRecruitment() {
 
   return (
     <main className={styles.pageRecruitment}>
-      <HeroMain
+      <SectionHero
         title={mok.HeroSection.title}
-        subtitle={mok.HeroSection.subtitle}
-        animateBg
+        description={mok.HeroSection.subtitle}
       />
 
       <div className="container">

@@ -1,4 +1,4 @@
-import HeroMain from '@/app/components/Sections/Heros/HeroMain';
+import HeroMain from '@/app/components/HeroMain';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
 import SectionRecruitmentProcess from '@/app/components/Sections/SectionRecruitmentProcess';
@@ -9,8 +9,7 @@ import SectionTrustedMap from '@/app/components/Sections/SectionTrustedMap';
 import Button from '@/app/components/Button';
 import ContactForm from '@/app/components/ContactForm';
 import CardSocialMedia from '@/app/components/Cards/CardSocialMedia';
-import Advantages from '@/app/components/Advantages';
-import Worldwide from '@/app/components/Worldwide';
+
 import homePageRequest from '@/app/api/strapi/homePage/route';
 
 import styles from './styles.module.scss';
@@ -26,10 +25,7 @@ export default async function Home() {
   return (
     <main className={styles.pageMain}>
       {/* @Component HeroMain */}
-      <HeroMain {...HeroSection}>
-        <Advantages />
-        <Worldwide />
-      </HeroMain>
+      <HeroMain {...HeroSection} />
 
       {/* @Component SectionWeCanHelp */}
       <div className={styles.sectionHelpWrapper}>

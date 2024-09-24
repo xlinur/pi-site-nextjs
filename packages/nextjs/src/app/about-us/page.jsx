@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import HeroMain from '@/app/components/Sections/Heros/HeroMain';
+import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionAboutPersonalinvest from '@/app/components/Sections/SectionAboutPersonalinvest';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
@@ -18,7 +18,7 @@ import Button from '@/app/components/Button';
 export default async function PageAboutUs() {
   return (
     <main>
-      <HeroMain animateBg />
+      <SectionHero />
 
       <div className="container">
         <div className={styles.firstBlock}>

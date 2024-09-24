@@ -1,4 +1,4 @@
-import HeroMain from '@/app/components/Sections/Heros/HeroMain';
+import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import ContactForm from '@/app/components/ContactForm';
@@ -132,10 +132,9 @@ Custom personalized research designed for your specific needs and objectives and
 
   return (
     <main>
-      <HeroMain
+      <SectionHero
         title={mok.HeroSection.title}
-        subtitle={mok.HeroSection.subtitle}
-        animateBg
+        description={mok.HeroSection.subtitle}
       />
 
       <div className="container">

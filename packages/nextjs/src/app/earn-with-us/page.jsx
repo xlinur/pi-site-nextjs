@@ -1,4 +1,4 @@
-import HeroMain from '@/app/components/Sections/Heros/HeroMain';
+import SectionHero from '@/app/components/Sections/SectionHero';
 import Advantages from '@/app/components/Advantages';
 import ContactForm from '@/app/components/ContactForm';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
@@ -58,10 +58,9 @@ export default async function PageEarnWithUs() {
 
   return (
     <main className={styles.pageContactUs}>
-      <HeroMain
+      <SectionHero
         title={mok.HeroSection.title}
-        subtitle={mok.HeroSection.subtitle}
-        animateBg
+        description={mok.HeroSection.subtitle}
       />
 
       <div className="container">

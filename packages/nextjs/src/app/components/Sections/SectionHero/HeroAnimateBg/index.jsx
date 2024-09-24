@@ -1,7 +1,6 @@
 'use client';
 
 import { config } from './config';
-// import styles from "./styles.module.scss";
 
 import { useEffect, useMemo, useState } from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';

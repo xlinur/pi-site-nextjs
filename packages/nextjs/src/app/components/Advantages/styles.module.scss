@@ -13,56 +13,28 @@
   font-weight: 400;
   margin-top: 200px;
 
+  .itemWrapper {
+    display: contents;
+
+    .sectionHeroAdvantagesDivider {
+      width: 1px;
+      height: 92px;
+      background-color: var(--blue);
+    }
+
+    &:last-child .sectionHeroAdvantagesDivider {
+      display: none;
+    }
+  }
+
   .sectionHeroAdvantagesItem {
     display: inline-flex;
     flex-direction: column;
     text-align: center;
 
-    &:nth-child(1) {
-      span:first-child {
-        font-weight: 700;
-        line-height: 41.8px;
-        font-size: 38px;
-        text-wrap: nowrap;
-
-        @include rwd(730) {
-          font-size: 24px;
-          line-height: 28.8px;
-        }
-      }
+    h4 {
+      text-wrap: nowrap;
     }
-    &:nth-child(5) {
-      span:nth-child(2) {
-        font-weight: 700;
-        line-height: 41.8px;
-        font-size: 38px;
-        text-wrap: nowrap;
-
-        @include rwd(730) {
-          font-size: 24px;
-          line-height: 28.8px;
-        }
-      }
-    }
-    &:nth-child(7) {
-      span:first-child {
-        font-weight: 700;
-        line-height: 41.8px;
-        font-size: 38px;
-        text-wrap: nowrap;
-
-        @include rwd(730) {
-          font-size: 24px;
-          line-height: 28.8px;
-        }
-      }
-    }
-  }
-
-  .sectionHeroAdvantagesDivider {
-    width: 1px;
-    height: 92px;
-    background-color: var(--blue);
   }
 
   @include rwd(730) {

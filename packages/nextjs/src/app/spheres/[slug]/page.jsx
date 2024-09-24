@@ -1,4 +1,4 @@
-import HeroMain from '@/app/components/Sections/Heros/HeroMain';
+import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionInfoWithCards from '@/app/components/Sections/SectionInfoWithCards';
 import SectionKeySectors from '@/app/components/Sections/SectionKeySectors';
 import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
@@ -81,10 +81,9 @@ export default function SpheresPage() {
 
   return (
     <main>
-      <HeroMain
+      <SectionHero
         title={mok.HeroSection.title}
-        subtitle={mok.HeroSection.subtitle}
-        animateBg
+        description={mok.HeroSection.subtitle}
       />
 
       <div className="container">

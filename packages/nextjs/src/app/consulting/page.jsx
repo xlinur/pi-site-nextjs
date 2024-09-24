@@ -1,4 +1,4 @@
-import HeroMain from '@/app/components/Sections/Heros/HeroMain';
+import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import Accordion from '@/app/components/Accordion';
@@ -20,7 +20,6 @@ export default async function RelocationHelpPage() {
         'Use the full potential of talent acquisition with PersonalInvest to maximize the benefits of our permanent or contract recruitment services and your business growth.',
       actions: [],
     },
-
     HowWeWork: {
       title: '',
       items: [
@@ -85,10 +84,9 @@ export default async function RelocationHelpPage() {
 
   return (
     <main className={styles.relocationHelpPage}>
-      <HeroMain
+      <SectionHero
         title={mok.HeroSection.title}
-        subtitle={mok.HeroSection.subtitle}
-        animateBg
+        description={mok.HeroSection.subtitle}
       />
 
       {/* @Component */}

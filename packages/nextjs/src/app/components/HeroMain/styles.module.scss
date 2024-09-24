@@ -1,16 +1,10 @@
-@use '../../../../styles/mixins.scss' as *;
+@use '../../styles/mixins.scss' as *;
 
 .sectionWrapper {
   position: relative;
 
   @include sm {
     overflow: hidden;
-  }
-
-  .animateBg {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
   }
 
   .sectionHeroDecorImage {
@@ -58,9 +52,6 @@
     h1 {
       font-size: 75px;
       line-height: 82.5px;
-      span {
-        color: var(--logo-blue);
-      }
 
       @include md {
         font-size: 38px;
@@ -68,7 +59,7 @@
       }
     }
 
-    p {
+    > p {
       font-size: 24px;
       line-height: 31.2px;
 

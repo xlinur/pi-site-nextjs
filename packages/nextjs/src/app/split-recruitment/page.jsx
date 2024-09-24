@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Markdown from 'react-markdown';
 import SectionAboutPersonalinvest from '@/app/components/Sections/SectionAboutPersonalinvest';
-import HeroMain from '@/app/components/Sections/Heros/HeroMain';
+import SectionHero from '@/app/components/Sections/SectionHero';
 import ContactForm from '@/app/components/ContactForm';
 
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
@@ -102,10 +102,9 @@ After the placement is made and the candidate is working for their new employer,
 
   return (
     <main className={styles.pageRecruitment}>
-      <HeroMain
+      <SectionHero
         title={mok.HeroSection.title}
-        subtitle={mok.HeroSection.subtitle}
-        animateBg
+        description={mok.HeroSection.subtitle}
       />
 
       <div className="container">
