@@ -10,7 +10,9 @@ export default function Advantages({ advantages }) {
       {advantages.map((item, idx) => (
         <div key={idx} className={styles.itemWrapper}>
           <div className={styles.sectionHeroAdvantagesItem}>
-            <Markdown>{item}</Markdown>
+            <h5>
+              <Markdown>{item.advantage}</Markdown>
+            </h5>
           </div>
 
           <div className={styles.sectionHeroAdvantagesDivider}></div>

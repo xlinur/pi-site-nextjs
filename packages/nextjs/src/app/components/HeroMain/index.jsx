@@ -24,18 +24,17 @@ export default async function HeroMain({
             <h1>
               <Markdown>{title}</Markdown>
             </h1>
+
             <Markdown>{description}</Markdown>
           </header>
 
           <div className={styles.sectionHeroActions}>
             {actions?.map((action, idx) => (
-              <Button key={idx} theme="primary" size="lg" withIcon>
-                {action.title}
-              </Button>
+              <Button key={idx} {...action} />
             ))}
           </div>
 
-          <Advantages advantages={advantages || []} />
+          <Advantages advantages={advantages} />
           <Worldwide recorWord={recorWord} />
         </section>
       </div>

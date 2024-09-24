@@ -13,14 +13,13 @@ export default async function SectionHero({ title, description, actions }) {
             <h1>
               <Markdown>{title}</Markdown>
             </h1>
+
             <Markdown className={styles.p}>{description}</Markdown>
           </header>
 
           <div className={styles.sectionHeroActions}>
             {actions?.map((action, idx) => (
-              <Button key={idx} theme="primary" size="lg" withIcon>
-                {action.title}
-              </Button>
+              <Button key={idx} {...action} />
             ))}
           </div>
         </section>

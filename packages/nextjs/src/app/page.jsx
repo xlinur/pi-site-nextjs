@@ -89,7 +89,7 @@ export default async function Home() {
       </div>
 
       {/* @Component SectionCompaniesLogo */}
-      <SectionCompaniesLogo />
+      {/* <SectionCompaniesLogo /> */}
 
       {/* @Component SectionFeedbackList */}
       <div className={styles.sectionFeedbackWrapper}>

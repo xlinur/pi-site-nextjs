@@ -2,18 +2,20 @@
 
 .sectionHeroAdvantages {
   display: flex;
-  height: 200px;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 42px;
+  
+  gap: 20px;
+  height: 200px;
   border: 1px solid var(--blue);
   border-radius: 30px;
-  gap: 20px;
   background-color: var(--white);
-  font-weight: 400;
+  padding-inline: 42px;
   margin-top: 200px;
+  font-weight: 400;
 
   .itemWrapper {
+    flex: 1 0 25%;
     display: contents;
 
     .sectionHeroAdvantagesDivider {
@@ -32,8 +34,12 @@
     flex-direction: column;
     text-align: center;
 
-    h4 {
-      text-wrap: nowrap;
+    h5 {
+      font-weight: 400;
+    }
+
+    strong {
+      display: block;
     }
   }
 
