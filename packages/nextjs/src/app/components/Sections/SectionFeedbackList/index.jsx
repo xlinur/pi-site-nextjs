@@ -1,9 +1,13 @@
 import Button from '@/app/components/Button';
 import SliderFeedback from '@/app/components/Sliders/SliderFeedback';
 
+import feedbacks from '@/app/api/strapi/feedbacks/route';
+
 import styles from './styles.module.scss';
 
-const SectionFeedbackList = ({ firstSlideTheme }) => {
+export default async function SectionFeedbackList() {
+  const data = await feedbacks();
+
   const mok = {
     title: 'What our clients say',
     readMoreBtn: 'Read more reviews',
@@ -21,13 +25,10 @@ const SectionFeedbackList = ({ firstSlideTheme }) => {
       </div>
 
       <div className={styles.slider}>
-        <SliderFeedback
-          firstSlideTheme={firstSlideTheme}
-          readAllBtn={mok.readAllBtn}
-        />
+        <SliderFeedback data={data} readAllBtn={mok.readAllBtn} />
       </div>
     </section>
   );
-};
+}
 
-export default SectionFeedbackList;
+SectionFeedbackList;

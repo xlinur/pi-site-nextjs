@@ -35,6 +35,7 @@
     grid-template-columns: repeat(3, 1fr);
     row-gap: 86px;
     column-gap: 13%;
+    width: 100%;
 
     @include lg {
       grid-template-columns: repeat(2, 1fr);

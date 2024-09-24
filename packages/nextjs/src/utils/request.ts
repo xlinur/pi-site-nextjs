@@ -23,7 +23,5 @@ export const request: Request = async (path, props) => {
   const res = await fetch(url.href);
   const json = await res.json();
 
-  console.log(path, json); // TODO: remove after release
-
-  return json.data.attributes;
+  return json;
 };

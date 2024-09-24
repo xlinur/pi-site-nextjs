@@ -25,7 +25,7 @@ function CardFeedback(props) {
           <b>{essence}</b>
         </p>
 
-        <Markdown>{content}</Markdown>
+        <Markdown className={styles.clampLine}>{content}</Markdown>
       </div>
 
       <div className={styles.cardUser}>

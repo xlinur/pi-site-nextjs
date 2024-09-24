@@ -16,16 +16,13 @@ import styles from './styles.module.scss';
 import clsx from 'clsx';
 
 export default async function Home() {
-  const data = await homePageRequest();
   const {
     HeroSection,
     SectionWithIndustriesImage,
     TrustedMap,
     WhyInfoSection,
     ExclusiveProcess,
-  } = await data;
-  // debug
-  console.log(data);
+  } = await homePageRequest();
 
   return (
     <main className={styles.pageMain}>
@@ -89,11 +86,11 @@ export default async function Home() {
       </div>
 
       {/* @Component SectionCompaniesLogo */}
-      {/* <SectionCompaniesLogo /> */}
+      <SectionCompaniesLogo />
 
       {/* @Component SectionFeedbackList */}
       <div className={styles.sectionFeedbackWrapper}>
-        <SectionFeedbackList firstSlideTheme="white" />
+        <SectionFeedbackList />
       </div>
 
       {/* @Component SectionMeetGallery */}
