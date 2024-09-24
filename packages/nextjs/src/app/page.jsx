@@ -24,7 +24,7 @@ export default async function Home() {
     WhyInfoSection,
     ExclusiveProcess,
   } = await data;
-
+  // debug
   console.log(data);
 
   return (

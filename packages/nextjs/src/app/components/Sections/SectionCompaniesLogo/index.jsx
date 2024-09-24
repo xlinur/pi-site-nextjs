@@ -11,26 +11,21 @@ const imagePaths = images.keys().map((path) => ({
   src: images(path).default,
 }));
 
+import companiesLogoSection from '@/app/api/strapi/companiesLogoSection/route';
 import styles from './styles.module.scss';
 
-const CompaniesLogo = () => {
-  const mok = {
-    title: '9 of 10 companies come to us and stay',
-    logos: imagePaths,
-    addLogoBtn: 'Add your logo',
-  };
+export default async function CompaniesLogo() {
+  const { button, logos, title } = await companiesLogoSection();
 
   return (
     <section className={styles.sectionCompanies}>
-      <h3>{mok.title}</h3>
+      <h3>{title}</h3>
 
       <div className={styles.infinitySliderWrapper}>
-        <SliderInfinityLogos data={mok.logos} />
+        <SliderInfinityLogos data={logos.data} />
       </div>
 
-      <Button theme="primary">{mok.addLogoBtn}</Button>
+      <Button theme={button.theme}>{button.name}</Button>
     </section>
   );
-};
-
-export default CompaniesLogo;
+}
