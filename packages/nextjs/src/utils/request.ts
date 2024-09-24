@@ -9,15 +9,15 @@ type Request = <Response extends object>(
   params?: RequestParams,
 ) => Promise<Response>;
 
-export const request: Request = async (path, params) => {
-  let url;
+export const request: Request = async (path, props) => {
+  const { query } = props || {};
 
-  if (params) {
-    const requestQuery = qs.stringify(params.query);
-    url = new URL(path, process.env.NEXT_STRAPI_API);
+  const url = new URL(path, process.env.NEXT_STRAPI_API);
+
+  if (query) {
+    const requestQuery = qs.stringify(query);
+
     url.search = requestQuery;
-  } else {
-    url = new URL(`${path}?populate=*`, process.env.NEXT_STRAPI_API);
   }
 
   const res = await fetch(url.href);
