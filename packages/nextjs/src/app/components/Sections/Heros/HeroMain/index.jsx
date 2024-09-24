@@ -10,7 +10,7 @@ import Markdown from 'react-markdown';
 export const homePageQuery = qs.stringify({
   populate: {
     HeroSection: {
-      fields: ['title', 'subTitle'],
+      fields: ['title', 'description'],
     },
   },
 });
@@ -36,7 +36,7 @@ const HeroMain = async ({
   animateBg = false,
   children,
   title = '',
-  subtitle = '',
+  description = '',
   actions,
 }) => {
   const data = await getStrapiHomePage();
@@ -48,23 +48,16 @@ const HeroMain = async ({
           <header>
             <Markdown>{data?.attributes.HeroSection.title || title}</Markdown>
             <Markdown>
-              {data?.attributes.HeroSection.subTitle || subtitle}
+              {data?.attributes.HeroSection.description || description}
             </Markdown>
           </header>
 
           <div className={styles.sectionHeroActions}>
             {actions?.map((action, idx) => (
-              <Button key={idx} theme="primary" size="lg" icon>
+              <Button key={idx} theme="primary" size="lg" withIcon>
                 {action.title}
               </Button>
             ))}
-            <Button theme="primary" size="lg" icon>
-              Hire now
-            </Button>
-
-            <Button theme="secondary" size="lg">
-              I’m a candidate
-            </Button>
           </div>
 
           {children}

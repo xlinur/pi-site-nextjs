@@ -6,23 +6,28 @@ const mok = {
   items: [
     {
       title: 'Your application',
-      text: 'Filling out the standard form and discussing details (3-5 days)',
+      description:
+        'Filling out the standard form and discussing details (3-5 days)',
     },
     {
       title: 'Your application',
-      text: 'Filling out the standard form and discussing details (3-5 days)',
+      description:
+        'Filling out the standard form and discussing details (3-5 days)',
     },
     {
       title: 'Your application',
-      text: 'Filling out the standard form and discussing details (3-5 days)',
+      description:
+        'Filling out the standard form and discussing details (3-5 days)',
     },
     {
       title: 'Your application',
-      text: 'Filling out the standard form and discussing details (3-5 days)',
+      description:
+        'Filling out the standard form and discussing details (3-5 days)',
     },
     {
       title: 'Your application',
-      text: 'Filling out the standard form and discussing details (3-5 days)',
+      description:
+        'Filling out the standard form and discussing details (3-5 days)',
     },
   ],
 };
@@ -35,6 +40,7 @@ export default function SectionHowWeWork(props) {
     [styles.treeGrid, styles[type]],
     fitContent && styles.fitContent,
   );
+
   return (
     <section className={styles.sectionHowWeWork}>
       <header>
@@ -47,8 +53,9 @@ export default function SectionHowWeWork(props) {
             <div className={styles.treeGridItem} key={idx}>
               <h5 className={styles.title}>{item.title}</h5>
               <hr />
-              <p className={styles.text}>{item.text}</p>
+              <p className={styles.text}>{item.description}</p>
             </div>
+
             <div className={styles.treeGridWrapper}>
               <div className={styles.treeGridCount} key={idx}>
                 <span>{idx + 1}</span>

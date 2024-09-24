@@ -35,6 +35,29 @@ export const optionsContactPreferences = [
 ];
 
 export const ContactForm = () => {
+  const mok = {
+    title: 'Start a conversation',
+    subTitle: 'Leave a request and we will contact you within an hour.',
+    info: 'Or contact us by phone:',
+
+    nameLabel: 'Name',
+    emailLabel: 'E-mail or nickname',
+    companyLabel: 'Company',
+    serviceSelect: {
+      label: 'Select services',
+      options: optionsServices,
+    },
+    contactSelect: {
+      label: 'Contact preferences',
+      options: optionsContactPreferences,
+    },
+    descriptionLabel: 'Comments (optional)',
+    legalCheckboxText:
+      'Yes, I have read and agree to the Data Privacy and Legal Notice.',
+
+    submitBtn: 'Send',
+  };
+
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
@@ -105,8 +128,8 @@ export const ContactForm = () => {
     <div className={styles.formWrapper}>
       <section className={styles.contacts}>
         <header>
-          <h3>Start a conversation</h3>
-          <p>Leave a request and we will contact you within an hour.</p>
+          <h3>{mok.title}</h3>
+          <p>{mok.subTitle}</p>
         </header>
 
         <div className="icon">
@@ -147,50 +170,47 @@ export const ContactForm = () => {
       >
         <InputField
           type="text"
-          label="Name"
+          label={mok.nameLabel}
           isEmpty={isNameEmpty}
           key={form.key('name')}
           {...form.getInputProps('name')}
         />
         <InputField
           type="text"
-          label="Company"
+          label={mok.companyLabel}
           isEmpty={isCompanyEmpty}
           key={form.key('company')}
           {...form.getInputProps('company')}
         />
         <SelectField
-          options={optionsServices}
+          options={mok.serviceSelect.options}
           onSelect={handleServiceSelectCallback}
-          label="Select services"
+          label={mok.serviceSelect.label}
         />
         <SelectField
-          options={optionsContactPreferences}
+          options={mok.contactSelect.options}
           onSelect={handleContactPreferencesSelectCallback}
-          label="Contact preferences"
+          label={mok.contactSelect.label}
         />
         <InputField
           type="text"
-          label="E-mail or nickname"
+          label={mok.emailLabel}
           isEmpty={isEmailEmpty}
           key={form.key('email')}
           {...form.getInputProps('email')}
         />
 
         <TextareaField
-          label="Comments (optional)"
+          label={mok.descriptionLabel}
           isEmpty={isCommentEmpty}
           key={form.key('comment')}
           {...form.getInputProps('comment')}
         />
 
-        <Checkbox
-          required
-          label="Yes, I have read and agree to the Data Privacy and Legal Notice."
-        />
+        <Checkbox required label={mok.legalCheckboxText} />
 
         <Button content="center" size="lg" type="submit">
-          Send
+          {mok.submitBtn}
         </Button>
       </form>
     </div>

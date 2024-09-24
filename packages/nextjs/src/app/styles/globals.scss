@@ -73,3 +73,8 @@ hr {
     display: block;
     border: 1px solid var(--light-gray-alt);
 }
+
+// hide reCAPTCHA icon
+.grecaptcha-badge { 
+    visibility: hidden;
+}

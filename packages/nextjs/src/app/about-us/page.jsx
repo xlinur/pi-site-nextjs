@@ -1,13 +1,13 @@
 import Image from 'next/image';
 
 import HeroMain from '@/app/components/Sections/Heros/HeroMain';
-import SectionPointsAboutUs from '@/app/components/Sections/SectionPointsAboutUs';
-import SectionUsInNumbers from '@/app/components/Sections/SectionUsInNumbers';
+import SectionAboutPersonalinvest from '@/app/components/Sections/SectionAboutPersonalinvest';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import ContactForm from '@/app/components/ContactForm';
 import CardSocialMedia from '@/app/components/Cards/CardSocialMedia';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
+import SectionContactUs from '@/app/components/Sections/SectionContactUs';
 
 import founderFace from '@/app/assets/images/founder.jpg';
 import countrymapPng from '@/app/assets/images/countrymap.png';
@@ -22,8 +22,7 @@ export default async function PageAboutUs() {
 
       <div className="container">
         <div className={styles.firstBlock}>
-          <SectionUsInNumbers />
-          <SectionPointsAboutUs />
+          <SectionAboutPersonalinvest />
         </div>
       </div>
 
@@ -144,19 +143,7 @@ export default async function PageAboutUs() {
 
       <div className={styles.sectionSocialMediaWrapper}>
         <div className="container">
-          <section className={styles.sectionSocialMedia}>
-            <header>
-              <h3>
-                Follow us on <span>social media</span>
-              </h3>
-            </header>
-
-            <div className={styles.sectionSocialMediaList}>
-              <CardSocialMedia socialName="instagram" />
-              <CardSocialMedia socialName="linkedin" />
-              <CardSocialMedia socialName="facebook" />
-            </div>
-          </section>
+          <SectionContactUs />
         </div>
       </div>
     </main>

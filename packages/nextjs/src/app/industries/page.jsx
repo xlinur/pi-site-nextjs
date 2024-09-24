@@ -14,9 +14,9 @@ import styles from './styles.module.scss';
 export default async function PageIndustries() {
   const mok = {
     HeroSection: {
-      title: '# Industries *we work with*',
+      title: '# *GameDev* IT recruitment',
       subtitle:
-        'We are *a global Informational Technology* partner with narrow industry specializations. PersonalInvest delivers results because our expertise lies in areas and industries that we know thoroughly.',
+        'We are a global Informational Technology partner with such a narrow industry specialization as GameDev and we successfully connect IT talents with global GameDev companies and startups.',
       actions: [],
     },
     IndustrySectorsSections: {

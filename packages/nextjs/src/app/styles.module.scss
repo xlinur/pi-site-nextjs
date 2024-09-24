@@ -14,40 +14,6 @@
     padding-bottom: 90px;
   }
 
-  .sectionPlanet {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-
-    > h2 {
-      position: absolute;
-      text-align: center;
-      top: 77px;
-      z-index: 1;
-    }
-
-    .planet {
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-
-      div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex: 1 0 100%;
-      }
-
-      div:nth-child(2) img {
-        position: relative;
-        left: -100%;
-      }
-    }
-  }
-
   .sectionWhy {
     position: relative;
     z-index: 1;

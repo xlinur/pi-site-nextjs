@@ -11,41 +11,6 @@
   padding: 160px 0 60px;
 }
 
-.firstSection {
-  display: grid;
-  grid-template-columns: 1fr 600px;
-  column-gap: 130px;
-  margin-top: 80px;
-  margin-bottom: 100px;
-
-  header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
-  .firstSectionGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 242px;
-    gap: 24px;
-  }
-
-  .firstSectionCard {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 30px;
-    background-color: var(--light-blue);
-    padding: 20px;
-
-    p {
-      margin-top: 14px;
-    }
-  }
-}
-
 .typeOfRecruitment {
   margin-top: 100px;
 

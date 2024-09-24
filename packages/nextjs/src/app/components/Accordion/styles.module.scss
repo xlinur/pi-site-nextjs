@@ -1,0 +1,36 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  row-gap: 26px;
+}
+.accordionItem {
+  margin-bottom: 10px;
+
+  h5 {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+  }
+
+  .accordionContent {
+    overflow: hidden;
+    max-height: 0px;
+    transition: all 0.3s ease-in-out;
+    display: grid;
+    grid-template-columns: 24px auto;
+    column-gap: 12px;
+    padding-left: 50px;
+
+    .accordionContentList {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 12px;
+      padding-left: 4px;
+      max-width: 422px;
+    }
+  }
+}
+
+

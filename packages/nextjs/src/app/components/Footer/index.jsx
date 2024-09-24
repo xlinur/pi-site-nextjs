@@ -16,6 +16,15 @@ import styles from './styles.module.scss';
 const Footer = () => {
   const year = new Date();
 
+  const mok = {
+    supportTitle: 'Support',
+    contactsTitle: 'Contacts',
+    allRight: 'PersonalInvest All right reserved',
+    regNo: 'PLC «Personalinvest OÜ » Reg. No. 16106367',
+    policyCookies: 'Privacy Policy and our Cookies Policy Privacy',
+    policyCandidates: 'Policy for candidates Terms and Conditions',
+  };
+
   return (
     <div className={styles.footerWrapper}>
       <div className="container">
@@ -40,7 +49,7 @@ const Footer = () => {
             </div>
 
             <div className={styles.listWrapper}>
-              <p className={styles.listTitle}>Support</p>
+              <p className={styles.listTitle}>{mok.supportTitle}</p>
               <ul className={styles.list}>
                 <li>
                   <a href="/" className={styles.supportOption}>
@@ -81,7 +90,7 @@ const Footer = () => {
             </div>
 
             <div className={styles.listWrapper}>
-              <p className={styles.listTitle}>Contacts</p>
+              <p className={styles.listTitle}>{mok.contactsTitle}</p>
               <ul className={styles.list}>
                 <li className={styles.listItemLocation}>
                   <a href="/" className={styles.workHoursWrapper}>
@@ -149,20 +158,18 @@ const Footer = () => {
           <div className={styles.footerCopyright}>
             <div className={styles.footerCopyrightBlock}>
               <p className={styles.footerCopyrightText}>
-                ©{year.getFullYear()} PersonalInvest All right reserved
+                ©{year.getFullYear()} {mok.allRight}
               </p>
-              <p className={styles.footerCopyrightPolicies}>
-                PLC «Personalinvest OÜ » Reg. No. 16106367
-              </p>
+              <p className={styles.footerCopyrightPolicies}>{mok.regNo}</p>
             </div>
 
             <div className={styles.footerCopyrightBlockContain}>
               <p className={styles.footerCopyrightPolicies}>
-                Privacy Policy and our Cookies Policy Privacy
+                {mok.policyCookies}
               </p>
 
               <p className={styles.footerCopyrightTerms}>
-                Policy for candidates Terms and Conditions
+                {mok.policyCandidates}
               </p>
             </div>
           </div>

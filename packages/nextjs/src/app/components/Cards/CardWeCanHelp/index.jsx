@@ -6,6 +6,8 @@ import peoples01 from '@/app/assets/icons/people-1.svg';
 import money from '@/app/assets/icons/money.svg';
 import graph from '@/app/assets/icons/graph.svg';
 import styles from './styles.module.scss';
+import Button from '../../Button';
+import clsx from 'clsx';
 
 const ArrowIcon = () => (
   <svg
@@ -25,7 +27,7 @@ const ArrowIcon = () => (
 );
 
 export const CardWeCanHelp = (props) => {
-  const { text, bgImage, href = '/' } = props;
+  const { text, bgImage, href = '/', earnWithUsBtn } = props;
 
   const availableImages = {
     chat: chat,
@@ -38,9 +40,15 @@ export const CardWeCanHelp = (props) => {
 
   return (
     <a href={href} className={styles.card}>
-      <span className={styles.cardArrowIcon}>{ArrowIcon()}</span>
+      {!earnWithUsBtn && (
+        <span className={styles.cardArrowIcon}>{ArrowIcon()}</span>
+      )}
 
-      <h5 className={styles.cardText}>{text}</h5>
+      <div className={styles.withButton}>
+        <h5 className={styles.cardText}>{text}</h5>
+
+        {earnWithUsBtn && <Button>{earnWithUsBtn}</Button>}
+      </div>
 
       <span className={styles.cardBgImage}>
         <Image src={availableImages[bgImage]} alt="Card background" fill />

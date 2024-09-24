@@ -3,11 +3,11 @@ import Button from '@/app/components/Button';
 import visionSVG from '@/app/assets/icons/vision.svg';
 import styles from './styles.module.scss';
 
-const SectionCustomVision = () => {
+export default function SectionCustomVision() {
   return (
     <section className={styles.sectionCustomVision}>
       <div className={styles.imageWrapper}>
-        <Image src={visionSVG} alt="Image" full />
+        <Image src={visionSVG} alt="Image" />
       </div>
 
       <div className={styles.sectionCustomVisionContent}>
@@ -31,6 +31,4 @@ const SectionCustomVision = () => {
       </div>
     </section>
   );
-};
-
-export default SectionCustomVision;
+}

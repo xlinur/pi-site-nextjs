@@ -1,8 +1,5 @@
 import Image from 'next/image';
 
-import earthSVG from '@/app/assets/icons/earth.svg';
-import countriesSVG from '@/app/assets/icons/countries.svg';
-
 import HeroMain from '@/app/components/Sections/Heros/HeroMain';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
@@ -10,6 +7,7 @@ import SectionRecruitmentProcess from '@/app/components/Sections/SectionRecruitm
 import SectionCompaniesLogo from '@/app/components/Sections/SectionCompaniesLogo';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionMeetGallery from '@/app/components/Sections/SectionMeetGallery';
+import SectionTrustedMap from '@/app/components/Sections/SectionTrustedMap';
 import Button from '@/app/components/Button';
 import ContactForm from '@/app/components/ContactForm';
 import CardSocialMedia from '@/app/components/Cards/CardSocialMedia';
@@ -53,30 +51,11 @@ export default async function Home() {
 
       <div className={styles.sectionPlanetWrapper}>
         <div className="container">
-          <section className={styles.sectionPlanet}>
-            <h2>
-              Trusted by companies smail and
-              <br />
-              large around the globe
-            </h2>
-
-            <div className={styles.planet}>
-              <div>
-                <Image src={earthSVG} alt="Image" width={882} height={882} />
-              </div>
-              <div>
-                <Image
-                  src={countriesSVG}
-                  alt="Image"
-                  width={740}
-                  height={542}
-                />
-              </div>
-            </div>
-          </section>
+          <SectionTrustedMap />
         </div>
       </div>
 
+      {/* @Component */}
       <div className={styles.sectionWhyWrapper}>
         <div className="container">
           <section className={styles.sectionWhy}>

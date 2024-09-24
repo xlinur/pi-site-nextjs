@@ -1,0 +1,235 @@
+@use '../styles/mixins.scss' as *;
+
+// @Component optional decor:before
+.sectionWhy {
+  // position: relative;
+  z-index: 1;
+  padding-top: 90px;
+  padding-bottom: 90px;
+
+  // &::before {
+  //   content: '';
+  //   position: absolute;
+  //   width: 1050px;
+  //   height: 1050px;
+  //   background-color: var(--light-blue);
+  //   top: 50%;
+  //   left: 0;
+  //   transform: translate(-50%, -50%);
+  //   border-radius: 50%;
+  //   z-index: -1;
+
+  //   @include lg {
+  //     transform: translate(-70%, -50%);
+  //   }
+  // }
+
+  .reasons {
+    margin-top: 86px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 80px;
+
+    .reasonsItem {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--gray);
+      padding-top: 8px;
+
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------------------
+
+.sectionHowWeWork {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 144px;
+  gap: 24px;
+
+  .howWeWorkCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 30px;
+    background-color: var(--light-blue);
+    padding: 20px;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      column-gap: 74px;
+
+      button {
+        max-width: 230px;
+        align-self: flex-end;
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  }
+
+  button {
+    align-self: flex-end;
+    justify-self: flex-start;
+  }
+}
+
+.sectionAccordion {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+
+  .sectionAccordionContent {
+    display: grid;
+    grid-template-columns: 1fr 504px;
+    column-gap: 20px;
+  }
+
+  .sectionAccordionContentImage {
+    position: relative;
+    height: 504px;
+    display: flex;
+    align-items: flex-end;
+
+    button {
+      z-index: 1;
+    }
+  }
+}
+
+
+
+.sectionMoreCases {
+  header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+  }
+
+  margin-bottom: 160px;
+}
+
+.sectionHelpWrapper {
+  background-color: var(--light-blue);
+  margin-bottom: 160px;
+}
+
+.sectionFormWrapper {
+  margin-bottom: 160px;
+}
+
+.typeOfRecruitment {
+  margin-top: 100px;
+
+  .typeOfRecruitmentItems {
+    display: flex;
+    flex-direction: column;
+    row-gap: 80px;
+    margin-top: 60px;
+  }
+
+  .gridItem {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
+  }
+
+  .gridItemHeader {
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    grid-column: 1 / 3;
+    border-bottom: 1px solid var(--gray);
+    padding-bottom: 20px;
+    
+    h5, p {
+      max-width: 50%;
+    }
+  }
+
+  .gridItemContent {
+    grid-column: 2;
+    grid-row: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 30px;
+  }
+}
+
+.sectionPricing {
+  margin-top: 200px;
+  margin-bottom: 40px;
+
+  .sectionPricingGrid {
+    margin-top: 60px;
+
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    column-gap: 20px;
+  }
+
+  .cardPricing {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 30px;
+    border: 1px solid var(--blue);
+    padding: 20px;
+    height: 251px;
+
+    p {
+      margin-top: 12px;
+    }
+
+    &:first-child {
+      padding: 30px;
+      border-color: transparent;
+      background-color: var(--light-blue);
+      min-width: 503px;
+      height: 322px;
+
+      h5 {
+        font-weight: 700;
+        font-size: 38px;
+        line-height: 110%;
+      }
+    }
+  }
+}
+
+.sectionDieFillWidth {
+  background-color: var(--light-blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 35px;
+  padding-top: 74px;
+  padding-bottom: 74px;
+  position: relative;
+  margin-top: 100px;
+
+  *:not(img) {
+    z-index: 1;
+  }
+
+  h5 {
+    max-width: 607px;
+    text-align: center;
+  }
+
+  .bgImage {
+    position: absolute;
+    left: 35%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -0;
+  }
+}

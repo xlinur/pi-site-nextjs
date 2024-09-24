@@ -57,10 +57,6 @@ pre {
   color: unset;
 }
 
-::marker {
-  content: "";
-}
-
 :where([contenteditable]:not([contenteditable="false"])) {
   -moz-user-modify: read-write;
   -webkit-user-modify: read-write;

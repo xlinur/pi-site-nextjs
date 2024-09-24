@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import Markdown from 'react-markdown';
-import SectionPointsAboutUs from '@/app/components/Sections/SectionPointsAboutUs';
-import SectionUsInNumbers from '@/app/components/Sections/SectionUsInNumbers';
+import SectionAboutPersonalinvest from '@/app/components/Sections/SectionAboutPersonalinvest';
 import HeroMain from '@/app/components/Sections/Heros/HeroMain';
 import ContactForm from '@/app/components/ContactForm';
 
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
+import SectionPaymentTerms from '@/app/components/Sections/SectionPaymentTerms';
 
 import Button from '@/app/components/Button';
 import dollarsSVG from '@/app/assets/icons/dollars.svg';
@@ -24,14 +24,17 @@ After the placement is made and the candidate is working for their new employer,
     },
     PaymentTermsSection: {
       title: 'Payment terms',
+      contactBtn: 'Contact',
       items: [
         {
           title: '10% of a reward',
-          text: 'Without leading the candidate. The commission is transferred according to the agreement after the candidate starts working.',
+          description:
+            'Without leading the candidate. The commission is transferred according to the agreement after the candidate starts working.',
         },
         {
           title: 'Partner’s reward every 2 years',
-          text: 'Full cycle of leading the candidate. 25% is paid after the candidate leaves, the second part - after the candidate completes the test period.',
+          description:
+            'Full cycle of leading the candidate. 25% is paid after the candidate leaves, the second part - after the candidate completes the test period.',
         },
       ],
     },
@@ -61,35 +64,37 @@ After the placement is made and the candidate is working for their new employer,
       items: [
         {
           title: '',
-          text: 'Online meet-up to determine the format of cooperation and domains/ stacks for your recruiters.',
+          description:
+            'Online meet-up to determine the format of cooperation and domains/ stacks for your recruiters.',
         },
         {
           title: '',
-          text: 'We sign the NDA and Services agreement',
+          description: 'We sign the NDA and Services agreement',
         },
         {
           title: '',
-          text: 'We send you the list of current vacancies',
+          description: 'We send you the list of current vacancies',
         },
         {
           title: '',
-          text: 'We send you the list of current vacancies',
+          description: 'We send you the list of current vacancies',
         },
         {
           title: '',
-          text: 'We assign you to our Teamlead',
+          description: 'We assign you to our Teamlead',
         },
         {
           title: '',
-          text: 'You send us relevant CVs with HR summaries',
+          description: 'You send us relevant CVs with HR summaries',
         },
         {
           title: '',
-          text: 'We give you feedback',
+          description: 'We give you feedback',
         },
         {
           title: '',
-          text: 'We pay you for your services during 5 days after getting payment from the client for the closed vacancy',
+          description:
+            'We pay you for your services during 5 days after getting payment from the client for the closed vacancy',
         },
       ],
     },
@@ -108,8 +113,7 @@ After the placement is made and the candidate is working for their new employer,
           <h2>About PersonalInvest</h2>
 
           <div className={styles.firstBlock}>
-            <SectionUsInNumbers />
-            <SectionPointsAboutUs />
+            <SectionAboutPersonalinvest />
           </div>
         </section>
       </div>
@@ -141,30 +145,7 @@ After the placement is made and the candidate is working for their new employer,
       </div>
 
       <div className="container">
-        <section className={styles.paymentTermsSection}>
-          <header>
-            <h2>{mok.PaymentTermsSection.title}</h2>
-          </header>
-
-          <div className={styles.paymentTermsSectionGrid}>
-            {mok.PaymentTermsSection.items.map((item, idx) => (
-              <div className={styles.cardTerms} key={idx}>
-                <h5>{item.title}</h5>
-                <p>{item.text}</p>
-              </div>
-            ))}
-            <div className={styles.cardContact}>
-              <Image
-                src={dollarsSVG}
-                alt="Icon dollars"
-                width={148}
-                height={148}
-              />
-
-              <Button size="lg">Contact</Button>
-            </div>
-          </div>
-        </section>
+        <SectionPaymentTerms data={mok.PaymentTermsSection} />
       </div>
 
       <div className="container">

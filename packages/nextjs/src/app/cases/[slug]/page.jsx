@@ -256,7 +256,7 @@ export default async function PageCase() {
                 specialist* of any level to suit your vacancy.
               </Markdown>
 
-              <Button icon>Hire now</Button>
+              <Button withIcon>Hire now</Button>
             </div>
           </section>
         </div>

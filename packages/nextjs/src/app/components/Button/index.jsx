@@ -1,4 +1,8 @@
+'use client';
+
+import clsx from 'clsx';
 import styles from './styles.module.scss';
+import { useRouter } from 'next/navigation';
 
 const ArrowIcon = () => (
   <svg
@@ -21,33 +25,47 @@ const Button = (props) => {
   const {
     onClick,
     children,
-    icon = false,
+    name,
+    withIcon = false,
     iconRight = false,
     size = '', // lg | default - empty string
-    theme = 'primary', // primary | secondary | default
+    theme = 'primary', // primary | secondary | default | text
     disabled = false,
     content,
     type = 'button',
+    url = '/',
   } = props;
 
-  const btnClassNames = `
-        ${styles.btn}
-        ${size && styles[size]}
-        ${styles[theme]}
-        ${iconRight ? styles.iconRight : ''}
-        ${icon ? styles.withIcon : ''}
-        ${content === 'center' ? styles.contentCenter : ''}
-    `;
+  const router = useRouter();
+
+  const stylesBtn = [
+    styles.btn,
+    size && styles[size],
+    styles[theme],
+    iconRight ? styles.iconRight : '',
+    withIcon ? styles.withIcon : '',
+    content === 'center' ? styles.contentCenter : '',
+  ];
+
+  const handleButton = () => {
+    if (onClick) {
+      return onClick();
+    }
+
+    if (url) {
+      router.push(url);
+    }
+  };
 
   return (
     <button
       disabled={disabled}
       type={type}
-      onClick={onClick}
-      className={btnClassNames}
+      onClick={handleButton}
+      className={clsx(stylesBtn)}
     >
-      {icon && ArrowIcon()}
-      <span>{children}</span>
+      {withIcon && ArrowIcon()}
+      <span>{name || children}</span>
     </button>
   );
 };

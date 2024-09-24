@@ -7,6 +7,7 @@ import ContactForm from '@/app/components/ContactForm';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
+import SectionInfoWithCards from '@/app/components/Sections/SectionInfoWithCards';
 
 import Button from '@/app/components/Button';
 import chatSVG from '@/app/assets/icons/chat-white.svg';
@@ -21,7 +22,7 @@ export default async function PageRecruitment() {
         'Use the full potential of talent acquisition with PersonalInvest to maximize the benefits of our permanent or contract recruitment services and your business growth.',
       actions: [],
     },
-    FirstSection: {
+    SectionInfoWithCards: {
       title: '',
       text: 'PersonalInvest team provides comprehensive and flexible HR strategies that allow you to either grow and strengthen your current team or build a new one from the ground up. With our experts you can be always sure that your business is safe in terms of its technological capacity. Using PersonalInvest services you are investing in the high quality staff resource that is ready to deliver you results 24/7 when needed. Our 500 000+ internal database of candidates can quickly and qualitatively meet any your hiring needs.',
       items: [
@@ -131,50 +132,7 @@ export default async function PageRecruitment() {
       />
 
       <div className="container">
-        <section className={styles.firstSection}>
-          <header>
-            <Markdown>{mok.FirstSection.text}</Markdown>
-
-            <Button>{mok.FirstSection.link.title}</Button>
-          </header>
-
-          <div className={styles.firstSectionGrid}>
-            {mok.FirstSection.items.map((item, idx) => (
-              <a className={styles.firstSectionCard} href={item.url} key={idx}>
-                <span>
-                  {/* check-circle svg */}
-                  <svg
-                    width="48"
-                    height="48"
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M40.6666 22.4666V23.9999C40.6645 27.594 39.5008 31.0911 37.3488 33.9696C35.1969 36.8482 32.1721 38.9541 28.7255 39.9731C25.279 40.9921 21.5954 40.8698 18.224 39.6242C14.8527 38.3787 11.9743 36.0768 10.0182 33.0617C8.06203 30.0467 7.1329 26.48 7.36938 22.8938C7.60586 19.3075 8.99526 15.8938 11.3304 13.1617C13.6655 10.4296 16.8212 8.52557 20.3269 7.73351C23.8326 6.94145 27.5004 7.30383 30.7833 8.7666"
-                      stroke="#2DA5D9"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M40.6667 10.6667L24 27.3501L19 22.3501"
-                      stroke="#2DA5D9"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-
-                <div>
-                  <h5>{item.title}</h5>
-                  <p>{item.text}</p>
-                </div>
-              </a>
-            ))}
-          </div>
-        </section>
+        <SectionInfoWithCards data={mok.SectionInfoWithCards} />
       </div>
 
       <div className="container">
@@ -208,6 +166,7 @@ export default async function PageRecruitment() {
         </section>
       </div>
 
+      {/* @Component */}
       <section className={styles.sectionDieFillWidth}>
         <Image
           className={styles.bgImage}
@@ -227,6 +186,7 @@ export default async function PageRecruitment() {
         </div>
       </section>
 
+      {/* @Component(single) Pricing */}
       <div className="container">
         <section className={styles.sectionPricing}>
           <header>

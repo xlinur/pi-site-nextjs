@@ -1,11 +1,9 @@
-import Image from 'next/image';
 import HeroMain from '@/app/components/Sections/Heros/HeroMain';
 import Advantages from '@/app/components/Advantages';
 import ContactForm from '@/app/components/ContactForm';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import Button from '@/app/components/Button';
-
-import dollarsSVG from '@/app/assets/icons/dollars.svg';
+import SectionPaymentTerms from '@/app/components/Sections/SectionPaymentTerms';
 
 import styles from './styles.module.scss';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
@@ -19,6 +17,7 @@ export default async function PageEarnWithUs() {
     },
     PaymentTermsSection: {
       title: 'Payment terms',
+      contactBtn: 'Contact',
       items: [
         {
           title: '10% of a reward',
@@ -81,30 +80,7 @@ export default async function PageEarnWithUs() {
       </div>
 
       <div className="container">
-        <section className={styles.paymentTermsSection}>
-          <header>
-            <h2>{mok.PaymentTermsSection.title}</h2>
-          </header>
-
-          <div className={styles.paymentTermsSectionGrid}>
-            {mok.PaymentTermsSection.items.map((item, idx) => (
-              <div className={styles.cardTerms} key={idx}>
-                <h5>{item.title}</h5>
-                <p>{item.text}</p>
-              </div>
-            ))}
-            <div className={styles.cardContact}>
-              <Image
-                src={dollarsSVG}
-                alt="Icon dollars"
-                width={148}
-                height={148}
-              />
-
-              <Button size="lg">Contact</Button>
-            </div>
-          </div>
-        </section>
+        <SectionPaymentTerms data={mok.PaymentTermsSection} />
       </div>
 
       {/* @Component SectionWeCanHelp */}

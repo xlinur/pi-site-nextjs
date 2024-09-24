@@ -100,6 +100,13 @@
     }
   }
 
+  &.text {
+    --btn-text-color: var(--blue);
+    --btn-bg-color: transparent;
+    --icon-bg-color: transparent;
+    --icon-arrow-color: var(--blue);
+  }
+
   // Default button additional styles
   &.default {
     @extend .secondary;

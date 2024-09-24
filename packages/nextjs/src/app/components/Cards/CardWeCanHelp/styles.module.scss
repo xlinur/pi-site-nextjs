@@ -72,4 +72,20 @@
       max-height: 118px;
     }
   }
+
+  .withButton {
+    display: contents;
+    &:has(button) {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    button {
+      position: relative;
+      z-index: 1;
+      align-self: flex-start;
+    }
+  }
 }

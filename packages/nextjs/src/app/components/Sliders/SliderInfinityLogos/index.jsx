@@ -5,17 +5,7 @@ import { Autoplay } from 'swiper/modules';
 import Image from 'next/image';
 import styles from './styles.module.scss';
 
-const images = require.context(
-  '@/app/assets/images/partners',
-  false,
-  /\.(png|jpe?g|svg)$/,
-);
-const imagePaths = images.keys().map((path) => ({
-  name: path.replace('./', ''),
-  src: images(path).default,
-}));
-
-export const SliderInfinityLogos = () => {
+export const SliderInfinityLogos = ({ data = [] }) => {
   const config = {
     autoplay: {
       enabled: true,
@@ -35,7 +25,7 @@ export const SliderInfinityLogos = () => {
   return (
     <>
       <Swiper {...config} className={styles.slider}>
-        {imagePaths.map((image, index) => (
+        {data.map((image, index) => (
           <SwiperSlide key={index} className={styles['swiper-slide']}>
             <Image
               src={image.src}
@@ -49,7 +39,7 @@ export const SliderInfinityLogos = () => {
       </Swiper>
 
       <Swiper {...config} dir="rtl" initialSlide={5} className={styles.slider}>
-        {imagePaths.map((image, index) => (
+        {data.map((image, index) => (
           <SwiperSlide key={index} className={styles['swiper-slide']}>
             <Image
               src={image.src}

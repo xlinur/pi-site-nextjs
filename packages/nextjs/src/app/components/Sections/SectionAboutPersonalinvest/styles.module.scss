@@ -1,0 +1,100 @@
+@use '../../../styles/mixins.scss' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+
+  .first {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-top: 60px;
+  
+    .item {
+      --item-pt: 24px;
+      --item-title-pt: 10px;
+      --item-title-size: 80px;
+  
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  
+      border: 1px solid var(--gray);
+      border-radius: 30px;
+      padding: var(--item-pt) 40px;
+      min-height: 176px;
+  
+      .title {
+        $calcOut: calc(var(--item-title-size) / 2 + var(--item-pt) + var(--item-title-pt));
+  
+        background-color: var(--white);
+        padding: var(--item-title-pt);
+        color: var(--blue);
+        margin-top: calc($calcOut * -1);
+  
+        h5 {
+          font-weight: 900;
+          font-size: var(--item-title-size);
+          line-height: 1;
+        }
+  
+        user-select: none;
+      }
+  
+      .text {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 130%;
+        color: var(--dark-gray);
+      }
+    }
+  }
+  
+  .second {
+    display: flex;
+    column-gap: 26px;
+  
+    background-color: var(--light-blue);
+    border-radius: 20px;
+    padding: 40px 20px;
+  
+    header {
+      position: relative;
+      flex: 0 0 fit-content;
+  
+      h2 {
+        position: relative;
+        z-index: 1;
+      }
+  
+      img {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+      }
+    }
+  
+    .list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-flow: dense;
+      column-gap: 30px;
+  
+      .listItem {
+        display: flex;
+        align-items: baseline;
+  
+        column-gap: 14px;
+      }
+  
+      .listItemContent {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+      }
+    }
+  }
+}
