@@ -5,7 +5,7 @@ import Markdown from 'react-markdown';
 const SectionRecruitmentProcess = ({
   title,
   description,
-  button,
+  findTalentBtn,
   processes,
 }) => {
   return (
@@ -27,7 +27,7 @@ const SectionRecruitmentProcess = ({
         ))}
       </div>
 
-      <Button {...button} />
+      <Button name={findTalentBtn.name} />
     </section>
   );
 };

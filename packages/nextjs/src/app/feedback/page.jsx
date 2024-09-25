@@ -3,13 +3,16 @@ import ContactForm from '@/app/components/ContactForm';
 import CardFeedback from '@/app/components/Cards/CardFeedback';
 
 import styles from './styles.module.scss';
+import pageFeedbacks from '@/app/api/strapi/pageFeedbacks/route';
 
 export default async function PageFeedback() {
+  const { title, moreReviewsBtn } = await pageFeedbacks();
+
   return (
     <main className={styles.pageFeedback}>
       <div className="container">
         <header>
-          <h1 className="h2">Reviews from satisfied clients</h1>
+          <h1 className="h2">{title}</h1>
 
           <div className={styles.feedbackSectionLinks}>
             <Button theme="secondary">IT Recruitment</Button>
@@ -28,7 +31,7 @@ export default async function PageFeedback() {
             ))}
           </div>
 
-          <Button>More reviews</Button>
+          <Button name={moreReviewsBtn.name} />
         </section>
 
         <section className={styles.sectionForm}>

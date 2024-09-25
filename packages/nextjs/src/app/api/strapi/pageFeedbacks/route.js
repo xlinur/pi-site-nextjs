@@ -1,9 +1,9 @@
 import { request } from '@/utils/request';
 
 const route = async () => {
-  const data = await request('/api/page-feedbacks');
+  const data = await request('/api/page-feedbacks?populate=deep');
 
-  return data.data;
+  return data.data.attributes;
 };
 
 export default route;

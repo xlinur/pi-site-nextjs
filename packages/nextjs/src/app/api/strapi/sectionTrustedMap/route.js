@@ -1,7 +1,7 @@
 import { request } from '@/utils/request';
 
 const route = async () => {
-  const data = await request('/api/section-trusted-map');
+  const data = await request('/api/section-trusted-map?populate=deep');
 
   return data.data.attributes;
 };

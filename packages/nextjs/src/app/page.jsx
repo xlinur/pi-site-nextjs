@@ -6,20 +6,19 @@ import SectionCompaniesLogo from '@/app/components/Sections/SectionCompaniesLogo
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionMeetGallery from '@/app/components/Sections/SectionMeetGallery';
 import SectionTrustedMap from '@/app/components/Sections/SectionTrustedMap';
-import Button from '@/app/components/Button';
+import SectionWhyInfo from '@/app/components/Sections/SectionWhyInfo';
+
 import ContactForm from '@/app/components/ContactForm';
 import CardSocialMedia from '@/app/components/Cards/CardSocialMedia';
 
 import homePageRequest from '@/app/api/strapi/homePage/route';
 
 import styles from './styles.module.scss';
-import clsx from 'clsx';
 
 export default async function Home() {
   const {
     HeroSection,
     SectionWithIndustriesImage,
-    TrustedMap,
     WhyInfoSection,
     ExclusiveProcess,
     MeetOurTeam,
@@ -53,36 +52,14 @@ export default async function Home() {
 
       <div className={styles.sectionPlanetWrapper}>
         <div className="container">
-          <SectionTrustedMap {...TrustedMap} />
+          <SectionTrustedMap />
         </div>
       </div>
 
-      {/* @Component */}
+      {/* @Component SectionWhyInfo*/}
       <div className={styles.sectionWhyWrapper}>
         <div className="container">
-          <section
-            className={clsx(
-              WhyInfoSection.withBackground && styles.withBackground,
-              styles.sectionWhy,
-            )}
-          >
-            <h2>{WhyInfoSection.title}</h2>
-
-            <div className={styles.reasons}>
-              {WhyInfoSection.reasons?.map(({ title, description }) => (
-                <div className={styles.reasonsItem} key={title}>
-                  <h5 className={styles.reasonsItemTitle}>{title}</h5>
-                  <p className={styles.reasonsItemText}>{description}</p>
-                </div>
-              ))}
-              <div className={styles.reasonsItem}>
-                <div className={styles.reasonsItemTitle}></div>
-                <div className={styles.reasonsItemText}>
-                  <Button name={WhyInfoSection.button.name}></Button>
-                </div>
-              </div>
-            </div>
-          </section>
+          <SectionWhyInfo {...WhyInfoSection} />
         </div>
       </div>
 
