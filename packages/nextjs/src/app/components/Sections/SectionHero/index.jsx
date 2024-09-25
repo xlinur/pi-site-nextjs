@@ -4,7 +4,12 @@ import Button from '@/app/components/Button';
 import HeroAnimateBg from './HeroAnimateBg';
 import styles from './styles.module.scss';
 
-export default async function SectionHero({ title, description, actions }) {
+export default async function SectionHero({
+  title,
+  description,
+  hireNowBtn,
+  candidateBtn,
+}) {
   return (
     <div className={styles.sectionWrapper}>
       <div className="container">
@@ -18,9 +23,8 @@ export default async function SectionHero({ title, description, actions }) {
           </header>
 
           <div className={styles.sectionHeroActions}>
-            {actions?.map((action, idx) => (
-              <Button key={idx} {...action} />
-            ))}
+            {hireNowBtn && <Button withIcon name={candidateBtn} />}
+            {candidateBtn && <Button theme="secondary" name={candidateBtn} />}
           </div>
         </section>
       </div>

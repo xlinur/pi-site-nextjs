@@ -86,7 +86,7 @@ const SwiperButtonPrev = ({ children }) => {
   );
 };
 
-export const SliderFeedback = ({ data }) => {
+export const SliderFeedback = ({ data, readAllBtn }) => {
   const config = {
     slidesPerView: 2,
     spaceBetween: 24,
@@ -99,6 +99,7 @@ export const SliderFeedback = ({ data }) => {
         <SwiperSlide key={item.id}>
           <CardFeedback
             firstSlideTheme={item.id === 0 ? 'dark' : 'light'}
+            readAllBtn={readAllBtn}
             {...item.attributes}
           />
         </SwiperSlide>

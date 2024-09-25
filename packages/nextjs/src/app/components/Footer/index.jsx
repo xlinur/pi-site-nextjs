@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import { AppDB } from '@/app/core/db/app.db';
 import Button from '@/app/components/Button';
-import { useRootData } from '@/app/components/RootData';
 import logoPng from '@/app/assets/logo.png';
 import emailSvg from '@/app/assets/icons/social/email.svg';
 import whatsappSvg from '@/app/assets/icons/social/whatsapp.svg';
@@ -15,8 +14,6 @@ import locationPin from '@/app/assets/icons/location-pin.svg';
 import styles from './styles.module.scss';
 
 const Footer = () => {
-  const rootData = useRootData();
-
   const year = new Date();
 
   const mok = {

@@ -22,6 +22,7 @@ export default async function Home() {
     TrustedMap,
     WhyInfoSection,
     ExclusiveProcess,
+    MeetOurTeam,
   } = await homePageRequest();
 
   return (
@@ -77,7 +78,7 @@ export default async function Home() {
               <div className={styles.reasonsItem}>
                 <div className={styles.reasonsItemTitle}></div>
                 <div className={styles.reasonsItemText}>
-                  <Button theme="primary">Find the best tech talents</Button>
+                  <Button name={WhyInfoSection.button.name}></Button>
                 </div>
               </div>
             </div>
@@ -96,7 +97,7 @@ export default async function Home() {
       {/* @Component SectionMeetGallery */}
       <div className={styles.sectionMeetWrapper}>
         <div className="container">
-          <SectionMeetGallery />
+          <SectionMeetGallery {...MeetOurTeam} />
         </div>
       </div>
 

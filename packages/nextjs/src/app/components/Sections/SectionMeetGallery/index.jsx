@@ -9,11 +9,11 @@ import gallery06JPG from '@/app/assets/images/gallery/6.jpg';
 
 import styles from './styles.module.scss';
 
-const SectionMeetGallery = () => {
+const SectionMeetGallery = ({ title, text }) => {
   return (
     <section className={styles.sectionMeet}>
       <header>
-        <h3>Meet our team</h3>
+        <h3>{title}</h3>
       </header>
 
       <div className={styles.sectionMeetGallery}>
@@ -53,11 +53,7 @@ const SectionMeetGallery = () => {
           <Image src={gallery05JPG} alt="Gallery Image" fill />
         </div>
         <div className={styles.galleryCard}>
-          <p>
-            Now the team consists of 40 people (65 including external
-            consultants) with 700+ clients worldwide whose drive is to be the
-            part of your success!.
-          </p>
+          <p>{text}</p>
         </div>
         <div>
           <Image

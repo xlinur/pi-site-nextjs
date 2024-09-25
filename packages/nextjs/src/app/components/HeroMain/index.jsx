@@ -13,7 +13,8 @@ export default async function HeroMain({
   recorWord,
   title,
   description,
-  actions,
+  hireNowBtn,
+  candidateBtn,
   advantages,
 }) {
   return (
@@ -29,9 +30,10 @@ export default async function HeroMain({
           </header>
 
           <div className={styles.sectionHeroActions}>
-            {actions?.map((action, idx) => (
-              <Button key={idx} {...action} />
-            ))}
+            {hireNowBtn && <Button withIcon name={candidateBtn.name} />}
+            {candidateBtn && (
+              <Button theme="secondary" name={candidateBtn.name} />
+            )}
           </div>
 
           <Advantages advantages={advantages} />

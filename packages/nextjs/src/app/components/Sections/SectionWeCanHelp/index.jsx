@@ -13,7 +13,7 @@ export default async function SectionWeCanHelp() {
     marketResearchAndAnalytics,
     relocation,
     or,
-    earnWithUsBtn,
+    earnWithUs,
   } = await weCanHelpYouWithRequest();
 
   return (
@@ -28,11 +28,7 @@ export default async function SectionWeCanHelp() {
         <CardWeCanHelp text={executiveSearch} bgImage="peoples" />
         <CardWeCanHelp text={marketResearchAndAnalytics} bgImage="graph" />
         <CardWeCanHelp text={relocation} bgImage="location" />
-        <CardWeCanHelp
-          text={or}
-          bgImage="money"
-          earnWithUsBtn={earnWithUsBtn}
-        />
+        <CardWeCanHelp text={or} bgImage="money" earnWithUsBtn={earnWithUs} />
       </div>
     </section>
   );
