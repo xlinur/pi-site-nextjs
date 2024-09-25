@@ -2,17 +2,18 @@ import Markdown from 'react-markdown';
 import Button from '@/app/components/Button';
 import styles from './styles.module.scss';
 
-export default function SectionInfoWithCards({ data }) {
+export default function SectionInfoWithCards(props) {
+  const { text, contactRecrutmentBtn, achivements } = props;
   return (
     <section className={styles.sectionInfoWithCards}>
       <header>
-        <Markdown>{data.text}</Markdown>
+        <Markdown>{text}</Markdown>
 
-        <Button>{data.link.title}</Button>
+        <Button name={contactRecrutmentBtn.name} />
       </header>
 
       <div className={styles.grid}>
-        {data.items.map((item, idx) => (
+        {achivements.map((item, idx) => (
           <a className={styles.card} href={item.url} key={idx}>
             <span>
               {/* check-circle svg */}
@@ -42,7 +43,7 @@ export default function SectionInfoWithCards({ data }) {
 
             <div>
               <h5>{item.title}</h5>
-              <p>{item.text}</p>
+              <p>{item.description}</p>
             </div>
           </a>
         ))}

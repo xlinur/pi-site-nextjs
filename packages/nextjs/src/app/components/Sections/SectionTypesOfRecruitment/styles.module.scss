@@ -1,0 +1,41 @@
+@use '../../../styles/mixins.scss' as *;
+
+.typeOfRecruitment {
+  margin-top: 100px;
+
+  .typeOfRecruitmentItems {
+    display: flex;
+    flex-direction: column;
+    row-gap: 80px;
+    margin-top: 60px;
+  }
+
+  .gridItem {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
+  }
+
+  .gridItemHeader {
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    grid-column: 1 / 3;
+    border-bottom: 1px solid var(--gray);
+    padding-bottom: 20px;
+    
+    h5, p {
+      max-width: 50%;
+    }
+  }
+
+  .gridItemContent {
+    grid-column: 2;
+    grid-row: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 30px;
+  }
+}

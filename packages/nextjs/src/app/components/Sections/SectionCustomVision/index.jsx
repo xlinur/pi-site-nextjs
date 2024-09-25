@@ -14,9 +14,11 @@ export default function SectionCustomVision({ title, description, moreInfo }) {
       <div className={styles.sectionCustomVisionContent}>
         <h2>{title}</h2>
 
-        <Markdown>{description}</Markdown>
+        <div className={styles.mdWrapper}>
+          <Markdown>{description}</Markdown>
+        </div>
 
-        <Button name={moreInfo.name}></Button>
+        <Button name={moreInfo?.name}></Button>
       </div>
     </section>
   );

@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 import React from 'react';
 import clsx from 'clsx';
 
-export default function Advantages({ advantages }) {
+export default function Advantages({ advantages = [] }) {
   return (
     <div className={clsx(styles.sectionHeroAdvantages, 'h5')}>
       {advantages.map((item, idx) => (

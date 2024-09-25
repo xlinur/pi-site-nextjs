@@ -1,6 +1,3 @@
-import Image from 'next/image';
-import Markdown from 'react-markdown';
-
 import SectionHero from '@/app/components/Sections/SectionHero';
 import ContactForm from '@/app/components/ContactForm';
 
@@ -8,13 +5,25 @@ import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 import SectionInfoWithCards from '@/app/components/Sections/SectionInfoWithCards';
+import SectionTypesOfRecruitment from '@/app/components/Sections/SectionTypesOfRecruitment';
+import SectionNeedHelpSection from '@/app/components/Sections/SectionNeedHelpSection';
+import SectionPricing from '@/app/components/Sections/SectionPricing';
 
-import Button from '@/app/components/Button';
-import chatSVG from '@/app/assets/icons/chat-white.svg';
+import pageRecruitment from '@/app/api/strapi/pageRecruitment/route';
 
 import styles from './styles.module.scss';
 
 export default async function PageRecruitment() {
+  const {
+    AnimatedHero,
+    InfoWithCards,
+    TreeSection,
+    TypesOfRecruitment,
+    NeedHelpSection,
+    Pricing,
+    SectionWithIndustriesImage,
+  } = await pageRecruitment();
+
   const mok = {
     HeroSection: {
       title: 'IT recruitment',
@@ -125,92 +134,31 @@ export default async function PageRecruitment() {
 
   return (
     <main className={styles.pageRecruitment}>
-      <SectionHero
-        title={mok.HeroSection.title}
-        description={mok.HeroSection.subtitle}
-      />
+      <SectionHero {...AnimatedHero} />
 
       <div className="container">
-        <SectionInfoWithCards data={mok.SectionInfoWithCards} />
+        <SectionInfoWithCards {...InfoWithCards} />
       </div>
 
       <div className="container">
-        <SectionHowWeWork />
+        <SectionHowWeWork {...TreeSection} />
       </div>
 
-      {/* TODO: Cc */}
-      {/* @Component SectionTypeOfRecruitment */}
       <div className="container">
-        <section className={styles.typeOfRecruitment}>
-          <header>
-            <h3>{mok.TypesOfRecruitment.title}</h3>
-          </header>
-
-          <div className={styles.typeOfRecruitmentItems}>
-            {mok.TypesOfRecruitment.items.map((item, idx) => (
-              <div className={styles.gridItem} key={idx}>
-                <div className={styles.gridItemHeader}>
-                  <h4>{item.title}</h4>
-                  <p>{item.subtitle}</p>
-                </div>
-
-                <div className={styles.gridItemContent}>
-                  <Markdown>{item.content.text}</Markdown>
-
-                  <Button>{item.content.link.title}</Button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <SectionTypesOfRecruitment {...TypesOfRecruitment} />
       </div>
 
-      {/* @Component */}
-      <section className={styles.sectionDieFillWidth}>
-        <Image
-          className={styles.bgImage}
-          src={chatSVG}
-          alt="Chat icon"
-          width={226}
-          height={226}
-        />
-        <Markdown>{mok.DieFillWidth.title}</Markdown>
-
-        <div className="actions">
-          {mok.DieFillWidth.actions.map((item, idx) => (
-            <Button size="lg" key={idx}>
-              {item.title}
-            </Button>
-          ))}
-        </div>
-      </section>
+      <SectionNeedHelpSection {...NeedHelpSection} />
 
       {/* @Component(single) Pricing */}
       <div className="container">
-        <section className={styles.sectionPricing}>
-          <header>
-            <h3>{mok.Pricing.title}</h3>
-          </header>
-
-          <div className={styles.sectionPricingGrid}>
-            {mok.Pricing.items.map((item, idx) => (
-              <div className={styles.cardPricing} key={idx}>
-                <div>
-                  <h5>{item.title}</h5>
-                  <p>{item.subtitle}</p>
-                </div>
-
-                <Button>{item.link.title}</Button>
-              </div>
-            ))}
-          </div>
-        </section>
+        <SectionPricing {...Pricing} />
       </div>
 
       {/* @Component SectionCustomVision */}
       <div className={styles.sectionCustomVisionWrapper}>
         <div className="container">
-          <SectionCustomVision />
+          <SectionCustomVision {...SectionWithIndustriesImage} />
         </div>
       </div>
 
