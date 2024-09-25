@@ -23,8 +23,10 @@ export default async function SectionHero({
           </header>
 
           <div className={styles.sectionHeroActions}>
-            {hireNowBtn && <Button withIcon name={candidateBtn} />}
-            {candidateBtn && <Button theme="secondary" name={candidateBtn} />}
+            {hireNowBtn && <Button withIcon name={hireNowBtn.name} />}
+            {candidateBtn && (
+              <Button theme="secondary" name={candidateBtn.name} />
+            )}
           </div>
         </section>
       </div>

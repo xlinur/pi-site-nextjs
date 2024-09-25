@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import peopleSVG from '@/app/assets/icons/people-1-white.svg';
+import sectionAboutPersonalinvest from '@/app/api/strapi/sectionAboutPersonalinvest/route';
 
 import styles from './styles.module.scss';
 
@@ -29,49 +30,13 @@ const CheckCircle = () => (
   </svg>
 );
 
-const SectionAboutPersonalinvest = () => {
-  const mok = {
-    title: '',
-    numbers: [
-      {
-        count: '8 500',
-        description: 'job openings filled',
-      },
-      {
-        count: '700',
-        description: 'companies we worked with',
-      },
-      {
-        count: '55',
-        description: 'vacancies we close per month with minimum % of changes',
-      },
-    ],
-    info: [
-      {
-        title: 'Speed of work',
-        description: 'first vacancies in 3 days',
-      },
-      {
-        title: 'Full cycle of recruitment',
-        description:
-          'preparation, sourcing, screening, selection, hiring and onboarding',
-      },
-      {
-        title: 'Exclusive expertise',
-        description:
-          'Successful closing from junior to the TOP-management positions',
-      },
-      {
-        title: 'Individual approach',
-        description: 'first vacancies in 3 days',
-      },
-    ],
-  };
+export default async function SectionAboutPersonalinvest() {
+  const { numbers, title, info } = await sectionAboutPersonalinvest();
 
   return (
     <section className={styles.wrapper}>
       <div className={styles.first}>
-        {mok.numbers.map((item, idx) => (
+        {numbers.map((item, idx) => (
           <article className={styles.item} key={idx}>
             <header className={styles.title}>
               <h5>{item.count} +</h5>
@@ -84,14 +49,12 @@ const SectionAboutPersonalinvest = () => {
 
       <div className={styles.second}>
         <header>
-          <h2 className="text">
-            Personalinvest <br /> is
-          </h2>
+          <h2 className="text">{title}</h2>
           <Image src={peopleSVG} alt="People icon" width={128} height={128} />
         </header>
 
         <ul className={styles.list}>
-          {mok.info.map((item, idx) => (
+          {info.map((item, idx) => (
             <li className={styles.listItem} key={idx}>
               <div className={styles.listItemIcon}>
                 <CheckCircle />
@@ -107,6 +70,4 @@ const SectionAboutPersonalinvest = () => {
       </div>
     </section>
   );
-};
-
-export default SectionAboutPersonalinvest;
+}

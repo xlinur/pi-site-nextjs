@@ -1,3 +1,5 @@
+@use '../../../styles/mixins.scss' as *;
+
 .sectionPlanet {
   display: flex;
   flex-direction: column;
@@ -29,5 +31,27 @@
       position: relative;
       left: -100%;
     }
+  }
+}
+
+.sectionMapImg {
+  display: grid;
+  grid-template-columns: 1fr minmax(360px, 690px);
+  column-gap: 44px;
+  padding: 100px 0;
+
+  @include md {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 80px;
+  }
+
+  img {
+    aspect-ratio: 16 / 9;
   }
 }

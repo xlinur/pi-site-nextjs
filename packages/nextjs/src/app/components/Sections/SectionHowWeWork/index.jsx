@@ -1,40 +1,9 @@
 import clsx from 'clsx';
 import styles from './styles.module.scss';
 
-const mok = {
-  title: 'How we work',
-  items: [
-    {
-      title: 'Your application',
-      description:
-        'Filling out the standard form and discussing details (3-5 days)',
-    },
-    {
-      title: 'Your application',
-      description:
-        'Filling out the standard form and discussing details (3-5 days)',
-    },
-    {
-      title: 'Your application',
-      description:
-        'Filling out the standard form and discussing details (3-5 days)',
-    },
-    {
-      title: 'Your application',
-      description:
-        'Filling out the standard form and discussing details (3-5 days)',
-    },
-    {
-      title: 'Your application',
-      description:
-        'Filling out the standard form and discussing details (3-5 days)',
-    },
-  ],
-};
-
 export default function SectionHowWeWork(props) {
   // type 'vertical' | 'horizontal'
-  const { type = 'vertical', data = mok, fitContent = false } = props;
+  const { type = 'vertical', title, items = [], fitContent = false } = props;
 
   const gridStyles = clsx(
     [styles.treeGrid, styles[type]],
@@ -44,11 +13,11 @@ export default function SectionHowWeWork(props) {
   return (
     <section className={styles.sectionHowWeWork}>
       <header>
-        <h3>{data.title}</h3>
+        <h3>{title}</h3>
       </header>
 
       <div className={gridStyles}>
-        {data.items.map((item, idx) => (
+        {items.map((item, idx) => (
           <>
             <div className={styles.treeGridItem} key={idx}>
               <h5 className={styles.title}>{item.title}</h5>
