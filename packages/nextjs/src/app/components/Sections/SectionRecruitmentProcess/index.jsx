@@ -16,12 +16,12 @@ const SectionRecruitmentProcess = ({
       </header>
 
       <div className={styles.steps}>
-        {processes?.map(({ title, text }, idx) => (
-          <div className={styles.stepsItem} key={idx}>
+        {processes?.map(({ id, title, description }) => (
+          <div className={styles.stepsItem} key={id}>
             <h5 className={styles.stepsItemTitle}>{title}</h5>
 
             <div className={styles.stepsItemText}>
-              <Markdown>{text}</Markdown>
+              <Markdown>{description}</Markdown>
             </div>
           </div>
         ))}

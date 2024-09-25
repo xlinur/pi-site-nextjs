@@ -5,6 +5,7 @@ import { Roboto } from 'next/font/google';
 import ErrorBoundary from '@/app/components/ErrorBoundary';
 import Header from '@/app/components/Header';
 import SidebarMenu from '@/app/components/SidebarMenu';
+import { RootDataProvider } from '@/app/components/RootData';
 import Footer from '@/app/components/Footer';
 import '@/app/styles/globals.scss';
 import GoogleCaptchaWrapper from '@/app/GoogleCaptchaWrapper';
@@ -21,13 +22,15 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={roboto.className}>
         <ErrorBoundary>
-          <GoogleCaptchaWrapper>{children}</GoogleCaptchaWrapper>
-          <Header setIsOpenSidebar={setIsOpenSidebar} />
-          <Footer />
-          <SidebarMenu
-            isOpen={isOpenSidebar}
-            setIsOpenSidebar={setIsOpenSidebar}
-          />
+          <RootDataProvider>
+            <GoogleCaptchaWrapper>{children}</GoogleCaptchaWrapper>
+            <Header setIsOpenSidebar={setIsOpenSidebar} />
+            <Footer />
+            <SidebarMenu
+              isOpen={isOpenSidebar}
+              setIsOpenSidebar={setIsOpenSidebar}
+            />
+          </RootDataProvider>
         </ErrorBoundary>
       </body>
     </html>
