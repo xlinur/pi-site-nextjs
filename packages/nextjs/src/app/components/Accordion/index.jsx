@@ -45,6 +45,7 @@ const CheckMarkSvg = () => (
 
 const AccordionItem = ({ item, isOpen, onClick }) => {
   const contentRef = useRef(null); // Реф для измерения высоты контента
+  const { label, title, items } = item;
 
   return (
     <div className={styles.accordionItem}>
@@ -53,7 +54,7 @@ const AccordionItem = ({ item, isOpen, onClick }) => {
           <ArrowItemSvg />
         </span>
 
-        {item.title}
+        {label}
       </h5>
 
       <div
@@ -68,13 +69,13 @@ const AccordionItem = ({ item, isOpen, onClick }) => {
         </span>
 
         <div ref={contentRef}>
-          <h5 className="h5">{item.content.title}</h5>
+          <h5 className="h5">{title}</h5>
 
           <ul className={styles.accordionContentList}>
-            {item.content.items.map((contentItem, index) => (
+            {items.map((contentItem, index) => (
               <li key={index}>
                 <strong className="h5">{contentItem.title}</strong>
-                <p>{contentItem.text}</p>
+                <p>{contentItem.description}</p>
               </li>
             ))}
           </ul>
@@ -90,9 +91,10 @@ export default function Accordion({ data }) {
   const handleItemClick = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
   return (
     <div className={styles.accordion}>
-      {data.items.map((item, index) => (
+      {data.map((item, index) => (
         <AccordionItem
           key={index}
           item={item}

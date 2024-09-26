@@ -1,0 +1,24 @@
+@use '../../../styles/mixins.scss' as *;
+
+.sectionAccordion {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+
+  .sectionAccordionContent {
+    display: grid;
+    grid-template-columns: 1fr 504px;
+    column-gap: 20px;
+  }
+
+  .sectionAccordionContentImage {
+    position: relative;
+    height: 504px;
+    display: flex;
+    align-items: flex-end;
+
+    button {
+      z-index: 1;
+    }
+  }
+}
