@@ -11,6 +11,8 @@ import Markdown from 'react-markdown';
 import Image from 'next/image';
 import homePageRequest from '@/app/api/strapi/homePage/route';
 
+// import pageSplitRecruitment from '@/app/api/strapi/pageSplitRecruitment/route';
+
 export default async function RelocationHelpPage() {
   const { WhyPersonalInvest, WhyPersonalInvestItems } = await homePageRequest();
   const mok = {

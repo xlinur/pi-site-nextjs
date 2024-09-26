@@ -8,6 +8,8 @@ import styles from './styles.module.scss';
 import homePageRequest from '@/app/api/strapi/homePage/route';
 import Markdown from 'react-markdown';
 
+// import pageSplitRecruitment from '@/app/api/strapi/pageSplitRecruitment/route';
+
 export default async function SpheresPage() {
   const { WhyPersonalInvest, WhyPersonalInvestItems } = await homePageRequest();
 

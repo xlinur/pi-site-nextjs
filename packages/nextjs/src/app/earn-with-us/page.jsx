@@ -2,13 +2,18 @@ import SectionHero from '@/app/components/Sections/SectionHero';
 import Advantages from '@/app/components/Advantages';
 import ContactForm from '@/app/components/ContactForm';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
-import Button from '@/app/components/Button';
 import SectionPaymentTerms from '@/app/components/Sections/SectionPaymentTerms';
-
-import styles from './styles.module.scss';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 
+import Button from '@/app/components/Button';
+
+import styles from './styles.module.scss';
+
+import pageEarnWithUs from '@/app/api/strapi/pageEarnWithUs/route';
+
 export default async function PageEarnWithUs() {
+  // const {} = await pageEarnWithUs();
+
   const mok = {
     HeroSection: {
       title: 'Referral program for our partners',

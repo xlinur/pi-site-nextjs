@@ -6,8 +6,7 @@ import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 import SectionKeySectors from '@/app/components/Sections/SectionKeySectors';
 
-// import Button from "@/app/components/Button";
-// import chatSVG from "@/app/assets/icons/chat-white.svg";
+// import pageSplitRecruitment from '@/app/api/strapi/pageSplitRecruitment/route';
 
 import styles from './styles.module.scss';
 

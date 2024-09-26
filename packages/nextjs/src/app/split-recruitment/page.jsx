@@ -13,6 +13,8 @@ import dollarsSVG from '@/app/assets/icons/dollars.svg';
 
 import styles from './styles.module.scss';
 
+import pageSplitRecruitment from '@/app/api/strapi/pageSplitRecruitment/route';
+
 export default async function PageSplitRecruitment() {
   const mok = {
     HeroSection: {

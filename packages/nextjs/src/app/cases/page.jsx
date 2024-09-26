@@ -4,6 +4,8 @@ import Button from '@/app/components/Button';
 import ContactForm from '@/app/components/ContactForm';
 import CardCase from './[slug]/components/CardCase';
 
+// import pageSplitRecruitment from '@/app/api/strapi/pageSplitRecruitment/route';
+
 export default async function PageCases() {
   const mok = {
     HeroOurCases: {

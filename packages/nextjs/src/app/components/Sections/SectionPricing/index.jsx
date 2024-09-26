@@ -5,6 +5,18 @@ import Markdown from 'react-markdown';
 export default async function SectionPricing(props) {
   const { title, feeSection, splitRecruitment, subscriptionModel } = props;
 
+  const btnTextConfig = (idx) => {
+    if (idx !== 0) {
+      return {
+        theme: 'text',
+        withIcon: true,
+        iconRight: true,
+      };
+    }
+
+    return {};
+  };
+
   return (
     <section className={styles.sectionPricing}>
       <header>
@@ -19,7 +31,7 @@ export default async function SectionPricing(props) {
               <Markdown>{item.description}</Markdown>
             </div>
 
-            <Button name={item.btnName} />
+            <Button {...btnTextConfig(idx)} name={item.btnName} />
           </div>
         ))}
       </div>

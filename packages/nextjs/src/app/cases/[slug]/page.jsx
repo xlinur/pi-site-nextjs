@@ -9,6 +9,8 @@ import peopleSVG from '@/app/assets/icons/people-1-white.svg';
 
 import styles from './styles.module.scss';
 
+// import pageSplitRecruitment from '@/app/api/strapi/pageSplitRecruitment/route';
+
 export default async function PageCase() {
   const mok = {
     CaseHeroSection: {

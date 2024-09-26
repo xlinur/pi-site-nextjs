@@ -11,6 +11,8 @@ import SliderCases from '@/app/components/Sliders/SliderCases';
 
 import styles from './styles.module.scss';
 
+// import pageSplitRecruitment from '@/app/api/strapi/pageSplitRecruitment/route';
+
 export default function SpheresPage() {
   const mok = {
     HeroSection: {

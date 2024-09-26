@@ -1,23 +1,18 @@
-import SectionHero from '@/app/components/Sections/SectionHero';
-import SectionInfoWithCards from '@/app/components/Sections/SectionInfoWithCards';
-import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
-import SectionCompaniesLogo from '@/app/components/Sections/SectionCompaniesLogo';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
-import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 import ContactForm from '@/app/components/ContactForm';
 import Button from '@/app/components/Button';
-import chatSVG from '@/app/assets/icons/chat-white.svg';
 
 import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
-import Image from 'next/image';
+
+// import pageSplitRecruitment from '@/app/api/strapi/pageSplitRecruitment/route';
 
 export default function RelocationHelpPage() {
   const mok = {
-    PersonnelRecruitmentSection: {
+    SectionPersonnelRecruitment: {
       title: 'Assistance in relocation planning',
-      subtitle:
+      description:
         'Our company provides a comprehensive service, within the framework of which we will undertake:',
       items: [
         {
@@ -74,13 +69,13 @@ export default function RelocationHelpPage() {
       <div className="container">
         <section className={styles.sectionPersonnelRecruitment}>
           <header>
-            <h1>{mok.PersonnelRecruitmentSection.title}</h1>
-            <p>{mok.PersonnelRecruitmentSection.subtitle}</p>
+            <h1>{mok.SectionPersonnelRecruitment.title}</h1>
+            <p>{mok.SectionPersonnelRecruitment.description}</p>
           </header>
 
           <div className={styles.content}>
             <div className={styles.contentList}>
-              {mok.PersonnelRecruitmentSection.items.map((item, idx) => (
+              {mok.SectionPersonnelRecruitment.items.map((item, idx) => (
                 <a href={item.url} className={styles.item} key={idx}>
                   <svg
                     width="29"

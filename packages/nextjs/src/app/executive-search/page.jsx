@@ -13,6 +13,8 @@ import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
 import Image from 'next/image';
 
+// import pageSplitRecruitment from '@/app/api/strapi/pageSplitRecruitment/route';
+
 export default function ExecutiveSearchPage() {
   const mok = {
     HeroSection: {
