@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import styles from './styles.module.scss';
+import Markdown from 'react-markdown';
 
 export default function SectionHowWeWork(props) {
   // type 'vertical' | 'horizontal'
@@ -22,7 +23,7 @@ export default function SectionHowWeWork(props) {
             <div className={styles.treeGridItem} key={idx}>
               <h5 className={styles.title}>{item.title}</h5>
               <hr />
-              <p className={styles.text}>{item.description}</p>
+              <Markdown className={styles.text}>{item.description}</Markdown>
             </div>
 
             <div className={styles.treeGridWrapper}>

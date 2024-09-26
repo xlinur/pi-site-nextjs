@@ -12,79 +12,32 @@ import styles from './styles.module.scss';
 import pageEarnWithUs from '@/app/api/strapi/pageEarnWithUs/route';
 
 export default async function PageEarnWithUs() {
-  // const {} = await pageEarnWithUs();
-
-  const mok = {
-    HeroSection: {
-      title: 'Referral program for our partners',
-      subtitle:
-        'is the best and optimal way to monetize your social capital and network in IT. PersonalInvest offers you the opportunity to earn using the expertise of our team as a source of constant passive income.',
-    },
-    PaymentTermsSection: {
-      title: 'Payment terms',
-      contactBtn: 'Contact',
-      items: [
-        {
-          title: '10% of a reward',
-          text: 'Without leading the candidate. The commission is transferred according to the agreement after the candidate starts working.',
-        },
-        {
-          title: 'Partner’s reward every 2 years',
-          text: 'Full cycle of leading the candidate. 25% is paid after the candidate leaves, the second part - after the candidate completes the test period.',
-        },
-      ],
-    },
-    OurPaymentTermsTree: {
-      title: 'Our transparent process of interaction',
-      items: [
-        {
-          title: '',
-          text: 'We sign a partnership agreement with you',
-        },
-        {
-          title: '',
-          text: 'You can introduce us',
-        },
-        {
-          title: '',
-          text: 'We conclude a Service Agreement with the client',
-        },
-        {
-          title: '',
-          text: 'We notify you of the closed vacancy and the amount of your reward (After the client’s payment)',
-        },
-        {
-          title: '',
-          text: 'We pay the bills for your referral',
-        },
-      ],
-    },
-  };
-
+  const {
+    AnimatedHero,
+    Advantages: advantages,
+    OurProcessOfInteraction,
+  } = await pageEarnWithUs();
   return (
     <main className={styles.pageContactUs}>
-      <SectionHero
-        title={mok.HeroSection.title}
-        description={mok.HeroSection.subtitle}
-      />
+      <SectionHero {...AnimatedHero} />
 
       <div className="container">
-        <Advantages />
+        <Advantages advantages={advantages.advantage} />
       </div>
 
       <div className="container">
         <div className={styles.wrapperSectionHowWeWork}>
           <SectionHowWeWork
-            data={mok.OurPaymentTermsTree}
+            {...OurProcessOfInteraction.treeSection}
             type="horizontal"
-          ></SectionHowWeWork>
+          />
 
-          <Button size="lg">Apply now</Button>
+          <Button size="lg" name={OurProcessOfInteraction.applyNowBtn.name} />
         </div>
       </div>
 
       <div className="container">
-        <SectionPaymentTerms data={mok.PaymentTermsSection} />
+        <SectionPaymentTerms />
       </div>
 
       {/* @Component SectionWeCanHelp */}

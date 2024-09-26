@@ -36,7 +36,7 @@ export default async function HeroMain({
             )}
           </div>
 
-          <Advantages advantages={advantages} />
+          <Advantages advantages={advantages.advantage} />
           <Worldwide recorWord={recorWord} />
         </section>
       </div>

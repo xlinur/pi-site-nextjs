@@ -35,6 +35,8 @@ export default async function SectionAboutPersonalinvest() {
 
   return (
     <section className={styles.wrapper}>
+      <h2 className="text">{title}</h2>
+
       <div className={styles.first}>
         {numbers.map((item, idx) => (
           <article className={styles.item} key={idx}>
@@ -49,7 +51,6 @@ export default async function SectionAboutPersonalinvest() {
 
       <div className={styles.second}>
         <header>
-          <h2 className="text">{title}</h2>
           <Image src={peopleSVG} alt="People icon" width={128} height={128} />
         </header>
 
