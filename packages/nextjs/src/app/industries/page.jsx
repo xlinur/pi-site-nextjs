@@ -6,68 +6,30 @@ import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 import SectionKeySectors from '@/app/components/Sections/SectionKeySectors';
 
-// import pageSplitRecruitment from '@/app/api/strapi/pageSplitRecruitment/route';
+import pageIndustries from '@/app/api/strapi/pageIndustries/route';
 
 import styles from './styles.module.scss';
 
 export default async function PageIndustries() {
-  const mok = {
-    HeroSection: {
-      title: '# *GameDev* IT recruitment',
-      subtitle:
-        'We are a global Informational Technology partner with such a narrow industry specialization as GameDev and we successfully connect IT talents with global GameDev companies and startups.',
-      actions: [],
-    },
-    IndustrySectorsSections: {
-      title: '### *Industries* we work with',
-      items: [
-        {
-          title: 'GameDev',
-          link: '',
-        },
-        {
-          title: 'BlockChain',
-          link: '',
-        },
-        {
-          title: 'Saas',
-          link: '',
-        },
-        {
-          title: 'Fintech',
-          link: '',
-        },
-        {
-          title: 'Cryptocurrency',
-          link: '',
-        },
-        {
-          title: 'AI',
-          link: '',
-        },
-      ],
-    },
-  };
+  const { AnimatedHero, SectorsGrid, TreeSection, SectionWithIndustriesImage } =
+    await pageIndustries();
 
   return (
     <main className={styles.pageRecruitment}>
-      <SectionHero
-        title={mok.HeroSection.title}
-        description={mok.HeroSection.subtitle}
-      />
+      <SectionHero {...AnimatedHero} />
 
       <div className="container">
-        <SectionKeySectors />
+        <SectionKeySectors {...SectorsGrid} />
       </div>
 
       <div className="container">
-        <SectionHowWeWork />
+        <SectionHowWeWork {...TreeSection} />
       </div>
 
       {/* @Component SectionCustomVision */}
       <div className={styles.sectionCustomVisionWrapper}>
         <div className="container">
-          <SectionCustomVision />
+          <SectionCustomVision {...SectionWithIndustriesImage} />
         </div>
       </div>
 
