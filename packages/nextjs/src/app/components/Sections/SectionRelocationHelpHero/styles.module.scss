@@ -1,0 +1,47 @@
+@use '../../../styles/mixins.scss' as *;
+
+.sectionPersonnelRecruitment {
+  margin-top: 80px;
+}
+
+.sectionPersonnelRecruitment {
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 718px;
+  }
+
+  .content {
+    max-width: 819px;
+    margin-left: auto;
+    margin-top: 50px;
+
+    // .contentList {}
+    .contentFooter {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 45px;
+    }
+  }
+
+  .item {
+    display: grid;
+    align-items: center;
+
+    grid-template-columns: 0.25fr 1fr;
+    padding: 10px 0;
+    border-top: 1px solid var(--gray);
+
+    &:hover {
+      svg {
+        color: var(--blue);
+      }
+    }
+
+    svg {
+      color: #E5E5E5;
+    }
+  }
+}

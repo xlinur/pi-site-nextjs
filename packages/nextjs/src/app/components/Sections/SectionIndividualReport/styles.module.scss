@@ -1,0 +1,85 @@
+@use '../../../styles/mixins.scss' as *;
+
+
+.wrapper {
+  border-radius: var(--rounded-xl);
+  background-color: var(--light-blue);
+  padding: 60px;
+
+  header p {
+    margin-top: 12px;
+  }
+}
+
+.formWrapper {
+  display: grid;
+  grid-template-columns: 2fr 312px;
+  column-gap: 24px;
+  margin-top: 40px;
+
+  .from {
+    border: 1px solid var(--gray);
+    border-radius: var(--rounded-xl);
+    padding: 30px;
+    display: flex;
+    column-gap: 24px;
+
+    .firstBlock {
+      display: flex;
+      flex-direction: column;
+      row-gap: 24px;
+      
+      .cbWrapper {
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+
+        label {
+          color: var(--black);
+        }
+      }
+    }
+
+    .secondBlock {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  .social {
+    border: 1px solid var(--gray);
+    border-radius: var(--rounded-xl);
+
+    // TODO: Remove or replace dublicate COntactForm
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  
+      ul {
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+        text-align: center;
+        margin-top: 40px;
+  
+        li {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          column-gap: 10px;
+  
+          > a {
+            display: inherit;
+            align-items: inherit;
+            column-gap: inherit;
+          }
+        }
+      }
+  
+      .icon {
+        color: var(--white);
+      }
+  }
+}
