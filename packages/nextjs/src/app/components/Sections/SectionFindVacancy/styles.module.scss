@@ -1,0 +1,28 @@
+
+.sectionWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.vacancies {
+  display: grid;
+  grid-template-columns: 316px 1fr;
+  column-gap: 24px;
+
+  .vacanciesFilters {
+    border: 1px solid var(--gray);
+    border-radius: 30px;
+  }
+  .vacanciesList {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+}
