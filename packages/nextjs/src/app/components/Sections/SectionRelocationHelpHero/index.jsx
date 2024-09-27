@@ -8,13 +8,20 @@ const SectionRelocationHelpHero = ({
   items,
   contactUsBtn,
   bottomText,
+  isNotHero,
 }) => {
   return (
     <section className={styles.sectionPersonnelRecruitment}>
       <header>
-        <h1>
-          <Markdown>{title}</Markdown>
-        </h1>
+        {isNotHero ? (
+          <h4>
+            <Markdown>{title}</Markdown>
+          </h4>
+        ) : (
+          <h1>
+            <Markdown>{title}</Markdown>
+          </h1>
+        )}
 
         <p>{description}</p>
       </header>
@@ -41,10 +48,12 @@ const SectionRelocationHelpHero = ({
           ))}
         </div>
 
-        <div className={styles.contentFooter}>
-          <p>{bottomText}</p>
-          <Button withIcon name={contactUsBtn.name} />
-        </div>
+        {bottomText && contactUsBtn && (
+          <div className={styles.contentFooter}>
+            <p>{bottomText}</p>
+            <Button withIcon name={contactUsBtn?.name} />
+          </div>
+        )}
       </div>
     </section>
   );

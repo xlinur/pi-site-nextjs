@@ -1,0 +1,43 @@
+.firstSection {
+  margin-top: 80px;
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 50%;
+  }
+
+  .firstSectionGrid {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    .firstSectionItem {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--gray);
+      padding-top: 20px;
+      padding-bottom: 20px;
+      span {
+        grid-column: 2;
+      }
+    }
+  }
+
+  .firstSectionFooter {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 40px;
+    border-radius: 30px;
+    background-color: var(--light-blue);
+
+    .actions {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      column-gap: 20px;
+      grid-column: 24px;
+    }
+  }
+}

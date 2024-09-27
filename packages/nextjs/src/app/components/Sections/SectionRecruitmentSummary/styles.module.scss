@@ -1,0 +1,68 @@
+.sectionRecruitmentSummary {
+  header {
+    max-width: 50%;
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 60px;
+    margin-top: 80px;
+  }
+  .listItem {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+
+    .title {
+      span {
+        display: inline-flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      svg {
+        width: 26px;
+        height: 26px;
+      }
+    }
+
+    .text {
+      padding-top: 12px;
+      border-top: 1px solid var(--gray);
+    }
+  }
+
+  .companyOffered {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    column-gap: 24px;
+    margin-top: 87px;
+
+    div:first-child {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      border-radius: 30px;
+      background-color: var(--light-blue);
+      padding: 30px;
+      position: relative;
+
+      img {
+        position: absolute;
+        left: 50%;
+        height: 100%;
+        top: 0;
+      }
+    }
+
+    div:last-child {
+      border-radius: 30px;
+      background-color: var(--light-blue);
+      padding: 30px;
+    }
+  }
+}

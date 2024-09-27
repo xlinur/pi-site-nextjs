@@ -1,0 +1,22 @@
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .image {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 40px;
+  }
+}
