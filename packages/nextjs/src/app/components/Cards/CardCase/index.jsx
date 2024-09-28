@@ -3,12 +3,12 @@ import styles from './styles.module.scss';
 
 export default function CardCase({ data, className }) {
   return (
-    <a href={data.url} className={clsx([styles.card, className])}>
-      <time dateTime={data.date}>{data.date}</time>
+    <a href={data.attributes.slug} className={clsx([styles.card, className])}>
+      <time dateTime={data.attributes.date}>{data.attributes.date}</time>
 
       <div className={styles.cardContent}>
-        <h5>{data.title}</h5>
-        <p>{data.subtitle}</p>
+        <h5>{data.attributes.title}</h5>
+        <p>{data.attributes.subtitle}</p>
 
         <span className={styles.arrowSvg}>
           <svg

@@ -5,7 +5,7 @@ import Button from '@/app/components/Button';
 import styles from './styles.module.scss';
 
 import { useEffect, useState } from 'react';
-import CardCase from '@/app/cases/[slug]/components/CardCase';
+import CardCase from '@/app/components/Cards/CardCase';
 import clsx from 'clsx';
 
 const SwiperButtonNext = ({ children }) => {
@@ -87,11 +87,10 @@ const SwiperButtonPrev = ({ children }) => {
   );
 };
 
-export default function SliderCase({ data }) {
+export default function SliderCase({ data, btnName }) {
   const config = {
     slidesPerView: 3,
     spaceBetween: 24,
-    centeredSlides: true,
   };
 
   return (
@@ -107,7 +106,7 @@ export default function SliderCase({ data }) {
 
       <div className="container">
         <div className={styles.swiperNavigation}>
-          <Button>Contact</Button>
+          <Button name={btnName} />
 
           <div>
             <SwiperButtonPrev></SwiperButtonPrev>

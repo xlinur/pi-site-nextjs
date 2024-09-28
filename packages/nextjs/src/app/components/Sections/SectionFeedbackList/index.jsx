@@ -6,7 +6,7 @@ import sectionWhatOurCliensSay from '@/app/api/strapi/sectionWhatOurCliensSay/ro
 
 import styles from './styles.module.scss';
 
-export default async function SectionFeedbackList() {
+export default async function SectionFeedbackList({ inData }) {
   const data = await feedbacks();
   const { title, readMoreBtn, readAllBtn } = await sectionWhatOurCliensSay();
 
@@ -21,7 +21,7 @@ export default async function SectionFeedbackList() {
       </div>
 
       <div className={styles.slider}>
-        <SliderFeedback data={data} readAllBtn={readAllBtn} />
+        <SliderFeedback data={inData || data} readAllBtn={readAllBtn} />
       </div>
     </section>
   );

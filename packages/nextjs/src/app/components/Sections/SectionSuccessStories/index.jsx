@@ -3,22 +3,23 @@ import SliderCases from '@/app/components/Sliders/SliderCases';
 
 import styles from './styles.module.scss';
 
-import sectionTalentMatch from '@/app/api/strapi/sectionTalentMatch/route';
+import sectionSuccessStories from '@/app/api/strapi/sectionSuccessStories/route';
 
-export default function SectionTalentMatch() {
-  const { title, viewCasesBtn, items } = sectionTalentMatch();
+export default async function SectionTalentMatch({ cases }) {
+  const { title, viewAllCasesBtn, contactBtn } = await sectionSuccessStories();
+
   return (
     <section className={styles.sectionMoreCases}>
       <div className="container">
         <header>
           <h3>{title}</h3>
 
-          <Button theme="secondary" name={viewCasesBtn.name} />
+          <Button theme="secondary" name={viewAllCasesBtn.name} />
         </header>
       </div>
 
       <div className={styles.slider}>
-        <SliderCases data={items} />
+        <SliderCases data={cases} btnName={contactBtn.name} />
       </div>
     </section>
   );

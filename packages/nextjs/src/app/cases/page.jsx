@@ -2,7 +2,7 @@ import styles from './styles.module.scss';
 import Button from '@/app/components/Button';
 import ContactForm from '@/app/components/ContactForm';
 import SectionHeroOurCases from '@/app/components/Sections/SectionHeroOurCases';
-import CardCase from './[slug]/components/CardCase';
+import CardCase from './components/CardCase';
 
 import pageCase from '@/app/api/strapi/pageCase/route';
 
@@ -14,15 +14,15 @@ export default async function PageCases() {
         items: [
           {
             title: 'NET',
-            url: 'net',
+            slug: 'net',
           },
           {
             title: 'Full Stack Node JS',
-            url: 'full-stack-net',
+            slug: 'full-stack-net',
           },
           {
             title: 'C++',
-            url: 'c++',
+            slug: 'c++',
           },
         ],
       },
@@ -31,11 +31,11 @@ export default async function PageCases() {
         items: [
           {
             title: 'CTO',
-            url: 'cto',
+            slug: 'cto',
           },
           {
             title: 'Case',
-            url: 'case',
+            slug: 'case',
           },
         ],
       },
@@ -44,11 +44,11 @@ export default async function PageCases() {
         items: [
           {
             title: 'Survey',
-            url: 'net',
+            slug: 'net',
           },
           {
             title: 'Case',
-            url: 'case',
+            slug: 'case',
           },
         ],
       },
@@ -59,7 +59,7 @@ export default async function PageCases() {
           date: 'January 5, 2024',
           title: 'A succefull story from GameDev ',
           subtitle: 'How we closed a position in 3 days ',
-          url: 'cases/case',
+          slug: 'cases/case',
         },
       ],
     },
