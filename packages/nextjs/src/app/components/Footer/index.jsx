@@ -1,7 +1,6 @@
 import Image from 'next/image';
-import { redirect } from 'next/navigation';
-import { AppDB } from '@/app/core/db/app.db';
 import Button from '@/app/components/Button';
+import { useGetNavigation } from '@/app/components/hooks/useGetNavigation';
 import logoPng from '@/app/assets/logo.png';
 import emailSvg from '@/app/assets/icons/social/email.svg';
 import whatsappSvg from '@/app/assets/icons/social/whatsapp.svg';
@@ -11,14 +10,67 @@ import instagramSvg from '@/app/assets/icons/social/instagram.svg';
 import linkedinSvg from '@/app/assets/icons/social/linkedin.svg';
 import clockSvg from '@/app/assets/icons/clock.svg';
 import locationPin from '@/app/assets/icons/location-pin.svg';
+import getGlobalDictionary from '@/app/api/strapi/globalDictionary/route';
+import getGlobalSettings from '@/app/api/strapi/globalSettings/route';
+import { getTimezoneOffset } from '@/utils/getTimezoneOffset';
 import styles from './styles.module.scss';
 
-const Footer = () => {
+const Footer = async () => {
+  const { fetchMenu } = useGetNavigation();
+
+  const { mainNav, secondaryNav } = await fetchMenu();
+  const { supportBlockTitle, contactsBlockTitle } = getGlobalDictionary();
+  const { contacts = {}, address, workingHours } = getGlobalSettings();
+
+  const links = [...mainNav, ...secondaryNav].reduce((acc, item) => {
+    if (item.childs) {
+      return [...acc, item, ...item.childs];
+    }
+
+    return [...acc, item];
+  }, []);
+
+  const support = [
+    {
+      img: telegramSvg,
+      link: contacts.telegram,
+      name: 'Telegram',
+    },
+    {
+      img: whatsappSvg,
+      link: contacts.whatsapp,
+      name: 'WhatsApp',
+    },
+    {
+      img: emailSvg,
+      link: contacts.email,
+      name: contacts.email,
+    },
+  ];
+
+  const socials = [
+    {
+      img: linkedinSvg,
+      link: contacts.linkedin,
+      name: 'LinkedIn',
+    },
+    {
+      img: instagramSvg,
+      link: contacts.instagram,
+      name: 'Instagram',
+    },
+    {
+      img: facebookSvg,
+      link: contacts.facebook,
+      name: 'Facebook',
+    },
+  ];
+
   const year = new Date();
 
+  const time = `${workingHours} ${getTimezoneOffset()}`;
+
   const mok = {
-    supportTitle: 'Support',
-    contactsTitle: 'Contacts',
     allRight: 'PersonalInvest All right reserved',
     regNo: 'PLC «Personalinvest OÜ » Reg. No. 16106367',
     policyCookies: 'Privacy Policy and our Cookies Policy Privacy',
@@ -30,9 +82,9 @@ const Footer = () => {
       <div className="container">
         <footer className={styles.footer}>
           <div className={styles.footerLinks}>
-            {Object.entries(AppDB.ROUTS).map(([key, link]) => (
-              <Button theme="default" key={key}>
-                {link.label}
+            {links.map((link) => (
+              <Button theme="default" key={link.url}>
+                {link.title}
               </Button>
             ))}
           </div>
@@ -45,48 +97,26 @@ const Footer = () => {
             </div>
 
             <div className={styles.listWrapper}>
-              <p className={styles.listTitle}>{mok.supportTitle}</p>
+              <p className={styles.listTitle}>{supportBlockTitle}</p>
               <ul className={styles.list}>
-                <li>
-                  <a href="/" className={styles.supportOption}>
-                    <Image
-                      src={telegramSvg}
-                      alt="Telegram icon"
-                      width={24}
-                      height={24}
-                    />
-                    <div className={styles.supportText}>write to telegram</div>
-                  </a>
-                </li>
-                <li>
-                  <a href="/" className={styles.supportOption}>
-                    <Image
-                      src={whatsappSvg}
-                      alt="WhatsApp icon"
-                      width={24}
-                      height={24}
-                    />
-                    <div className={styles.supportText}>write to whatsapp</div>
-                  </a>
-                </li>
-                <li>
-                  <a href="/" className={styles.supportOption}>
-                    <Image
-                      src={emailSvg}
-                      alt="Email icon"
-                      width={24}
-                      height={24}
-                    />
-                    <div className={styles.supportText}>
-                      elena@personalinvest.org
-                    </div>
-                  </a>
-                </li>
+                {support.map((item) => (
+                  <li key={item.link}>
+                    <a href={item.link} className={styles.supportOption}>
+                      <Image
+                        src={item.img}
+                        alt={item.name}
+                        width={24}
+                        height={24}
+                      />
+                      <div className={styles.supportText}>{item.name}</div>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div className={styles.listWrapper}>
-              <p className={styles.listTitle}>{mok.contactsTitle}</p>
+              <p className={styles.listTitle}>{contactsBlockTitle}</p>
               <ul className={styles.list}>
                 <li className={styles.listItemLocation}>
                   <a href="/" className={styles.workHoursWrapper}>
@@ -96,11 +126,7 @@ const Footer = () => {
                       width={24}
                       height={24}
                     />
-                    <div className={styles.workHours}>
-                      Tallinn
-                      <br />
-                      Katusepapi tn 6 11412 Lasnamäe linnaosa
-                    </div>
+                    <div className={styles.workHours}>{address}</div>
                   </a>
                 </li>
                 <li>
@@ -111,40 +137,26 @@ const Footer = () => {
                       width={24}
                       height={24}
                     />
-                    <div className={styles.workHours}>9:00 - 20:00 UTS +2</div>
+                    <div className={styles.workHours}>{time}</div>
                   </a>
                 </li>
               </ul>
             </div>
 
             <div className={styles.footerContentPhone}>
-              <h5>+ 371-56-548-29</h5>
+              <h5>{contacts.phone}</h5>
 
               <div className={styles.socialMedia}>
-                <a href="#">
-                  <Image
-                    src={linkedinSvg}
-                    alt="LinkedIn icon"
-                    width={24}
-                    height={24}
-                  />
-                </a>
-                <a href="#">
-                  <Image
-                    src={instagramSvg}
-                    alt="Instagram icon"
-                    width={24}
-                    height={24}
-                  />
-                </a>
-                <a href="#">
-                  <Image
-                    src={facebookSvg}
-                    alt="Facebook icon"
-                    width={24}
-                    height={24}
-                  />
-                </a>
+                {socials.map((item) => (
+                  <a href={item.link} key={item.link}>
+                    <Image
+                      src={item.img}
+                      alt={item.name}
+                      width={24}
+                      height={24}
+                    />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
