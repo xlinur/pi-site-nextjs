@@ -26,24 +26,20 @@ export default async function Home() {
 
   return (
     <main className={styles.pageMain}>
-      {/* @Component HeroMain */}
       <HeroMain {...HeroSection} />
 
-      {/* @Component SectionWeCanHelp */}
       <div className={styles.sectionHelpWrapper}>
         <div className="container">
           <SectionWeCanHelp />
         </div>
       </div>
 
-      {/* @Component SectionCustomVision */}
       <div className={styles.sectionCustomVisionWrapper}>
         <div className="container">
           <SectionCustomVision {...SectionWithIndustriesImage} />
         </div>
       </div>
 
-      {/* @Component SectionRecruitmentProcess */}
       <div className={styles.sectionRecruitmentProcessWrapper}>
         <div className="container">
           <SectionRecruitmentProcess {...ExclusiveProcess} />
@@ -56,29 +52,24 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* @Component SectionWhyInfo*/}
       <div className={styles.sectionWhyWrapper}>
         <div className="container">
           <SectionWhyInfo {...WhyInfoSection} />
         </div>
       </div>
 
-      {/* @Component SectionCompaniesLogo */}
       <SectionCompaniesLogo />
 
-      {/* @Component SectionFeedbackList */}
       <div className={styles.sectionFeedbackWrapper}>
         <SectionFeedbackList />
       </div>
 
-      {/* @Component SectionMeetGallery */}
       <div className={styles.sectionMeetWrapper}>
         <div className="container">
           <SectionMeetGallery {...MeetOurTeam} />
         </div>
       </div>
 
-      {/* @Component SectionContactForm */}
       <div className={styles.sectionFormWrapper}>
         <div className="container">
           <section className={styles.sectionForm}>

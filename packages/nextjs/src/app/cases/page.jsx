@@ -8,51 +8,6 @@ import pageCase from '@/app/api/strapi/pageCase/route';
 
 export default async function PageCases() {
   const mok = {
-    CasesNavigation: [
-      {
-        title: 'IT Staff',
-        items: [
-          {
-            title: 'NET',
-            slug: 'net',
-          },
-          {
-            title: 'Full Stack Node JS',
-            slug: 'full-stack-net',
-          },
-          {
-            title: 'C++',
-            slug: 'c++',
-          },
-        ],
-      },
-      {
-        title: 'Executive Search',
-        items: [
-          {
-            title: 'CTO',
-            slug: 'cto',
-          },
-          {
-            title: 'Case',
-            slug: 'case',
-          },
-        ],
-      },
-      {
-        title: 'Analytics',
-        items: [
-          {
-            title: 'Survey',
-            slug: 'net',
-          },
-          {
-            title: 'Case',
-            slug: 'case',
-          },
-        ],
-      },
-    ],
     CasesList: {
       items: [
         {
@@ -64,7 +19,8 @@ export default async function PageCases() {
       ],
     },
   };
-  const { HeroOurCasesSection } = await pageCase();
+
+  const { HeroOurCasesSection, spheresFilterTitle } = await pageCase();
 
   return (
     <main>
@@ -74,19 +30,13 @@ export default async function PageCases() {
 
       <div className="container">
         <section className={styles.sectionCasesNav}>
-          {mok.CasesNavigation.map((item, idx) => (
-            <div className={styles.casesNavItem} key={idx}>
-              <h5>{item.title}</h5>
+          <div className={styles.casesNavItem}>
+            <h5>{spheresFilterTitle}</h5>
 
-              <div className={styles.casesNavItemList}>
-                {item.items.map((link, idx) => (
-                  <Button key={idx} theme="secondary">
-                    {link.title}
-                  </Button>
-                ))}
-              </div>
+            <div className={styles.casesNavItemList}>
+              <Button theme="secondary" name="NET" />
             </div>
-          ))}
+          </div>
         </section>
       </div>
 
