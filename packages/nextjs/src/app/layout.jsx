@@ -1,9 +1,9 @@
-'use client';
+// 'use client';
 
 import { Roboto } from 'next/font/google';
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
-import GoogleCaptchaWrapper from '@/app/GoogleCaptchaWrapper';
+// import GoogleCaptchaWrapper from '@/app/GoogleCaptchaWrapper';
 
 import '@/app/styles/globals.scss';
 
@@ -17,7 +17,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={roboto.className}>
         <Header />
-        <GoogleCaptchaWrapper>{children}</GoogleCaptchaWrapper>
+        {children}
+        {/* <GoogleCaptchaWrapper>{children}</GoogleCaptchaWrapper> */}
         <Footer />
       </body>
     </html>

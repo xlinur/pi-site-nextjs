@@ -1,0 +1,17 @@
+export const routes = {
+  aboutUs: () => '/about-us',
+  industries: () => '/industries',
+  vacancies: () => '/vacancies',
+  earnWithUs: () => '/earn-with-us',
+  contactUs: () => '/contact-us',
+  itRecruitment: () => '/recruitment',
+  executiveSearch: () => '/executive-search',
+  consulting: () => '/consulting',
+  analytics: () => '/analytics',
+  relocation: () => '/relocation-help',
+  feedbacks: () => '/feedback',
+  splitRecruitment: () => '/split-recruitment',
+  cases: () => '/cases',
+  case: (slug) => `/cases/${slug}`,
+  sphere: (slug) => `/spheres/${slug}`,
+};

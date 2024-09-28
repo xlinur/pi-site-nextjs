@@ -31,11 +31,7 @@ const Footer = () => {
         <footer className={styles.footer}>
           <div className={styles.footerLinks}>
             {Object.entries(AppDB.ROUTS).map(([key, link]) => (
-              <Button
-                theme="default"
-                key={key}
-                onClick={() => redirect(link.href)}
-              >
+              <Button theme="default" key={key}>
                 {link.label}
               </Button>
             ))}

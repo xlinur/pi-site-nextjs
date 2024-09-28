@@ -10,23 +10,9 @@ import telegramSvg from '@/app/assets/icons/social/telegram.svg';
 import { getTimezoneOffset } from '@/utils/getTimezoneOffset';
 import styles from './styles.module.scss';
 
-import { leftSideMenu, rightSideMenu, globalSettings } from './__mocks';
+import { globalSettings } from './__mocks';
 
-interface Props {
-  isOpen: boolean;
-  onClose: (value: boolean) => void;
-}
-
-interface MenuItem {
-  title: string;
-  url: string;
-  childrens?: {
-    title: string;
-    url: string;
-  }[];
-}
-
-export const SidebarMenu = ({ isOpen, onClose }: Props) => {
+export const SidebarMenu = ({ isOpen, onClose, mainNav, secondaryNav }) => {
   const handleCloseSidebar = () => {
     onClose(false);
   };
@@ -35,9 +21,9 @@ export const SidebarMenu = ({ isOpen, onClose }: Props) => {
     return null;
   }
 
-  const renderMenu = (menu: MenuItem[]) =>
-    menu.map(({ title, url, childrens }) => {
-      if (childrens?.length) {
+  const renderMenu = (menu) =>
+    menu.map(({ title, url, childs }) => {
+      if (childs?.length) {
         return (
           <div className={styles.menuItem} key={url}>
             {/* change class name servicesWrapper to more generic one */}
@@ -62,8 +48,8 @@ export const SidebarMenu = ({ isOpen, onClose }: Props) => {
   return (
     <div className={styles.sidebar}>
       <div className={styles.menuList}>
-        <div className={styles.menuColumn}>{renderMenu(leftSideMenu)}</div>
-        <div className={styles.menuColumn}>{renderMenu(rightSideMenu)}</div>
+        <div className={styles.menuColumn}>{renderMenu(mainNav)}</div>
+        <div className={styles.menuColumn}>{renderMenu(secondaryNav)}</div>
       </div>
 
       <div className={styles.contactSection}>
