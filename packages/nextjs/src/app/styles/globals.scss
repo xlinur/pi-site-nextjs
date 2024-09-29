@@ -84,3 +84,15 @@ hr {
 .grecaptcha-badge {
   visibility: hidden;
 }
+
+dialog {
+  margin: auto;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+::backdrop {
+  background-color: rgb(0, 0, 0);
+  opacity: 0.7;
+}

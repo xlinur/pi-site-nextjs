@@ -19,13 +19,13 @@ const Naviagation = ({
     setIsOpenSidebar((prev) => !prev);
   };
 
-  const renderNavItem = (item) =>
+  const renderNavItem = (item, idx) =>
     !item.childs ? (
       <a key={item.title} href={item.url} className={styles.navLink}>
         {item.title}
       </a>
     ) : (
-      <div className={styles.dropdown}>
+      <div key={idx} className={styles.dropdown}>
         <a key={item.title} href={item.url} className={styles.navLink}>
           {item.title}
         </a>

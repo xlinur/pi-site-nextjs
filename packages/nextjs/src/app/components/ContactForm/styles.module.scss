@@ -6,6 +6,7 @@
   display: flex;
   justify-content: space-between;
   border-radius: 30px;
+  column-gap: 40px;
 
   @include lg() {
     padding: 40px 20px;
@@ -63,4 +64,8 @@
       }
     }
   }
+}
+
+.modalFormWrapper {
+  padding: 90px 100px;
 }

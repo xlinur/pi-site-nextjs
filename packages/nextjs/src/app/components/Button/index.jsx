@@ -3,6 +3,7 @@
 import clsx from 'clsx';
 import styles from './styles.module.scss';
 import { useRouter } from 'next/navigation';
+import { handleOpenModal } from '@/app/core/helpers/modalHandlers';
 
 const ArrowIcon = () => (
   <svg
@@ -24,6 +25,7 @@ const ArrowIcon = () => (
 const Button = (props) => {
   const {
     onClick,
+    openModal,
     children,
     name,
     withIcon = false,
@@ -33,7 +35,7 @@ const Button = (props) => {
     disabled = false,
     content,
     type = 'button',
-    url = '/',
+    url,
   } = props;
 
   const router = useRouter();
@@ -48,12 +50,17 @@ const Button = (props) => {
   ];
 
   const handleButton = () => {
-    if (onClick) {
-      return onClick();
-    }
-
     if (url) {
       router.push(url);
+      return;
+    }
+
+    if (openModal) {
+      handleOpenModal();
+    }
+
+    if (onClick) {
+      onClick();
     }
   };
 

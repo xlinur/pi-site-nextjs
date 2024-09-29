@@ -3,6 +3,8 @@ import Head from 'next/head';
 import { Roboto } from 'next/font/google';
 import GoogleCaptchaWrapper from '@/app/components/GoogleCaptchaWrapper';
 import GoogleAnalytics from '@/app/components/GoogleAnalytics';
+import ModalComponent from '@/app/components/Modal';
+import ContactForm from '@/app/components/ContactForm';
 
 import '@/app/styles/globals.scss';
 
@@ -14,12 +16,14 @@ const roboto = Roboto({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* <Head>
+      <Head>
         <GoogleAnalytics />
-      </Head> */}
+      </Head>
       <body className={roboto.className}>
-        {process.env.NODE_ENV === 'production' ? <div /> : null}
         <GoogleCaptchaWrapper>{children}</GoogleCaptchaWrapper>
+        <ModalComponent>
+          <ContactForm isFormModal />
+        </ModalComponent>
       </body>
     </html>
   );
