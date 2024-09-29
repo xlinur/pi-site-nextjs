@@ -1,0 +1,182 @@
+'use client';
+
+import Image from 'next/image';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useForm } from '@mantine/form';
+
+import InputField from '@/app/components/Form/Input';
+import SelectField from '@/app/components/Form/Select';
+import TextareaField from '@/app/components/Form/Textarea';
+import Checkbox from '@/app/components/Form/Checkbox';
+import Button from '@/app/components/Button';
+
+import whatsappSVG from '@/app/assets/icons/social/whatsapp.svg';
+import chatSVG from '@/app/assets/icons/chat-white.svg';
+import phoneSVG from '@/app/assets/icons/phone.svg';
+import clockSvg from '@/app/assets/icons/clock.svg';
+
+import { sendEmail } from '@/utils/sendEmail';
+import { createWorkingHours } from '@/app/utils/createWorkingHours';
+
+import styles from './styles.module.scss';
+import clsx from 'clsx';
+
+const emailFields = {
+  name: 'name',
+  company: 'company',
+  service: 'service',
+  contactPreference: 'contactPreference',
+  contact: 'contact',
+  comment: 'comment',
+};
+
+export const Content = ({ isFormModal, globalSettings, sectionFormData }) => {
+  const { contacts, workingHours } = globalSettings;
+  const { phone } = contacts;
+  const {
+    title,
+    subtitle,
+    info,
+    submitBtn,
+    inputName,
+    selectServices,
+    selectContact,
+    inputContact,
+    textareaComment,
+    legals,
+    inputCompany,
+  } = sectionFormData;
+
+  const time = createWorkingHours(workingHours);
+
+  const form = useForm({
+    mode: 'uncontrolled',
+    initialValues: Object.values(emailFields).reduce(
+      (acc, key) => ({ ...acc, [key]: '' }),
+      {},
+    ),
+  });
+
+  const createFormInput = (label, key) => (
+    <InputField
+      type="text"
+      label={label}
+      isEmpty={!form.getValues()[key]}
+      key={form.key(key)}
+      {...form.getInputProps(key)}
+    />
+  );
+
+  const onSelectChange = (key) => (option) => {
+    form.setFieldValue(key, option.label);
+  };
+
+  const createFormSelect = (label, key, options) => (
+    <SelectField
+      label={label}
+      options={options}
+      onSelect={onSelectChange(key)}
+    />
+  );
+
+  const createTextarea = (label, key) => (
+    <TextareaField
+      label={label}
+      isEmpty={!form.getValues()[key]}
+      key={form.key(key)}
+      {...form.getInputProps(key)}
+    />
+  );
+
+  const createCheckbox = (label) => <Checkbox required label={label} />;
+
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
+  const handleSubmitCallback = async (values) => {
+    if (!executeRecaptcha) {
+      console.log('Not available to proceed recaptcha');
+      return;
+    }
+
+    const gRecaptchaToken = await executeRecaptcha('inquirySubmit');
+
+    await sendEmail({
+      gRecaptchaToken,
+      emailTemplate: 'ContactSubmission',
+      payload: values,
+    });
+  };
+
+  return (
+    <div
+      className={clsx(
+        isFormModal && styles.modalFormWrapper,
+        styles.formWrapper,
+      )}
+    >
+      <section className={styles.contacts}>
+        <header>
+          <h3>{title}</h3>
+          <p>{subtitle}</p>
+        </header>
+
+        <div className="icon">
+          <Image src={chatSVG} alt="Icon" width={226} height={226} />
+        </div>
+
+        <ul>
+          <li>
+            <p>{info}</p>
+          </li>
+          <li>
+            <Image src={phoneSVG} alt="Icon" width={38} height={38} />
+            <h4>
+              <a href={`tel:${phone}`}>{phone}</a>
+            </h4>
+          </li>
+          <li>
+            <Image src={whatsappSVG} alt="Icon" width={38} height={38} />
+            <h4>{phone}</h4>
+          </li>
+
+          <li>
+            <a href="/">
+              <Image src={clockSvg} alt="Clock icon" width={24} height={24} />
+              <div className={styles.workHours}>{time}</div>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <form
+        className={styles.form}
+        onSubmit={form.onSubmit(async (values) => {
+          await handleSubmitCallback(values);
+        })}
+      >
+        {createFormInput(inputName.label, emailFields.name)}
+        {createFormInput(inputCompany.label, emailFields.company)}
+        {createFormSelect(
+          selectServices.label,
+          emailFields.service,
+          selectServices.options,
+        )}
+        {createFormSelect(
+          selectContact.label,
+          emailFields.contactPreference,
+          selectContact.options,
+        )}
+        {createFormInput(inputContact.label, emailFields.contact)}
+        {createTextarea(textareaComment.label, emailFields.comment)}
+
+        {legals.map((item) => createCheckbox(item.label))}
+
+        <Button content="center" size="lg" type="submit">
+          {submitBtn}
+        </Button>
+      </form>
+    </div>
+  );
+};
+
+export default Content;

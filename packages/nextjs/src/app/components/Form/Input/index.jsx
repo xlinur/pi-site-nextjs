@@ -2,7 +2,7 @@
 import styles from './styles.module.scss';
 import clsx from 'clsx';
 
-const InputField = ({ type = 'text', label, isEmpty, ...props }) => {
+const InputField = ({ type = 'text', label, isEmpty, required, ...props }) => {
   // const [value, setValue] = useState("");
   // const [isEmpty, setIsEmpty] = useState(true);
   //
@@ -22,7 +22,7 @@ const InputField = ({ type = 'text', label, isEmpty, ...props }) => {
 
   return (
     <label data-empty={isEmpty} className={styles.container}>
-      <input type={type} className={classes} {...props} />
+      <input type={type} className={classes} required={required} {...props} />
       <div className={styles.label}>{label}</div>
     </label>
   );

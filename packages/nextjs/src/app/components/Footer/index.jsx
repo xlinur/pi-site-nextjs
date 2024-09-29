@@ -16,7 +16,15 @@ const Footer = async () => {
 
   const { mainNav, secondaryNav } = await fetchMenu();
   const { supportBlockTitle, contactsBlockTitle } = await getGlobalDictionary();
-  const { contacts, address, workingHours } = await getGlobalSettings();
+  const {
+    contacts,
+    address,
+    workingHours,
+    copyright,
+    registration,
+    privacyPolicy,
+    candidatePolicy,
+  } = await getGlobalSettings();
 
   const links = [...mainNav, ...secondaryNav].reduce((acc, item) => {
     if (item.childs) {
@@ -29,14 +37,6 @@ const Footer = async () => {
   const support = createSupportData({ contacts });
   const socials = createSocialsData({ contacts });
   const time = createWorkingHours(workingHours);
-  const year = new Date();
-
-  const mok = {
-    allRight: 'PersonalInvest All right reserved',
-    regNo: 'PLC «Personalinvest OÜ » Reg. No. 16106367',
-    policyCookies: 'Privacy Policy and our Cookies Policy Privacy',
-    policyCandidates: 'Policy for candidates Terms and Conditions',
-  };
 
   return (
     <div className={styles.footerWrapper}>
@@ -126,20 +126,14 @@ const Footer = async () => {
 
           <div className={styles.footerCopyright}>
             <div className={styles.footerCopyrightBlock}>
-              <p className={styles.footerCopyrightText}>
-                ©{year.getFullYear()} {mok.allRight}
-              </p>
-              <p className={styles.footerCopyrightPolicies}>{mok.regNo}</p>
+              <p className={styles.footerCopyrightText}>{copyright}</p>
+              <p className={styles.footerCopyrightPolicies}>{registration}</p>
             </div>
 
             <div className={styles.footerCopyrightBlockContain}>
-              <p className={styles.footerCopyrightPolicies}>
-                {mok.policyCookies}
-              </p>
+              <p className={styles.footerCopyrightPolicies}>{privacyPolicy}</p>
 
-              <p className={styles.footerCopyrightTerms}>
-                {mok.policyCandidates}
-              </p>
+              <p className={styles.footerCopyrightTerms}>{candidatePolicy}</p>
             </div>
           </div>
         </footer>
