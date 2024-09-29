@@ -4,6 +4,7 @@ import { Roboto } from 'next/font/google';
 import GoogleCaptchaWrapper from '@/app/components/GoogleCaptchaWrapper';
 import GoogleAnalytics from '@/app/components/GoogleAnalytics';
 import ModalComponent from '@/app/components/Modal';
+import GdprMessage from '@/app/components/GdprMessage';
 import ContactForm from '@/app/components/ContactForm';
 
 import '@/app/styles/globals.scss';
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
         <ModalComponent>
           <ContactForm isFormModal />
         </ModalComponent>
+        <GdprMessage />
       </body>
     </html>
   );
