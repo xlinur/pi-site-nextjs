@@ -2,6 +2,8 @@
 
 import { Roboto } from 'next/font/google';
 import GoogleCaptchaWrapper from '@/app/GoogleCaptchaWrapper';
+import ModalComponent from '@/app/components/Modal';
+import ContactForm from '@/app/components/ContactForm';
 
 import '@/app/styles/globals.scss';
 
@@ -15,6 +17,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={roboto.className}>
         <GoogleCaptchaWrapper>{children}</GoogleCaptchaWrapper>
+        <ModalComponent>
+          <ContactForm isFormModal />
+        </ModalComponent>
       </body>
     </html>
   );
