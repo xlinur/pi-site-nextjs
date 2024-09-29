@@ -7,7 +7,12 @@ import styles from './styles.module.scss';
 import SidebarMenu from '../SidebarMenu';
 import { useState } from 'react';
 
-const Naviagation = ({ mainNav, secondaryNav }) => {
+const Naviagation = ({
+  mainNav,
+  secondaryNav,
+  globalDictionary,
+  globalSettings,
+}) => {
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
 
   const handleOpenSidebar = () => {
@@ -81,6 +86,8 @@ const Naviagation = ({ mainNav, secondaryNav }) => {
         onClose={handleOpenSidebar}
         mainNav={mainNav}
         secondaryNav={secondaryNav}
+        globalDictionary={globalDictionary}
+        globalSettings={globalSettings}
       />
     </>
   );

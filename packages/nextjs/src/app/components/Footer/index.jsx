@@ -1,26 +1,22 @@
 import Image from 'next/image';
 import Button from '@/app/components/Button';
-import { useGetNavigation } from '@/app/components/hooks/useGetNavigation';
+import { useGetNavigation } from '@/app/hooks/useGetNavigation';
 import logoPng from '@/app/assets/logo.png';
-import emailSvg from '@/app/assets/icons/social/email.svg';
-import whatsappSvg from '@/app/assets/icons/social/whatsapp.svg';
-import telegramSvg from '@/app/assets/icons/social/telegram.svg';
-import facebookSvg from '@/app/assets/icons/social/facebook.svg';
-import instagramSvg from '@/app/assets/icons/social/instagram.svg';
-import linkedinSvg from '@/app/assets/icons/social/linkedin.svg';
 import clockSvg from '@/app/assets/icons/clock.svg';
 import locationPin from '@/app/assets/icons/location-pin.svg';
 import getGlobalDictionary from '@/app/api/strapi/globalDictionary/route';
 import getGlobalSettings from '@/app/api/strapi/globalSettings/route';
-import { getTimezoneOffset } from '@/utils/getTimezoneOffset';
+import { createSocialsData } from '@/app/utils/createSocialsData';
+import { createSupportData } from '@/app/utils/createSupportData';
+import { createWorkingHours } from '@/app/utils/createWorkingHours';
 import styles from './styles.module.scss';
 
 const Footer = async () => {
   const { fetchMenu } = useGetNavigation();
 
   const { mainNav, secondaryNav } = await fetchMenu();
-  const { supportBlockTitle, contactsBlockTitle } = getGlobalDictionary();
-  const { contacts = {}, address, workingHours } = getGlobalSettings();
+  const { supportBlockTitle, contactsBlockTitle } = await getGlobalDictionary();
+  const { contacts, address, workingHours } = await getGlobalSettings();
 
   const links = [...mainNav, ...secondaryNav].reduce((acc, item) => {
     if (item.childs) {
@@ -30,45 +26,10 @@ const Footer = async () => {
     return [...acc, item];
   }, []);
 
-  const support = [
-    {
-      img: telegramSvg,
-      link: contacts.telegram,
-      name: 'Telegram',
-    },
-    {
-      img: whatsappSvg,
-      link: contacts.whatsapp,
-      name: 'WhatsApp',
-    },
-    {
-      img: emailSvg,
-      link: contacts.email,
-      name: contacts.email,
-    },
-  ];
-
-  const socials = [
-    {
-      img: linkedinSvg,
-      link: contacts.linkedin,
-      name: 'LinkedIn',
-    },
-    {
-      img: instagramSvg,
-      link: contacts.instagram,
-      name: 'Instagram',
-    },
-    {
-      img: facebookSvg,
-      link: contacts.facebook,
-      name: 'Facebook',
-    },
-  ];
-
+  const support = createSupportData({ contacts });
+  const socials = createSocialsData({ contacts });
+  const time = createWorkingHours(workingHours);
   const year = new Date();
-
-  const time = `${workingHours} ${getTimezoneOffset()}`;
 
   const mok = {
     allRight: 'PersonalInvest All right reserved',
