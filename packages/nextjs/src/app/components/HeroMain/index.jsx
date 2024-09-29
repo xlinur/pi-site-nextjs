@@ -30,7 +30,7 @@ export default async function HeroMain({
           </header>
 
           <div className={styles.sectionHeroActions}>
-            {hireNowBtn && <Button withIcon name={candidateBtn.name} />}
+            {hireNowBtn && <Button withIcon name={hireNowBtn.name} openModal />}
             {candidateBtn && (
               <Button theme="secondary" name={candidateBtn.name} />
             )}

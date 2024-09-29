@@ -1,0 +1,15 @@
+.dialogWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: inline-flex;
+  // width: 40px;
+  // height: 40px;
+}

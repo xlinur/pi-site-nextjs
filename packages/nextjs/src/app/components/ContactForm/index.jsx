@@ -16,6 +16,8 @@ import phoneSVG from '@/app/assets/icons/phone.svg';
 import clockSvg from '@/app/assets/icons/clock.svg';
 
 import styles from './styles.module.scss';
+import clsx from 'clsx';
+import { useState } from 'react';
 
 export const optionsServices = [
   { value: 'IT recruitment', label: 'IT recruitment' },
@@ -34,30 +36,30 @@ export const optionsContactPreferences = [
   { value: 'phone', label: 'Phone' },
 ];
 
-export const ContactForm = () => {
-  const mok = {
-    title: 'Start a conversation',
-    subTitle: 'Leave a request and we will contact you within an hour.',
-    info: 'Or contact us by phone:',
+const mok = {
+  title: 'Start a conversation',
+  subTitle: 'Leave a request and we will contact you within an hour.',
+  info: 'Or contact us by phone:',
 
-    nameLabel: 'Name',
-    emailLabel: 'E-mail or nickname',
-    companyLabel: 'Company',
-    serviceSelect: {
-      label: 'Select services',
-      options: optionsServices,
-    },
-    contactSelect: {
-      label: 'Contact preferences',
-      options: optionsContactPreferences,
-    },
-    descriptionLabel: 'Comments (optional)',
-    legalCheckboxText:
-      'Yes, I have read and agree to the Data Privacy and Legal Notice.',
+  nameLabel: 'Name',
+  emailLabel: 'E-mail or nickname',
+  companyLabel: 'Company',
+  serviceSelect: {
+    label: 'Select services',
+    options: optionsServices,
+  },
+  contactSelect: {
+    label: 'Contact preferences',
+    options: optionsContactPreferences,
+  },
+  descriptionLabel: 'Comments (optional)',
+  legalCheckboxText:
+    'Yes, I have read and agree to the Data Privacy and Legal Notice.',
 
-    submitBtn: 'Send',
-  };
+  submitBtn: 'Send',
+};
 
+export const ContactForm = ({ isFormModal }) => {
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
@@ -69,6 +71,7 @@ export const ContactForm = () => {
       comment: '',
     },
   });
+  const [isFromSubmitted, setIsFromSubmitted] = useState(true);
 
   const isNameEmpty = !form.getValues().name;
   const isCompanyEmpty = !form.getValues().company;
@@ -118,6 +121,7 @@ export const ContactForm = () => {
           'Content-Type': 'application/json',
         },
       });
+      setIsFromSubmitted(true);
       console.log(responseContactFormResult);
     } else {
       console.log('Failed to verify via recaptcha');
@@ -125,7 +129,12 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className={styles.formWrapper}>
+    <div
+      className={clsx(
+        isFormModal && styles.modalFormWrapper,
+        styles.formWrapper,
+      )}
+    >
       <section className={styles.contacts}>
         <header>
           <h3>{mok.title}</h3>
