@@ -1,3 +1,4 @@
+import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionAboutPersonalinvest from '@/app/components/Sections/SectionAboutPersonalinvest';
@@ -13,6 +14,12 @@ import SectionTrustedMap from '@/app/components/Sections/SectionTrustedMap';
 import pageAboutUs from '@/app/api/strapi/pageAboutUs/route';
 
 import styles from './styles.module.scss';
+
+export const generateMetadata = async () => {
+  const { SEO } = await pageAboutUs();
+
+  return createMetadataFromSeo(SEO);
+};
 
 export default async function PageAboutUs() {
   const { AnimatedHero, TreeSection, OurFounder, OurTeam } =

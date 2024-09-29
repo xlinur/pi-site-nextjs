@@ -1,3 +1,4 @@
+import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import ContactForm from '@/app/components/ContactForm';
@@ -13,6 +14,12 @@ import SectionPricing from '@/app/components/Sections/SectionPricing';
 import pageRecruitment from '@/app/api/strapi/pageRecruitment/route';
 
 import styles from './styles.module.scss';
+
+export const generateMetadata = async () => {
+  const { SEO } = await pageRecruitment();
+
+  return createMetadataFromSeo(SEO);
+};
 
 export default async function PageRecruitment() {
   const {

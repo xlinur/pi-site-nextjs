@@ -1,3 +1,4 @@
+import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
@@ -11,6 +12,12 @@ import SectionExamplesOfBestPractices from '@/app/components/Sections/SectionExa
 import styles from './styles.module.scss';
 
 import pageConsulting from '@/app/api/strapi/pageConsulting/route';
+
+export const generateMetadata = async () => {
+  const { SEO } = await pageConsulting();
+
+  return createMetadataFromSeo(SEO);
+};
 
 export default async function PageConsulting() {
   const {

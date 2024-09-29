@@ -1,3 +1,4 @@
+import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import HeroMain from '@/app/components/HeroMain';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
@@ -15,6 +16,12 @@ import CardSocialMedia from '@/app/components/Cards/CardSocialMedia';
 import homePageRequest from '@/app/api/strapi/homePage/route';
 
 import styles from './styles.module.scss';
+
+export const generateMetadata = async () => {
+  const { SEO } = await homePageRequest();
+
+  return createMetadataFromSeo(SEO);
+};
 
 export default async function Home() {
   const {

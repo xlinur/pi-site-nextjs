@@ -1,3 +1,4 @@
+import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionInfoWithCards from '@/app/components/Sections/SectionInfoWithCards';
@@ -13,6 +14,12 @@ import ContactForm from '@/app/components/ContactForm';
 import pageExecutiveSearch from '@/app/api/strapi/pageExecutiveSearch/route';
 
 import styles from './styles.module.scss';
+
+export const generateMetadata = async () => {
+  const { SEO } = await pageExecutiveSearch();
+
+  return createMetadataFromSeo(SEO);
+};
 
 export default async function ExecutiveSearchPage() {
   const {

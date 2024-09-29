@@ -1,3 +1,4 @@
+import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionInfoWithCards from '@/app/components/Sections/SectionInfoWithCards';
@@ -13,6 +14,12 @@ import styles from './styles.module.scss';
 
 import { route, casesBySpheres } from '@/app/api/strapi/pageSpheres/route';
 
+export const generateMetadata = async () => {
+  const { SEO } = await casesBySpheres();
+
+  return createMetadataFromSeo(SEO);
+};
+
 export default async function SpheresPage({ params }) {
   const { slug } = params;
   const {
@@ -21,7 +28,6 @@ export default async function SpheresPage({ params }) {
     SectorsGrid,
     SectionWithIndustriesImage,
     feedbacks,
-    Seo,
   } = await route(slug);
 
   const cases = await casesBySpheres();

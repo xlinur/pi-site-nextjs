@@ -1,3 +1,4 @@
+import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
@@ -8,6 +9,12 @@ import ContactForm from '@/app/components/ContactForm';
 import styles from './styles.module.scss';
 
 import pageRelocationHelp from '@/app/api/strapi/pageRelocationHelp/route';
+
+export const generateMetadata = async () => {
+  const { SEO } = await pageRelocationHelp();
+
+  return createMetadataFromSeo(SEO);
+};
 
 export default async function RelocationHelpPage() {
   const { RelocationHelpHero, BlockStepsPlan } = await pageRelocationHelp();

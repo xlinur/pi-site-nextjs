@@ -1,8 +1,13 @@
+import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionHeroVacancies from '@/app/components/Sections/SectionHeroVacancies';
 import SectionFindVacancy from '@/app/components/Sections/SectionFindVacancy';
 
 import styles from './styles.module.scss';
+
+export const generateMetadata = async () => {
+  return createMetadataFromSeo({});
+};
 
 export default async function PageVacancies() {
   return (

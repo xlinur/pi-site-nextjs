@@ -1,3 +1,4 @@
+import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
@@ -11,6 +12,12 @@ import SectionAnalyticsServices from '@/app/components/Sections/SectionAnalytics
 import styles from './styles.module.scss';
 
 import pageAnalytics from '@/app/api/strapi/pageAnalytics/route';
+
+export const generateMetadata = async () => {
+  const { SEO } = await pageAnalytics();
+
+  return createMetadataFromSeo(SEO);
+};
 
 export default async function SpheresPage() {
   const { AnimatedHero, AnalyticsServices, WhyInfoSection, Pricing } =

@@ -1,3 +1,4 @@
+import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import ContactForm from '@/app/components/ContactForm';
@@ -10,6 +11,12 @@ import SectionKeySectors from '@/app/components/Sections/SectionKeySectors';
 import pageIndustries from '@/app/api/strapi/pageIndustries/route';
 
 import styles from './styles.module.scss';
+
+export const generateMetadata = async () => {
+  const { SEO } = await pageIndustries();
+
+  return createMetadataFromSeo(SEO);
+};
 
 export default async function PageIndustries() {
   const { AnimatedHero, SectorsGrid, TreeSection, SectionWithIndustriesImage } =

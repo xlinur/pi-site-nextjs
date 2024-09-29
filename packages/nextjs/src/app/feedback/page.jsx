@@ -1,3 +1,4 @@
+import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import Button from '@/app/components/Button';
 import ContactForm from '@/app/components/ContactForm';
@@ -5,6 +6,12 @@ import CardFeedback from '@/app/components/Cards/CardFeedback';
 
 import styles from './styles.module.scss';
 import pageFeedbacks from '@/app/api/strapi/pageFeedbacks/route';
+
+export const generateMetadata = async () => {
+  const { SEO } = await pageFeedbacks();
+
+  return createMetadataFromSeo(SEO);
+};
 
 export default async function PageFeedback() {
   const { title, moreReviewsBtn } = await pageFeedbacks();
