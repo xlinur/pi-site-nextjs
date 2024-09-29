@@ -1,3 +1,4 @@
+import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionInfoWithCards from '@/app/components/Sections/SectionInfoWithCards';
 import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
@@ -25,52 +26,54 @@ export default async function ExecutiveSearchPage() {
   } = await pageExecutiveSearch();
 
   return (
-    <main>
-      <SectionHero {...AnimatedHero} />
+    <PageTemplate>
+      <main>
+        <SectionHero {...AnimatedHero} />
 
-      <div className="container">
-        <SectionInfoWithCards {...InfoWithCards} />
-      </div>
-
-      <div className="container">
-        <SectionHowWeWork {...TreeSection} />
-      </div>
-
-      <div className="container">
-        <SectionTypesOfRecruitment {...TypesOfRecruitment} />
-      </div>
-
-      <SectionNeedHelpSection {...NeedHelpSection} />
-
-      <div className="container">
-        <SectionPricing {...Pricing} />
-      </div>
-
-      <div className={styles.sectionCustomVisionWrapper}>
         <div className="container">
-          <SectionCustomVision {...SectionWithIndustriesImage} />
+          <SectionInfoWithCards {...InfoWithCards} />
         </div>
-      </div>
 
-      <div className={styles.sectionFeedbackWrapper}>
-        <SectionFeedbackList firstSlideTheme="white" />
-      </div>
-
-      <SectionCompaniesLogo />
-
-      <div className={styles.sectionHelpWrapper}>
         <div className="container">
-          <SectionWeCanHelp />
+          <SectionHowWeWork {...TreeSection} />
         </div>
-      </div>
 
-      <div className={styles.sectionFormWrapper}>
         <div className="container">
-          <section className={styles.sectionForm}>
-            <ContactForm />
-          </section>
+          <SectionTypesOfRecruitment {...TypesOfRecruitment} />
         </div>
-      </div>
-    </main>
+
+        <SectionNeedHelpSection {...NeedHelpSection} />
+
+        <div className="container">
+          <SectionPricing {...Pricing} />
+        </div>
+
+        <div className={styles.sectionCustomVisionWrapper}>
+          <div className="container">
+            <SectionCustomVision {...SectionWithIndustriesImage} />
+          </div>
+        </div>
+
+        <div className={styles.sectionFeedbackWrapper}>
+          <SectionFeedbackList firstSlideTheme="white" />
+        </div>
+
+        <SectionCompaniesLogo />
+
+        <div className={styles.sectionHelpWrapper}>
+          <div className="container">
+            <SectionWeCanHelp />
+          </div>
+        </div>
+
+        <div className={styles.sectionFormWrapper}>
+          <div className="container">
+            <section className={styles.sectionForm}>
+              <ContactForm />
+            </section>
+          </div>
+        </div>
+      </main>
+    </PageTemplate>
   );
 }

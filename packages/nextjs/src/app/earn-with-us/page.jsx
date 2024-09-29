@@ -1,3 +1,4 @@
+import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import Advantages from '@/app/components/Advantages';
 import ContactForm from '@/app/components/ContactForm';
@@ -18,43 +19,45 @@ export default async function PageEarnWithUs() {
     OurProcessOfInteraction,
   } = await pageEarnWithUs();
   return (
-    <main className={styles.pageContactUs}>
-      <SectionHero {...AnimatedHero} />
+    <PageTemplate>
+      <main className={styles.pageContactUs}>
+        <SectionHero {...AnimatedHero} />
 
-      <div className="container">
-        <Advantages advantages={advantages.advantage} />
-      </div>
-
-      <div className="container">
-        <div className={styles.wrapperSectionHowWeWork}>
-          <SectionHowWeWork
-            {...OurProcessOfInteraction.treeSection}
-            type="horizontal"
-          />
-
-          <Button size="lg" name={OurProcessOfInteraction.applyNowBtn.name} />
-        </div>
-      </div>
-
-      <div className="container">
-        <SectionPaymentTerms />
-      </div>
-
-      {/* @Component SectionWeCanHelp */}
-      <div className={styles.sectionHelpWrapper}>
         <div className="container">
-          <SectionWeCanHelp />
+          <Advantages advantages={advantages.advantage} />
         </div>
-      </div>
 
-      {/* @Component SectionContactForm */}
-      <div className={styles.sectionFormWrapper}>
         <div className="container">
-          <section className={styles.sectionForm}>
-            <ContactForm />
-          </section>
+          <div className={styles.wrapperSectionHowWeWork}>
+            <SectionHowWeWork
+              {...OurProcessOfInteraction.treeSection}
+              type="horizontal"
+            />
+
+            <Button size="lg" name={OurProcessOfInteraction.applyNowBtn.name} />
+          </div>
         </div>
-      </div>
-    </main>
+
+        <div className="container">
+          <SectionPaymentTerms />
+        </div>
+
+        {/* @Component SectionWeCanHelp */}
+        <div className={styles.sectionHelpWrapper}>
+          <div className="container">
+            <SectionWeCanHelp />
+          </div>
+        </div>
+
+        {/* @Component SectionContactForm */}
+        <div className={styles.sectionFormWrapper}>
+          <div className="container">
+            <section className={styles.sectionForm}>
+              <ContactForm />
+            </section>
+          </div>
+        </div>
+      </main>
+    </PageTemplate>
   );
 }

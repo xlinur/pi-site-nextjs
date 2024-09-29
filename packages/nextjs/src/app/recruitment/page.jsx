@@ -1,3 +1,4 @@
+import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import ContactForm from '@/app/components/ContactForm';
 
@@ -25,50 +26,52 @@ export default async function PageRecruitment() {
   } = await pageRecruitment();
 
   return (
-    <main className={styles.pageRecruitment}>
-      <SectionHero {...AnimatedHero} />
+    <PageTemplate>
+      <main className={styles.pageRecruitment}>
+        <SectionHero {...AnimatedHero} />
 
-      <div className="container">
-        <SectionInfoWithCards {...InfoWithCards} />
-      </div>
-
-      <div className="container">
-        <SectionHowWeWork {...TreeSection} />
-      </div>
-
-      <div className="container">
-        <SectionTypesOfRecruitment {...TypesOfRecruitment} />
-      </div>
-
-      <SectionNeedHelpSection {...NeedHelpSection} />
-
-      {/* @Component(single) Pricing */}
-      <div className="container">
-        <SectionPricing {...Pricing} />
-      </div>
-
-      {/* @Component SectionCustomVision */}
-      <div className={styles.sectionCustomVisionWrapper}>
         <div className="container">
-          <SectionCustomVision {...SectionWithIndustriesImage} />
+          <SectionInfoWithCards {...InfoWithCards} />
         </div>
-      </div>
 
-      {/* @Component SectionWeCanHelp */}
-      <div className={styles.sectionHelpWrapper}>
         <div className="container">
-          <SectionWeCanHelp />
+          <SectionHowWeWork {...TreeSection} />
         </div>
-      </div>
 
-      {/* @Component SectionContactForm */}
-      <div className={styles.sectionFormWrapper}>
         <div className="container">
-          <section className={styles.sectionForm}>
-            <ContactForm />
-          </section>
+          <SectionTypesOfRecruitment {...TypesOfRecruitment} />
         </div>
-      </div>
-    </main>
+
+        <SectionNeedHelpSection {...NeedHelpSection} />
+
+        {/* @Component(single) Pricing */}
+        <div className="container">
+          <SectionPricing {...Pricing} />
+        </div>
+
+        {/* @Component SectionCustomVision */}
+        <div className={styles.sectionCustomVisionWrapper}>
+          <div className="container">
+            <SectionCustomVision {...SectionWithIndustriesImage} />
+          </div>
+        </div>
+
+        {/* @Component SectionWeCanHelp */}
+        <div className={styles.sectionHelpWrapper}>
+          <div className="container">
+            <SectionWeCanHelp />
+          </div>
+        </div>
+
+        {/* @Component SectionContactForm */}
+        <div className={styles.sectionFormWrapper}>
+          <div className="container">
+            <section className={styles.sectionForm}>
+              <ContactForm />
+            </section>
+          </div>
+        </div>
+      </main>
+    </PageTemplate>
   );
 }

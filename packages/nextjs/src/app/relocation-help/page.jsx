@@ -1,3 +1,4 @@
+import PageTemplate from '@/app/components/PageTemplate';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionRelocationHelpHero from '@/app/components/Sections/SectionRelocationHelpHero';
@@ -12,32 +13,34 @@ export default async function RelocationHelpPage() {
   const { RelocationHelpHero, BlockStepsPlan } = await pageRelocationHelp();
 
   return (
-    <main className={styles.relocationHelpPage}>
-      <div className="container">
-        <SectionRelocationHelpHero {...RelocationHelpHero} />
-      </div>
-
-      <div className="container">
-        <SectionBlockStepsPlan {...BlockStepsPlan} />
-      </div>
-
-      <div className={styles.sectionFeedbackWrapper}>
-        <SectionFeedbackList firstSlideTheme="white" />
-      </div>
-
-      <div className={styles.sectionHelpWrapper}>
+    <PageTemplate>
+      <main className={styles.relocationHelpPage}>
         <div className="container">
-          <SectionWeCanHelp />
+          <SectionRelocationHelpHero {...RelocationHelpHero} />
         </div>
-      </div>
 
-      <div className={styles.sectionFormWrapper}>
         <div className="container">
-          <section className={styles.sectionForm}>
-            <ContactForm />
-          </section>
+          <SectionBlockStepsPlan {...BlockStepsPlan} />
         </div>
-      </div>
-    </main>
+
+        <div className={styles.sectionFeedbackWrapper}>
+          <SectionFeedbackList firstSlideTheme="white" />
+        </div>
+
+        <div className={styles.sectionHelpWrapper}>
+          <div className="container">
+            <SectionWeCanHelp />
+          </div>
+        </div>
+
+        <div className={styles.sectionFormWrapper}>
+          <div className="container">
+            <section className={styles.sectionForm}>
+              <ContactForm />
+            </section>
+          </div>
+        </div>
+      </main>
+    </PageTemplate>
   );
 }

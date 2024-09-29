@@ -1,3 +1,4 @@
+import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
@@ -16,44 +17,46 @@ export default async function SpheresPage() {
     await pageAnalytics();
 
   return (
-    <main>
-      <SectionHero {...AnimatedHero} />
+    <PageTemplate>
+      <main>
+        <SectionHero {...AnimatedHero} />
 
-      <div className="container">
-        <SectionAnalyticsServices {...AnalyticsServices} />
-      </div>
-
-      <div className="container">
-        <SectionWhyInfo {...WhyInfoSection} />
-      </div>
-
-      <div className="container">
-        <SectionPricing {...Pricing} />
-      </div>
-
-      <div className={styles.sectionFeedbackWrapper}>
-        <SectionFeedbackList firstSlideTheme="white" />
-      </div>
-
-      <div className="container">
-        <SectionIndividualReport />
-      </div>
-
-      {/* @Component SectionWeCanHelp */}
-      <div className={styles.sectionHelpWrapper}>
         <div className="container">
-          <SectionWeCanHelp />
+          <SectionAnalyticsServices {...AnalyticsServices} />
         </div>
-      </div>
 
-      {/* @Component SectionContactForm */}
-      <div className={styles.sectionFormWrapper}>
         <div className="container">
-          <section className={styles.sectionForm}>
-            <ContactForm />
-          </section>
+          <SectionWhyInfo {...WhyInfoSection} />
         </div>
-      </div>
-    </main>
+
+        <div className="container">
+          <SectionPricing {...Pricing} />
+        </div>
+
+        <div className={styles.sectionFeedbackWrapper}>
+          <SectionFeedbackList firstSlideTheme="white" />
+        </div>
+
+        <div className="container">
+          <SectionIndividualReport />
+        </div>
+
+        {/* @Component SectionWeCanHelp */}
+        <div className={styles.sectionHelpWrapper}>
+          <div className="container">
+            <SectionWeCanHelp />
+          </div>
+        </div>
+
+        {/* @Component SectionContactForm */}
+        <div className={styles.sectionFormWrapper}>
+          <div className="container">
+            <section className={styles.sectionForm}>
+              <ContactForm />
+            </section>
+          </div>
+        </div>
+      </main>
+    </PageTemplate>
   );
 }

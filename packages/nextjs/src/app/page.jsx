@@ -1,3 +1,4 @@
+import PageTemplate from '@/app/components/PageTemplate';
 import HeroMain from '@/app/components/HeroMain';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
@@ -25,76 +26,78 @@ export default async function Home() {
   } = await homePageRequest();
 
   return (
-    <main className={styles.pageMain}>
-      <HeroMain {...HeroSection} />
+    <PageTemplate>
+      <main className={styles.pageMain}>
+        <HeroMain {...HeroSection} />
 
-      <div className={styles.sectionHelpWrapper}>
-        <div className="container">
-          <SectionWeCanHelp />
+        <div className={styles.sectionHelpWrapper}>
+          <div className="container">
+            <SectionWeCanHelp />
+          </div>
         </div>
-      </div>
 
-      <div className={styles.sectionCustomVisionWrapper}>
-        <div className="container">
-          <SectionCustomVision {...SectionWithIndustriesImage} />
+        <div className={styles.sectionCustomVisionWrapper}>
+          <div className="container">
+            <SectionCustomVision {...SectionWithIndustriesImage} />
+          </div>
         </div>
-      </div>
 
-      <div className={styles.sectionRecruitmentProcessWrapper}>
-        <div className="container">
-          <SectionRecruitmentProcess {...ExclusiveProcess} />
+        <div className={styles.sectionRecruitmentProcessWrapper}>
+          <div className="container">
+            <SectionRecruitmentProcess {...ExclusiveProcess} />
+          </div>
         </div>
-      </div>
 
-      <div className={styles.sectionPlanetWrapper}>
-        <div className="container">
-          <SectionTrustedMap />
+        <div className={styles.sectionPlanetWrapper}>
+          <div className="container">
+            <SectionTrustedMap />
+          </div>
         </div>
-      </div>
 
-      <div className={styles.sectionWhyWrapper}>
-        <div className="container">
-          <SectionWhyInfo {...WhyInfoSection} />
+        <div className={styles.sectionWhyWrapper}>
+          <div className="container">
+            <SectionWhyInfo {...WhyInfoSection} />
+          </div>
         </div>
-      </div>
 
-      <SectionCompaniesLogo />
+        <SectionCompaniesLogo />
 
-      <div className={styles.sectionFeedbackWrapper}>
-        <SectionFeedbackList />
-      </div>
-
-      <div className={styles.sectionMeetWrapper}>
-        <div className="container">
-          <SectionMeetGallery {...MeetOurTeam} />
+        <div className={styles.sectionFeedbackWrapper}>
+          <SectionFeedbackList />
         </div>
-      </div>
 
-      <div className={styles.sectionFormWrapper}>
-        <div className="container">
-          <section className={styles.sectionForm}>
-            <ContactForm />
-          </section>
+        <div className={styles.sectionMeetWrapper}>
+          <div className="container">
+            <SectionMeetGallery {...MeetOurTeam} />
+          </div>
         </div>
-      </div>
 
-      <div className={styles.sectionSocialMediaWrapper}>
-        <div className="container">
-          <section className={styles.sectionSocialMedia}>
-            <header>
-              <h3>
-                Follow us on <span>social media</span>
-              </h3>
-            </header>
-
-            <div className={styles.sectionSocialMediaList}>
-              <CardSocialMedia socialName="instagram" />
-              <CardSocialMedia socialName="linkedin" />
-              <CardSocialMedia socialName="facebook" />
-            </div>
-          </section>
+        <div className={styles.sectionFormWrapper}>
+          <div className="container">
+            <section className={styles.sectionForm}>
+              <ContactForm />
+            </section>
+          </div>
         </div>
-      </div>
-    </main>
+
+        <div className={styles.sectionSocialMediaWrapper}>
+          <div className="container">
+            <section className={styles.sectionSocialMedia}>
+              <header>
+                <h3>
+                  Follow us on <span>social media</span>
+                </h3>
+              </header>
+
+              <div className={styles.sectionSocialMediaList}>
+                <CardSocialMedia socialName="instagram" />
+                <CardSocialMedia socialName="linkedin" />
+                <CardSocialMedia socialName="facebook" />
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </PageTemplate>
   );
 }

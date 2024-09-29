@@ -1,3 +1,4 @@
+import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
@@ -20,44 +21,46 @@ export default async function PageConsulting() {
   } = await pageConsulting();
 
   return (
-    <main className={styles.relocationHelpPage}>
-      <SectionHero {...AnimatedHero} />
+    <PageTemplate>
+      <main className={styles.relocationHelpPage}>
+        <SectionHero {...AnimatedHero} />
 
-      {/* @Component */}
-      <div className="container">
-        <SectionConsultingServices {...ConsultingServices} />
-      </div>
-
-      <div className={styles.sectionWhyWrapper}>
+        {/* @Component */}
         <div className="container">
-          <SectionWhyInfo {...WhyInfoSection} />
+          <SectionConsultingServices {...ConsultingServices} />
         </div>
-      </div>
 
-      <div className="container">
-        <SectionExamplesOfBestPractices {...ExamplesOfBestPractices} />
-      </div>
+        <div className={styles.sectionWhyWrapper}>
+          <div className="container">
+            <SectionWhyInfo {...WhyInfoSection} />
+          </div>
+        </div>
 
-      {/* @Component SectionFeedbackList */}
-      <div className={styles.sectionFeedbackWrapper}>
-        <SectionFeedbackList firstSlideTheme="white" />
-      </div>
-
-      {/* @Component SectionWeCanHelp */}
-      <div className={styles.sectionHelpWrapper}>
         <div className="container">
-          <SectionWeCanHelp />
+          <SectionExamplesOfBestPractices {...ExamplesOfBestPractices} />
         </div>
-      </div>
 
-      {/* @Component SectionContactForm */}
-      <div className={styles.sectionFormWrapper}>
-        <div className="container">
-          <section className={styles.sectionForm}>
-            <ContactForm />
-          </section>
+        {/* @Component SectionFeedbackList */}
+        <div className={styles.sectionFeedbackWrapper}>
+          <SectionFeedbackList firstSlideTheme="white" />
         </div>
-      </div>
-    </main>
+
+        {/* @Component SectionWeCanHelp */}
+        <div className={styles.sectionHelpWrapper}>
+          <div className="container">
+            <SectionWeCanHelp />
+          </div>
+        </div>
+
+        {/* @Component SectionContactForm */}
+        <div className={styles.sectionFormWrapper}>
+          <div className="container">
+            <section className={styles.sectionForm}>
+              <ContactForm />
+            </section>
+          </div>
+        </div>
+      </main>
+    </PageTemplate>
   );
 }

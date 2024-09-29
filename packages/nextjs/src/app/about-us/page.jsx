@@ -1,3 +1,4 @@
+import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionAboutPersonalinvest from '@/app/components/Sections/SectionAboutPersonalinvest';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
@@ -18,54 +19,56 @@ export default async function PageAboutUs() {
     await pageAboutUs();
 
   return (
-    <main>
-      <SectionHero {...AnimatedHero} />
+    <PageTemplate>
+      <main>
+        <SectionHero {...AnimatedHero} />
 
-      <div className="container">
-        <div className={styles.firstBlock}>
-          <SectionAboutPersonalinvest />
-        </div>
-      </div>
-
-      <div className="container">
-        <SectionHowWeWork {...TreeSection} />
-      </div>
-
-      <div className="container">
-        <SectionOurFounder {...OurFounder} />
-      </div>
-
-      <div className="container">
-        <SectionOurTeam {...OurTeam} />
-      </div>
-
-      <div className="container">
-        <SectionTrustedMap variant="some" />
-      </div>
-
-      <SectionFeedbackList firstSlideTheme="dark" />
-
-      {/* @Component SectionWeCanHelp */}
-      <div className={styles.sectionHelpWrapper}>
         <div className="container">
-          <SectionWeCanHelp />
+          <div className={styles.firstBlock}>
+            <SectionAboutPersonalinvest />
+          </div>
         </div>
-      </div>
 
-      {/* @Component SectionContactForm */}
-      <div className={styles.sectionFormWrapper}>
         <div className="container">
-          <section className={styles.sectionForm}>
-            <ContactForm />
-          </section>
+          <SectionHowWeWork {...TreeSection} />
         </div>
-      </div>
 
-      <div className={styles.sectionSocialMediaWrapper}>
         <div className="container">
-          <SectionContactUs />
+          <SectionOurFounder {...OurFounder} />
         </div>
-      </div>
-    </main>
+
+        <div className="container">
+          <SectionOurTeam {...OurTeam} />
+        </div>
+
+        <div className="container">
+          <SectionTrustedMap variant="some" />
+        </div>
+
+        <SectionFeedbackList firstSlideTheme="dark" />
+
+        {/* @Component SectionWeCanHelp */}
+        <div className={styles.sectionHelpWrapper}>
+          <div className="container">
+            <SectionWeCanHelp />
+          </div>
+        </div>
+
+        {/* @Component SectionContactForm */}
+        <div className={styles.sectionFormWrapper}>
+          <div className="container">
+            <section className={styles.sectionForm}>
+              <ContactForm />
+            </section>
+          </div>
+        </div>
+
+        <div className={styles.sectionSocialMediaWrapper}>
+          <div className="container">
+            <SectionContactUs />
+          </div>
+        </div>
+      </main>
+    </PageTemplate>
   );
 }

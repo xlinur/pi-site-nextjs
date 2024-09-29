@@ -1,3 +1,4 @@
+import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionInfoWithCards from '@/app/components/Sections/SectionInfoWithCards';
 import SectionKeySectors from '@/app/components/Sections/SectionKeySectors';
@@ -26,46 +27,51 @@ export default async function SpheresPage({ params }) {
   const cases = await casesBySpheres();
 
   return (
-    <main>
-      <SectionHero {...AnimatedHero} />
+    <PageTemplate>
+      <main>
+        <SectionHero {...AnimatedHero} />
 
-      <div className="container">
-        <SectionInfoWithCards {...InfoWithCards} />
-      </div>
-
-      <div className="container">
-        <SectionKeySectors {...SectorsGrid} />
-      </div>
-
-      <div className={styles.sectionCustomVisionWrapper}>
         <div className="container">
-          <SectionCustomVision {...SectionWithIndustriesImage} />
+          <SectionInfoWithCards {...InfoWithCards} />
         </div>
-      </div>
 
-      <SectionCompaniesLogo />
-
-      <div className={styles.sectionFeedbackWrapper}>
-        <SectionFeedbackList inData={feedbacks.data} firstSlideTheme="white" />
-      </div>
-
-      <div className={styles.sectionMoreCasesWrapper}>
-        <SectionSuccessStories cases={cases} />
-      </div>
-
-      <div className={styles.sectionHelpWrapper}>
         <div className="container">
-          <SectionWeCanHelp />
+          <SectionKeySectors {...SectorsGrid} />
         </div>
-      </div>
 
-      <div className={styles.sectionFormWrapper}>
-        <div className="container">
-          <section className={styles.sectionForm}>
-            <ContactForm />
-          </section>
+        <div className={styles.sectionCustomVisionWrapper}>
+          <div className="container">
+            <SectionCustomVision {...SectionWithIndustriesImage} />
+          </div>
         </div>
-      </div>
-    </main>
+
+        <SectionCompaniesLogo />
+
+        <div className={styles.sectionFeedbackWrapper}>
+          <SectionFeedbackList
+            inData={feedbacks.data}
+            firstSlideTheme="white"
+          />
+        </div>
+
+        <div className={styles.sectionMoreCasesWrapper}>
+          <SectionSuccessStories cases={cases} />
+        </div>
+
+        <div className={styles.sectionHelpWrapper}>
+          <div className="container">
+            <SectionWeCanHelp />
+          </div>
+        </div>
+
+        <div className={styles.sectionFormWrapper}>
+          <div className="container">
+            <section className={styles.sectionForm}>
+              <ContactForm />
+            </section>
+          </div>
+        </div>
+      </main>
+    </PageTemplate>
   );
 }

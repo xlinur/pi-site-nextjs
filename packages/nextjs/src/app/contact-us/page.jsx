@@ -1,3 +1,4 @@
+import PageTemplate from '@/app/components/PageTemplate';
 import ContactForm from '@/app/components/ContactForm';
 import SectionContactUs from '@/app/components/Sections/SectionContactUs';
 
@@ -9,18 +10,20 @@ export default async function PageContactUs() {
   const { title } = await pageContactUs();
 
   return (
-    <main className={styles.pageContactUs}>
-      <div className="container">
-        <h1 className="h2">{title}</h1>
+    <PageTemplate>
+      <main className={styles.pageContactUs}>
+        <div className="container">
+          <h1 className="h2">{title}</h1>
 
-        <section className={styles.sectionForm}>
-          <ContactForm />
-        </section>
+          <section className={styles.sectionForm}>
+            <ContactForm />
+          </section>
 
-        <div className={styles.contactsSocialWrapper}>
-          <SectionContactUs withAdditionalInfo={true} />
+          <div className={styles.contactsSocialWrapper}>
+            <SectionContactUs withAdditionalInfo={true} />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </PageTemplate>
   );
 }
