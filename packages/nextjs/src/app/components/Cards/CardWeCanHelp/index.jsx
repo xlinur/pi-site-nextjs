@@ -27,7 +27,7 @@ const ArrowIcon = () => (
 );
 
 export const CardWeCanHelp = (props) => {
-  const { text, bgImage, href = '/', earnWithUsBtn } = props;
+  const { text, bgImage, href = '/', earnWithUsBtn, openModal } = props;
 
   const availableImages = {
     chat: chat,
@@ -47,7 +47,7 @@ export const CardWeCanHelp = (props) => {
       <div className={styles.withButton}>
         <h5 className={styles.cardText}>{text}</h5>
 
-        {earnWithUsBtn && <Button>{earnWithUsBtn}</Button>}
+        {earnWithUsBtn && <Button openModal={openModal}>{earnWithUsBtn}</Button>}
       </div>
 
       <span className={styles.cardBgImage}>

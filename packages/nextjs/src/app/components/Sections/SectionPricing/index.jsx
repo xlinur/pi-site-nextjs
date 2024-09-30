@@ -14,6 +14,10 @@ export default async function SectionPricing(props) {
         withIcon: true,
         iconRight: true,
       };
+    } else {
+      return {
+        openModal: true,
+      }
     }
 
     return {};

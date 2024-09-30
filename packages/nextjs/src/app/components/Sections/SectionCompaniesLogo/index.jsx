@@ -17,7 +17,7 @@ export default async function CompaniesLogo() {
         <SliderInfinityLogos data={logos.data} />
       </div>
 
-      <Button name={addLogoBtn.name} />
+      <Button name={addLogoBtn.name} openModal />
     </section>
   );
 }

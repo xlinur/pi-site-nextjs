@@ -72,6 +72,12 @@
     row-gap: 32px;
   }
 
+  .listWrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
   .list {
     display: flex;
     flex-direction: column;
@@ -91,8 +97,12 @@
     }
   }
 
+  .listTitle {
+    font-weight: 600;
+  }
+
   .contactNumber,
-  .listHeading {
+  .listTitle {
     display: none;
 
     @include md {

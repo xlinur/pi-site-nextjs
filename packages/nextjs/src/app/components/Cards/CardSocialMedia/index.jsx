@@ -1,29 +1,19 @@
 import Image from 'next/image';
 import styles from './styles.module.scss';
 
-import facebookSvg from '@/app/assets/icons/social/facebook-white.svg';
-import instagramSvg from '@/app/assets/icons/social/instagram-white.svg';
-import linkedinSvg from '@/app/assets/icons/social/linkedin-white.svg';
-
-const CardSocialMedia = ({ socialName }) => {
-  const SVGs = {
-    instagram: instagramSvg,
-    linkedin: linkedinSvg,
-    facebook: facebookSvg,
-  };
-
+const CardSocialMedia = ({ imgWhite, link, name }) => {
   return (
-    <a className={styles.card} href="#">
+    <a className={styles.card} href={link}>
       <span>
         <Image
-          src={SVGs[socialName]}
+          src={imgWhite}
           alt="social icon"
           width={20}
           height={20}
         />
       </span>
 
-      <span className={styles.socialName}>{socialName}</span>
+      <span className={styles.socialName}>{name}</span>
     </a>
   );
 };

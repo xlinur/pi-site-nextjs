@@ -3,6 +3,7 @@ import Button from '@/app/components/Button';
 import visionSVG from '@/app/assets/icons/vision.svg';
 import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
+import { routes } from '@/config/routes';
 import clsx from 'clsx';
 
 export default function SectionCustomVision({
@@ -26,7 +27,7 @@ export default function SectionCustomVision({
           <Markdown>{description}</Markdown>
         </div>
 
-        <Button withIcon name={moreInfo?.name} />
+        <Button withIcon name={moreInfo?.name} url={routes.industries()} />
       </div>
     </section>
   );

@@ -30,7 +30,7 @@ const Button = (props) => {
     name,
     withIcon = false,
     iconRight = false,
-    size = '', // lg | default - empty string
+    size = 'lg', // lg | default - empty string
     theme = 'primary', // primary | secondary | default | text
     disabled = false,
     content,

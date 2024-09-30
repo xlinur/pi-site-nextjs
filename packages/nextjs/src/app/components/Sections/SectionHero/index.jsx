@@ -3,6 +3,7 @@ import Button from '@/app/components/Button';
 
 import HeroAnimateBg from './HeroAnimateBg';
 import styles from './styles.module.scss';
+import { routes } from '@/config/routes';
 
 export default async function SectionHero({
   title,
@@ -25,7 +26,7 @@ export default async function SectionHero({
           <div className={styles.sectionHeroActions}>
             {hireNowBtn && <Button withIcon name={hireNowBtn.name} openModal />}
             {candidateBtn && (
-              <Button theme="secondary" name={candidateBtn.name} />
+              <Button theme="secondary" url={routes.vacancies()} name={candidateBtn.name} />
             )}
           </div>
         </section>

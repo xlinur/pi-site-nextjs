@@ -45,7 +45,7 @@ const Footer = async () => {
         <footer className={styles.footer}>
           <div className={styles.footerLinks}>
             {links.map((link) => (
-              <Button theme="default" key={link.url}>
+              <Button theme="default" key={link.url} url={link.url}>
                 {link.title}
               </Button>
             ))}

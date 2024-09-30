@@ -15,7 +15,7 @@ export default async function SectionTrustedMap({ variant = 'bigMap' }) {
     <section className={styles.sectionMapImg}>
       <header>
         <h2>{title}</h2>
-        <Button name={contactUsBtn.name} />
+        <Button name={contactUsBtn.name} openModal />
       </header>
 
       <Image src={countryMap} alt="countries" width={693} height={422} />

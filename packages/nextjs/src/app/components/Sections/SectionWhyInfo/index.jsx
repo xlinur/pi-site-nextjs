@@ -27,7 +27,7 @@ export default async function SectionWhyInfo({
         <div className={styles.reasonsItem}>
           <div className={styles.reasonsItemTitle}></div>
           <div className={styles.reasonsItemText}>
-            <Button name={findTalentBtn.name}></Button>
+            <Button name={findTalentBtn.name} openModal></Button>
           </div>
         </div>
       </div>

@@ -9,12 +9,12 @@ import SelectField from '@/app/components/Form/Select';
 import TextareaField from '@/app/components/Form/Textarea';
 import Checkbox from '@/app/components/Form/Checkbox';
 import Button from '@/app/components/Button';
-
 import whatsappSVG from '@/app/assets/icons/social/whatsapp.svg';
 import chatSVG from '@/app/assets/icons/chat-white.svg';
 import phoneSVG from '@/app/assets/icons/phone.svg';
 import clockSvg from '@/app/assets/icons/clock.svg';
 
+import { ANCHORS } from '@/app/core/constants/anchor';
 import { sendEmail } from '@/utils/sendEmail';
 import { createWorkingHours } from '@/app/utils/createWorkingHours';
 
@@ -126,6 +126,7 @@ export const Content = ({ isFormModal, globalSettings, sectionFormData }) => {
         isFormModal && styles.modalFormWrapper,
         styles.formWrapper,
       )}
+      id={ANCHORS.CONTACT_FORM.ID}
     >
       <section className={styles.contacts}>
         <header>

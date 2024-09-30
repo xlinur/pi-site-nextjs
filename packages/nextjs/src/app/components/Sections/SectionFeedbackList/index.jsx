@@ -5,9 +5,11 @@ import feedbacks from '@/app/api/strapi/feedbacks/route';
 import sectionWhatOurCliensSay from '@/app/api/strapi/sectionWhatOurCliensSay/route';
 
 import styles from './styles.module.scss';
+import { routes } from '@/config/routes';
 
-export default async function SectionFeedbackList({ inData }) {
+export default async function SectionFeedbackList({ inData, theme }) {
   const data = await feedbacks();
+
   const { title, readMoreBtn, readAllBtn } = await sectionWhatOurCliensSay();
 
   return (
@@ -16,7 +18,7 @@ export default async function SectionFeedbackList({ inData }) {
         <header>
           <h3>{title}</h3>
 
-          <Button theme="secondary" name={readMoreBtn.name} />
+          <Button theme="secondary" name={readMoreBtn.name} url={routes.feedbacks()} />
         </header>
       </div>
 

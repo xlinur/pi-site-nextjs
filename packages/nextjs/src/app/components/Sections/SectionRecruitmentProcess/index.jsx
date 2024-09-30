@@ -27,7 +27,7 @@ const SectionRecruitmentProcess = ({
         ))}
       </div>
 
-      <Button name={findTalentBtn.name} />
+      <Button name={findTalentBtn.name} openModal />
     </section>
   );
 };

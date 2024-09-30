@@ -22,7 +22,7 @@ export default async function SectionNeedHelpSection(props) {
       </h5>
 
       <div className="actions">
-        <Button size="lg" name={helpBtn?.name} />
+        <Button size="lg" name={helpBtn?.name} openModal />
       </div>
     </section>
   );

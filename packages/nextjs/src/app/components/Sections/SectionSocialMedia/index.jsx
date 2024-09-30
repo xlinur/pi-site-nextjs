@@ -1,19 +1,29 @@
-import styles from './styles.module.scss';
-import Image from 'next/image';
-import CardSocialMedia from '@/app/components/Cards/CardSocialMedia';
-
-import emailSvg from '@/app/assets/icons/social/email.svg';
-import whatsappSvg from '@/app/assets/icons/social/whatsapp.svg';
-import telegramSvg from '@/app/assets/icons/social/telegram.svg';
-import locationPin from '@/app/assets/icons/location-pin.svg';
 import Markdown from 'react-markdown';
+import Image from 'next/image';
 import clsx from 'clsx';
 
-export default function SectionSocialMedia(props) {
+import CardSocialMedia from '@/app/components/Cards/CardSocialMedia';
+import locationPin from '@/app/assets/icons/location-pin.svg';
+import getGlobalSettings from '@/app/api/strapi/globalSettings/route';
+import getGlobalDictionary from '@/app/api/strapi/globalDictionary/route';
+import { createSocialsData } from '@/app/utils/createSocialsData';
+import { createSupportData } from '@/app/utils/createSupportData';
+
+import styles from './styles.module.scss';
+
+export default async function SectionSocialMedia(props) {
   const {
     socialMediaTitle = 'Follow us on *social media*',
     withAdditionalInfo = false,
   } = props;
+
+  const globalDictionary = await getGlobalDictionary();
+  const globalSettings = await getGlobalSettings();
+
+  const { contacts, address } = globalSettings;
+
+  const support = createSupportData({ contacts });
+  const socials = createSocialsData({ contacts });
 
   return (
     <div
@@ -22,7 +32,14 @@ export default function SectionSocialMedia(props) {
         withAdditionalInfo && styles.withAdditionalInfo,
       )}
     >
-      {withAdditionalInfo && <AdditionalInfo />}
+      {withAdditionalInfo && (
+        <AdditionalInfo
+          {...globalDictionary}
+          support={support}
+          contacts={contacts}
+          address={address}
+        />
+      )}
 
       <section className={styles.sectionSocialMedia}>
         <header>
@@ -32,78 +49,60 @@ export default function SectionSocialMedia(props) {
         </header>
 
         <div className={styles.sectionSocialMediaList}>
-          <CardSocialMedia socialName="instagram" />
-          <CardSocialMedia socialName="linkedin" />
-          <CardSocialMedia socialName="facebook" />
+          {socials.map((item, idx) => (
+            <CardSocialMedia {...item} key={idx} />
+          ))}
         </div>
       </section>
     </div>
   );
 }
 
-import getGlobalDictionary from '@/app/api/strapi/globalDictionary/route';
-
-const AdditionalInfo = async () => {
-  const { supportBlockTitle, contactsBlockTitle } = await getGlobalDictionary();
-
+const AdditionalInfo = ({
+  supportBlockTitle,
+  contactsBlockTitle,
+  support,
+  address,
+  contacts,
+}) => {
   return (
     <div className={styles.contactsBase}>
-      <ul className={styles.list}>
-        <li className={styles.listHeading}>
-          <strong>{contactsBlockTitle}</strong>
-        </li>
-        <li className={styles.listItemLocation}>
-          <a href="/" className={styles.workHoursWrapper}>
-            <Image src={locationPin} alt="Clock icon" width={24} height={24} />
-            <div className={styles.workHours}>
-              Tallinn
-              <br />
-              Katusepapi tn 6 11412 Lasnamäe linnaosa
-            </div>
-          </a>
-        </li>
+      <div className={styles.listWrapper}>
+        <p className={styles.listTitle}>{contactsBlockTitle}</p>
+        <ul className={styles.list}>
+          <li className={styles.listItemLocation}>
+            <a href="/" className={styles.workHoursWrapper}>
+              <Image
+                src={locationPin}
+                alt="Clock icon"
+                width={24}
+                height={24}
+              />
+              <div className={styles.workHours}>{address}</div>
+            </a>
+          </li>
+          <li className={`h5 ${styles.linkPhone}`}>
+            <a href={`tel:${contacts.phone}`}>{contacts.phone}</a>
+          </li>
+        </ul>
+      </div>
 
-        <li className={`h5 ${styles.linkPhone}`}>
-          <a href="tel:+371-56-548-29">+ 371-56-548-29</a>
-        </li>
-      </ul>
-
-      <ul className={styles.list}>
-        <li className={styles.listHeading}>
-          <strong>{supportBlockTitle}</strong>
-        </li>
-        <li>
-          <a href="/" className={styles.supportOption}>
-            <Image
-              src={telegramSvg}
-              alt="Telegram icon"
-              width={24}
-              height={24}
-            />
-            <div className={styles.supportText}>write to telegram</div>
-          </a>
-        </li>
-        <li>
-          <a href="/" className={styles.supportOption}>
-            <Image
-              src={whatsappSvg}
-              alt="WhatsApp icon"
-              width={24}
-              height={24}
-            />
-            <div className={styles.supportText}>write to whatsapp</div>
-          </a>
-        </li>
-        <li>
-          <a href="/" className={styles.supportOption}>
-            <Image src={emailSvg} alt="Email icon" width={24} height={24} />
-            <div className={styles.supportText}>elena@personalinvest.org</div>
-          </a>
-        </li>
-      </ul>
+      <div className={styles.listWrapper}>
+        <p className={styles.listTitle}>{supportBlockTitle}</p>
+        <ul className={styles.list}>
+          {support.map((item) => (
+            <li key={item.link}>
+              <a href={item.link} className={styles.supportOption}>
+                <Image src={item.img} alt={item.name} width={24} height={24} />
+                <div className={styles.supportText}>{item.name}</div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <h4 className={styles.contactNumber}>
-        <a href="tel:+371-56-548-29">+ 371-56-548-29</a>
+        <a href={`tel:${contacts.phone}`}>{contacts.phone}</a>
       </h4>
     </div>
   );

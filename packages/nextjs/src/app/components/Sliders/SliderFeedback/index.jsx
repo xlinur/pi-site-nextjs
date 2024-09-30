@@ -106,11 +106,7 @@ export const SliderFeedback = ({ data, readAllBtn }) => {
         spaceBetween: 24,
       },
       1440: {
-        slidesPerView: 3.5,
-        slidesOffsetBefore: 100,
-      },
-      1441: {
-        slidesPerView: 4,
+        slidesPerView: 2.5,
         slidesOffsetBefore: documentWith(),
       },
     },

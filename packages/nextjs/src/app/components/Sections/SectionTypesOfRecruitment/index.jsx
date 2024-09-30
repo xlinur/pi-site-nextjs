@@ -25,7 +25,7 @@ export default async function SectionTypesOfRecruitment(props) {
                 <Markdown>{item.description}</Markdown>
               </div>
 
-              <Button name={item.hireNowBtn.name} />
+              <Button name={item.hireNowBtn.name} openModal />
             </div>
           </div>
         ))}
