@@ -4,24 +4,27 @@ import { sendEmail } from '../../../lib/sendEmail';
 export async function POST(req, _) {
   try {
     /**
-     * typedef {Object} FormData
-     * @property {string} email
-     * @property {string} name
-     * @property {string} company
-     * @property {string} services
-     * @property {string} contactPreference
-     * @property {string} comment
+     * typedef {Object}
+     * @property {payload.string} email
+     * @property {payload.string} name
+     * @property {payload.string} company
+     * @property {payload.string} service
+     * @property {payload.string} contactPreference
+     * @property {payload.string} comment
      */
     const jsonPostData = await req.json();
     console.log({ jsonPostData: jsonPostData });
 
     await sendEmail({
-      to: jsonPostData.email,
+      to: 'rgba.panda@gmail.com',
       templateName: 'ContactSubmission',
       dynamicTemplateData: {
-        name: jsonPostData.name,
-        email: jsonPostData.email,
-        message: jsonPostData.comment,
+        name: jsonPostData.payload.name,
+        email: jsonPostData.payload.email,
+        service: jsonPostData.payload.service,
+        comment: jsonPostData.payload.comment,
+        contact: jsonPostData.payload.contact,
+        contactPreference: jsonPostData.payload.contactPreference,
       },
     });
 

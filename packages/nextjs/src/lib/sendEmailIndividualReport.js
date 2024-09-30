@@ -5,9 +5,10 @@ import sgMail from '@sendgrid/mail';
  * @property {string} to
  * @property {string} templateName
  * @property {dynamicTemplateData} dynamicTemplateData
+ *
  * @returns {Promise<void>}
  */
-export async function sendEmail(data) {
+export async function sendEmailIndividualReport(data) {
   sgMail.setApiKey(process.env.NEXT_SENDGRID_API_KEY);
   console.log({ data: data });
   const msg = {
@@ -16,13 +17,15 @@ export async function sendEmail(data) {
     from: 'rgba.panda@gmail.com',
     subject: 'Test subject',
     text: data.message,
-    templateId: 'd-a47d7ce88a4b415d9cedc799fc08ed97',
+    templateId: 'd-e3e5956cf63a445aa7893cb7dd725168',
     dynamicTemplateData: data.dynamicTemplateData,
   };
 
   try {
     await sgMail.send(msg);
   } catch (error) {
+    console.log(error);
+    // console.log(error.response.body);
     console.log('sendEmail() ', error);
   }
 }

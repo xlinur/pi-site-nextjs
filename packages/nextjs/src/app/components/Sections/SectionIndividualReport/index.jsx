@@ -1,8 +1,6 @@
 'use client';
 
 import { useForm } from '@mantine/form';
-import clsx from 'clsx';
-import Markdown from 'react-markdown';
 import whatsappSVG from '@/app/assets/icons/social/whatsapp.svg';
 import chatSVG from '@/app/assets/icons/chat-white.svg';
 import phoneSVG from '@/app/assets/icons/phone.svg';
@@ -91,7 +89,7 @@ export default function SectionIndividualReport({
     otherPurpose,
     textareaComment,
   } = sectionIndividualReportData;
-
+  console.log({ purposeOfResearch });
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
@@ -100,14 +98,17 @@ export default function SectionIndividualReport({
       service: '',
       contact: '',
       comment: '',
-      purposeOfResearch: purposeOfResearch.map(({ label }) => {
-        return { checked: false, label: label };
+      purposeOfResearch: purposeOfResearch.map(({ title }) => {
+        return { checked: false, label: title };
       }),
       other: {
         checked: false,
         label: otherPurpose.label,
       },
       otherComment: '',
+      legalCheckboxes: legalCheckboxes.map(({ label }) => {
+        return { checked: false, label: label };
+      }),
     },
   });
 
@@ -119,6 +120,7 @@ export default function SectionIndividualReport({
       label={label}
       isEmpty={!form.getValues()[key]}
       key={form.key(key)}
+      required={true}
       {...form.getInputProps(key)}
     />
   );
@@ -144,13 +146,7 @@ export default function SectionIndividualReport({
     />
   );
 
-  const createCheckbox = (label, idx) => (
-    <Checkbox required label={label} key={idx} />
-  );
-
   const handleSubmitCallback = async (values) => {
-    console.log(form.getValues());
-    return;
     if (!executeRecaptcha) {
       console.log('Not available to proceed recaptcha');
       return;
@@ -173,20 +169,23 @@ export default function SectionIndividualReport({
     if (responseResultJson.success) {
       console.log('Success to verify via recaptcha');
 
-      const responseContactFormResult = await fetch('api/email', {
-        method: 'post',
-        body: JSON.stringify(values),
-        headers: {
-          Accept: 'application/json, text/plain, */*',
-          'Content-Type': 'application/json',
+      const responseContactFormResult = await fetch(
+        'api/sectionIndividualReport',
+        {
+          method: 'post',
+          body: JSON.stringify(values),
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+          },
         },
-      });
+      );
       console.log(responseContactFormResult);
     } else {
       console.log('Failed to verify via recaptcha');
     }
   };
-  console.log(form.getValues())
+
   return (
     <section className={styles.wrapper}>
       <header>
@@ -205,12 +204,16 @@ export default function SectionIndividualReport({
             <p>{info}</p>
 
             <div className={styles.cbWrapper}>
-              {purposeOfResearch.map(({ id, title }) => (
-                <Checkbox key={id} required label={title} />
+              {purposeOfResearch.map(({ title }, index) => (
+                <Checkbox
+                  required
+                  label={title}
+                  key={form.key(`purposeOfResearch.${index}.checked`)}
+                  {...form.getInputProps(`purposeOfResearch.${index}.checked`)}
+                />
               ))}
 
               <Checkbox
-                required
                 label={otherPurpose.label}
                 key={form.key('other.checked')}
                 {...form.getInputProps('other.checked')}
@@ -230,8 +233,15 @@ export default function SectionIndividualReport({
             {createFormInput(inputContact.label, emailFields.contact)}
             {createTextarea(textareaComment.label, emailFields.comment)}
 
-            {legalCheckboxes.map(({ id, label }) => {
-              return <Checkbox key={id} required label={label} />;
+            {legalCheckboxes.map(({ label }, index) => {
+              return (
+                <Checkbox
+                  required
+                  label={label}
+                  key={form.key(`legalCheckboxes.${index}.checked`)}
+                  {...form.getInputProps(`legalCheckboxes.${index}.checked`)}
+                />
+              );
             })}
 
             <Button content="center" size="lg" type="submit">
