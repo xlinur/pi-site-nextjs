@@ -56,7 +56,11 @@ export default function PageFeedback({ feedbacks, moreReviewsBtn }) {
           {filteredFeedbacks.map((feedback, idx) => (
             <CardFeedback
               key={feedback.id}
-              invisible={!expanded && idx >= INITIAL_AVAILABLE_ITEMS}
+              className={
+                !expanded &&
+                idx >= INITIAL_AVAILABLE_ITEMS &&
+                'd-none-important'
+              }
               {...feedback.attributes}
             />
           ))}

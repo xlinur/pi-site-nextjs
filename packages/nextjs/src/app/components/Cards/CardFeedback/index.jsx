@@ -1,6 +1,7 @@
 import Markdown from 'react-markdown';
 import Button from '../../Button';
 import styles from './styles.module.scss';
+import clsx from 'clsx';
 
 function CardFeedback(props) {
   const {
@@ -12,14 +13,17 @@ function CardFeedback(props) {
     authorPosition,
     firstSlideTheme,
     readAllBtn,
-    invisible,
+    className,
   } = props;
 
-  // TODO: just hide with css
-  if (invisible) return null;
+  const cardClsx = clsx(
+    styles.card,
+    styles[`bg-${firstSlideTheme}`],
+    className,
+  );
 
   return (
-    <article className={`${styles.card} ${styles[`bg-${firstSlideTheme}`]}`}>
+    <article className={cardClsx}>
       <div className={styles.cardContent}>
         <b className={styles.cardContentEssence}>{essence}</b>
 
