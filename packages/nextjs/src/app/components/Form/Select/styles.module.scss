@@ -3,7 +3,7 @@
 .selectOptions {
   
   border: 1px solid var(--gray);
-  border-radius: 30px;
+  border-radius: var(--rounded-xl);
   position: absolute;
   width: 100%;
   top: 60px;

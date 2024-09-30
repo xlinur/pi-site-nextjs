@@ -4,30 +4,26 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 90px;
-  padding-top: 160px;
-  padding-bottom: 160px;
 
   @include lg {
     grid-template-columns: 1fr 1fr;
     gap: 64px;
-    padding-top: 100px;
-    padding-bottom: 100px;
-  }
-
-  @include md {
-    padding-top: 60px;
-    padding-bottom: 60px;
   }
 
   @include rwd(767.9) {
     display: flex;
     flex-direction: column-reverse;
+
+    .imageWrapper {
+      height: 326px;
+    }
   }
 
   .imageWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
 
   .sectionCustomVisionContent {
@@ -58,5 +54,16 @@
         color: var(--blue);
       }
     }
+  }
+}
+
+.rtl {
+  .imageWrapper {
+    grid-column: 2 / 3;
+    grid-row: 1;
+  }
+  .sectionCustomVisionContent {
+    grid-column: 1 / 2;
+    grid-row: 1;
   }
 }

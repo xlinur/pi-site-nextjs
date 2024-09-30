@@ -1,13 +1,7 @@
-.sectionFormWrapper {
-  margin-top: 160px;
-  margin-bottom: 160px;
-}
-
 .sectionCasesNav {
   display: flex;
   flex-direction: column;
   row-gap: 60px;
-  margin-top: 200px;
 
   .casesNavItem {
     display: flex;
@@ -23,8 +17,6 @@
 }
 
 .sectionListLink {
-  margin-top: 160px;
-
   .list {
     display: grid;
     grid-template-columns: 1fr 1fr;

@@ -4,9 +4,9 @@ import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionAboutPersonalinvest from '@/app/components/Sections/SectionAboutPersonalinvest';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
-import ContactForm from '@/app/components/ContactForm';
+import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
-import SectionContactUs from '@/app/components/Sections/SectionContactUs';
+import SectionSocialMedia from '@/app/components/Sections/SectionSocialMedia';
 import SectionOurFounder from '@/app/components/Sections/SectionOurFounder';
 import SectionOurTeam from '@/app/components/Sections/SectionOurTeam';
 import SectionTrustedMap from '@/app/components/Sections/SectionTrustedMap';
@@ -14,6 +14,7 @@ import SectionTrustedMap from '@/app/components/Sections/SectionTrustedMap';
 import pageAboutUs from '@/app/api/strapi/pageAboutUs/route';
 
 import styles from './styles.module.scss';
+import clsx from 'clsx';
 
 export const generateMetadata = async () => {
   const { SEO } = await pageAboutUs();
@@ -31,9 +32,7 @@ export default async function PageAboutUs() {
         <SectionHero {...AnimatedHero} />
 
         <div className="container">
-          <div className={styles.firstBlock}>
-            <SectionAboutPersonalinvest />
-          </div>
+          <SectionAboutPersonalinvest />
         </div>
 
         <div className="container">
@@ -48,32 +47,24 @@ export default async function PageAboutUs() {
           <SectionOurTeam {...OurTeam} />
         </div>
 
-        <div className="container">
+        <div className={clsx("container", styles.smSkipPadding)}>
           <SectionTrustedMap variant="some" />
         </div>
 
         <SectionFeedbackList firstSlideTheme="dark" />
 
-        {/* @Component SectionWeCanHelp */}
-        <div className={styles.sectionHelpWrapper}>
-          <div className="container">
-            <SectionWeCanHelp />
-          </div>
-        </div>
+        <SectionWeCanHelp />
 
-        {/* @Component SectionContactForm */}
         <div className={styles.sectionFormWrapper}>
           <div className="container">
             <section className={styles.sectionForm}>
-              <ContactForm />
+              <ContactFormWrapper />
             </section>
           </div>
         </div>
 
-        <div className={styles.sectionSocialMediaWrapper}>
-          <div className="container">
-            <SectionContactUs />
-          </div>
+        <div className="container">
+          <SectionSocialMedia />
         </div>
       </main>
     </PageTemplate>

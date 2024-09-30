@@ -4,7 +4,7 @@ import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 
-import ContactForm from '@/app/components/ContactForm';
+import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 import SectionConsultingServices from '@/app/components/Sections/SectionConsultingServices';
 import SectionWhyInfo from '@/app/components/Sections/SectionWhyInfo';
 import SectionExamplesOfBestPractices from '@/app/components/Sections/SectionExamplesOfBestPractices';
@@ -47,23 +47,16 @@ export default async function PageConsulting() {
           <SectionExamplesOfBestPractices {...ExamplesOfBestPractices} />
         </div>
 
-        {/* @Component SectionFeedbackList */}
         <div className={styles.sectionFeedbackWrapper}>
           <SectionFeedbackList firstSlideTheme="white" />
         </div>
 
-        {/* @Component SectionWeCanHelp */}
-        <div className={styles.sectionHelpWrapper}>
-          <div className="container">
-            <SectionWeCanHelp />
-          </div>
-        </div>
+        <SectionWeCanHelp />
 
-        {/* @Component SectionContactForm */}
         <div className={styles.sectionFormWrapper}>
           <div className="container">
             <section className={styles.sectionForm}>
-              <ContactForm />
+              <ContactFormWrapper />
             </section>
           </div>
         </div>

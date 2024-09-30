@@ -1,11 +1,28 @@
+@use '../styles/mixins.scss' as *;
+
 .pageFeedback {
   header {
-    margin-top: 80px;
+    h1 {
+      margin-top: 80px;
+  
+      @include lg {
+        margin-top: 60px;
+      }
+  
+      @include md {
+        margin-top: 50px;
+      }
+    }
 
     .feedbackSectionLinks {
       margin-top: 30px;
       display: flex;
-      gap: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      button {
+        border-radius: 10px;
+      }
     }
   }
 
@@ -16,15 +33,21 @@
     row-gap: 60px;
     margin-top: 80px;
 
+    @include md {
+      margin-top: 60px;
+    }
+    @include sm {
+      margin-top: 40px;
+    }
+
     .feedbackExpandableListGrid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px 24px;
-    }
-  }
 
-  .sectionForm {
-    margin-top: 160px;
-    margin-bottom: 160px;
+      @include sm {
+        grid-template-columns: 1fr;
+      }
+    }
   }
 }

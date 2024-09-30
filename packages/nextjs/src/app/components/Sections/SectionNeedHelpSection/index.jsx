@@ -17,7 +17,9 @@ export default async function SectionNeedHelpSection(props) {
         width={226}
         height={226}
       />
-      <Markdown>{helpText}</Markdown>
+      <h5>
+        <Markdown>{helpText}</Markdown>
+      </h5>
 
       <div className="actions">
         <Button size="lg" name={helpBtn?.name} />

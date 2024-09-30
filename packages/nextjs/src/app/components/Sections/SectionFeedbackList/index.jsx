@@ -23,6 +23,10 @@ export default async function SectionFeedbackList({ inData }) {
       <div className={styles.slider}>
         <SliderFeedback data={inData || data} readAllBtn={readAllBtn} />
       </div>
+
+      <div className={styles.readMoreBtn}>
+        <Button theme="secondary" name={readMoreBtn.name} />
+      </div>
     </section>
   );
 }

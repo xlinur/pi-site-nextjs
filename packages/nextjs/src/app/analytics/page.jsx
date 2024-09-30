@@ -3,7 +3,7 @@ import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
-import ContactForm from '@/app/components/ContactForm';
+import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 import SectionWhyInfo from '@/app/components/Sections/SectionWhyInfo';
 import SectionPricing from '@/app/components/Sections/SectionPricing';
 import SectionIndividualReport from '@/app/components/Sections/SectionIndividualReport';
@@ -48,18 +48,12 @@ export default async function SpheresPage() {
           <SectionIndividualReport />
         </div>
 
-        {/* @Component SectionWeCanHelp */}
-        <div className={styles.sectionHelpWrapper}>
-          <div className="container">
-            <SectionWeCanHelp />
-          </div>
-        </div>
+        <SectionWeCanHelp />
 
-        {/* @Component SectionContactForm */}
         <div className={styles.sectionFormWrapper}>
           <div className="container">
             <section className={styles.sectionForm}>
-              <ContactForm />
+              <ContactFormWrapper />
             </section>
           </div>
         </div>

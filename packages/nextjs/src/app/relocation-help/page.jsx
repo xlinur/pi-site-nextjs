@@ -4,7 +4,7 @@ import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionRelocationHelpHero from '@/app/components/Sections/SectionRelocationHelpHero';
 import SectionBlockStepsPlan from '@/app/components/Sections/SectionBlockStepsPlan';
-import ContactForm from '@/app/components/ContactForm';
+import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 
 import styles from './styles.module.scss';
 
@@ -34,16 +34,12 @@ export default async function RelocationHelpPage() {
           <SectionFeedbackList firstSlideTheme="white" />
         </div>
 
-        <div className={styles.sectionHelpWrapper}>
-          <div className="container">
-            <SectionWeCanHelp />
-          </div>
-        </div>
+        <SectionWeCanHelp />
 
         <div className={styles.sectionFormWrapper}>
           <div className="container">
             <section className={styles.sectionForm}>
-              <ContactForm />
+              <ContactFormWrapper />
             </section>
           </div>
         </div>

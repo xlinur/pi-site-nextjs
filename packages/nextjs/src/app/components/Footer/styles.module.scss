@@ -1,7 +1,10 @@
 @use "../../styles/mixins.scss" as *;
 
+.footerWrapper {
+  margin-top: var(--section-gap);
+}
+
 .footer {
-  padding-top: 30px;
   padding-bottom: 30px;
 
   .footerLinks {
@@ -107,6 +110,11 @@
 
     .footerCopyrightBlockContain {
       display: contents;
+    }
+
+    .footerCopyrightPolicies,
+    .footerCopyrightTerms {
+      text-decoration: underline;
     }
   }
 

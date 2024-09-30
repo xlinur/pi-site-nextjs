@@ -87,10 +87,36 @@ const SwiperButtonPrev = ({ children }) => {
 };
 
 export const SliderFeedback = ({ data, readAllBtn }) => {
+  const documentWith = () => {
+    if (typeof window !== 'undefined') {
+      return (window.innerWidth - 1240) / 2;
+    } else {
+      return 200;
+    }
+  };
+
   const config = {
     slidesPerView: 2,
-    spaceBetween: 24,
-    centeredSlides: true,
+    spaceBetween: 12,
+    freeMode: true,
+    slidesOffsetAfter: 20,
+    breakpoints: {
+      540: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1440: {
+        slidesPerView: 3,
+        slidesOffsetBefore: 100,
+      },
+      1441: {
+        slidesPerView: 4,
+        slidesOffsetBefore: documentWith(),
+      },
+    },
   };
 
   return (

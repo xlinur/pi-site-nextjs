@@ -4,6 +4,7 @@ import peopleSVG from '@/app/assets/icons/people-1-white.svg';
 import sectionAboutPersonalinvest from '@/app/api/strapi/sectionAboutPersonalinvest/route';
 
 import styles from './styles.module.scss';
+import clsx from 'clsx';
 
 const CheckCircle = () => (
   <svg
@@ -30,12 +31,12 @@ const CheckCircle = () => (
   </svg>
 );
 
-export default async function SectionAboutPersonalinvest() {
+export default async function SectionAboutPersonalinvest({ withTitle }) {
   const { numbers, title, info } = await sectionAboutPersonalinvest();
 
   return (
     <section className={styles.wrapper}>
-      <h2 className="text">{title}</h2>
+      {withTitle && <h2>{title}</h2>}
 
       <div className={styles.first}>
         {numbers.map((item, idx) => (
@@ -44,7 +45,7 @@ export default async function SectionAboutPersonalinvest() {
               <h5>{item.count} +</h5>
             </header>
 
-            <p className={styles.text}>{item.description}</p>
+            <p className={clsx(styles.text, 'h5')}>{item.description}</p>
           </article>
         ))}
       </div>

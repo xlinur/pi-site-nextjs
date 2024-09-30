@@ -5,27 +5,3 @@
 .sectionFeedbackWrapper {
   background-color: var(--light-blue);
 }
-
-.pageMain {
-  .sectionPlanetWrapper {
-    padding-top: 160px;
-    padding-bottom: 90px;
-  }
-
-  .sectionSocialMedia {
-    padding-top: 160px;
-    padding-bottom: 160px;
-
-    header {
-      span {
-        color: var(--blue);
-      }
-    }
-
-    .sectionSocialMediaList {
-      display: flex;
-      column-gap: 20px;
-      margin-top: 42px;
-    }
-  }
-}

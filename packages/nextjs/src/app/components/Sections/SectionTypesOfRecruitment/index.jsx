@@ -21,7 +21,9 @@ export default async function SectionTypesOfRecruitment(props) {
             </div>
 
             <div className={styles.gridItemContent}>
-              <Markdown>{item.description}</Markdown>
+              <div>
+                <Markdown>{item.description}</Markdown>
+              </div>
 
               <Button name={item.hireNowBtn.name} />
             </div>

@@ -1,7 +1,7 @@
 import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
-import ContactForm from '@/app/components/ContactForm';
+import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
@@ -35,25 +35,18 @@ export default async function PageIndustries() {
           <SectionHowWeWork {...TreeSection} />
         </div>
 
-        {/* @Component SectionCustomVision */}
         <div className={styles.sectionCustomVisionWrapper}>
           <div className="container">
-            <SectionCustomVision {...SectionWithIndustriesImage} />
+            <SectionCustomVision {...SectionWithIndustriesImage} rtl />
           </div>
         </div>
 
-        {/* @Component SectionWeCanHelp */}
-        <div className={styles.sectionHelpWrapper}>
-          <div className="container">
-            <SectionWeCanHelp />
-          </div>
-        </div>
+        <SectionWeCanHelp />
 
-        {/* @Component SectionContactForm */}
         <div className={styles.sectionFormWrapper}>
           <div className="container">
             <section className={styles.sectionForm}>
-              <ContactForm />
+              <ContactFormWrapper />
             </section>
           </div>
         </div>

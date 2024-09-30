@@ -10,7 +10,7 @@ import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 import SectionTypesOfRecruitment from '@/app/components/Sections/SectionTypesOfRecruitment';
 import SectionNeedHelpSection from '@/app/components/Sections/SectionNeedHelpSection';
 import SectionPricing from '@/app/components/Sections/SectionPricing';
-import ContactForm from '@/app/components/ContactForm';
+import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 import pageExecutiveSearch from '@/app/api/strapi/pageExecutiveSearch/route';
 
 import styles from './styles.module.scss';
@@ -67,16 +67,12 @@ export default async function ExecutiveSearchPage() {
 
         <SectionCompaniesLogo />
 
-        <div className={styles.sectionHelpWrapper}>
-          <div className="container">
-            <SectionWeCanHelp />
-          </div>
-        </div>
+        <SectionWeCanHelp />
 
         <div className={styles.sectionFormWrapper}>
           <div className="container">
             <section className={styles.sectionForm}>
-              <ContactForm />
+              <ContactFormWrapper />
             </section>
           </div>
         </div>

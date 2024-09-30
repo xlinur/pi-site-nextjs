@@ -1,7 +1,7 @@
 @use '../../../styles/mixins.scss' as *;
 
 .sectionMeet {
-  padding: 160px 0;
+  // padding: 160px 0;
 
   .sectionMeetGallery {
     margin-top: 40px;
@@ -24,7 +24,7 @@
 
     > div {
       position: relative;
-      border-radius: 30px;
+      border-radius: var(--rounded-xl);
       overflow: hidden;
 
       &:nth-child(2) {

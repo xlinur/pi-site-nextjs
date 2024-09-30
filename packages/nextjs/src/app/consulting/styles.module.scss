@@ -1,49 +1,6 @@
 @use '../styles/mixins.scss' as *;
 
-// @Component optional decor:before
-.sectionWhy {
-  // position: relative;
-  z-index: 1;
-  padding-top: 90px;
-  padding-bottom: 90px;
-
-  // &::before {
-  //   content: '';
-  //   position: absolute;
-  //   width: 1050px;
-  //   height: 1050px;
-  //   background-color: var(--light-blue);
-  //   top: 50%;
-  //   left: 0;
-  //   transform: translate(-50%, -50%);
-  //   border-radius: 50%;
-  //   z-index: -1;
-
-  //   @include lg {
-  //     transform: translate(-70%, -50%);
-  //   }
-  // }
-
-  .reasons {
-    margin-top: 86px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 80px;
-
-    .reasonsItem {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-top: 1px solid var(--gray);
-      padding-top: 8px;
-
-      &:last-child {
-        border: none;
-      }
-    }
-  }
-}
-
 .sectionHelpWrapper {
   background-color: var(--light-blue);
-  margin-bottom: 160px;
+  // margin-bottom: 160px;
 }

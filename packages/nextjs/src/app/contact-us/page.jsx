@@ -1,7 +1,7 @@
 import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
-import ContactForm from '@/app/components/ContactForm';
-import SectionContactUs from '@/app/components/Sections/SectionContactUs';
+import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
+import SectionSocialMedia from '@/app/components/Sections/SectionSocialMedia';
 
 import pageContactUs from '@/app/api/strapi/pageContactUs/route';
 
@@ -23,12 +23,12 @@ export default async function PageContactUs() {
           <h1 className="h2">{title}</h1>
 
           <section className={styles.sectionForm}>
-            <ContactForm />
+            <ContactFormWrapper />
           </section>
+        </div>
 
-          <div className={styles.contactsSocialWrapper}>
-            <SectionContactUs withAdditionalInfo={true} />
-          </div>
+        <div className="container">
+          <SectionSocialMedia withAdditionalInfo={true} />
         </div>
       </main>
     </PageTemplate>

@@ -99,7 +99,9 @@ export const Content = ({ isFormModal, globalSettings, sectionFormData }) => {
     />
   );
 
-  const createCheckbox = (label) => <Checkbox required label={label} />;
+  const createCheckbox = (label, idx) => (
+    <Checkbox required label={label} key={idx} />
+  );
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
@@ -131,7 +133,7 @@ export const Content = ({ isFormModal, globalSettings, sectionFormData }) => {
           <p>{subtitle}</p>
         </header>
 
-        <div className="icon">
+        <div className={styles.iconChat}>
           <Image src={chatSVG} alt="Icon" width={226} height={226} />
         </div>
 
@@ -141,13 +143,13 @@ export const Content = ({ isFormModal, globalSettings, sectionFormData }) => {
           </li>
           <li>
             <Image src={phoneSVG} alt="Icon" width={38} height={38} />
-            <h4>
+            <h3>
               <a href={`tel:${phone}`}>{phone}</a>
-            </h4>
+            </h3>
           </li>
           <li>
             <Image src={whatsappSVG} alt="Icon" width={38} height={38} />
-            <h4>{phone}</h4>
+            <h3>{phone}</h3>
           </li>
 
           <li>
@@ -180,7 +182,7 @@ export const Content = ({ isFormModal, globalSettings, sectionFormData }) => {
         {createFormInput(inputContact.label, emailFields.contact)}
         {createTextarea(textareaComment.label, emailFields.comment)}
 
-        {legals.map((item) => createCheckbox(item.label))}
+        {legals.map((item, idx) => createCheckbox(item.label, idx))}
 
         <Button content="center" size="lg" type="submit">
           {submitBtn}

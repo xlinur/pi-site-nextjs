@@ -10,6 +10,7 @@ import { createSocialsData } from '@/app/utils/createSocialsData';
 import { createSupportData } from '@/app/utils/createSupportData';
 import { createWorkingHours } from '@/app/utils/createWorkingHours';
 import styles from './styles.module.scss';
+import Markdown from 'react-markdown';
 
 const Footer = async () => {
   const { fetchMenu } = useGetNavigation();
@@ -127,13 +128,13 @@ const Footer = async () => {
           <div className={styles.footerCopyright}>
             <div className={styles.footerCopyrightBlock}>
               <p className={styles.footerCopyrightText}>{copyright}</p>
-              <p className={styles.footerCopyrightPolicies}>{registration}</p>
+              <p>{registration}</p>
             </div>
 
             <div className={styles.footerCopyrightBlockContain}>
-              <p className={styles.footerCopyrightPolicies}>{privacyPolicy}</p>
+              <Markdown className={styles.footerCopyrightPolicies}>{privacyPolicy}</Markdown>
 
-              <p className={styles.footerCopyrightTerms}>{candidatePolicy}</p>
+              <Markdown className={styles.footerCopyrightTerms}>{candidatePolicy}</Markdown>
             </div>
           </div>
         </footer>

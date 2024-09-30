@@ -22,6 +22,7 @@ const CardSocialMedia = ({ socialName }) => {
           height={20}
         />
       </span>
+
       <span className={styles.socialName}>{socialName}</span>
     </a>
   );

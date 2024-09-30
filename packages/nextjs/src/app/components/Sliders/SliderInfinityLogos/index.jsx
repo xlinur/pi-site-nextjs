@@ -15,8 +15,21 @@ export const SliderInfinityLogos = ({ data = [] }) => {
     centeredSlides: true,
     freeMode: true,
     loop: true,
-    slidesPerView: 5,
-    spaceBetween: 20,
+    slidesPerView: 2,
+    spaceBetween: 12,
+    breakpoints: {
+      546: {
+        slidesPerView: 3,
+      },
+      920: {
+        slidesPerView: 4,
+        spaceBetween: 16,
+      },
+      1200: {
+        slidesPerView: 5,
+        spaceBetween: 20,
+      },
+    },
     speed: 5000,
     modules: [Autoplay],
   };

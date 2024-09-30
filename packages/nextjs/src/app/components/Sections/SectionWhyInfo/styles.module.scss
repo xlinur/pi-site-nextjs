@@ -3,8 +3,17 @@
 .sectionWhy {
   position: relative;
   z-index: 1;
-  padding-top: 90px;
-  padding-bottom: 90px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  @include lg {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+  @include md {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
 
   &.withBackground {
     &::before {
@@ -26,16 +35,30 @@
   }
 
   .reasons {
-    margin-top: 86px;
     display: flex;
     flex-direction: column;
     row-gap: 80px;
+    margin-top: 80px;
+
+    @include lg {
+      margin-top: 40px;
+      row-gap: 40px;
+    }
+
+    @include md {
+      margin-top: 32px;
+      row-gap: 24px;
+    }
 
     .reasonsItem {
       display: grid;
       grid-template-columns: 1fr 1fr;
       border-top: 1px solid var(--gray);
       padding-top: 8px;
+
+      @include md {
+        grid-template-columns: 1fr;
+      }
 
       &:last-child {
         border: none;

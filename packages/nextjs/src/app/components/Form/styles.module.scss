@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  border-radius: 30px;
+  border-radius: var(--rounded-xl);
 
   background-color: var(--white);
   height: 50px;

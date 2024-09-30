@@ -1,62 +1,57 @@
-@use "./mixins.scss" as *;
+@use './mixins.scss' as *;
 
 h1,
 .h1 {
-    font-weight: 700;
-    font-size: 75px;
-    line-height: 110%;
+  font-weight: 700;
+  font-size: clamp(38px, -0.875rem + 8.333vw, 75px);
+  line-height: 110%;
 
-    @include lg() {
-        font-size: 38px;
-        line-height: 100%;
-    }
+  @include lg() {
+    line-height: 100%;
+  }
 }
 
 h2,
 .h2 {
-    font-weight: 700;
-    font-size: 60px;
-    line-height: 110%;
+  font-weight: 700;
+  font-size: clamp(28px, -0.875rem + 6.833vw, 60px);
+  line-height: 110%;
 
-    @include lg() {
-        font-size: 28px;
-        line-height: 120%;
-    }
+  @include lg() {
+    line-height: 120%;
+  }
 }
 
 h3,
 .h3 {
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 110%;
+  font-weight: 700;
+  font-size: clamp(24px, -0.875rem + 6.233vw, 48px);
+  line-height: 110%;
 
-    @include lg() {
-        font-size: 24px;
-        line-height: 120%;
-    }
+  @include lg() {
+    line-height: 120%;
+  }
 }
 
 h4,
 .h4 {
-    font-weight: 700;
-    font-size: 38px;
-    line-height: 110%;
+  font-weight: 700;
+  font-size: clamp(18px, -0.875rem + 4.933vw, 38px);
+  line-height: 110%;
 
-    @include lg() {
-        font-size: 18px;
-        line-height: 130%;
-    }
+  @include lg() {
+    line-height: 130%;
+  }
 }
 
 h5,
 .h5 {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 130%;
+  font-weight: 700;
+  font-size: clamp(18px, -5.272rem + 12.027vw, 24px);
+  line-height: 130%;
 
-    @include lg() {
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 120%;
-    }
+  @include lg() {
+    font-weight: 500;
+    line-height: 120%;
+  }
 }

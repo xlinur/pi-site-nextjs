@@ -1,38 +1,7 @@
 @use '../styles/mixins.scss' as *;
 
-.firstBlock {
-  display: flex;
-  flex-direction: column;
-  row-gap: 60px;
-}
-
-.sectionHelpWrapper {
-  background-color: var(--light-blue);
-  margin-top: 80px;
-}
-
-.sectionFormWrapper {
-  padding: 160px 0 60px;
-}
-
-.sectionSocialMedia {
-  padding-top: 100px;
-  padding-bottom: 100px;
-
-  header {
-    span {
-      color: var(--blue);
-    }
+.smSkipPadding {
+  @include sm {
+    padding: 0;
   }
-
-  .sectionSocialMediaList {
-    display: flex;
-    column-gap: 20px;
-    margin-top: 42px;
-  }
-}
-
-.sectionSocialMediaWrapper {
-  padding-top: 80px;
-  padding-bottom: 160px;
 }

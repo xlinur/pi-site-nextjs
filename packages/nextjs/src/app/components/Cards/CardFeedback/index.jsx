@@ -15,36 +15,35 @@ function CardFeedback(props) {
     authorName = 'Dmitry Zhersh',
     authorPosition = 'Head of Global Recruitment',
     firstSlideTheme,
-    readAllBtn,
+    readAllBtn = 'Read all',
   } = props;
 
   return (
     <article className={`${styles.card} ${styles[`bg-${firstSlideTheme}`]}`}>
       <div className={styles.cardContent}>
-        <p>
-          <b>{essence}</b>
-        </p>
+        <b className={styles.cardContentEssence}>{essence}</b>
 
-        <Markdown className={styles.clampLine}>{content}</Markdown>
+        <Markdown className={styles.text}>{content}</Markdown>
       </div>
 
-      <div className={styles.cardUser}>
-        <h5 className={styles.cardUserTitle}>{company}</h5>
-        <div className={styles.cardUserAbout}>
-          <div className={styles.cardUserName}>{authorName}</div>
-          <div className={styles.cardUserPosition}>{authorPosition}</div>
+      <div className={styles.btnInlineUser}>
+        <div className={styles.cardUser}>
+          <h5 className={styles.cardUserTitle}>{company}</h5>
+          <div className={styles.cardUserAbout}>
+            <div className={styles.cardUserName}>{authorName}</div>
+            <div className={styles.cardUserPosition}>{authorPosition}</div>
+          </div>
         </div>
-      </div>
 
-      <Button
-        theme="text"
-        withIcon
-        iconRight
-        href={link}
-        className={styles.linkReadMore}
-      >
-        {readAllBtn}
-      </Button>
+        <Button
+          theme="text"
+          withIcon
+          iconRight
+          href={link}
+          className={styles.linkReadMore}
+          name={readAllBtn}
+        />
+      </div>
     </article>
   );
 }

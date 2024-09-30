@@ -9,7 +9,9 @@ export default async function CompaniesLogo() {
 
   return (
     <section className={styles.sectionCompanies}>
-      <h3>{title}</h3>
+      <div className="container">
+        <h2>{title}</h2>
+      </div>
 
       <div className={styles.infinitySliderWrapper}>
         <SliderInfinityLogos data={logos.data} />

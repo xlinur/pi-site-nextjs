@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 40px;
   border: 1px solid var(--gray);
-  border-radius: 30px;
+  border-radius: var(--rounded-xl);
   padding: 30px;
 
   .content {

@@ -12,6 +12,11 @@
     text-align: center;
     top: 77px;
     z-index: 1;
+    max-width: 771px;
+
+    @include md {
+      position: initial;
+    }
   }
 
   .planet {
@@ -25,6 +30,17 @@
       justify-content: center;
       align-items: center;
       flex: 1 0 100%;
+
+      @include md {
+        img {
+          max-height: 420px;
+        }
+      }
+      @include sm {
+        img {
+          max-height: 386px;
+        }
+      }
     }
 
     div:nth-child(2) img {
@@ -42,6 +58,8 @@
 
   @include md {
     grid-template-columns: 1fr;
+    padding: 0;
+    row-gap: 40px;
   }
 
   header {
@@ -49,9 +67,18 @@
     flex-direction: column;
     align-items: flex-start;
     row-gap: 80px;
+
+    @include md {
+      row-gap: 24px;
+    }
   }
 
   img {
     aspect-ratio: 16 / 9;
+
+    @include md {
+      object-fit: cover;
+      margin-right: -16px;
+    }
   }
 }

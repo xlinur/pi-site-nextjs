@@ -18,7 +18,7 @@
 
   .vacanciesFilters {
     border: 1px solid var(--gray);
-    border-radius: 30px;
+    border-radius: var(--rounded-xl);
   }
   .vacanciesList {
     display: flex;

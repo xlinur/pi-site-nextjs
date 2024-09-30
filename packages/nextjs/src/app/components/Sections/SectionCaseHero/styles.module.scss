@@ -1,5 +1,5 @@
 .sectionCaseHero {
-  margin-top: 80px;
+  // margin-top: 80px;
 
   header {
     display: grid;
@@ -14,7 +14,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 30px;
+      border-radius: var(--rounded-xl);
     }
     .description {
       grid-column: 2;

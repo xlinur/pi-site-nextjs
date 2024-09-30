@@ -17,19 +17,27 @@ export default async function SectionWeCanHelp() {
   } = await weCanHelpYouWithRequest();
 
   return (
-    <section className={styles.sectionHelp}>
-      <header>
-        <h3>{title}</h3>
-      </header>
+    <div className={styles.sectionHelpWrapper}>
+      <div className="container">
+        <section className={styles.sectionHelp}>
+          <header>
+            <h3>{title}</h3>
+          </header>
 
-      <div className={styles.sectionHelpGrid}>
-        <CardWeCanHelp text={recruitment} bgImage="peoples01" />
-        <CardWeCanHelp text={businessConsulting} bgImage="chat" />
-        <CardWeCanHelp text={executiveSearch} bgImage="peoples" />
-        <CardWeCanHelp text={marketResearchAndAnalytics} bgImage="graph" />
-        <CardWeCanHelp text={relocation} bgImage="location" />
-        <CardWeCanHelp text={or} bgImage="money" earnWithUsBtn={earnWithUs} />
+          <div className={styles.sectionHelpGrid}>
+            <CardWeCanHelp text={recruitment} bgImage="peoples01" />
+            <CardWeCanHelp text={businessConsulting} bgImage="chat" />
+            <CardWeCanHelp text={executiveSearch} bgImage="peoples" />
+            <CardWeCanHelp text={marketResearchAndAnalytics} bgImage="graph" />
+            <CardWeCanHelp text={relocation} bgImage="location" />
+            <CardWeCanHelp
+              text={or}
+              bgImage="money"
+              earnWithUsBtn={earnWithUs}
+            />
+          </div>
+        </section>
       </div>
-    </section>
+    </div>
   );
 }

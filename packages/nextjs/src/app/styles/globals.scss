@@ -23,10 +23,20 @@
   --dark-gray: #323232;
   --dark-gray-alt: #797979;
 
-  // size's
+  // GLOBAL CONFIG VARIABLES
   --header-height: 139px;
-  
+
   --rounded-xl: 30px;
+  --section-gap: 160px;
+
+  @include lg {
+    --section-gap: 100px;
+  }
+
+  @include md {
+    --rounded-xl: 20px;
+    --section-gap: 60px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,6 +64,10 @@ body {
 
 main {
   padding-top: var(--header-height);
+
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--section-gap);
 }
 
 .container {

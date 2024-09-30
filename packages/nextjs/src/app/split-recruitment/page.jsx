@@ -2,7 +2,7 @@ import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionAboutPersonalinvest from '@/app/components/Sections/SectionAboutPersonalinvest';
 import SectionHero from '@/app/components/Sections/SectionHero';
-import ContactForm from '@/app/components/ContactForm';
+import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
@@ -47,18 +47,12 @@ export default async function PageSplitRecruitment() {
           <SectionHowWeWork {...TreeSection} fitContent />
         </div>
 
-        {/* @Component SectionWeCanHelp */}
-        <div className={styles.sectionHelpWrapper}>
-          <div className="container">
-            <SectionWeCanHelp />
-          </div>
-        </div>
+        <SectionWeCanHelp />
 
-        {/* @Component SectionContactForm */}
         <div className={styles.sectionFormWrapper}>
           <div className="container">
             <section className={styles.sectionForm}>
-              <ContactForm />
+              <ContactFormWrapper />
             </section>
           </div>
         </div>

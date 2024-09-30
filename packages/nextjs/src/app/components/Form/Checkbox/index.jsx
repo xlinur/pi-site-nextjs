@@ -1,5 +1,6 @@
 'use client';
 
+import Markdown from 'react-markdown';
 // import { useState } from "react";
 import styles from './styles.module.scss';
 
@@ -27,7 +28,8 @@ const Checkbox = ({ label, ...props }) => {
       </div>
 
       <div className={styles.label}>
-        {label} {props.required && '*'}
+        <Markdown>{label}</Markdown>
+        <span>{props.required && '*'}</span>
       </div>
     </label>
   );

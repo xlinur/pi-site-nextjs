@@ -1,43 +1,57 @@
 @use '../../../styles/mixins.scss' as *;
 
-.sectionPricing {
-  margin-top: 200px;
-  margin-bottom: 40px;
+.sectionPricingGrid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 20px;
 
-  .sectionPricingGrid {
-    margin-top: 60px;
-
+  @include sm {
     display: grid;
-    grid-template-columns: auto 1fr 1fr;
-    column-gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.cardPricing {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: var(--rounded-xl);
+  border: 1px solid var(--blue);
+  padding: 20px;
+  height: 251px;
+
+  @include md {
+    height: 221px;
   }
 
-  .cardPricing {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-radius: 30px;
-    border: 1px solid var(--blue);
+  p {
+    margin-top: 12px;
+  }
+}
+
+.specialCard {
+  border-color: transparent;
+  background-color: var(--light-blue);
+  padding: 30px;
+  min-width: 503px;
+  height: 322px;
+
+  @include lg {
     padding: 20px;
+    min-width: auto;
     height: 251px;
+  }
 
-    p {
-      margin-top: 12px;
-    }
+  h5 {
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 110%;
+  }
 
-    &:first-child {
-      padding: 30px;
-      border-color: transparent;
-      background-color: var(--light-blue);
-      min-width: 503px;
-      height: 322px;
-
-      h5 {
-        font-weight: 700;
-        font-size: 38px;
-        line-height: 110%;
-      }
-    }
+  button {
+    width: 185px;
+    justify-content: center;
   }
 }

@@ -100,13 +100,6 @@
     }
   }
 
-  &.text {
-    --btn-text-color: var(--blue);
-    --btn-bg-color: transparent;
-    --icon-bg-color: transparent;
-    --icon-arrow-color: var(--blue);
-  }
-
   // Default button additional styles
   &.default {
     @extend .secondary;
@@ -132,18 +125,27 @@
       --icon-width: 38px;
       --icon-height: 38px;
     }
+  }
 
-    &.iconRight {
-      flex-direction: row-reverse;
-      --btn-paddings: 6px 6px 6px 18px;
+  &.iconRight {
+    flex-direction: row-reverse;
+    --btn-paddings: 6px 6px 6px 18px;
 
-      &.lg {
-        --btn-paddings: 6px 6px 6px 32px;
-      }
+    &.lg {
+      --btn-paddings: 6px 6px 6px 32px;
     }
   }
 
   &.contentCenter {
     justify-content: center;
   }
+}
+
+.btn.text {
+  --btn-text-color: var(--blue);
+  --btn-bg-color: transparent;
+  --icon-bg-color: transparent;
+  --icon-arrow-color: var(--blue);
+  
+  --btn-paddings: 0;
 }

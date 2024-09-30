@@ -13,6 +13,10 @@ const PageTemplate = async ({ children }) => {
   return (
     <>
       <Header />
+      {children}
+      <Footer />
+
+      {/* MODAL */}
       <Suspense fallback={null}>
         <ModalComponent>
           <ContactForm
@@ -22,8 +26,6 @@ const PageTemplate = async ({ children }) => {
           />
         </ModalComponent>
       </Suspense>
-      {children}
-      <Footer />
     </>
   );
 };

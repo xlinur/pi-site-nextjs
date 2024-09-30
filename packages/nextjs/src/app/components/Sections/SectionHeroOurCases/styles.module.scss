@@ -1,5 +1,5 @@
 .firstSection {
-  margin-top: 80px;
+  // margin-top: 80px;
 
   header {
     display: flex;
@@ -29,7 +29,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 40px;
-    border-radius: 30px;
+    border-radius: var(--rounded-xl);
     background-color: var(--light-blue);
 
     .actions {

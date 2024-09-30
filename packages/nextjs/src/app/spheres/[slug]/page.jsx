@@ -8,7 +8,7 @@ import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionCompaniesLogo from '@/app/components/Sections/SectionCompaniesLogo';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionSuccessStories from '@/app/components/Sections/SectionSuccessStories';
-import ContactForm from '@/app/components/ContactForm';
+import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 
 import styles from './styles.module.scss';
 
@@ -64,16 +64,12 @@ export default async function SpheresPage({ params }) {
           <SectionSuccessStories cases={cases} />
         </div>
 
-        <div className={styles.sectionHelpWrapper}>
-          <div className="container">
-            <SectionWeCanHelp />
-          </div>
-        </div>
+        <SectionWeCanHelp />
 
         <div className={styles.sectionFormWrapper}>
           <div className="container">
             <section className={styles.sectionForm}>
-              <ContactForm />
+              <ContactFormWrapper />
             </section>
           </div>
         </div>

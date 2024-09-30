@@ -1,4 +1,4 @@
-import ContactForm from '@/app/components/ContactForm';
+import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 import SectionCaseHero from '@/app/components/Sections/SectionCaseHero';
 import SectionRecruitmentSummary from '@/app/components/Sections/SectionRecruitmentSummary';
 import SectionCompleteTask from '@/app/components/Sections/SectionCompleteTask';
@@ -56,7 +56,7 @@ export default async function PageCase({ params }) {
       <div className={styles.sectionFormWrapper}>
         <div className="container">
           <section className={styles.sectionForm}>
-            <ContactForm />
+            <ContactFormWrapper />
           </section>
         </div>
       </div>

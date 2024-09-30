@@ -1,8 +1,14 @@
+@use '../../../styles/mixins.scss' as *;
+
 .swiperNavigation {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
   padding-top: 50px;
+
+  @include md {
+    display: none;
+  }
 
   button {
     padding: 0;
@@ -20,7 +26,4 @@
       display: inline-flex;
     }
   }
-  // position: absolute;
-  // display: flex;
-  // bottom: -50px;
 }

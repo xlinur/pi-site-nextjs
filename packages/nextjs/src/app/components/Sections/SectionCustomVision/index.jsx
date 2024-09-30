@@ -3,12 +3,18 @@ import Button from '@/app/components/Button';
 import visionSVG from '@/app/assets/icons/vision.svg';
 import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
+import clsx from 'clsx';
 
-export default function SectionCustomVision({ title, description, moreInfo }) {
+export default function SectionCustomVision({
+  title,
+  description,
+  moreInfo,
+  rtl,
+}) {
   return (
-    <section className={styles.sectionCustomVision}>
+    <section className={clsx(styles.sectionCustomVision, rtl && styles.rtl)}>
       <div className={styles.imageWrapper}>
-        <Image src={visionSVG} alt="Image" />
+        <Image src={visionSVG} alt="Image" fill />
       </div>
 
       <div className={styles.sectionCustomVisionContent}>
@@ -20,7 +26,7 @@ export default function SectionCustomVision({ title, description, moreInfo }) {
           <Markdown>{description}</Markdown>
         </div>
 
-        <Button name={moreInfo?.name}></Button>
+        <Button withIcon name={moreInfo?.name} />
       </div>
     </section>
   );

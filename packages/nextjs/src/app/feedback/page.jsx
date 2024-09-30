@@ -1,7 +1,7 @@
 import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import Button from '@/app/components/Button';
-import ContactForm from '@/app/components/ContactForm';
+import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 import CardFeedback from '@/app/components/Cards/CardFeedback';
 
 import styles from './styles.module.scss';
@@ -21,7 +21,7 @@ export default async function PageFeedback() {
       <main className={styles.pageFeedback}>
         <div className="container">
           <header>
-            <h1 className="h2">{title}</h1>
+            <h1>{title}</h1>
 
             <div className={styles.feedbackSectionLinks}>
               <Button theme="secondary">IT Recruitment</Button>
@@ -40,11 +40,13 @@ export default async function PageFeedback() {
               ))}
             </div>
 
-            <Button name={moreReviewsBtn.name} />
+            <Button size="lg" name={moreReviewsBtn.name} />
           </section>
+        </div>
 
+        <div className="container">
           <section className={styles.sectionForm}>
-            <ContactForm />
+            <ContactFormWrapper />
           </section>
         </div>
       </main>

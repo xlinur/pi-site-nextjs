@@ -26,7 +26,9 @@ export default async function HeroMain({
               <Markdown>{title}</Markdown>
             </h1>
 
-            <Markdown>{description}</Markdown>
+            <h5>
+              <Markdown>{description}</Markdown>
+            </h5>
           </header>
 
           <div className={styles.sectionHeroActions}>
@@ -36,7 +38,9 @@ export default async function HeroMain({
             )}
           </div>
 
-          <Advantages advantages={advantages.advantage} />
+          <div className={styles.advantagesWrapper}>
+            <Advantages advantages={advantages.advantage} />
+          </div>
           <Worldwide recorWord={recorWord} />
         </section>
       </div>

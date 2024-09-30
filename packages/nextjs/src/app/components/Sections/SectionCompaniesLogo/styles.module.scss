@@ -2,10 +2,20 @@
 
 .sectionCompanies {
   text-align: center;
-  padding-top: 100px;
-  padding-bottom: 100px;
 
   .infinitySliderWrapper {
     margin-top: 50px;
+  }
+
+  button {
+    margin-top: 30px;
+
+    @include md {
+      margin-top: 20px;
+    }
+
+    @include sm {
+      margin-top: 12px;
+    }
   }
 }

@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 import Button from '@/app/components/Button';
-import ContactForm from '@/app/components/ContactForm';
+import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 import SectionHeroOurCases from '@/app/components/Sections/SectionHeroOurCases';
 import CardCase from './components/CardCase';
 
@@ -67,7 +67,7 @@ export default async function PageCases() {
       <div className={styles.sectionFormWrapper}>
         <div className="container">
           <section className={styles.sectionForm}>
-            <ContactForm />
+            <ContactFormWrapper />
           </section>
         </div>
       </div>

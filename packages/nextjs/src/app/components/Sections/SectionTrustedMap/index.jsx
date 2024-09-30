@@ -14,7 +14,7 @@ export default async function SectionTrustedMap({ variant = 'bigMap' }) {
   const InlineMap = () => (
     <section className={styles.sectionMapImg}>
       <header>
-        <h3 className="h1">{title}</h3>
+        <h2>{title}</h2>
         <Button name={contactUsBtn.name} />
       </header>
 

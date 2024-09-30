@@ -16,9 +16,14 @@
 
 .sectionHero {
   padding-top: 100px;
-  padding-bottom: 160px;
+  padding-bottom: 100px;
+  
+  @include lg {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
 
-  @include md {
+  @include sm {
     padding-top: 60px;
     padding-bottom: 60px;
   }
@@ -31,6 +36,7 @@
 
     @include md {
       gap: 16px;
+      max-width: 476px;
     }
 
     h1 {

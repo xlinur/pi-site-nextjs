@@ -4,10 +4,18 @@
   $gaps: 24px;
   $radius: 30px;
 
+  @include md {
+    $gaps: 12px;
+    $radius: 20px;
+  }
+
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: $gaps;
-  margin-top: 200px;
+  gap: $gaps;
+
+  @include sm {
+    grid-template-columns: 1fr;
+  }
 
   .cardProposalArticle {
     display: flex;
@@ -24,6 +32,13 @@
       flex-direction: column;
       row-gap: $gaps;
     }
+
+    @include md {
+      padding: 26px 20px;
+    }
+    @include sm {
+      padding: 26px 16px;
+    }
   }
 
   .directionsWrapper {
@@ -37,6 +52,10 @@
       align-items: center;
       justify-content: center;
       min-height: 146px;
+
+      @include sm {
+        min-height: 100px;
+      }
     }
 
     .directionsCardItem {
@@ -47,6 +66,14 @@
       align-items: flex-start;
       row-gap: 6px;
       min-height: 256px;
+
+      @include md {
+        min-height: 171px;
+      }
+      @include sm {
+        min-height: 146px;
+        justify-content: flex-start;
+      }
     }
 
     .directionsCardTitle,
@@ -54,6 +81,13 @@
       border-radius: $radius;
       border: 1px solid var(--blue);
       padding: 24px;
+
+      @include md {
+        padding: 16px;
+      }
+      @include sm {
+        padding: 14px;
+      }
     }
   }
 }

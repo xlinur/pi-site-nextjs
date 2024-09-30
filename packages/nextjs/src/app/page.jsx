@@ -8,11 +8,10 @@ import SectionCompaniesLogo from '@/app/components/Sections/SectionCompaniesLogo
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionMeetGallery from '@/app/components/Sections/SectionMeetGallery';
 import SectionTrustedMap from '@/app/components/Sections/SectionTrustedMap';
-import { ContactFormWrapper } from './components/ContactForm/ContactFormWrapper';
+import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 
 import SectionWhyInfo from '@/app/components/Sections/SectionWhyInfo';
-
-import CardSocialMedia from '@/app/components/Cards/CardSocialMedia';
+import SectionSocialMedia from '@/app/components/Sections/SectionSocialMedia';
 
 import homePageRequest from '@/app/api/strapi/homePage/route';
 import styles from './styles.module.scss';
@@ -37,11 +36,7 @@ export default async function Home() {
       <main className={styles.pageMain}>
         <HeroMain {...HeroSection} />
 
-        <div className={styles.sectionHelpWrapper}>
-          <div className="container">
-            <SectionWeCanHelp />
-          </div>
-        </div>
+        <SectionWeCanHelp />
 
         <div className={styles.sectionCustomVisionWrapper}>
           <div className="container">
@@ -79,30 +74,14 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className={styles.sectionFormWrapper}>
-          <div className="container">
-            <section className={styles.sectionForm}>
-              <ContactFormWrapper />
-            </section>
-          </div>
+        <div className="container">
+          <section className={styles.sectionForm}>
+            <ContactFormWrapper />
+          </section>
         </div>
 
-        <div className={styles.sectionSocialMediaWrapper}>
-          <div className="container">
-            <section className={styles.sectionSocialMedia}>
-              <header>
-                <h3>
-                  Follow us on <span>social media</span>
-                </h3>
-              </header>
-
-              <div className={styles.sectionSocialMediaList}>
-                <CardSocialMedia socialName="instagram" />
-                <CardSocialMedia socialName="linkedin" />
-                <CardSocialMedia socialName="facebook" />
-              </div>
-            </section>
-          </div>
+        <div className="container">
+          <SectionSocialMedia />
         </div>
       </main>
     </PageTemplate>

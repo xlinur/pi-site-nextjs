@@ -8,23 +8,22 @@
   gap: 20px;
   height: 200px;
   border: 1px solid var(--blue);
-  border-radius: 30px;
+  border-radius: var(--rounded-xl);
   background-color: var(--white);
   padding-inline: 42px;
-  margin-top: 200px;
   font-weight: 400;
 
   .itemWrapper {
     flex: 1 0 25%;
     display: contents;
+  }
 
-    .sectionHeroAdvantagesDivider {
-      width: 1px;
-      height: 92px;
-      background-color: var(--blue);
-    }
+  .sectionHeroAdvantagesDivider {
+    width: 1px;
+    height: 92px;
+    background-color: var(--blue);
 
-    &:last-child .sectionHeroAdvantagesDivider {
+    &:last-child {
       display: none;
     }
   }
@@ -50,7 +49,6 @@
     height: initial;
     padding-top: 30px;
     padding-bottom: 30px;
-    margin-top: 68px;
 
     .sectionHeroAdvantagesDivider {
       height: 50px;
