@@ -1,0 +1,69 @@
+@use '../../styles/mixins.scss' as *;
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .dropdownMenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    flex-direction: column;
+    row-gap: 12px;
+    padding: 20px;
+    min-width: fit-content;
+    text-wrap: nowrap;
+    background-color: var(--light-blue);
+    color: var(--dark-gray);
+    border-radius: 10px;
+
+    li {
+      display: inline-flex;
+      width: 100%;
+
+      a {
+        width: 100%;
+        line-height: 22.4px;
+      }
+
+      &:hover {
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &.light {
+    .dropdownMenu {
+      background-color: var(--white);
+    }
+  }
+
+  &:hover {
+    .caretDown {
+      transform: rotate(180deg);
+    }
+
+    .dropdownMenu {
+      display: flex;
+    }
+  }
+}
+
+.caretDown {
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+
+  @include sm {
+    .caretDown {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

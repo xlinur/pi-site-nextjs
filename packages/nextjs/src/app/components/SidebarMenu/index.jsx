@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import crossSvg from '@/app/assets/icons/cross.svg';
 import clockSvg from '@/app/assets/icons/clock.svg';
+import DropdownNav from '@/app/components/DropdownNav';
 import { createSocialsData } from '@/app/utils/createSocialsData';
 import { createSupportData } from '@/app/utils/createSupportData';
 import { createWorkingHours } from '@/app/utils/createWorkingHours';
+
 import styles from './styles.module.scss';
 
 export const SidebarMenu = ({
@@ -33,14 +35,12 @@ export const SidebarMenu = ({
     menu.map(({ title, url, childs }) => {
       if (childs?.length) {
         return (
-          <div className={styles.menuItem} key={url}>
-            {/* change class name servicesWrapper to more generic one */}
-            <div className={styles.servicesWrapper}>
-              {/* DROPDOWN */}
-              <a href={url}>{title}</a>
-              {/* Caret down icon */}
-            </div>
-          </div>
+          <DropdownNav
+            theme="light"
+            key={url}
+            item={{ title, url, childs }}
+            idx={url}
+          />
         );
       }
 
