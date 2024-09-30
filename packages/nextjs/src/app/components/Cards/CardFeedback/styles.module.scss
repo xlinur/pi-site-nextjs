@@ -92,3 +92,32 @@ $padding: 30px;
   right: $padding;
   color: var(--blue);
 }
+
+// MODAL
+.modalFeedbackBody {
+  padding: 50px;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  border-radius: 30px;
+  max-width: 820px;
+  max-height: 95dvh;
+  overflow: auto;
+
+  @include md {
+    max-width: 90vw;
+  }
+
+  header {
+    background-color: var(--light-blue);
+    border-radius: inherit;
+    padding: 20px;
+  }
+
+  .modalFeedbackBodyContent {
+    border-radius: inherit;
+    border: 1px solid var(--gray);
+    padding: 30px;
+  }
+}
