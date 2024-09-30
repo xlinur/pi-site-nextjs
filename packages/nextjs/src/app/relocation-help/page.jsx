@@ -17,13 +17,13 @@ export const generateMetadata = async () => {
 };
 
 export default async function RelocationHelpPage() {
-  const { RelocationHelpHero, BlockStepsPlan } = await pageRelocationHelp();
+  const { SectionWithFeatures, BlockStepsPlan } = await pageRelocationHelp();
 
   return (
     <PageTemplate>
-      <main className={styles.relocationHelpPage}>
+      <main className={styles.page}>
         <div className="container">
-          <SectionRelocationHelpHero {...RelocationHelpHero} />
+          <SectionRelocationHelpHero {...SectionWithFeatures} />
         </div>
 
         <div className="container">

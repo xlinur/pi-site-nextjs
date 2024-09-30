@@ -6,7 +6,7 @@ const SectionBlockStepsPlan = ({ title, steps, contactBtn }) => {
   return (
     <section className={styles.sectionSteps}>
       <header>
-        <h4>{title}</h4>
+        <h2 className="h3">{title}</h2>
       </header>
 
       {steps.map((item) => (
@@ -16,10 +16,16 @@ const SectionBlockStepsPlan = ({ title, steps, contactBtn }) => {
           <div>
             <Markdown>{item.text}</Markdown>
 
-            {steps.at(-1).id === item.id && <Button name={contactBtn.name} />}
+            {steps.at(-1).id === item.id && (
+              <Button theme="primary" name={contactBtn.name} />
+            )}
           </div>
         </div>
       ))}
+
+      <div className={styles.btnContactBtn}>
+        <Button theme="primary" name={contactBtn.name} />
+      </div>
     </section>
   );
 };

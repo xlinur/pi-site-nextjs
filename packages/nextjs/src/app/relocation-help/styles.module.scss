@@ -1,0 +1,13 @@
+@use '../styles/mixins.scss' as *;
+
+.page {
+  margin-top: 80px;
+
+  @include md {
+    margin-top: 60px;
+  }
+
+  @include sm {
+    margin-top: 40px;
+  }
+}
