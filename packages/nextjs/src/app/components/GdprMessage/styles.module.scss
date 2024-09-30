@@ -1,0 +1,37 @@
+.wrapper {
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 744px;
+  margin-inline: 50px;
+
+  background-color: var(--light-blue);
+  border-radius: var(--rounded-xl);
+  padding: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 44px;
+
+  .message {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+
+    a {
+      color: var(--blue);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  button {
+    background-color: transparent;
+    text-wrap: nowrap;
+  }
+}

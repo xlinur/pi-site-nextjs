@@ -4,6 +4,8 @@ import sectionStartConversation from '@/app/api/strapi/sectionStartConversation/
 import getGlobalSettings from '@/app/api/strapi/globalSettings/route';
 import ModalComponent from '@/app/components/Modal';
 import ContactForm from '@/app/components/ContactForm';
+import GdprMessage from '@/app/components/GdprMessage';
+
 import { Suspense } from 'react';
 
 const PageTemplate = async ({ children }) => {
@@ -25,6 +27,11 @@ const PageTemplate = async ({ children }) => {
             globalSettings={globalSettings}
           />
         </ModalComponent>
+      </Suspense>
+
+      {/* GDPR MESSAGE */}
+      <Suspense fallback={null}>
+        <GdprMessage />
       </Suspense>
     </>
   );

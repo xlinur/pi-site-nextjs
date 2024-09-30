@@ -1,7 +1,6 @@
 'use client';
 import { Roboto } from 'next/font/google';
 import GoogleCaptchaWrapper from '@/app/components/GoogleCaptchaWrapper';
-import GdprMessage from '@/app/components/GdprMessage';
 import GoogleAnalytics from '@/app/components/GoogleAnalytics';
 
 import '@/app/styles/globals.scss';
@@ -17,7 +16,6 @@ export default function RootLayout({ children }) {
       <body className={roboto.className}>
         <GoogleAnalytics />
         <GoogleCaptchaWrapper>{children}</GoogleCaptchaWrapper>
-        <GdprMessage />
       </body>
     </html>
   );
