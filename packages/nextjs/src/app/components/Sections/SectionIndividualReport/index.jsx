@@ -19,70 +19,36 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import styles from './styles.module.scss';
 import Image from 'next/image';
 
-const optionsServices = [
-  { value: 'IT recruitment', label: 'IT recruitment' },
-  { value: 'Executive Search', label: 'Executive Search' },
-  { value: 'Business Consulting', label: 'Business Consulting' },
-  {
-    value: 'Market Research and Analytics',
-    label: 'Market Research and Analytics',
-  },
-  { value: 'Startup Development', label: 'Startup Development' },
-];
-
-const optionsContactPreferences = [
-  { value: 'whatsapp', label: 'Whatsapp' },
-  { value: 'telegram', label: 'Telegram' },
-  { value: 'E-mail', label: 'E-mail' },
-  { value: 'phone', label: 'Phone' },
-];
-
-const mok = {
-  title: 'Start a conversation',
-  subTitle: 'Leave a request and we will contact you within an hour.',
-  info: 'Or contact us by phone:',
-
-  nameLabel: 'Name',
-  emailLabel: 'E-mail or nickname',
-  companyLabel: 'Company',
-  serviceSelect: {
-    label: 'Select services',
-    options: optionsServices,
-  },
-  contactSelect: {
-    label: 'Contact preferences',
-    options: optionsContactPreferences,
-  },
-  descriptionLabel: 'Comments (optional)',
-  legalCheckboxText:
-    'Yes, I have read and agree to the Data Privacy and Legal Notice.',
-
-  submitBtn: 'Send',
-
-  checkBoxesList: [
-    {
-      label: 'Compare the salary level in the company with the market level',
-    },
-    {
-      label: 'Open a company/legal entity in new locations',
-    },
-    {
-      label: 'Explore new possible locations for doing business',
-    },
-    {
-      label: 'Other',
-    },
-  ],
+const emailFields = {
+  name: 'name',
+  company: 'company',
+  service: 'service',
+  contact: 'contact',
+  comment: 'comment',
+  purposeOfResearch: 'purposeOfResearch',
+  other: 'other',
+  otherComment: 'otherComment',
 };
 
-const ExtraContactContent = () => (
+/**
+ * Adopt input services options to select component
+ * @param inputServicesOptions {{id: any, label: string}[]}
+ * @return {{key: number|string, label: string}[]}
+ */
+export function adoptOptions(inputServicesOptions) {
+  return inputServicesOptions.map(({ id, label }) => {
+    return { value: id, label: label };
+  });
+}
+
+const ExtraContactContent = ({ text }) => (
   <>
     <div className="icon">
       <Image src={chatSVG} alt="Icon" width={174} height={174} />
     </div>
     <ul>
       <li>
-        <p>Or contact us by phone:</p>
+        <p>{text}</p>
       </li>
       <li>
         <Image src={phoneSVG} alt="Icon" width={38} height={38} />
@@ -107,35 +73,84 @@ const ExtraContactContent = () => (
   </>
 );
 
-export default function SectionIndividualReport() {
+export default function SectionIndividualReport({
+  sectionIndividualReportData,
+}) {
+  const {
+    title,
+    subTitle,
+    info,
+    contactsTitle,
+    submitBtn,
+    inputName,
+    inputCompany,
+    selectServices,
+    inputContact,
+    legalCheckboxes,
+    purposeOfResearch,
+    otherPurpose,
+    textareaComment,
+  } = sectionIndividualReportData;
+
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
       name: '',
       company: '',
-      email: '',
-      services: '',
-      contactPreference: '',
+      service: '',
+      contact: '',
       comment: '',
+      purposeOfResearch: purposeOfResearch.map(({ label }) => {
+        return { checked: false, label: label };
+      }),
+      other: {
+        checked: false,
+        label: otherPurpose.label,
+      },
+      otherComment: '',
     },
   });
 
-  const isNameEmpty = !form.getValues().name;
-  const isCompanyEmpty = !form.getValues().company;
-  const isEmailEmpty = !form.getValues().email;
-  const isCommentEmpty = !form.getValues().comment;
-
   const { executeRecaptcha } = useGoogleReCaptcha();
 
-  const handleServiceSelectCallback = (option) => {
-    form.setFieldValue('services', option.value);
+  const createFormInput = (label, key) => (
+    <InputField
+      type="text"
+      label={label}
+      isEmpty={!form.getValues()[key]}
+      key={form.key(key)}
+      {...form.getInputProps(key)}
+    />
+  );
+
+  const onSelectChange = (key) => (option) => {
+    form.setFieldValue(key, option.label);
   };
 
-  const handleContactPreferencesSelectCallback = (option) => {
-    form.setFieldValue('contactPreference', option.value);
-  };
+  const createFormSelect = (label, key, options) => (
+    <SelectField
+      label={label}
+      options={options}
+      onSelect={onSelectChange(key)}
+    />
+  );
+
+  const createTextarea = (label, key) => (
+    <TextareaField
+      label={label}
+      isEmpty={!form.getValues()[key]}
+      key={form.key(key)}
+      {...form.getInputProps(key)}
+    />
+  );
+
+  const createCheckbox = (label, idx) => (
+    <Checkbox required label={label} key={idx} />
+  );
 
   const handleSubmitCallback = async (values) => {
+    console.log(form.getValues());
+    return;
     if (!executeRecaptcha) {
       console.log('Not available to proceed recaptcha');
       return;
@@ -171,12 +186,12 @@ export default function SectionIndividualReport() {
       console.log('Failed to verify via recaptcha');
     }
   };
-
+  console.log(form.getValues())
   return (
     <section className={styles.wrapper}>
       <header>
-        <h4>Order your individual analytical report</h4>
-        <p>Leave a request and we will contact you within an hour.</p>
+        <h4>{title}</h4>
+        <p>{subTitle}</p>
       </header>
 
       <div className={styles.formWrapper}>
@@ -187,65 +202,46 @@ export default function SectionIndividualReport() {
           })}
         >
           <div className={styles.firstBlock}>
-            <p>Please indicate the purpose of the research</p>
+            <p>{info}</p>
 
             <div className={styles.cbWrapper}>
-              {mok.checkBoxesList.map((item, idx) => (
-                <Checkbox key={idx} required label={item.label} />
+              {purposeOfResearch.map(({ id, title }) => (
+                <Checkbox key={id} required label={title} />
               ))}
+
+              <Checkbox
+                required
+                label={otherPurpose.label}
+                key={form.key('other.checked')}
+                {...form.getInputProps('other.checked')}
+              />
+              {createTextarea(otherPurpose.label, 'otherComment')}
             </div>
           </div>
 
           <div className={styles.secondBlock}>
-            <InputField
-              type="text"
-              label={mok.nameLabel}
-              isEmpty={isNameEmpty}
-              key={form.key('name')}
-              {...form.getInputProps('name')}
-            />
-            <InputField
-              type="text"
-              label={mok.companyLabel}
-              isEmpty={isCompanyEmpty}
-              key={form.key('company')}
-              {...form.getInputProps('company')}
-            />
-            <SelectField
-              options={mok.serviceSelect.options}
-              onSelect={handleServiceSelectCallback}
-              label={mok.serviceSelect.label}
-            />
-            <SelectField
-              options={mok.contactSelect.options}
-              onSelect={handleContactPreferencesSelectCallback}
-              label={mok.contactSelect.label}
-            />
-            <InputField
-              type="text"
-              label={mok.emailLabel}
-              isEmpty={isEmailEmpty}
-              key={form.key('email')}
-              {...form.getInputProps('email')}
-            />
+            {createFormInput(inputName.label, emailFields.name)}
+            {createFormInput(inputCompany.label, emailFields.company)}
+            {createFormSelect(
+              selectServices.label,
+              emailFields.service,
+              adoptOptions(selectServices.options),
+            )}
+            {createFormInput(inputContact.label, emailFields.contact)}
+            {createTextarea(textareaComment.label, emailFields.comment)}
 
-            <TextareaField
-              label={mok.descriptionLabel}
-              isEmpty={isCommentEmpty}
-              key={form.key('comment')}
-              {...form.getInputProps('comment')}
-            />
-
-            <Checkbox required label={mok.legalCheckboxText} />
+            {legalCheckboxes.map(({ id, label }) => {
+              return <Checkbox key={id} required label={label} />;
+            })}
 
             <Button content="center" size="lg" type="submit">
-              {mok.submitBtn}
+              {submitBtn}
             </Button>
           </div>
         </form>
 
         <div className={styles.social}>
-          <ExtraContactContent />
+          <ExtraContactContent text={contactsTitle} />
         </div>
       </div>
     </section>

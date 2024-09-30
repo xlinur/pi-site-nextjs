@@ -6,11 +6,11 @@ import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 import SectionWhyInfo from '@/app/components/Sections/SectionWhyInfo';
 import SectionPricing from '@/app/components/Sections/SectionPricing';
-import SectionIndividualReport from '@/app/components/Sections/SectionIndividualReport';
+import { SectionIndividualReportWrapper } from '@/app/components/Sections/SectionIndividualReport/SectionIndividualReportWrapper';
+
 import SectionAnalyticsServices from '@/app/components/Sections/SectionAnalyticsServices';
 
 import styles from './styles.module.scss';
-
 import pageAnalytics from '@/app/api/strapi/pageAnalytics/route';
 
 export const generateMetadata = async () => {
@@ -45,7 +45,7 @@ export default async function SpheresPage() {
         </div>
 
         <div className="container">
-          <SectionIndividualReport />
+          <SectionIndividualReportWrapper />
         </div>
 
         <SectionWeCanHelp />
