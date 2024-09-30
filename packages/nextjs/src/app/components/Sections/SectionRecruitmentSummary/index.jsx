@@ -13,9 +13,9 @@ export default function SectionRecruitmentSummary({
   return (
     <section className={styles.sectionRecruitmentSummary}>
       <header>
-        <h2>
+        <h3>
           <Markdown>{title}</Markdown>
-        </h2>
+        </h3>
         <Markdown>{subtitle}</Markdown>
       </header>
 

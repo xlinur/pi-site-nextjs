@@ -1,12 +1,14 @@
-import clsx from 'clsx';
-import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
+
+import styles from './styles.module.scss';
 
 export default function SectionCaseHero({ title, subtitle, description }) {
   return (
     <section className={styles.sectionCaseHero}>
       <header>
-        <Markdown>{title}</Markdown>
+        <h1>
+          <Markdown>{title}</Markdown>
+        </h1>
         <Markdown className={styles.subtitle}>{subtitle}</Markdown>
         <Markdown className={styles.description}>{description}</Markdown>
       </header>

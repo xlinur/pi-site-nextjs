@@ -31,7 +31,7 @@ const Button = (props) => {
     withIcon = false,
     iconRight = false,
     size = 'lg', // lg | default - empty string
-    theme = 'primary', // primary | secondary | default | text
+    theme = 'primary', // primary | secondary | default | text | transparent
     disabled = false,
     content,
     type = 'button',

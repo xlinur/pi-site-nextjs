@@ -47,11 +47,11 @@ export default async function PageAboutUs() {
           <SectionOurTeam {...OurTeam} />
         </div>
 
-        <div className={clsx("container", styles.smSkipPadding)}>
+        <div className={clsx('container', styles.smSkipPadding)}>
           <SectionTrustedMap variant="some" />
         </div>
 
-        <SectionFeedbackList theme="dark" />
+        <SectionFeedbackList />
 
         <SectionWeCanHelp />
 

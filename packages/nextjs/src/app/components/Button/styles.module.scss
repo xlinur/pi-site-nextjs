@@ -101,6 +101,27 @@
     }
   }
 
+  &.text {
+    --btn-text-color: var(--blue);
+    --btn-bg-color: transparent;
+    --icon-bg-color: transparent;
+    --icon-arrow-color: var(--blue);
+    
+    --btn-paddings: 0;
+  }
+
+  &.transparent {
+    @extend .secondary;
+
+    --btn-bg-color: transparent;
+
+    &:not(:disabled) {
+      &:hover {
+        --btn-border-color: var(--blue);
+      }
+    }
+  }
+
   // Default button additional styles
   &.default {
     @extend .secondary;
@@ -140,13 +161,4 @@
   &.contentCenter {
     justify-content: center;
   }
-}
-
-.btn.text {
-  --btn-text-color: var(--blue);
-  --btn-bg-color: transparent;
-  --icon-bg-color: transparent;
-  --icon-arrow-color: var(--blue);
-  
-  --btn-paddings: 0;
 }

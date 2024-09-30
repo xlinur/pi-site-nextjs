@@ -7,6 +7,7 @@ import sectionWhatOurCliensSay from '@/app/api/strapi/sectionWhatOurCliensSay/ro
 import styles from './styles.module.scss';
 import { routes } from '@/config/routes';
 
+// theme = dark | light
 export default async function SectionFeedbackList({ inData, theme }) {
   const data = await feedbacks();
 
@@ -18,7 +19,11 @@ export default async function SectionFeedbackList({ inData, theme }) {
         <header>
           <h3>{title}</h3>
 
-          <Button theme="secondary" name={readMoreBtn.name} url={routes.feedbacks()} />
+          <Button
+            theme="transparent"
+            name={readMoreBtn.name}
+            url={routes.feedbacks()}
+          />
         </header>
       </div>
 

@@ -36,13 +36,8 @@ const accept = () => {
   return false;
 };
 
-const GdprMessage = (props) => {
+const GdprMessage = ({ gdprAcceptBtn, gdprMessage }) => {
   const [showModal, setShowModal] = useState(false);
-
-  const {
-    message = 'This website uses cookies to ensure that you get the best experience. To get more information about these cookies and the processing of your personal data, check our [Privacy Policy](https://google.com) or [Cookie policy](https://google.com).',
-    gdprBtn = 'Yes, I Accept',
-  } = props;
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -60,10 +55,14 @@ const GdprMessage = (props) => {
   return showModal ? (
     <div className={styles.wrapper}>
       <div className={styles.message}>
-        <Markdown>{message}</Markdown>
+        <Markdown>{gdprMessage}</Markdown>
       </div>
 
-      <Button theme="secondary" onClick={onAccept} name={gdprBtn} />
+      <Button
+        theme="transparent"
+        onClick={onAccept}
+        name={gdprAcceptBtn.name}
+      />
     </div>
   ) : null;
 };

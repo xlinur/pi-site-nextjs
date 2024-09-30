@@ -1,3 +1,5 @@
+@use '../../styles/mixins.scss' as *;
+
 .wrapper {
   position: fixed;
   bottom: 50px;
@@ -15,6 +17,24 @@
   align-items: center;
   justify-content: space-between;
   column-gap: 44px;
+  z-index: 9999;
+
+  @include md {
+    max-width: 100%;
+    border-radius: 0;
+    bottom: 0;
+    margin-inline: 0;
+  }
+
+  @include sm {
+    flex-direction: column;
+    row-gap: 24px;
+
+    button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 
   .message {
     font-weight: 400;
@@ -31,7 +51,6 @@
   }
 
   button {
-    background-color: transparent;
     text-wrap: nowrap;
   }
 }
