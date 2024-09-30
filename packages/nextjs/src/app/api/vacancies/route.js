@@ -1,7 +1,31 @@
 import { NextResponse } from 'next/server';
 
 const mock = {
-  vacancies: [
+  data: [
+    {
+      id: '9151f21f-43ae-43b4-92f3-f4af67cdf544',
+      title: 'Teamlead C++',
+      location: 'Remote',
+      type: 'Full Time',
+    },
+    {
+      id: '9151f21f-43ae-43b4-92f3-f4af67cdf544',
+      title: 'Teamlead C++',
+      location: 'Remote',
+      type: 'Full Time',
+    },
+    {
+      id: '9151f21f-43ae-43b4-92f3-f4af67cdf544',
+      title: 'Teamlead C++',
+      location: 'Remote',
+      type: 'Full Time',
+    },
+    {
+      id: '9151f21f-43ae-43b4-92f3-f4af67cdf544',
+      title: 'Teamlead C++',
+      location: 'Remote',
+      type: 'Full Time',
+    },
     {
       id: '9151f21f-43ae-43b4-92f3-f4af67cdf544',
       title: 'Teamlead C++',

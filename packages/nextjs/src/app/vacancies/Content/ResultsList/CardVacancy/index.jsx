@@ -1,23 +1,21 @@
 import Button from '@/app/components/Button';
 import styles from './styles.module.scss';
 
-export default function index() {
+const CardVacancy = ({ title, type, location }) => {
   return (
     <div className={styles.card}>
       <div className={styles.content}>
-        <h5>Teamlead C++</h5>
+        <h5>{title}</h5>
 
         <ul className={styles.info}>
-          <li>
-            <b>Location:</b> Remote
-          </li>
-          <li>
-            <b>Type:</b> Full Time
-          </li>
+          <li>{location}</li>
+          <li>{type}</li>
         </ul>
       </div>
 
       <Button withIcon />
     </div>
   );
-}
+};
+
+export default CardVacancy;
