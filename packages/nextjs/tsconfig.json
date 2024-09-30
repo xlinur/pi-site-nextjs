@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/SidebarMenu/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/SidebarMenu/index.jsx", "src/utils/strapiRequest.js", "src/utils/getTimezoneOffset.js", "src/utils/vacanciesRequest.js"],
   "exclude": ["node_modules"]
 }

@@ -1,16 +1,37 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import Markdown from 'react-markdown';
+import request from '@/app/utils/request';
 import CardVacancy from '@/app/components/Cards/CardVacancy';
 
 import styles from './styles.module.scss';
 
-export default function index() {
+const Content = (pageData) => {
+  const { contentTitle, itemsCountLabel, filterFindBtn, filterResetBtn } =
+    pageData;
+
+  const [vacancies, setVacancies] = useState();
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await request.get('/api/vacancies');
+
+      setVacancies(data);
+
+      console.log({ data });
+    };
+
+    getData();
+  }, []);
+
   return (
     <section className={styles.sectionWrapper}>
       <header>
-        <h4>Find your vacancy</h4>
+        <h4>{contentTitle}</h4>
 
         <div className={styles.counter}>
-          <span>{245}</span> vacancies found
+          <span>{245}</span> {itemsCountLabel}
         </div>
       </header>
 
@@ -24,4 +45,6 @@ export default function index() {
       </div>
     </section>
   );
-}
+};
+
+export default Content;

@@ -1,7 +1,8 @@
+import { Suspense } from 'react';
 import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionHeroVacancies from '@/app/components/Sections/SectionHeroVacancies';
-import SectionFindVacancy from '@/app/components/Sections/SectionFindVacancy';
+import Content from './Content';
 
 import styles from './styles.module.scss';
 
@@ -18,7 +19,9 @@ export default async function PageVacancies() {
         </div>
 
         <div className="container">
-          <SectionFindVacancy />
+          <Suspense fallback={null}>
+            <Content pageData={{}} />
+          </Suspense>
         </div>
       </main>
     </PageTemplate>

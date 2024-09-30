@@ -1,4 +1,4 @@
-import { request } from '@/utils/request';
+import { request } from '../utils';
 
 export const getSpheres = async () => {
   const data = await request('/api/spheres?populate=deep');

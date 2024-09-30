@@ -1,15 +1,6 @@
 import qs from 'qs';
 
-interface RequestParams {
-  query: object;
-}
-
-type Request = <Response extends object>(
-  path: string,
-  params?: RequestParams,
-) => Promise<Response>;
-
-export const request: Request = async (path, props) => {
+export const request = async (path, props) => {
   const { query } = props || {};
 
   const url = new URL(path, process.env.NEXT_STRAPI_API);
