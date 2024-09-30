@@ -51,7 +51,7 @@ const SectionRelocationHelpHero = ({
         {bottomText && contactUsBtn && (
           <div className={styles.contentFooter}>
             <p>{bottomText}</p>
-            <Button withIcon name={contactUsBtn?.name} />
+            <Button withIcon name={contactUsBtn?.name} openModal />
           </div>
         )}
       </div>

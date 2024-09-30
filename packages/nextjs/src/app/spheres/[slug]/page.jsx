@@ -47,7 +47,11 @@ export default async function SpheresPage({ params }) {
 
         <div className={styles.sectionCustomVisionWrapper}>
           <div className="container">
-            <SectionCustomVision {...SectionWithIndustriesImage} />
+            <SectionCustomVision
+              {...SectionWithIndustriesImage}
+              openModal
+              url={null}
+            />
           </div>
         </div>
 

@@ -15,6 +15,7 @@ import SectionSocialMedia from '@/app/components/Sections/SectionSocialMedia';
 
 import homePageRequest from '@/app/api/strapi/homePage/route';
 import styles from './styles.module.scss';
+import { routes } from '@/config/routes';
 
 export const generateMetadata = async () => {
   const { SEO } = await homePageRequest();
@@ -40,7 +41,10 @@ export default async function Home() {
 
         <div className={styles.sectionCustomVisionWrapper}>
           <div className="container">
-            <SectionCustomVision {...SectionWithIndustriesImage} />
+            <SectionCustomVision
+              {...SectionWithIndustriesImage}
+              url={routes.vacancies()}
+            />
           </div>
         </div>
 

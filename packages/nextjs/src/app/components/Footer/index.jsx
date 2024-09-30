@@ -81,7 +81,7 @@ const Footer = async () => {
               <p className={styles.listTitle}>{contactsBlockTitle}</p>
               <ul className={styles.list}>
                 <li className={styles.listItemLocation}>
-                  <a href="/" className={styles.workHoursWrapper}>
+                  <span className={styles.workHoursWrapper}>
                     <Image
                       src={locationPin}
                       alt="Clock icon"
@@ -89,10 +89,10 @@ const Footer = async () => {
                       height={24}
                     />
                     <div className={styles.workHours}>{address}</div>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a href="/" className={styles.workHoursWrapper}>
+                  <span className={styles.workHoursWrapper}>
                     <Image
                       src={clockSvg}
                       alt="Clock icon"
@@ -100,7 +100,7 @@ const Footer = async () => {
                       height={24}
                     />
                     <div className={styles.workHours}>{time}</div>
-                  </a>
+                  </span>
                 </li>
               </ul>
             </div>
@@ -132,9 +132,13 @@ const Footer = async () => {
             </div>
 
             <div className={styles.footerCopyrightBlockContain}>
-              <Markdown className={styles.footerCopyrightPolicies}>{privacyPolicy}</Markdown>
+              <Markdown className={styles.footerCopyrightPolicies}>
+                {privacyPolicy}
+              </Markdown>
 
-              <Markdown className={styles.footerCopyrightTerms}>{candidatePolicy}</Markdown>
+              <Markdown className={styles.footerCopyrightTerms}>
+                {candidatePolicy}
+              </Markdown>
             </div>
           </div>
         </footer>

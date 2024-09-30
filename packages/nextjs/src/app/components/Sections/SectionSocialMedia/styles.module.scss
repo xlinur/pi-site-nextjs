@@ -83,7 +83,7 @@
     flex-direction: column;
     row-gap: 12px;
 
-    li > a {
+    li > a, span {
       display: inline-flex;
       column-gap: 12px;
     }

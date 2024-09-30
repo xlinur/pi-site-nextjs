@@ -21,7 +21,7 @@ export default function SectionExamplesOfBestPractices({
         <div className={styles.sectionAccordionContentImage}>
           <Image src={peopleSVG} alt="some" fill />
 
-          <Button size="lg" name={contactBtn.name} />
+          <Button size="lg" name={contactBtn.name} openModal />
         </div>
       </div>
     </section>

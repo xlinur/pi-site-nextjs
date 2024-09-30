@@ -22,7 +22,7 @@ export default async function SectionProposal(props) {
           <Markdown>{description}</Markdown>
         </header>
 
-        <Button size="lg" name={consultationBtn.name} />
+        <Button size="lg" name={consultationBtn.name} openModal />
       </article>
 
       <div className={styles.directionsWrapper}>

@@ -71,7 +71,7 @@ const AdditionalInfo = ({
         <p className={styles.listTitle}>{contactsBlockTitle}</p>
         <ul className={styles.list}>
           <li className={styles.listItemLocation}>
-            <a href="/" className={styles.workHoursWrapper}>
+            <span className={styles.workHoursWrapper}>
               <Image
                 src={locationPin}
                 alt="Clock icon"
@@ -79,7 +79,7 @@ const AdditionalInfo = ({
                 height={24}
               />
               <div className={styles.workHours}>{address}</div>
-            </a>
+            </span>
           </li>
           <li className={`h5 ${styles.linkPhone}`}>
             <a href={`tel:${contacts.phone}`}>{contacts.phone}</a>

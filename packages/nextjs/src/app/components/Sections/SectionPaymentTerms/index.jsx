@@ -5,6 +5,7 @@ import Button from '@/app/components/Button';
 import dollarsSVG from '@/app/assets/icons/dollars.svg';
 
 import sectionPaymentTerms from '@/app/api/strapi/sectionPaymentTerms/route';
+import { ANCHORS } from '@/app/core/constants/anchor';
 
 export default async function SectionPaymentTerms() {
   const { title, items, contactBtn } = await sectionPaymentTerms();
@@ -20,7 +21,11 @@ export default async function SectionPaymentTerms() {
       <div className={styles.cardContact}>
         <Image src={dollarsSVG} alt="Icon dollars" width={148} height={148} />
 
-        <Button size="lg" name={contactBtn.name} />
+        <Button
+          size="lg"
+          name={contactBtn.name}
+          url={ANCHORS.CONTACT_FORM.ANCHOR}
+        />
       </div>
     </div>
   );

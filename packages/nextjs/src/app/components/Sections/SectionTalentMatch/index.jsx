@@ -3,6 +3,7 @@ import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
 import Image from 'next/image';
 import peopleSVG from '@/app/assets/icons/people-1-white.svg';
+import { ANCHORS } from '@/app/core/constants/anchor';
 
 export default function SectionTalentMatch({ content, hireNowBtn }) {
   return (
@@ -13,7 +14,11 @@ export default function SectionTalentMatch({ content, hireNowBtn }) {
       <div className={styles.content}>
         <Markdown className="h5">{content}</Markdown>
 
-        <Button withIcon name={hireNowBtn.name} />
+        <Button
+          withIcon
+          name={hireNowBtn.name}
+          url={ANCHORS.CONTACT_FORM.ANCHOR}
+        />
       </div>
     </section>
   );

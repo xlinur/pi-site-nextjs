@@ -1,6 +1,8 @@
-import Button from '@/app/components/Button';
-import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
+import Button from '@/app/components/Button';
+
+import { ANCHORS } from '@/app/core/constants/anchor';
+import styles from './styles.module.scss';
 
 const SectionAnalyticsServices = ({ title, services, contactBtn }) => {
   return (
@@ -43,7 +45,10 @@ const SectionAnalyticsServices = ({ title, services, contactBtn }) => {
               <Markdown>{item.details}</Markdown>
             </div>
 
-            <Button name={item.sendRequest.name} />
+            <Button
+              name={item.sendRequest.name}
+              url={ANCHORS.CONTACT_FORM.ANCHOR}
+            />
           </div>
         ))}
       </div>

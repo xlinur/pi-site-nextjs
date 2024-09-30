@@ -29,7 +29,7 @@
       flex-direction: column;
       gap: 12px;
 
-      li > a {
+      li > span, li > a {
         display: inline-flex;
         align-items: center;
         gap: 6px;
@@ -45,8 +45,10 @@
       }
     }
 
-    .listItemLocation a {
-      align-items: initial;
+    .listItemLocation {
+      a, span {
+        align-items: initial;
+      }
     }
   }
 

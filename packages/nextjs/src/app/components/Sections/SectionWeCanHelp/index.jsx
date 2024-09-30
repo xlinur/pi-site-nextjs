@@ -26,11 +26,31 @@ export default async function SectionWeCanHelp() {
           </header>
 
           <div className={styles.sectionHelpGrid}>
-            <CardWeCanHelp href={routes.itRecruitment()} text={recruitment} bgImage="peoples01" />
-            <CardWeCanHelp href={routes.consulting()} text={buisnessConsulting} bgImage="chat" />
-            <CardWeCanHelp href={routes.executiveSearch()} text={executiveSearch} bgImage="peoples" />
-            <CardWeCanHelp href={routes.analytics()} text={marketResearchAndAnalytics} bgImage="graph" />
-            <CardWeCanHelp href={routes.relocation()} text={relocation} bgImage="location" />
+            <CardWeCanHelp
+              href={routes.itRecruitment()}
+              text={recruitment}
+              bgImage="peoples01"
+            />
+            <CardWeCanHelp
+              href={routes.consulting()}
+              text={buisnessConsulting}
+              bgImage="chat"
+            />
+            <CardWeCanHelp
+              href={routes.executiveSearch()}
+              text={executiveSearch}
+              bgImage="peoples"
+            />
+            <CardWeCanHelp
+              href={routes.analytics()}
+              text={marketResearchAndAnalytics}
+              bgImage="graph"
+            />
+            <CardWeCanHelp
+              href={routes.relocation()}
+              text={relocation}
+              bgImage="location"
+            />
             <CardWeCanHelp
               text={or}
               bgImage="money"

@@ -44,7 +44,7 @@ export default function SectionConsultingServices(props) {
         </div>
       ))}
 
-      <Button name={otherConsultationBtn.name} />
+      <Button name={otherConsultationBtn.name} openModal />
     </section>
   );
 }

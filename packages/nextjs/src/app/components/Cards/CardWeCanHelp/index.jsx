@@ -7,7 +7,6 @@ import money from '@/app/assets/icons/money.svg';
 import graph from '@/app/assets/icons/graph.svg';
 import styles from './styles.module.scss';
 import Button from '../../Button';
-import clsx from 'clsx';
 
 const ArrowIcon = () => (
   <svg
@@ -27,7 +26,7 @@ const ArrowIcon = () => (
 );
 
 export const CardWeCanHelp = (props) => {
-  const { text, bgImage, href = '/', earnWithUsBtn, openModal } = props;
+  const { text, bgImage, href = null, earnWithUsBtn, openModal } = props;
 
   const availableImages = {
     chat: chat,
@@ -47,7 +46,9 @@ export const CardWeCanHelp = (props) => {
       <div className={styles.withButton}>
         <h5 className={styles.cardText}>{text}</h5>
 
-        {earnWithUsBtn && <Button openModal={openModal}>{earnWithUsBtn}</Button>}
+        {earnWithUsBtn && (
+          <Button openModal={openModal}>{earnWithUsBtn}</Button>
+        )}
       </div>
 
       <span className={styles.cardBgImage}>

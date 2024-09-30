@@ -11,6 +11,7 @@ import SectionKeySectors from '@/app/components/Sections/SectionKeySectors';
 import pageIndustries from '@/app/api/strapi/pageIndustries/route';
 
 import styles from './styles.module.scss';
+import { routes } from '@/config/routes';
 
 export const generateMetadata = async () => {
   const { SEO } = await pageIndustries();
@@ -37,7 +38,11 @@ export default async function PageIndustries() {
 
         <div className={styles.sectionCustomVisionWrapper}>
           <div className="container">
-            <SectionCustomVision {...SectionWithIndustriesImage} rtl />
+            <SectionCustomVision
+              {...SectionWithIndustriesImage}
+              rtl
+              url={routes.cases()}
+            />
           </div>
         </div>
 

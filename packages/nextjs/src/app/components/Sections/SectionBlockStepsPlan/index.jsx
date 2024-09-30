@@ -17,7 +17,7 @@ const SectionBlockStepsPlan = ({ title, steps, contactBtn }) => {
             <Markdown>{item.text}</Markdown>
 
             {steps.at(-1).id === item.id && (
-              <Button theme="primary" name={contactBtn.name} />
+              <Button theme="primary" name={contactBtn.name} openModal />
             )}
           </div>
         </div>

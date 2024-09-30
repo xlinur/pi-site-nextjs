@@ -2,6 +2,7 @@ import Markdown from 'react-markdown';
 import Button from '@/app/components/Button';
 
 import styles from './styles.module.scss';
+import { routes } from '@/config/routes';
 
 export default async function index({
   title,
@@ -34,8 +35,12 @@ export default async function index({
         </div>
 
         <div className={styles.actions}>
-          <Button withIcon name={hireNowBtn.name} />
-          <Button theme="secondary" name={candidateBtn.name} />
+          <Button withIcon name={hireNowBtn.name} openModal />
+          <Button
+            theme="secondary"
+            name={candidateBtn.name}
+            url={routes.vacancies()}
+          />
         </div>
       </div>
     </section>

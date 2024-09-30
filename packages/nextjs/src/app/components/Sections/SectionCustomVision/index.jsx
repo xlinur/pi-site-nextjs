@@ -11,6 +11,8 @@ export default function SectionCustomVision({
   description,
   moreInfo,
   rtl,
+  url,
+  openModal = false,
 }) {
   return (
     <section className={clsx(styles.sectionCustomVision, rtl && styles.rtl)}>
@@ -27,7 +29,12 @@ export default function SectionCustomVision({
           <Markdown>{description}</Markdown>
         </div>
 
-        <Button withIcon name={moreInfo?.name} url={routes.industries()} />
+        <Button
+          withIcon
+          name={moreInfo?.name}
+          url={url}
+          openModal={openModal}
+        />
       </div>
     </section>
   );

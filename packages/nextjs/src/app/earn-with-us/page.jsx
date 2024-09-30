@@ -40,7 +40,11 @@ export default async function PageEarnWithUs() {
               type="horizontal"
             />
 
-            <Button size="lg" name={OurProcessOfInteraction.applyNowBtn.name} />
+            <Button
+              size="lg"
+              name={OurProcessOfInteraction.applyNowBtn.name}
+              openModal
+            />
           </div>
         </div>
 

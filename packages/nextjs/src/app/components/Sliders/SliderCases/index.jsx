@@ -1,12 +1,14 @@
 'use client';
 
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import Button from '@/app/components/Button';
-import styles from './styles.module.scss';
-
 import { useEffect, useState } from 'react';
-import CardCase from '@/app/components/Cards/CardCase';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import clsx from 'clsx';
+
+import CardCase from '@/app/components/Cards/CardCase';
+import { ANCHORS } from '@/app/core/constants/anchor';
+import Button from '@/app/components/Button';
+
+import styles from './styles.module.scss';
 
 const SwiperButtonNext = ({ children }) => {
   const swiper = useSwiper();
@@ -133,7 +135,7 @@ export default function SliderCase({ data, btnName }) {
 
       <div className="container">
         <div className={styles.swiperNavigation}>
-          <Button name={btnName} />
+          <Button name={btnName} url={ANCHORS.CONTACT_FORM.ANCHOR} />
 
           <div className={styles.swiperActions}>
             <SwiperButtonPrev></SwiperButtonPrev>
