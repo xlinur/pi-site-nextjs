@@ -1,10 +1,23 @@
+@use '../../../styles/mixins.scss' as *;
+
 .swiperNavigation {
   display: flex;
   justify-content: space-between;
-  padding-top: 50px;
+  padding-top: 20px;
+
+  @include md {
+    padding-top: 10px;
+  }
+
   > button {
     width: 300px;
     justify-content: center;
+  }
+
+  .swiperActions {
+    @include md {
+      display: none;
+    }
   }
 
   div {

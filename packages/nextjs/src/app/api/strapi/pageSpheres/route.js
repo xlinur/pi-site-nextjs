@@ -14,7 +14,7 @@ export const route = async (slug) => {
   return data.data[0].attributes;
 };
 
-// TODO: move to cases routes
+// TODO: move to cases routes!
 export const casesBySpheres = async () => {
   const data = await request(
     `/api/cases?fields=title&fields=slug&fields=subtitle&fields=date`,

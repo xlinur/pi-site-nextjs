@@ -10,7 +10,6 @@ export async function ContactFormWrapper() {
   return (
     <Suspense fallback={null}>
       <ContactForm
-        isFormModal
         sectionFormData={sectionFormData}
         globalSettings={globalSettings}
       />

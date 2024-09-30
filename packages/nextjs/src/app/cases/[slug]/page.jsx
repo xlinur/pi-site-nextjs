@@ -5,7 +5,7 @@ import SectionCompleteTask from '@/app/components/Sections/SectionCompleteTask';
 import SectionTalentMatch from '@/app/components/Sections/SectionTalentMatch';
 import SectionRelocationHelpHero from '@/app/components/Sections/SectionRelocationHelpHero';
 import SectionSuccessStories from '@/app/components/Sections/SectionSuccessStories';
-
+import PageTemplate from '@/app/components/PageTemplate';
 import styles from './styles.module.scss';
 
 import pageCases from '@/app/api/strapi/pageCases/route';
@@ -25,41 +25,40 @@ export default async function PageCase({ params }) {
   const cases = await casesBySpheres();
 
   return (
-    <main className={styles.pageCases}>
-      <div className="container">
-        <SectionCaseHero {...CaseHero} />
-      </div>
-
-      <div className="container">
-        <SectionRecruitmentSummary {...RecruitmentSummary} />
-      </div>
-
-      <div className="container">
-        <SectionRelocationHelpHero {...SectionWithFeatures} isNotHero />
-      </div>
-
-      <div className="container">
-        <SectionCompleteTask {...CompleteTask} />
-      </div>
-
-      <div className={styles.fillContainer}>
+    <PageTemplate>
+      <main className={styles.page}>
         <div className="container">
-          <SectionTalentMatch {...TalentMatch} />
+          <SectionCaseHero {...CaseHero} />
         </div>
-      </div>
 
-      <div className={styles.sectionMoreCasesWrapper}>
-        <SectionSuccessStories cases={cases} />
-      </div>
+        <div className="container">
+          <SectionRecruitmentSummary {...RecruitmentSummary} />
+        </div>
 
-      {/* @Component SectionContactForm */}
-      <div className={styles.sectionFormWrapper}>
+        <div className="container">
+          <SectionRelocationHelpHero {...SectionWithFeatures} isNotHero />
+        </div>
+
+        <div className="container">
+          <SectionCompleteTask {...CompleteTask} />
+        </div>
+
+        <div className={styles.fillContainer}>
+          <div className="container">
+            <SectionTalentMatch {...TalentMatch} />
+          </div>
+        </div>
+
+        <div className={styles.sectionMoreCasesWrapper}>
+          <SectionSuccessStories cases={cases} />
+        </div>
+
         <div className="container">
           <section className={styles.sectionForm}>
             <ContactFormWrapper />
           </section>
         </div>
-      </div>
-    </main>
+      </main>
+    </PageTemplate>
   );
 }

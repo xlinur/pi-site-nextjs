@@ -1,23 +1,32 @@
 @use '../../../styles/mixins.scss' as *;
 
 .sectionPersonnelRecruitment {
-  // margin-top: 80px;
-}
-
-.sectionPersonnelRecruitment {
   header {
     display: flex;
     flex-direction: column;
     gap: 24px;
     max-width: 718px;
+
+    @include md {
+      gap: 12px;
+    }
   }
 
   .content {
-    max-width: 819px;
+    max-width: clamp(476px, 69vw, 819px);
     margin-left: auto;
     margin-top: 50px;
 
-    // .contentList {}
+    @include md {
+      max-width: 476px;
+      margin-top: 40px;
+    }
+
+    @include sm {
+      max-width: initial;
+      margin-top: 32px;
+    }
+
     .contentFooter {
       display: flex;
       justify-content: space-between;
@@ -33,6 +42,10 @@
     grid-template-columns: 0.25fr 1fr;
     padding: 10px 0;
     border-top: 1px solid var(--gray);
+
+    @include sm {
+      grid-template-columns: 32px 1fr;
+    }
 
     &:hover {
       svg {

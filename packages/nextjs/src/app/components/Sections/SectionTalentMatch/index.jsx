@@ -11,7 +11,7 @@ export default function SectionTalentMatch({ content, hireNowBtn }) {
         <Image src={peopleSVG} alt="icon" width={401} height={354} />
       </div>
       <div className={styles.content}>
-        <Markdown>{content}</Markdown>
+        <Markdown className="h5">{content}</Markdown>
 
         <Button withIcon name={hireNowBtn.name} />
       </div>

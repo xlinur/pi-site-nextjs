@@ -1,13 +1,26 @@
+@use '../../../styles/mixins.scss' as *;
+
 .completeTaskSection {
   display: flex;
   flex-direction: column;
   row-gap: 60px;
+
+  @include md {
+    row-gap: 40px;
+  }
+  @include sm {
+    row-gap: 32px;
+  }
 
   header {
     display: flex;
     flex-direction: column;
     row-gap: 24px;
     max-width: 50%;
+
+    @include sm {
+      max-width: initial;
+    }
   }
 
   .list {
@@ -15,10 +28,20 @@
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: minmax(238px, 1fr);
     gap: 24px;
+
+    @include md {
+      grid-auto-rows: minmax(221px, 1fr);
+    }
+
+    @include sm {
+      grid-template-columns: 1fr;
+      gap: 32px 12px;
+    }
   }
 
   .listItem {
     padding-top: 10px;
+    border-top: 1px solid var(--gray);
 
     span {
       color: var(--blue);
@@ -26,6 +49,10 @@
 
     h5 {
       padding-top: 24px;
+
+      @include sm {
+        padding-top: 12px;
+      }
     }
 
     p {

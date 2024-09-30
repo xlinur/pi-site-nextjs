@@ -66,7 +66,10 @@ export default function SectionRecruitmentSummary({
           />
         </div>
 
-        <div>{companyOfferedText}</div>
+        <div className={styles.companyOfferedDescription}>
+          <h5>{companyOffered}</h5>
+          {companyOfferedText}
+        </div>
       </div>
     </section>
   );

@@ -1,11 +1,15 @@
-.firstSection {
-  // margin-top: 80px;
+@use '../../../styles/mixins.scss' as *;
 
+.firstSection {
   header {
     display: flex;
     flex-direction: column;
     gap: 30px;
     max-width: 50%;
+
+    @include sm {
+      max-width: initial;
+    }
   }
 
   .firstSectionGrid {
@@ -19,6 +23,13 @@
       border-top: 1px solid var(--gray);
       padding-top: 20px;
       padding-bottom: 20px;
+
+      @include sm {
+        grid-template-columns: 1fr;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+
       span {
         grid-column: 2;
       }
@@ -34,10 +45,29 @@
 
     .actions {
       display: flex;
-      align-items: flex-start;
+      align-self: flex-start;
       justify-content: flex-end;
       column-gap: 20px;
       grid-column: 24px;
+    }
+
+    @include md {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 20px;
+
+      .actions {
+        justify-content: flex-start;
+        gap: 12px;
+
+        button {
+          width: 100%;
+          
+          span {
+            justify-self: center;
+          }
+        }
+      }
     }
   }
 }

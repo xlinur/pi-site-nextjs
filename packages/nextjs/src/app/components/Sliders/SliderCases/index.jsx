@@ -88,9 +88,36 @@ const SwiperButtonPrev = ({ children }) => {
 };
 
 export default function SliderCase({ data, btnName }) {
+  const documentWith = () => {
+    if (typeof window !== 'undefined') {
+      return (window.innerWidth - 1240) / 2;
+    } else {
+      return 200;
+    }
+  };
+
   const config = {
-    slidesPerView: 3,
-    spaceBetween: 24,
+    slidesPerView: 1.2,
+    spaceBetween: 12,
+    slidesOffsetBefore: 16,
+    breakpoints: {
+      540: {
+        slidesPerView: 2.3,
+        spaceBetween: 12,
+      },
+      1024: {
+        slidesPerView: 3,
+        slidesOffsetBefore: 24,
+      },
+      1440: {
+        slidesPerView: 3,
+        slidesOffsetBefore: 100,
+      },
+      1441: {
+        slidesPerView: 3,
+        slidesOffsetBefore: documentWith(),
+      },
+    },
   };
 
   return (
@@ -108,7 +135,7 @@ export default function SliderCase({ data, btnName }) {
         <div className={styles.swiperNavigation}>
           <Button name={btnName} />
 
-          <div>
+          <div className={styles.swiperActions}>
             <SwiperButtonPrev></SwiperButtonPrev>
             <SwiperButtonNext></SwiperButtonNext>
           </div>

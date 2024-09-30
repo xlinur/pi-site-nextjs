@@ -96,20 +96,17 @@ export const SliderFeedback = ({ data, readAllBtn }) => {
   };
 
   const config = {
-    slidesPerView: 2,
+    slidesPerView: 1.5,
     spaceBetween: 12,
     freeMode: true,
     slidesOffsetAfter: 20,
     breakpoints: {
       540: {
-        slidesPerView: 2,
+        slidesPerView: 2.5,
         spaceBetween: 24,
       },
-      768: {
-        slidesPerView: 2,
-      },
       1440: {
-        slidesPerView: 3,
+        slidesPerView: 3.5,
         slidesOffsetBefore: 100,
       },
       1441: {

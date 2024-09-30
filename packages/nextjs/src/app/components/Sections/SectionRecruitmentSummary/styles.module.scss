@@ -1,6 +1,13 @@
+@use '../../../styles/mixins.scss' as *;
+
 .sectionRecruitmentSummary {
   header {
     max-width: 50%;
+
+    @include sm {
+      max-width: initial;
+    }
+
     h2 {
       margin-bottom: 20px;
     }
@@ -11,11 +18,24 @@
     flex-direction: column;
     row-gap: 60px;
     margin-top: 80px;
+
+    @include md {
+      row-gap: 32px;
+      margin-top: 40px;
+    }
+    @include sm {
+      margin-top: 32px;
+    }
   }
+
   .listItem {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 24px;
+
+    @include sm {
+      grid-template-columns: 1fr;
+    }
 
     .title {
       span {
@@ -27,6 +47,10 @@
       svg {
         width: 26px;
         height: 26px;
+      }
+
+      @include sm {
+        gap: 12px;
       }
     }
 
@@ -42,6 +66,15 @@
     column-gap: 24px;
     margin-top: 87px;
 
+    @include md {
+      grid-template-columns: 1fr;
+      margin-top: 40px;
+    }
+
+    @include sm {
+      margin-top: 32px;
+    }
+
     div:first-child {
       display: flex;
       align-items: center;
@@ -50,6 +83,7 @@
       background-color: var(--light-blue);
       padding: 30px;
       position: relative;
+      overflow: hidden;
 
       img {
         position: absolute;
@@ -57,12 +91,26 @@
         height: 100%;
         top: 0;
       }
+
+      @include md {
+        display: none;
+      }
     }
 
-    div:last-child {
+    .companyOfferedDescription {
       border-radius: var(--rounded-xl);
       background-color: var(--light-blue);
       padding: 30px;
+
+      h5 {
+        display: none;
+
+        @include md {
+          display: flex;
+          max-width: 145px;
+          margin-bottom: 12px;
+        }
+      }
     }
   }
 }
