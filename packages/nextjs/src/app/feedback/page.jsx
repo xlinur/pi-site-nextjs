@@ -1,8 +1,6 @@
 import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
-import Button from '@/app/components/Button';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
-import CardFeedback from '@/app/components/Cards/CardFeedback';
 import pageFeedbacks from '@/app/api/strapi/pageFeedbacks/route';
 import getFeedbacks from '@/app/api/strapi/feedbacks/route';
 import ResultsList from './ResultsList';

@@ -28,7 +28,7 @@ const SectionRelocationHelpHero = ({
 
       <div className={styles.content}>
         <div className={styles.contentList}>
-          {items.map((item, idx) => (
+          {items?.map((item, idx) => (
             <div className={styles.item} key={idx}>
               <svg
                 width="29"

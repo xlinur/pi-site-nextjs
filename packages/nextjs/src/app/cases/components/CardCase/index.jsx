@@ -1,14 +1,17 @@
 import clsx from 'clsx';
+import { routes } from '@/config/routes';
 import styles from './styles.module.scss';
 
 export default function CardCase({ data, className }) {
+  const { slug, date, title, subtitle } = data.attributes;
+
   return (
-    <a href={data.slug} className={clsx([styles.card, className])}>
-      <time dateTime={data.date}>{data.date}</time>
+    <a href={routes.case(slug)} className={clsx([styles.card, className])}>
+      <time dateTime={date}>{date}</time>
 
       <div className={styles.cardContent}>
-        <h5>{data.title}</h5>
-        <p>{data.subtitle}</p>
+        <h5>{title}</h5>
+        <p>{subtitle}</p>
 
         <span className={styles.arrowSvg}>
           <svg

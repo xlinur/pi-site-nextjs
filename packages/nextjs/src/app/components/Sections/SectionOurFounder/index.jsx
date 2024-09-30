@@ -44,9 +44,9 @@ export default async function SectionOurFounder(props) {
         <div className={styles.cardFounderContent}>
           <div className={`h5 ${styles.cardFounderContentText}`}>{text}</div>
 
-          <p className={styles.cardFounderContentExperience}>
+          <div className={styles.cardFounderContentExperience}>
             <Markdown>{description}</Markdown>
-          </p>
+          </div>
         </div>
       </div>
     </section>
