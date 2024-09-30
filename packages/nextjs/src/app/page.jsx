@@ -8,13 +8,13 @@ import SectionCompaniesLogo from '@/app/components/Sections/SectionCompaniesLogo
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionMeetGallery from '@/app/components/Sections/SectionMeetGallery';
 import SectionTrustedMap from '@/app/components/Sections/SectionTrustedMap';
+import { ContactFormWrapper } from './components/ContactForm/ContactFormWrapper';
+
 import SectionWhyInfo from '@/app/components/Sections/SectionWhyInfo';
 
-import ContactForm from '@/app/components/ContactForm';
 import CardSocialMedia from '@/app/components/Cards/CardSocialMedia';
 
 import homePageRequest from '@/app/api/strapi/homePage/route';
-
 import styles from './styles.module.scss';
 
 export const generateMetadata = async () => {
@@ -82,7 +82,7 @@ export default async function Home() {
         <div className={styles.sectionFormWrapper}>
           <div className="container">
             <section className={styles.sectionForm}>
-              <ContactForm />
+              <ContactFormWrapper />
             </section>
           </div>
         </div>

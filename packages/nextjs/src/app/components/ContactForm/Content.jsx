@@ -30,6 +30,17 @@ const emailFields = {
   comment: 'comment',
 };
 
+/**
+ * Adopt input services options to select component
+ * @param inputServicesOptions {{id: any, label: string}[]}
+ * @return {{key: number|string, label: string}[]}
+ */
+export function adoptOptions(inputServicesOptions) {
+  return inputServicesOptions.map(({ id, label }) => {
+    return { value: id, label: label };
+  });
+}
+
 export const Content = ({ isFormModal, globalSettings, sectionFormData }) => {
   const { contacts, workingHours } = globalSettings;
   const { phone } = contacts;
@@ -159,12 +170,12 @@ export const Content = ({ isFormModal, globalSettings, sectionFormData }) => {
         {createFormSelect(
           selectServices.label,
           emailFields.service,
-          selectServices.options,
+          adoptOptions(selectServices.options),
         )}
         {createFormSelect(
           selectContact.label,
           emailFields.contactPreference,
-          selectContact.options,
+          adoptOptions(selectContact.options),
         )}
         {createFormInput(inputContact.label, emailFields.contact)}
         {createTextarea(textareaComment.label, emailFields.comment)}

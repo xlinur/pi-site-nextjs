@@ -1,11 +1,12 @@
-import sectionStartConversation from '@/app/api/strapi/sectionStartConversation/route';
-import getGlobalSettings from '@/app/api/strapi/globalSettings/route';
+'use client';
+
 import Content from './Content';
 
-export const ContactForm = async ({ isFormModal }) => {
-  const sectionFormData = await sectionStartConversation();
-  const globalSettings = await getGlobalSettings();
-
+export const ContactForm = ({
+  isFormModal,
+  sectionFormData,
+  globalSettings,
+}) => {
   return (
     <Content
       isFormModal={isFormModal}
