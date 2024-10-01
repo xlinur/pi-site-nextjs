@@ -36,8 +36,10 @@ const accept = () => {
   return false;
 };
 
-const GdprMessage = ({ gdprAcceptBtn, gdprMessage }) => {
+const GdprMessage = ({ globalDictionary }) => {
   const [showModal, setShowModal] = useState(false);
+
+  const { gdprMessage, gdprAcceptBtn } = globalDictionary;
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -61,7 +63,7 @@ const GdprMessage = ({ gdprAcceptBtn, gdprMessage }) => {
       <Button
         theme="transparent"
         onClick={onAccept}
-        name={gdprAcceptBtn.name}
+        name={gdprAcceptBtn?.name}
       />
     </div>
   ) : null;

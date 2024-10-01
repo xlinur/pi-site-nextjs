@@ -55,12 +55,14 @@ const Button = (props) => {
       return;
     }
 
-    if (openModal) {
-      handleOpenModal();
-    }
-
     if (onClick) {
       onClick();
+      return;
+    }
+
+    if (openModal) {
+      handleOpenModal(openModal === true ? 'contactForm' : openModal);
+      return;
     }
   };
 

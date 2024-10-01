@@ -114,11 +114,12 @@ export const SliderFeedback = ({ data, readAllBtn }) => {
 
   return (
     <Swiper {...config} className={styles.slider}>
-      {data.map((item) => (
+      {data.map((item, idx) => (
         <SwiperSlide key={item.id}>
           <CardFeedback
             firstSlideTheme={item.id === 0 ? 'dark' : 'light'}
             readAllBtn={readAllBtn}
+            id={`slider-feedbaack-${idx}`}
             {...item.attributes}
           />
         </SwiperSlide>

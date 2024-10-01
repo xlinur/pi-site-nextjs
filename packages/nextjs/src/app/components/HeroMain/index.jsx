@@ -6,7 +6,7 @@ import heroLinesPNG from '@/app/assets/images/hero-lines.png';
 
 import Advantages from '../Advantages';
 import Worldwide from '../Worldwide';
-import { routes } from '@/config/routes'
+import { routes } from '@/config/routes';
 
 import styles from './styles.module.scss';
 
@@ -33,9 +33,19 @@ export default async function HeroMain({
           </header>
 
           <div className={styles.sectionHeroActions}>
-            {hireNowBtn && <Button withIcon name={hireNowBtn.name} openModal />}
+            {hireNowBtn && (
+              <Button
+                withIcon
+                name={hireNowBtn.name}
+                openModal={'contactForm'}
+              />
+            )}
             {candidateBtn && (
-              <Button url={routes.vacancies()} theme="secondary" name={candidateBtn.name} />
+              <Button
+                url={routes.vacancies()}
+                theme="secondary"
+                name={candidateBtn.name}
+              />
             )}
           </div>
 

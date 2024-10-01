@@ -9,6 +9,7 @@ import styles from './styles.module.scss';
 
 function CardFeedback(props) {
   const {
+    id,
     essence,
     content,
     company,
@@ -49,13 +50,13 @@ function CardFeedback(props) {
             iconRight
             className={styles.linkReadMore}
             name={readAllBtn}
-            openModal
+            openModal={id}
           />
         </div>
       </article>
 
       <Suspense fallback={null}>
-        <ModalComponent>
+        <ModalComponent id={id}>
           <section className={styles.modalFeedbackBody}>
             <header>
               <div className={styles.cardUser}>

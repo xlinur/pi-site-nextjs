@@ -62,6 +62,7 @@ export default function PageFeedback({ feedbacks, moreReviewsBtn }) {
                 'd-none-important'
               }
               {...feedback.attributes}
+              id={`feedback-page-${idx}`}
             />
           ))}
         </div>

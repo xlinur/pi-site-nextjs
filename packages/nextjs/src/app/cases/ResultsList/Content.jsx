@@ -19,7 +19,7 @@ const Content = ({ spheresFilterTitle }) => {
 
   if (loading) return <div>Loading...</div>;
 
-  console.log(casesData);
+  const numberOfPages = casesData?.meta?.pagination?.pageCount || 0;
 
   return (
     <>
@@ -43,27 +43,29 @@ const Content = ({ spheresFilterTitle }) => {
             ))}
           </div>
 
-          <div className={styles.pagination}>
-            <a href="#">&laquo;</a>
+          {numberOfPages > 1 && (
+            <div className={styles.pagination}>
+              <a href="#">&laquo;</a>
 
-            <div className={styles.numbers}>
-              {Array.from({
-                length: casesData?.meta?.pagination?.pageCount,
-              }).map((_, idx) => (
-                <a
-                  href="#"
-                  key={idx}
-                  className={
-                    casesData?.meta?.pagination?.page === page && 'active'
-                  }
-                >
-                  {idx + 1}
-                </a>
-              ))}
+              <div className={styles.numbers}>
+                {Array.from({
+                  length: numberOfPages,
+                }).map((_, idx) => (
+                  <a
+                    href="#"
+                    key={idx}
+                    className={
+                      casesData?.meta?.pagination?.page === page && 'active'
+                    }
+                  >
+                    {idx + 1}
+                  </a>
+                ))}
+              </div>
+
+              <a href="#">&raquo;</a>
             </div>
-
-            <a href="#">&raquo;</a>
-          </div>
+          )}
         </section>
       </div>
     </>

@@ -22,7 +22,7 @@ const PageTemplate = async ({ children }) => {
 
       {/* MODAL */}
       <Suspense fallback={null}>
-        <ModalComponent>
+        <ModalComponent id="contactForm">
           <ContactForm
             isFormModal
             sectionFormData={sectionFormData}
@@ -33,7 +33,7 @@ const PageTemplate = async ({ children }) => {
 
       {/* GDPR MESSAGE */}
       <Suspense fallback={null}>
-        <GdprMessage {...globalDictionary} />
+        <GdprMessage globalDictionary={globalDictionary} />
       </Suspense>
     </>
   );

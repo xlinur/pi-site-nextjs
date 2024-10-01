@@ -25,9 +25,9 @@ const CloseIcon = () => (
   </svg>
 );
 
-export default function ModalComponent({ children }) {
+export default function ModalComponent({ children, id }) {
   const closeModal = (event, fromOutside) => {
-    const dialogElement = event.target.closest('dialog#layoutModal');
+    const dialogElement = event.target.closest(`dialog#${id}`);
     const contentWrapper = document.getElementById('layoutModalContentWrapper');
 
     if (!contentWrapper.contains(event.target)) {
@@ -41,11 +41,11 @@ export default function ModalComponent({ children }) {
 
   return (
     <dialog
-      id="layoutModal"
+      id={id}
       className={styles.dialog}
       type="button"
       tabIndex={0}
-      onClick={(event) => closeModal(event, true)}
+      // onClick={(event) => closeModal(event, true)} ??????
     >
       <div id="layoutModalContentWrapper" className={styles.dialogWrapper}>
         <div className={styles.dialogContent}>{children}</div>
