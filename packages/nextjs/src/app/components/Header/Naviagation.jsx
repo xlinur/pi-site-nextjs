@@ -4,9 +4,8 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import logoPng from '@/app/assets/logo.png';
 import burgerSvg from '@/app/assets/icons/burger.svg';
-import SidebarMenu from '@/app/components/SidebarMenu';
 import DropdownNav from '@/app/components/DropdownNav';
-
+import SidebarMenu from './SidebarMenu';
 import styles from './styles.module.scss';
 
 const Naviagation = ({
@@ -29,11 +28,7 @@ const Naviagation = ({
         return;
       }
 
-      if (scrollTop > lastScrollTop) {
-        setHidden(true);
-      } else {
-        setHidden(false);
-      }
+      setHidden(scrollTop > lastScrollTop);
 
       setLastScrollTop(scrollTop);
     };

@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Image from 'next/image';
 import crossSvg from '@/app/assets/icons/cross.svg';
 import clockSvg from '@/app/assets/icons/clock.svg';
@@ -23,9 +24,9 @@ export const SidebarMenu = ({
     onClose(false);
   };
 
-  if (!isOpen) {
-    return null;
-  }
+  // if (!isOpen) {
+  //   return null;
+  // }
 
   const support = createSupportData({ contacts });
   const socials = createSocialsData({ contacts });
@@ -51,8 +52,10 @@ export const SidebarMenu = ({
       );
     });
 
+  const menuClsx = clsx(styles.sidebar, isOpen && styles.open);
+
   return (
-    <div className={styles.sidebar}>
+    <div className={menuClsx}>
       <div className={styles.menuList}>
         <div className={styles.menuColumn}>{renderMenu(mainNav)}</div>
         <div className={styles.menuColumn}>{renderMenu(secondaryNav)}</div>

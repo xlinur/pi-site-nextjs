@@ -1,19 +1,8 @@
-@use "../../styles/mixins.scss" as *;
-
-@keyframes slide {
-  0% {
-    right: -100%;
-    opacity: 0;
-  }
-  100% {
-    right: 0;
-    opacity: 1;
-  }
-}
+@use "../../../styles/mixins.scss" as *;
 
 .sidebar {
   position: fixed;
-  right: 0;
+  right: -100%;
   top: 0;
   z-index: 999;
 
@@ -27,9 +16,13 @@
   flex-direction: column;
   justify-content: space-between;
 
-  animation: slide 0.546s cubic-bezier(0.165, 0.84, 0.44, 1);
-
   padding: 60px 40px;
+
+  transition: right 0.5s;
+
+  &.open {
+    right: 0;
+  }
 }
 
 .menuList {

@@ -25,7 +25,6 @@ const Modal = ({ children, id }) => {
     <dialog
       ref={dialogRef}
       id={id}
-      className={styles.dialog}
       type="button"
       tabIndex={0}
       onClick={handleClickOutside}
