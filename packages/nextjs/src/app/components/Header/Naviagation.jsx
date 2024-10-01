@@ -24,6 +24,11 @@ const Naviagation = ({
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
 
+      if (scrollTop < 100) {
+        setHidden(false);
+        return;
+      }
+
       if (scrollTop > lastScrollTop) {
         setHidden(true);
       } else {
