@@ -1,4 +1,4 @@
-import Button from '@/app/components/Button';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
 
@@ -51,7 +51,7 @@ const SectionRelocationHelpHero = ({
         {bottomText && contactUsBtn && (
           <div className={styles.contentFooter}>
             <p>{bottomText}</p>
-            <Button withIcon name={contactUsBtn?.name} openModal />
+            <OpenModalFormButton withIcon name={contactUsBtn?.name} />
           </div>
         )}
       </div>

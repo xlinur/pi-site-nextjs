@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Button from '@/app/components/Button';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import visionSVG from '@/app/assets/icons/vision.svg';
 import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
-import { routes } from '@/config/routes';
 import clsx from 'clsx';
 
 export default function SectionCustomVision({
@@ -29,12 +29,11 @@ export default function SectionCustomVision({
           <Markdown>{description}</Markdown>
         </div>
 
-        <Button
-          withIcon
-          name={moreInfo?.name}
-          url={url}
-          openModal={openModal}
-        />
+        {openModal ? (
+          <OpenModalFormButton withIcon name={moreInfo?.name} />
+        ) : (
+          <Button withIcon name={moreInfo?.name} url={url} />
+        )}
       </div>
     </section>
   );

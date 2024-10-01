@@ -1,5 +1,5 @@
 import Markdown from 'react-markdown';
-import Button from '@/app/components/Button';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import styles from './styles.module.scss';
 
 export default function SectionConsultingServices(props) {
@@ -44,7 +44,7 @@ export default function SectionConsultingServices(props) {
         </div>
       ))}
 
-      <Button name={otherConsultationBtn.name} openModal />
+      <OpenModalFormButton name={otherConsultationBtn.name} />
     </section>
   );
 }

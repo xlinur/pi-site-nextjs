@@ -1,3 +1,10 @@
+import chat from '@/app/assets/icons/chat.svg';
+import location from '@/app/assets/icons/location.svg';
+import peoples from '@/app/assets/icons/peoples.svg';
+import peoples01 from '@/app/assets/icons/people-1.svg';
+import money from '@/app/assets/icons/money.svg';
+import graph from '@/app/assets/icons/graph.svg';
+
 import { CardWeCanHelp } from '@/app/components/Cards/CardWeCanHelp';
 
 import weCanHelpYouWithRequest from '@/app/api/strapi/weCanHelpYouWith/route';
@@ -17,6 +24,40 @@ export default async function SectionWeCanHelp() {
     earnWithUs,
   } = await weCanHelpYouWithRequest();
 
+  const cards = [
+    {
+      href: routes.itRecruitment(),
+      text: recruitment,
+      bgImage: peoples01,
+    },
+    {
+      href: routes.consulting(),
+      text: buisnessConsulting,
+      bgImage: chat,
+    },
+    {
+      href: routes.executiveSearch(),
+      text: executiveSearch,
+      bgImage: peoples,
+    },
+    {
+      href: routes.analytics(),
+      text: marketResearchAndAnalytics,
+      bgImage: graph,
+    },
+    {
+      href: routes.relocation(),
+      text: relocation,
+      bgImage: location,
+    },
+    {
+      href: null,
+      text: or,
+      bgImage: money,
+      openModalBtn: earnWithUs,
+    },
+  ];
+
   return (
     <div className={styles.sectionHelpWrapper}>
       <div className="container">
@@ -26,37 +67,15 @@ export default async function SectionWeCanHelp() {
           </header>
 
           <div className={styles.sectionHelpGrid}>
-            <CardWeCanHelp
-              href={routes.itRecruitment()}
-              text={recruitment}
-              bgImage="peoples01"
-            />
-            <CardWeCanHelp
-              href={routes.consulting()}
-              text={buisnessConsulting}
-              bgImage="chat"
-            />
-            <CardWeCanHelp
-              href={routes.executiveSearch()}
-              text={executiveSearch}
-              bgImage="peoples"
-            />
-            <CardWeCanHelp
-              href={routes.analytics()}
-              text={marketResearchAndAnalytics}
-              bgImage="graph"
-            />
-            <CardWeCanHelp
-              href={routes.relocation()}
-              text={relocation}
-              bgImage="location"
-            />
-            <CardWeCanHelp
-              text={or}
-              bgImage="money"
-              earnWithUsBtn={earnWithUs}
-              openModal
-            />
+            {cards.map(({ href, text, bgImage, openModalBtn }, idx) => (
+              <CardWeCanHelp
+                key={idx}
+                href={href}
+                text={text}
+                bgImage={bgImage}
+                openModalBtn={openModalBtn}
+              />
+            ))}
           </div>
         </section>
       </div>

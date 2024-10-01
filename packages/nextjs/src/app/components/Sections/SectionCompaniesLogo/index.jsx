@@ -1,4 +1,4 @@
-import Button from '@/app/components/Button';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import SliderInfinityLogos from '@/app/components/Sliders/SliderInfinityLogos';
 
 import companiesLogoSection from '@/app/api/strapi/companiesLogoSection/route';
@@ -17,7 +17,7 @@ export default async function CompaniesLogo() {
         <SliderInfinityLogos data={logos.data} />
       </div>
 
-      <Button name={addLogoBtn.name} openModal />
+      <OpenModalFormButton name={addLogoBtn.name} />
     </section>
   );
 }

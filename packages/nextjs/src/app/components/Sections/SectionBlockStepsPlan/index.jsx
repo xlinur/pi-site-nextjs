@@ -1,4 +1,5 @@
 import Button from '@/app/components/Button';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
 
@@ -17,7 +18,7 @@ const SectionBlockStepsPlan = ({ title, steps, contactBtn }) => {
             <Markdown>{item.text}</Markdown>
 
             {steps.at(-1).id === item.id && (
-              <Button theme="primary" name={contactBtn.name} openModal />
+              <OpenModalFormButton theme="primary" name={contactBtn.name} />
             )}
           </div>
         </div>

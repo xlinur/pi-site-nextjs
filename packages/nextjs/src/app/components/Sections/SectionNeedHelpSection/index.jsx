@@ -1,6 +1,5 @@
 import Markdown from 'react-markdown';
-import Button from '@/app/components/Button';
-
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import chatSVG from '@/app/assets/icons/chat-white.svg';
 import styles from './styles.module.scss';
 import Image from 'next/image';
@@ -22,7 +21,7 @@ export default async function SectionNeedHelpSection(props) {
       </h5>
 
       <div className="actions">
-        <Button size="lg" name={helpBtn?.name} openModal />
+        <OpenModalFormButton size="lg" name={helpBtn?.name} />
       </div>
     </section>
   );

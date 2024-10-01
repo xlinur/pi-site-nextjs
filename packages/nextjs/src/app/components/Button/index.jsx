@@ -25,7 +25,6 @@ const ArrowIcon = () => (
 const Button = (props) => {
   const {
     onClick,
-    openModal,
     children,
     name,
     withIcon = false,
@@ -57,11 +56,6 @@ const Button = (props) => {
 
     if (onClick) {
       onClick();
-      return;
-    }
-
-    if (openModal) {
-      handleOpenModal(openModal === true ? 'contactForm' : openModal);
       return;
     }
   };

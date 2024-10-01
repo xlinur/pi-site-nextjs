@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Markdown from 'react-markdown';
 
 import Button from '@/app/components/Button';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import heroLinesPNG from '@/app/assets/images/hero-lines.png';
 
 import Advantages from '../Advantages';
@@ -34,11 +35,7 @@ export default async function HeroMain({
 
           <div className={styles.sectionHeroActions}>
             {hireNowBtn && (
-              <Button
-                withIcon
-                name={hireNowBtn.name}
-                openModal={'contactForm'}
-              />
+              <OpenModalFormButton withIcon name={hireNowBtn.name} />
             )}
             {candidateBtn && (
               <Button

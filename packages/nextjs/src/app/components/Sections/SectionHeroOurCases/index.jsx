@@ -1,6 +1,6 @@
 import Markdown from 'react-markdown';
 import Button from '@/app/components/Button';
-
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import styles from './styles.module.scss';
 import { routes } from '@/config/routes';
 
@@ -35,7 +35,7 @@ export default async function index({
         </div>
 
         <div className={styles.actions}>
-          <Button withIcon name={hireNowBtn.name} openModal />
+          <OpenModalFormButton withIcon name={hireNowBtn.name} />
           <Button
             theme="secondary"
             name={candidateBtn.name}

@@ -1,8 +1,8 @@
 import Markdown from 'react-markdown';
-import Button from '@/app/components/Button';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import styles from './styles.module.scss';
 
-const SvgCheckCircle = () => (
+const svgCheckCircle = (
   <svg
     width="48"
     height="48"
@@ -34,15 +34,13 @@ export default function SectionInfoWithCards(props) {
       <header>
         <Markdown>{text}</Markdown>
 
-        <Button name={contactRecrutmentBtn.name} openModal />
+        <OpenModalFormButton name={contactRecrutmentBtn.name} />
       </header>
 
       <div className={styles.grid}>
         {achivements.map((item, idx) => (
           <a className={styles.card} href={item.url} key={idx}>
-            <span>
-              <SvgCheckCircle />
-            </span>
+            <span>{svgCheckCircle}</span>
 
             <div>
               <h5>{item.title}</h5>

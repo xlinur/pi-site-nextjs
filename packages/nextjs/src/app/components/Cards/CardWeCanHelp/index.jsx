@@ -1,14 +1,8 @@
 import Image from 'next/image';
-import chat from '@/app/assets/icons/chat.svg';
-import location from '@/app/assets/icons/location.svg';
-import peoples from '@/app/assets/icons/peoples.svg';
-import peoples01 from '@/app/assets/icons/people-1.svg';
-import money from '@/app/assets/icons/money.svg';
-import graph from '@/app/assets/icons/graph.svg';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import styles from './styles.module.scss';
-import Button from '../../Button';
 
-const ArrowIcon = () => (
+const arrowIcon = (
   <svg
     width="38"
     height="38"
@@ -26,33 +20,20 @@ const ArrowIcon = () => (
 );
 
 export const CardWeCanHelp = (props) => {
-  const { text, bgImage, href = null, earnWithUsBtn, openModal } = props;
-
-  const availableImages = {
-    chat: chat,
-    location: location,
-    peoples: peoples,
-    peoples01: peoples01,
-    money: money,
-    graph: graph,
-  };
+  const { text, bgImage, href = null, openModalBtn } = props;
 
   return (
     <a href={href} className={styles.card}>
-      {!earnWithUsBtn && (
-        <span className={styles.cardArrowIcon}>{ArrowIcon()}</span>
-      )}
+      {href && <span className={styles.cardArrowIcon}>{arrowIcon}</span>}
 
       <div className={styles.withButton}>
         <h5 className={styles.cardText}>{text}</h5>
 
-        {earnWithUsBtn && (
-          <Button openModal={openModal}>{earnWithUsBtn}</Button>
-        )}
+        {openModalBtn && <OpenModalFormButton name={openModalBtn} />}
       </div>
 
       <span className={styles.cardBgImage}>
-        <Image src={availableImages[bgImage]} alt="Card background" fill />
+        <Image src={bgImage} alt={text} fill />
       </span>
     </a>
   );

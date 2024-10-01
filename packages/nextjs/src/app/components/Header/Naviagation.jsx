@@ -55,7 +55,7 @@ const Naviagation = ({
         {item.title}
       </a>
     ) : (
-      <DropdownNav item={item} idx={idx} />
+      <DropdownNav key={item.title} item={item} idx={idx} />
     );
 
   return (

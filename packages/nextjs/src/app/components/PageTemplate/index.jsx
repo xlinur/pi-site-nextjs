@@ -3,9 +3,10 @@ import Footer from '@/app/components/Footer';
 import sectionStartConversation from '@/app/api/strapi/sectionStartConversation/route';
 import getGlobalSettings from '@/app/api/strapi/globalSettings/route';
 import getGlobalDictionary from '@/app/api/strapi/globalDictionary/route';
-import ModalComponent from '@/app/components/Modal';
+import Modal from '@/app/components/Modal';
 import ContactForm from '@/app/components/ContactForm';
 import GdprMessage from '@/app/components/GdprMessage';
+import { CONTACT_FORM_MODAL_ID } from '@/config/contactFormModal';
 
 import { Suspense } from 'react';
 
@@ -22,13 +23,13 @@ const PageTemplate = async ({ children }) => {
 
       {/* MODAL */}
       <Suspense fallback={null}>
-        <ModalComponent id="contactForm">
+        <Modal id={CONTACT_FORM_MODAL_ID}>
           <ContactForm
             isFormModal
             sectionFormData={sectionFormData}
             globalSettings={globalSettings}
           />
-        </ModalComponent>
+        </Modal>
       </Suspense>
 
       {/* GDPR MESSAGE */}

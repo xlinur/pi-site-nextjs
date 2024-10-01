@@ -7,8 +7,7 @@ import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionPaymentTerms from '@/app/components/Sections/SectionPaymentTerms';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 import pageEarnWithUs from '@/app/api/strapi/pageEarnWithUs/route';
-
-import Button from '@/app/components/Button';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 
 import styles from './styles.module.scss';
 
@@ -40,10 +39,9 @@ export default async function PageEarnWithUs() {
               type="horizontal"
             />
 
-            <Button
+            <OpenModalFormButton
               size="lg"
               name={OurProcessOfInteraction.applyNowBtn.name}
-              openModal
             />
           </div>
         </div>

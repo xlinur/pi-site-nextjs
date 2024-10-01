@@ -3,7 +3,8 @@ import Markdown from 'react-markdown';
 import clsx from 'clsx';
 
 import Button from '@/app/components/Button';
-import ModalComponent from '@/app/components/Modal';
+import Modal from '@/app/components/Modal';
+import { openModalById } from '@/app/components/Modal/utils';
 
 import styles from './styles.module.scss';
 
@@ -25,6 +26,10 @@ function CardFeedback(props) {
     styles[`bg-${firstSlideTheme}`],
     className,
   );
+
+  const openModal = () => {
+    openModalById(id);
+  };
 
   return (
     <>
@@ -50,13 +55,13 @@ function CardFeedback(props) {
             iconRight
             className={styles.linkReadMore}
             name={readAllBtn}
-            openModal={id}
+            onClick={openModal}
           />
         </div>
       </article>
 
       <Suspense fallback={null}>
-        <ModalComponent id={id}>
+        <Modal id={id}>
           <section className={styles.modalFeedbackBody}>
             <header>
               <div className={styles.cardUser}>
@@ -74,7 +79,7 @@ function CardFeedback(props) {
               <Markdown>{content}</Markdown>
             </div>
           </section>
-        </ModalComponent>
+        </Modal>
       </Suspense>
     </>
   );

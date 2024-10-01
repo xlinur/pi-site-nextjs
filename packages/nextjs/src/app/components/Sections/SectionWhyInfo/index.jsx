@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './styles.module.scss';
-import Button from '@/app/components/Button';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 
 export default async function SectionWhyInfo({
   withBackground,
@@ -27,7 +27,7 @@ export default async function SectionWhyInfo({
         <div className={styles.reasonsItem}>
           <div className={styles.reasonsItemTitle}></div>
           <div className={styles.reasonsItemText}>
-            <Button name={findTalentBtn.name} openModal></Button>
+            <OpenModalFormButton name={findTalentBtn.name} />
           </div>
         </div>
       </div>

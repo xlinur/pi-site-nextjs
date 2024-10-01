@@ -1,4 +1,4 @@
-import Button from '@/app/components/Button';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
 
@@ -27,7 +27,7 @@ const SectionRecruitmentProcess = ({
         ))}
       </div>
 
-      <Button name={findTalentBtn.name} openModal />
+      <OpenModalFormButton name={findTalentBtn.name} />
     </section>
   );
 };

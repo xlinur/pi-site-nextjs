@@ -1,6 +1,6 @@
 import Markdown from 'react-markdown';
 import Button from '@/app/components/Button';
-
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import HeroAnimateBg from './HeroAnimateBg';
 import styles from './styles.module.scss';
 import { routes } from '@/config/routes';
@@ -24,9 +24,15 @@ export default async function SectionHero({
           </header>
 
           <div className={styles.sectionHeroActions}>
-            {hireNowBtn && <Button withIcon name={hireNowBtn.name} openModal />}
+            {hireNowBtn && (
+              <OpenModalFormButton withIcon name={hireNowBtn.name} />
+            )}
             {candidateBtn && (
-              <Button theme="secondary" url={routes.vacancies()} name={candidateBtn.name} />
+              <Button
+                theme="secondary"
+                url={routes.vacancies()}
+                name={candidateBtn.name}
+              />
             )}
           </div>
         </section>

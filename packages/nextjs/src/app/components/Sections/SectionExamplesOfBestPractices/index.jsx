@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Button from '@/app/components/Button';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import Accordion from '@/app/components/Accordion';
 import styles from './styles.module.scss';
 import peopleSVG from '@/app/assets/icons/iconPeople.svg';
@@ -21,7 +21,7 @@ export default function SectionExamplesOfBestPractices({
         <div className={styles.sectionAccordionContentImage}>
           <Image src={peopleSVG} alt="some" fill />
 
-          <Button size="lg" name={contactBtn.name} openModal />
+          <OpenModalFormButton size="lg" name={contactBtn.name} />
         </div>
       </div>
     </section>

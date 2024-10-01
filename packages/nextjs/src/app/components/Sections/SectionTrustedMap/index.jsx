@@ -5,8 +5,9 @@ import earthSVG from '@/app/assets/icons/earth.svg';
 import countriesSVG from '@/app/assets/icons/countries.svg';
 import countryMap from '@/app/assets/images/countryMap.svg';
 
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
+
 import sectionTrustedMap from '@/app/api/strapi/sectionTrustedMap/route';
-import Button from '../../Button';
 
 export default async function SectionTrustedMap({ variant = 'bigMap' }) {
   const { title, contactUsBtn } = await sectionTrustedMap();
@@ -15,7 +16,7 @@ export default async function SectionTrustedMap({ variant = 'bigMap' }) {
     <section className={styles.sectionMapImg}>
       <header>
         <h2>{title}</h2>
-        <Button name={contactUsBtn.name} openModal />
+        <OpenModalFormButton name={contactUsBtn.name} />
       </header>
 
       <Image src={countryMap} alt="countries" width={693} height={422} />

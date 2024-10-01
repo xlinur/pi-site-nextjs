@@ -1,4 +1,4 @@
-import Button from '@/app/components/Button';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
 
@@ -22,7 +22,7 @@ export default async function SectionProposal(props) {
           <Markdown>{description}</Markdown>
         </header>
 
-        <Button size="lg" name={consultationBtn.name} openModal />
+        <OpenModalFormButton size="lg" name={consultationBtn.name} />
       </article>
 
       <div className={styles.directionsWrapper}>

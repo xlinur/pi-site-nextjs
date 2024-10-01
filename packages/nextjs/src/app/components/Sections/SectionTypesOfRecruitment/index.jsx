@@ -1,5 +1,5 @@
 import Markdown from 'react-markdown';
-import Button from '@/app/components/Button';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 
 import styles from './styles.module.scss';
 
@@ -25,7 +25,7 @@ export default async function SectionTypesOfRecruitment(props) {
                 <Markdown>{item.description}</Markdown>
               </div>
 
-              <Button name={item.hireNowBtn.name} openModal />
+              <OpenModalFormButton name={item.hireNowBtn.name} />
             </div>
           </div>
         ))}
