@@ -1,5 +1,6 @@
 import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
+import { CVFormWrapper } from '@/app/components/CVForm/CVFormWrapper';
 
 import styles from './styles.module.scss';
 
@@ -77,11 +78,7 @@ export default async function PageVacancy({ params }) {
         </div>
 
         <div className="container">
-          <div className="sectionCVForm">
-            <form action="#">
-              
-            </form>
-          </div>
+          <CVFormWrapper />
         </div>
       </main>
     </PageTemplate>

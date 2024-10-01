@@ -1,0 +1,117 @@
+@use '../../styles/mixins.scss' as *;
+
+.formWrapper {
+  background-color: var(--light-blue);
+  border-radius: var(--rounded-xl);
+  padding: 60px 40px;
+
+  display: grid;
+  grid-template-columns: 1fr 467px;
+
+  @include md {
+    grid-template-columns: 1fr 2fr;
+    column-gap: 12px;
+  }
+
+  @include sm {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+
+    @include sm {
+      display: none;
+    }
+
+    > * {
+      z-index: 1;
+    }
+
+    span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+
+      font-size: 338px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--white);
+      vertical-align: middle;
+      display: inline-flex;
+
+      @include md {
+        font-size: 135px;
+      }
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    border: 1px solid var(--gray);
+    border-radius: 30px;
+    padding: 20px;
+
+    h5 {
+      text-align: center;
+    }
+  }
+}
+
+.cvUploadBlock {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+  margin-top: 20px;
+
+  .cvFileTypes {
+    font-size: 10px;
+    font-weight: 400;
+    display: inline-block;
+    margin-top: 2px;
+    color: var(--gray);
+  }
+}
+
+.cvUploadContent {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+
+  > button {
+    justify-content: center;
+    width: 143px;
+  }
+
+  .cvFileDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 50px;
+    width: 100%;
+    max-width: 203px;
+    border: 1px solid var(--gray);
+    padding-left: 20px;
+    padding-right: 12px;
+    background-color: var(--white);
+    color: var(--gray);
+
+    .cvFileName {
+      user-select: none;
+    }
+    .cvFileRemove {
+      cursor: pointer;
+      color: initial;
+    }
+  }
+}
