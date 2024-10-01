@@ -5,7 +5,9 @@ const headers = {
 
 const request = {
   get: async (path) => {
-    const response = await fetch(path, {
+    const url = new URL(path, 'http://localhost:3000');
+
+    const response = await fetch(url.href, {
       method: 'GET',
       headers,
     });

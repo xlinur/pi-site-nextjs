@@ -2,22 +2,25 @@ import styles from './styles.module.scss';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 import SectionHeroOurCases from '@/app/components/Sections/SectionHeroOurCases';
 import PageTemplate from '@/app/components/PageTemplate';
-import pageCase from '@/app/api/strapi/pageCase/route';
-import ResultsList from './ResultsList';
+import request from '@/app/utils/request';
+import Content from './Content';
 import { Suspense } from 'react';
 
 export default async function PageCases() {
-  const { HeroOurCasesSection, spheresFilterTitle } = await pageCase();
+  const { data } = await request.get('/api/strapi/page/cases');
+
+  const { HeroOurCasesSection, spheresFilterTitle } = data.data.attributes;
 
   return (
     <PageTemplate>
+      {console.log('page', data)}
       <main className={styles.page}>
         <div className="container">
           <SectionHeroOurCases {...HeroOurCasesSection} />
         </div>
 
         <Suspense fallback={null}>
-          <ResultsList spheresFilterTitle={spheresFilterTitle} />
+          <Content spheresFilterTitle={spheresFilterTitle} />
         </Suspense>
 
         <div className={styles.sectionFormWrapper}>

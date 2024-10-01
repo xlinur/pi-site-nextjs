@@ -67,7 +67,7 @@
       display: inline-flex;
       gap: 6px;
 
-      & > a:hover, a:first-of-type {
+      & > a:hover {
         background-color: var(--blue);
         color: var(--white);
       }
