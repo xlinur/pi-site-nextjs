@@ -3,6 +3,19 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
+export const emailExecutorUrlManager = {
+  ContactSubmission: 'api/email',
+  ReportSubmission: 'api/sectionIndividualReport',
+};
+
+/**
+ * Call email url depends on emailTemplate.
+ *
+ * @param {string} gRecaptchaToken
+ * @param {ContactSubmission|ReportSubmission} emailTemplate
+ * @param {object} payload
+ * @return {Promise<void>}
+ */
 export const sendEmail = async ({
   gRecaptchaToken,
   emailTemplate,
@@ -19,7 +32,13 @@ export const sendEmail = async ({
   const recaptchaResultJson = await recaptchaResult.json();
 
   if (recaptchaResultJson.success) {
-    await fetch('api/email', {
+    const fetchUrl = emailExecutorUrlManager[emailTemplate];
+
+    if (!fetchUrl) {
+      throw Error('Url for email is not provided');
+    }
+
+    await fetch(fetchUrl, {
       method: 'post',
       body: JSON.stringify({ emailTemplate, payload }),
       headers,

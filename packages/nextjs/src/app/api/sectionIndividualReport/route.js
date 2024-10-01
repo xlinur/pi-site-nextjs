@@ -18,7 +18,7 @@ export async function POST(req, _) {
     const jsonPostData = await req.json();
     console.log({ jsonPostData: jsonPostData });
 
-    const purposeOfResearch = jsonPostData.purposeOfResearch
+    const purposeOfResearch = jsonPostData.payload.purposeOfResearch
       .filter(({ checked }) => checked === true)
       .map(({ label }) => {
         return label;
@@ -29,12 +29,12 @@ export async function POST(req, _) {
       to: 'rgba.panda@gmail.com',
       templateName: 'ReportSubmission',
       dynamicTemplateData: {
-        name: jsonPostData.name,
-        email: jsonPostData.contact,
-        service: jsonPostData.service,
-        contact: jsonPostData.contact,
-        comment: jsonPostData.comment,
-        otherComment: jsonPostData.otherComment,
+        name: jsonPostData.payload.name,
+        email: jsonPostData.payload.contact,
+        service: jsonPostData.payload.service,
+        contact: jsonPostData.payload.contact,
+        comment: jsonPostData.payload.comment,
+        otherComment: jsonPostData.payload.otherComment,
         purposeOfResearch: purposeOfResearch,
       },
     });

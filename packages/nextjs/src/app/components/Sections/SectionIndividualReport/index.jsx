@@ -16,6 +16,7 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import styles from './styles.module.scss';
 import Image from 'next/image';
+import {sendEmail} from "../../../../utils/sendEmail";
 
 const emailFields = {
   name: 'name',
@@ -154,36 +155,11 @@ export default function SectionIndividualReport({
 
     const gRecaptchaToken = await executeRecaptcha('inquirySubmit');
 
-    const responseResult = await fetch('/api/recaptcha', {
-      method: 'post',
-      body: JSON.stringify({
-        gRecaptchaToken: gRecaptchaToken,
-      }),
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-      },
+    await sendEmail({
+      gRecaptchaToken,
+      emailTemplate: 'ReportSubmission',
+      payload: values,
     });
-    const responseResultJson = await responseResult.json();
-
-    if (responseResultJson.success) {
-      console.log('Success to verify via recaptcha');
-
-      const responseContactFormResult = await fetch(
-        'api/sectionIndividualReport',
-        {
-          method: 'post',
-          body: JSON.stringify(values),
-          headers: {
-            Accept: 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
-          },
-        },
-      );
-      console.log(responseContactFormResult);
-    } else {
-      console.log('Failed to verify via recaptcha');
-    }
   };
 
   return (
