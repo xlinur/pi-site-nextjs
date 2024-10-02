@@ -14,12 +14,16 @@ export const CasesProvider = ({ children }) => {
   const [cases, setCases] = useState({ data: [], meta: { pagination: {} } });
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [filter, setFilter] = useState(null);
+  const [filter, setFilter] = useState({});
 
   const fetchCases = async () => {
     setLoading(true);
     try {
-      const { data } = await request.get('/api/strapi/cases?populate=deep');
+      const params = new URLSearchParams({
+        page: currentPage,
+      });
+
+      const { data } = await request.get(`/api/strapi/cases?${params}`);
 
       setCases(data);
     } finally {
@@ -35,14 +39,40 @@ export const CasesProvider = ({ children }) => {
     setCurrentPage(page);
   }, []);
 
-  const applyFilter = useCallback((newFilter) => {
-    setFilter(newFilter);
-    setCurrentPage(1);
-  }, []);
+  const applyFilter = useCallback(
+    (key, value) => {
+      setFilter({
+        ...filter,
+        [key]: value,
+      });
+      setCurrentPage(1);
+    },
+    [filter],
+  );
+
+  const resetFilter = useCallback(
+    (key) => {
+      const newFilter = { ...filter };
+
+      delete newFilter[key];
+
+      setFilter(newFilter);
+      setCurrentPage(1);
+    },
+    [filter],
+  );
 
   const value = useMemo(
-    () => ({ cases, loading, currentPage, changePage, applyFilter }),
-    [cases, loading, currentPage, changePage, applyFilter],
+    () => ({
+      cases,
+      loading,
+      currentPage,
+      changePage,
+      applyFilter,
+      resetFilter,
+      filter,
+    }),
+    [cases, loading, currentPage, changePage, applyFilter, resetFilter, filter],
   );
 
   return (

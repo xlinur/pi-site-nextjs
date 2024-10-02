@@ -24,21 +24,17 @@ export const SidebarMenu = ({
     onClose(false);
   };
 
-  // if (!isOpen) {
-  //   return null;
-  // }
-
   const support = createSupportData({ contacts });
   const socials = createSocialsData({ contacts });
   const time = createWorkingHours(workingHours);
 
   const renderMenu = (menu) =>
-    menu.map(({ title, url, childs }) => {
+    menu.map(({ title, url, childs }, idx) => {
       if (childs?.length) {
         return (
           <DropdownNav
             theme="light"
-            key={url}
+            key={idx}
             item={{ title, url, childs }}
             idx={url}
           />
@@ -46,7 +42,7 @@ export const SidebarMenu = ({
       }
 
       return (
-        <a href={url} className={styles.menuItem} key={url}>
+        <a href={url} className={styles.menuItem} key={idx}>
           {title}
         </a>
       );
