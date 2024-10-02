@@ -1,10 +1,10 @@
 import sgMail from '@sendgrid/mail';
 
 /**
- * @param {Object} data
- * @property {string} to
- * @property {string} templateName
- * @property {dynamicTemplateData} dynamicTemplateData
+ * @param {string} data.to to
+ * @param {string} data.templateName templateName
+ * @param {string} data.message message
+ * @param {dynamicTemplateData} data.dynamicTemplateData dynamicTemplateData
  * @returns {Promise<void>}
  */
 export async function sendEmail(data) {

@@ -16,17 +16,6 @@ const emailFields = {
   skills: 'skills',
 };
 
-/**
- * Adopt input services options to select component
- * @param inputServicesOptions {{id: any, label: string}[]}
- * @return {{key: number|string, label: string}[]}
- */
-export function adoptOptions(inputServicesOptions) {
-  return inputServicesOptions.map(({ id, label }) => {
-    return { value: id, label: label };
-  });
-}
-
 const mok = {
   title: 'Get your dream job!',
   subtile: 'Send your resume and we will find a suitable vacancy for you',
@@ -35,6 +24,16 @@ const mok = {
     name: 'Upload',
   },
 };
+
+function convertFileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+    reader.readAsDataURL(file);
+  });
+}
 
 export const Content = ({ sectionFormData }) => {
   const { submitBtn, legals } = sectionFormData;
@@ -75,17 +74,38 @@ export const Content = ({ sectionFormData }) => {
 
     const gRecaptchaToken = await executeRecaptcha('inquirySubmit');
 
+    const file = values?.file ?? null;
+    let attachment = {};
+
+    if (file) {
+      const { name, type } = file;
+
+      attachment.filename = name;
+      attachment.type = type;
+      attachment.content = null;
+
+      try {
+        attachment.content = await convertFileToBase64(file);
+      } catch (_) {
+        console.log(_);
+        // TODO: proccess error
+      }
+    }
+
     await sendEmail({
       gRecaptchaToken,
-      emailTemplate: 'ContactSubmission',
-      payload: { ...values, cv: uploadedFile }, // Send uploaded file
+      emailTemplate: 'CVSubmission',
+      payload: { ...values, attachments: [attachment] }, // Send uploaded file
     });
   };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
+
     if (file) {
       setUploadedFile(file);
+
+      form.setFieldValue('file', file);
     }
   };
 

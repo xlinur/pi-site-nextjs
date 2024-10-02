@@ -6,6 +6,7 @@ const headers = {
 export const emailExecutorUrlManager = {
   ContactSubmission: 'api/email',
   ReportSubmission: 'api/sectionIndividualReport',
+  CVSubmission: '/api/vacancies',
 };
 
 /**

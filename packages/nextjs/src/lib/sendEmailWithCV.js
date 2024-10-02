@@ -5,9 +5,10 @@ import sgMail from '@sendgrid/mail';
  * @param {string} data.templateName templateName
  * @param {string} data.message message
  * @param {dynamicTemplateData} data.dynamicTemplateData dynamicTemplateData
+ * @param {{name:string,type:string,content:string}[]} data.attachments attachments
  * @returns {Promise<void>}
  */
-export async function sendEmailIndividualReport(data) {
+export async function sendEmailWithCV(data) {
   sgMail.setApiKey(process.env.NEXT_SENDGRID_API_KEY);
   console.log({ data: data });
   const msg = {
@@ -16,8 +17,9 @@ export async function sendEmailIndividualReport(data) {
     from: 'rgba.panda@gmail.com',
     subject: 'Test subject',
     text: data.message,
-    templateId: 'd-e3e5956cf63a445aa7893cb7dd725168',
+    templateId: 'd-113f990e09df4328aca2d72356411f72',
     dynamicTemplateData: data.dynamicTemplateData,
+    attachments: data.attachments,
   };
 
   try {
