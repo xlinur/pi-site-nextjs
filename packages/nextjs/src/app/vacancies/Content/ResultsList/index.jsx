@@ -1,15 +1,21 @@
 'use client';
+import Button from '@/app/components/Button';
 
 import { useVacanciesContext } from '../Context';
 import CardVacancy from './CardVacancy';
 import FilterBool from './FilterBool';
 import FilterList from './FilterList';
+import FilterGroupList from './FilterGroupList';
 
 import styles from './styles.module.scss';
 
 const ResultsList = ({ pageData }) => {
-  const { contentTitle, itemsCountLabel, filterFindBtn, filterResetBtn } =
-    pageData;
+  const {
+    contentTitle,
+    itemsCountLabel,
+    filterFindBtn = { name: 'Find' },
+    filterResetBtn = { name: 'Reset filters' },
+  } = pageData;
 
   const { vacancies, filters } = useVacanciesContext();
 
@@ -25,14 +31,26 @@ const ResultsList = ({ pageData }) => {
 
       <div className={styles.vacancies}>
         <div className={styles.vacanciesFilters}>
-          {filters.map((filter) =>
-            filter.type === 'list' ? (
-              <FilterList key={filter.id} {...filter} />
-            ) : (
-              <FilterBool key={filter.id} {...filter} />
-            ),
-          )}
+          {filters.map((filter) => {
+            switch (filter.type) {
+              case 'list':
+                return <FilterList key={filter.id} {...filter} />;
+              case 'group-list':
+                return <FilterGroupList key={filter.id} {...filter} />;
+              case 'boolean':
+                return <FilterBool key={filter.id} {...filter} />;
+
+              default:
+                return null;
+            }
+          })}
+
+          <div className={styles.filterActions}>
+            <Button size="sm" name={filterFindBtn.name} />
+            <Button size="sm" name={filterResetBtn.name} />
+          </div>
         </div>
+
         <div className={styles.vacanciesList}>
           {vacancies.data.map((item) => (
             <CardVacancy key={item.id} {...item} />

@@ -1,0 +1,57 @@
+.searchWrapper {
+  position: relative;
+  padding-bottom: 16px;
+  overflow: hidden;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--gray);
+
+  .searchWrapperHeader {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    column-gap: 10px;
+
+    .title {
+      font-weight: 600;
+    }
+
+    .searchButton {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+    }
+  }
+
+  .groupName {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 12px;
+    width: 100%;
+
+    span {
+      display: inline-flex;
+      height: fit-content;
+    }
+  }
+  .group {
+    label {
+      align-items: center;
+      color: var(--dark);
+    }
+  }
+
+  .valuesList, .groupItems {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    margin-top: 16px;
+  }
+
+  .groupItems {
+    padding-left: 20px;
+    margin-top: 12px;
+  }
+}

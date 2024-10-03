@@ -1,0 +1,40 @@
+.searchWrapper {
+  position: relative;
+  padding-bottom: 16px;
+  overflow: hidden;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--gray);
+
+  .searchWrapperHeader {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    column-gap: 10px;
+
+    .title {
+      font-weight: 600;
+    }
+
+    .searchButton {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+    }
+  }
+
+  .valuesList {
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    margin-top: 16px;
+
+    .valueItem {
+      label {
+        align-items: center;
+        color: var(--dark);
+      }
+    }
+  }
+}

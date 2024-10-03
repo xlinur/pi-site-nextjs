@@ -19,7 +19,25 @@
   .vacanciesFilters {
     border: 1px solid var(--gray);
     border-radius: var(--rounded-xl);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    max-height: fit-content;
+
+
+    .filterActions {
+      display: flex;
+      flex-direction: column;
+      row-gap: 12px;
+
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   }
+
   .vacanciesList {
     display: flex;
     flex-direction: column;

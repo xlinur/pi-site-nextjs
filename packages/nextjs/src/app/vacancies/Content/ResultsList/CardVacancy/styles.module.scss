@@ -6,10 +6,26 @@
   padding: 30px;
 
   .content {
-
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
   }
 
   .info {
 
+  }
+
+  button {
+    padding: 0;
+    width: 38px;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
