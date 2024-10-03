@@ -11,7 +11,7 @@ import styles from './styles.module.scss';
 
 const ResultsList = ({ pageData }) => {
   const {
-    contentTitle,
+    contentTitle = 'Find your vacancy',
     itemsCountLabel,
     filterFindBtn = { name: 'Find' },
     filterResetBtn = { name: 'Reset filters' },

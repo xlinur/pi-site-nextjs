@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionHeroVacancies from '@/app/components/Sections/SectionHeroVacancies';
+import { CVFormWrapper } from '@/app/components/CVForm/CVFormWrapper';
 import Content from './Content';
 
 import styles from './styles.module.scss';
@@ -22,6 +23,10 @@ export default async function PageVacancies() {
           <Suspense fallback={null}>
             <Content pageData={{}} />
           </Suspense>
+        </div>
+
+        <div className="container">
+          <CVFormWrapper />
         </div>
       </main>
     </PageTemplate>
