@@ -14,50 +14,100 @@ const defaultVacancies = {
   data: [],
 };
 
-const defaultFilters = [];
+const defaultSelectedFilters = {};
+
+const defaultPage = 1;
 
 export const VacanciesContextProvider = ({ children }) => {
   const [vacancies, setVacancies] = useState(defaultVacancies);
-  const [filters, setFilters] = useState(defaultFilters);
-  const [pagination, setPagination] = useState();
-  const [selectedFilters, setSelectedFilters] = useState({});
+  const [filters, setFilters] = useState([]);
+  const [currentPage, setCurrentPage] = useState(defaultPage);
+  const [selectedFilters, setSelectedFilters] = useState(
+    defaultSelectedFilters,
+  );
+  const [appliedFilters, setAppliedFilters] = useState(defaultSelectedFilters);
+  const [isLoadingFilters, setIsLoadingFilters] = useState(false);
+  const [isLoadingVacancies, setIsLoadingVacancies] = useState(false);
 
-  const getVacancies = async () => {
-    const data = await request.get('/api/vacancies');
+  const getVacancies = useCallback(async () => {
+    try {
+      setIsLoadingVacancies(true);
 
-    setVacancies(data);
-  };
+      const params = new URLSearchParams({
+        filters: JSON.stringify(appliedFilters),
+        page: currentPage,
+      });
+
+      const data = await request.get(`/api/vacancies?${params}`);
+
+      setVacancies(data);
+    } finally {
+      setIsLoadingVacancies(false);
+    }
+  }, [currentPage, appliedFilters]);
 
   const getFilters = async () => {
-    const data = await request.get('/api/vacancies/filters');
+    try {
+      setIsLoadingFilters(true);
 
-    setFilters(data.filters);
+      const data = await request.get('/api/vacancies/filters');
+
+      setFilters(data.filters);
+    } finally {
+      setIsLoadingFilters(false);
+    }
   };
 
-  const setFilter = useCallback(
-    (id, value) => {
-      setSelectedFilters({
-        ...selectedFilters,
-        [id]: value,
-      });
-    },
-    [selectedFilters],
-  );
+  const setFilter = useCallback((id, value) => {
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      [id]: value,
+    }));
+  }, []);
+
+  const applyFilters = useCallback(() => {
+    setAppliedFilters(selectedFilters);
+    setCurrentPage(defaultPage);
+  }, [selectedFilters]);
+
+  const resetFilters = useCallback(() => {
+    setSelectedFilters(defaultSelectedFilters);
+    setAppliedFilters(defaultSelectedFilters);
+    setCurrentPage(defaultPage);
+  }, []);
 
   useEffect(() => {
     getVacancies();
+  }, [currentPage, appliedFilters, getVacancies]);
+
+  useEffect(() => {
     getFilters();
   }, []);
 
   const values = useMemo(
     () => ({
       vacancies,
-      pagination,
       filters,
-      setPagination,
+      currentPage,
+      setCurrentPage,
+      isLoadingFilters,
+      isLoadingVacancies,
+      selectedFilters,
       setFilter,
+      resetFilters,
+      applyFilters,
     }),
-    [vacancies, pagination, filters, setPagination, setFilter],
+    [
+      vacancies,
+      filters,
+      currentPage,
+      isLoadingFilters,
+      isLoadingVacancies,
+      selectedFilters,
+      setFilter,
+      resetFilters,
+      applyFilters,
+    ],
   );
 
   return (

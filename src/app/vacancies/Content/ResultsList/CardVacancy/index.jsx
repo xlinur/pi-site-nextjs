@@ -1,7 +1,8 @@
+import { routes } from '@/config/routes';
 import Button from '@/app/components/Button';
 import styles from './styles.module.scss';
 
-const arrow = () => (
+const arrowIcon = (
   <svg
     width="13"
     height="16"
@@ -16,7 +17,7 @@ const arrow = () => (
   </svg>
 );
 
-const CardVacancy = ({ title, type, location }) => {
+const CardVacancy = ({ id, title, type, location }) => {
   return (
     <div className={styles.card}>
       <div className={styles.content}>
@@ -28,7 +29,9 @@ const CardVacancy = ({ title, type, location }) => {
         </ul>
       </div>
 
-      <Button theme="transparent">{arrow()}</Button>
+      <Button theme="transparent" url={routes.vacancy(id)}>
+        {arrowIcon}
+      </Button>
     </div>
   );
 };

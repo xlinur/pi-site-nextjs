@@ -1,11 +1,12 @@
 'use client';
 import Button from '@/app/components/Button';
+import Pagination from '@/app/components/Pagination';
 
 import { useVacanciesContext } from '../Context';
 import CardVacancy from './CardVacancy';
 import FilterBool from './FilterBool';
 import FilterList from './FilterList';
-import FilterGroupList from './FilterGroupList';
+// import FilterGroupList from './FilterGroupList';
 
 import styles from './styles.module.scss';
 
@@ -15,9 +16,27 @@ const ResultsList = ({ pageData }) => {
     itemsCountLabel,
     filterFindBtn = { name: 'Find' },
     filterResetBtn = { name: 'Reset filters' },
+    noFilterResults = 'No results found',
   } = pageData;
 
-  const { vacancies, filters } = useVacanciesContext();
+  const {
+    vacancies,
+    filters,
+    setFilter,
+    selectedFilters,
+    currentPage,
+    resetFilters,
+    applyFilters,
+    isLoadingFilters,
+    isLoadingVacancies,
+    setCurrentPage,
+  } = useVacanciesContext();
+
+  console.log(vacancies);
+
+  const onFilterChange = (id) => (value) => {
+    setFilter(id, value);
+  };
 
   return (
     <section className={styles.sectionWrapper}>
@@ -31,30 +50,72 @@ const ResultsList = ({ pageData }) => {
 
       <div className={styles.vacancies}>
         <div className={styles.vacanciesFilters}>
-          {filters.map((filter) => {
-            switch (filter.type) {
-              case 'list':
-                return <FilterList key={filter.id} {...filter} />;
-              case 'group-list':
-                return <FilterGroupList key={filter.id} {...filter} />;
-              case 'boolean':
-                return <FilterBool key={filter.id} {...filter} />;
+          {isLoadingFilters ? (
+            <>Loading...</>
+          ) : (
+            <>
+              {filters.map((filter) => {
+                switch (filter.type) {
+                  case 'list':
+                    return (
+                      <FilterList
+                        key={filter.id}
+                        title={filter.title}
+                        values={selectedFilters[filter.id]}
+                        options={filter.values}
+                        onChange={onFilterChange(filter.id)}
+                        noFilterText={noFilterResults}
+                      />
+                    );
+                  // case 'group-list':
+                  //   return <FilterGroupList key={filter.id} {...filter} />;
+                  case 'boolean':
+                    return (
+                      <FilterBool
+                        key={filter.id}
+                        title={filter.title}
+                        checked={selectedFilters[filter.id]}
+                        onChange={onFilterChange(filter.id)}
+                      />
+                    );
 
-              default:
-                return null;
-            }
-          })}
+                  default:
+                    return null;
+                }
+              })}
 
-          <div className={styles.filterActions}>
-            <Button size="sm" name={filterFindBtn.name} />
-            <Button size="sm" name={filterResetBtn.name} />
-          </div>
+              <div className={styles.filterActions}>
+                <Button
+                  size="sm"
+                  name={filterFindBtn.name}
+                  onClick={applyFilters}
+                />
+                <Button
+                  size="sm"
+                  name={filterResetBtn.name}
+                  onClick={resetFilters}
+                />
+              </div>
+            </>
+          )}
         </div>
 
         <div className={styles.vacanciesList}>
-          {vacancies.data.map((item) => (
-            <CardVacancy key={item.id} {...item} />
-          ))}
+          {isLoadingVacancies ? (
+            <>Loading...</>
+          ) : (
+            <>
+              {vacancies.data.map((item) => (
+                <CardVacancy key={item.id} {...item} />
+              ))}
+
+              <Pagination
+                page={currentPage}
+                totalCount={vacancies.totalPages}
+                onChange={setCurrentPage}
+              />
+            </>
+          )}
         </div>
       </div>
     </section>

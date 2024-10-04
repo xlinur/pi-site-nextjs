@@ -3,21 +3,6 @@ import { NextResponse } from 'next/server';
 const mock = {
   filters: [
     {
-      id: 1,
-      title: 'Choose the vacancy',
-      type: 'group-list',
-      values: [
-        {
-          groupName: 'Python Developer',
-          items: ['QA Mobile', 'Java Developer'],
-        },
-        {
-          groupName: 'Delivery manager',
-          items: ['FB Ads Manager', 'Design'],
-        },
-      ],
-    },
-    {
       id: 2,
       title: 'Choose type of employment',
       type: 'list',
@@ -39,8 +24,22 @@ const mock = {
       id: 5,
       title: 'Second filter',
       type: 'boolean',
-      values: [true, false],
     },
+    // {
+    //   id: 1,
+    //   name: 'Choose the vacancy',
+    //   type: 'group-list',
+    //   values: [
+    //     {
+    //       groupName: 'Python Developer',
+    //       items: ['QA Mobile', 'Java Developer'],
+    //     },
+    //     {
+    //       groupName: 'Delivery manager',
+    //       items: ['FB Ads Manager', 'Design'],
+    //     },
+    //   ],
+    // },
   ],
 };
 

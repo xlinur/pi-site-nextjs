@@ -2,6 +2,7 @@ export const routes = {
   aboutUs: () => '/about-us',
   industries: () => '/industries',
   vacancies: () => '/vacancies',
+  vacancy: (slag) => `/vacancies/${slag}`,
   earnWithUs: () => '/earn-with-us',
   contactUs: () => '/contact-us',
   itRecruitment: () => '/recruitment',

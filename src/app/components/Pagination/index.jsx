@@ -1,21 +1,34 @@
 import styles from './styles.module.scss';
 import Button from '@/app/components/Button';
 
-const Pagination = ({
-  currentPage,
-  pageCount,
-  onPrevPageClick,
-  onNextPageClick,
-  onPageNumberChange,
-  disablePrevPaginationBtn,
-  disableNextPaginationBtn,
-}) => {
+const Pagination = ({ page, totalCount, onChange }) => {
+  const disablePrevPaginationBtn = page === 1;
+  const disableNextPaginationBtn = page === totalCount;
+
+  const onNextPage = () => {
+    if (!disableNextPaginationBtn) {
+      onChange?.(page + 1);
+    }
+  };
+
+  const onPrevPage = () => {
+    if (!disablePrevPaginationBtn) {
+      onChange?.(page - 1);
+    }
+  };
+
+  const onSetPage = (number) => () => {
+    onChange?.(number);
+  };
+
+  if (totalCount === 1) return null;
+
   return (
     <div className={styles.pagination}>
       <Button
         theme="transparent"
         disabled={disablePrevPaginationBtn}
-        onClick={onPrevPageClick}
+        onClick={onPrevPage}
       >
         <svg
           width="23"
@@ -32,11 +45,11 @@ const Pagination = ({
       </Button>
 
       <div className={styles.numbers}>
-        {Array.from({ length: pageCount }).map((_, idx) => (
+        {Array.from({ length: totalCount }).map((_, idx) => (
           <Button
             key={idx}
-            onClick={onPageNumberChange(idx + 1)}
-            theme={currentPage === idx + 1 ? 'primary' : 'secondary'}
+            onClick={onSetPage(idx + 1)}
+            theme={page === idx + 1 ? 'primary' : 'secondary'}
           >
             {idx + 1}
           </Button>
@@ -46,7 +59,7 @@ const Pagination = ({
       <Button
         theme="transparent"
         disabled={disableNextPaginationBtn}
-        onClick={onNextPageClick}
+        onClick={onNextPage}
       >
         <svg
           width="22"

@@ -1,17 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
 import styles from './styles.module.scss';
 
-const FilterBool = ({ title }) => {
-  let [isOn, setOn] = useState(false);
-
+const FilterBool = ({ title, checked = false, onChange }) => {
   const toggle = (e) => {
-    if (e.target.checked) {
-      setOn(true);
-    } else {
-      setOn(false);
-    }
+    onChange?.(e.target.checked);
   };
 
   return (
@@ -19,7 +12,7 @@ const FilterBool = ({ title }) => {
       <p>{title}</p>
 
       <label className={styles.slider}>
-        <input type="checkbox" onChange={toggle} />
+        <input type="checkbox" onChange={toggle} checked={checked} />
 
         <div className={styles.sort}></div>
       </label>

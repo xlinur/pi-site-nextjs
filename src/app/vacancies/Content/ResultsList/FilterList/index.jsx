@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './styles.module.scss';
 import Checkbox from '@/app/components/Form/Checkbox';
 
-const SearchSVG = () => (
+const searchIcon = (
   <svg
     width="24"
     height="24"
@@ -19,12 +19,23 @@ const SearchSVG = () => (
   </svg>
 );
 
-const FilterItem = ({ title, values }) => {
+const FilterItem = ({
+  title,
+  values = [],
+  options = [],
+  onChange,
+  noFilterText,
+}) => {
   const [search, setSearch] = useState('');
   const [isSearchActive, setIsSearchActive] = useState(false);
 
-  const searchedValues = values.filter((value) =>
-    value.toLowerCase().includes(search.toLowerCase()),
+  const sortedOptions = [
+    ...values,
+    ...options.filter((o) => !values.includes(o)),
+  ];
+
+  const searchedValues = sortedOptions.filter((option) =>
+    option.toLowerCase().includes(search.toLowerCase()),
   );
 
   const onSearchChange = (e) => {
@@ -33,7 +44,7 @@ const FilterItem = ({ title, values }) => {
 
   const toggleSearch = () => {
     setIsSearchActive((prev) => !prev);
-    if (isSearchActive) setSearch(''); // Сбрасываем поиск, если закрыли
+    if (isSearchActive) setSearch('');
   };
 
   const closeOnBlur = () => {
@@ -42,6 +53,14 @@ const FilterItem = ({ title, values }) => {
     } else {
       setIsSearchActive(false);
     }
+  };
+
+  const onSelectedValuesToggle = (option) => () => {
+    onChange?.(
+      values.includes(option)
+        ? values.filter((v) => v !== v)
+        : [...values, option],
+    );
   };
 
   return (
@@ -61,7 +80,7 @@ const FilterItem = ({ title, values }) => {
         )}
 
         <button onClick={toggleSearch} className={styles.searchButton}>
-          <SearchSVG />
+          {searchIcon}
         </button>
       </div>
 
@@ -69,11 +88,15 @@ const FilterItem = ({ title, values }) => {
         {searchedValues.length > 0 ? (
           searchedValues.map((label) => (
             <div key={label} className={styles.valueItem}>
-              <Checkbox label={label} />
+              <Checkbox
+                label={label}
+                checked={values.includes(label)}
+                onChange={onSelectedValuesToggle(label)}
+              />
             </div>
           ))
         ) : (
-          <div className={styles.noResults}>Нет результатов</div>
+          <div className={styles.noResults}>{noFilterText}</div>
         )}
       </div>
     </div>

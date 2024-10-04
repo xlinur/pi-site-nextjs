@@ -24,23 +24,6 @@ const Content = ({ spheresFilterTitle }) => {
     meta: { pagination },
   } = cases;
 
-  console.log({ spheres });
-
-  const disableNextPaginationBtn = currentPage === pagination?.pageCount;
-  const disablePrevPaginationBtn = currentPage === 1;
-
-  const onPageNumberChange = (number) => () => {
-    changePage(number);
-  };
-
-  const onNextPageClick = () => {
-    if (!disableNextPaginationBtn) changePage(currentPage + 1);
-  };
-
-  const onPrevPageClick = () => {
-    if (!disablePrevPaginationBtn) changePage(currentPage - 1);
-  };
-
   const onSphereFilterClick = (key) => () => {
     if (filter.sphere === key) {
       resetFilter('sphere');
@@ -89,44 +72,11 @@ const Content = ({ spheresFilterTitle }) => {
             ))}
           </div>
 
-          {pagination?.pageCount > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              pageCount={pagination?.pageCount}
-              onPrevPageClick={onPrevPageClick}
-              onNextPageClick={onNextPageClick}
-              onPageNumberChange={onPageNumberChange}
-              disablePrevPaginationBtn={disablePrevPaginationBtn}
-              disableNextPaginationBtn={disableNextPaginationBtn}
-            />
-          )}
-          {/* {pagination?.pageCount > 1 && (
-            <div className={styles.pagination}>
-              <button
-                disabled={disablePrevPaginationBtn}
-                onClick={onPrevPageClick}
-              >
-                &laquo;
-              </button>
-
-              <div className={styles.numbers}>
-                {Array.from({
-                  length: pagination?.pageCount,
-                }).map((_, idx) => (
-                  <button key={idx} onClick={onPageNumberChange(idx + 1)}>
-                    {idx + 1}
-                  </button>
-                ))}
-              </div>
-
-              <button
-                disabled={disableNextPaginationBtn}
-                onClick={onNextPageClick}
-              >
-                &raquo;
-              </button>
-            </div>
-          )} */}
+          <Pagination
+            page={currentPage}
+            totalCount={pagination?.pageCount}
+            onChange={changePage}
+          />
         </section>
       </div>
     </>

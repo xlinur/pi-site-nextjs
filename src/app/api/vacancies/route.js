@@ -34,8 +34,8 @@ const mock = {
       type: 'Full Time',
     },
   ],
-  totalCount: 245,
-  totalPages: 25,
+  totalCount: 45,
+  totalPages: 4,
   currentPage: 1,
 };
 
