@@ -15,12 +15,20 @@ export const CasesProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState({});
+  const [spheres, setSpheres] = useState([]);
+
+  const fetchSpheres = async () => {
+    const { data } = await request.get(`/api/strapi/spheres`);
+
+    setSpheres(data.data);
+  };
 
   const fetchCases = async () => {
     setLoading(true);
     try {
       const params = new URLSearchParams({
         page: currentPage,
+        filter: JSON.stringify(filter),
       });
 
       const { data } = await request.get(`/api/strapi/cases?${params}`);
@@ -30,6 +38,10 @@ export const CasesProvider = ({ children }) => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchSpheres();
+  }, []);
 
   useEffect(() => {
     fetchCases();
@@ -71,8 +83,18 @@ export const CasesProvider = ({ children }) => {
       applyFilter,
       resetFilter,
       filter,
+      spheres,
     }),
-    [cases, loading, currentPage, changePage, applyFilter, resetFilter, filter],
+    [
+      cases,
+      loading,
+      currentPage,
+      changePage,
+      applyFilter,
+      resetFilter,
+      filter,
+      spheres,
+    ],
   );
 
   return (

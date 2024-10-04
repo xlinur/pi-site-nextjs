@@ -8,7 +8,6 @@ const request = {
     const url = new URL(path, 'http://localhost:3000');
 
     const response = await fetch(url.href, {
-      method: 'GET',
       headers,
     });
 

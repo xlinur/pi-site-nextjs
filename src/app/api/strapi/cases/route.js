@@ -1,9 +1,22 @@
 import { getStrapiData } from '../utils';
 
-export async function GET() {
-  const response = await getStrapiData(
-    `/api/cases?populate=deep&pagination[pageSize]=2&pagination[page]=1`,
-  );
+const DEFAULT_PAGE_SIZE = 2;
+
+export async function GET(req) {
+  const { url } = req;
+
+  const params = new URLSearchParams(url.split('?')[1]);
+
+  const page = params.get('page');
+  const size = params.get('size') || DEFAULT_PAGE_SIZE;
+  const filter = JSON.parse(params.get('filter') || '{}');
+
+  const response = await getStrapiData('/api/cases', {
+    populate: 'deep',
+    'pagination[page]': page,
+    'pagination[pageSize]': size,
+    'filters[sphere][slug][$eq]': filter.sphere,
+  });
 
   return response;
 }

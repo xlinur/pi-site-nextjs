@@ -6,13 +6,14 @@ import SectionTalentMatch from '@/app/components/Sections/SectionTalentMatch';
 import SectionRelocationHelpHero from '@/app/components/Sections/SectionRelocationHelpHero';
 import SectionSuccessStories from '@/app/components/Sections/SectionSuccessStories';
 import PageTemplate from '@/app/components/PageTemplate';
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
-
-import pageCases from '@/app/api/strapi/pageCases/route';
 import { casesBySpheres } from '@/app/api/strapi/pageSpheres/route';
 
 export default async function PageCase({ params }) {
   const { slug } = params;
+
+  const { data } = await request.get(`/api/strapi/page/cases/${slug}`);
 
   const {
     SectionCaseHero: CaseHero,
@@ -20,12 +21,13 @@ export default async function PageCase({ params }) {
     SectionWithFeatures,
     SectionCompleteTask: CompleteTask,
     SectionTalentMatch: TalentMatch,
-  } = await pageCases(slug);
+  } = data.data[0].attributes;
 
   const cases = await casesBySpheres();
 
   return (
     <PageTemplate>
+      {console.log({ data })}
       <main className={styles.page}>
         <div className="container">
           <SectionCaseHero {...CaseHero} />

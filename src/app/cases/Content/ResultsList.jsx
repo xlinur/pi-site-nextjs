@@ -14,12 +14,15 @@ const Content = ({ spheresFilterTitle }) => {
     applyFilter,
     filter,
     resetFilter,
+    spheres,
   } = useCases();
 
   const {
     data,
     meta: { pagination },
   } = cases;
+
+  console.log({ spheres });
 
   const disableNextPaginationBtn = currentPage === pagination?.pageCount;
   const disablePrevPaginationBtn = currentPage === 1;
@@ -44,18 +47,14 @@ const Content = ({ spheresFilterTitle }) => {
     }
   };
 
-  const sphereFilterOptions = cases?.data?.reduce((acc, item) => {
-    const { name, slug } = item.attributes.sphere?.data?.attributes || {};
+  const sphereFilterOptions = spheres.map((item) => {
+    const { name, slug } = item?.attributes || {};
 
-    if (name && slug && !acc.find((i) => i.key === slug)) {
-      acc.push({
-        name,
-        key: slug,
-      });
-    }
-
-    return acc;
-  }, []);
+    return {
+      name,
+      key: slug,
+    };
+  });
 
   if (loading) return <div>Loading...</div>;
 

@@ -18,16 +18,12 @@ export const request = async (path, props) => {
   return json;
 };
 
-export const getStrapiData = async (path, props) => {
+export const getStrapiData = async (path, params) => {
   try {
-    const { query } = props || {};
-
     const url = new URL(path, process.env.NEXT_STRAPI_API);
 
-    if (query) {
-      const requestQuery = qs.stringify(query);
-
-      url.search = requestQuery;
+    if (params) {
+      url.search = qs.stringify(params);
     }
 
     const res = await fetch(url.href);
