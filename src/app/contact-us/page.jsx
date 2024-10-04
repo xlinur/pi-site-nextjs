@@ -2,19 +2,19 @@ import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 import SectionSocialMedia from '@/app/components/Sections/SectionSocialMedia';
-
-import pageContactUs from '@/app/api/strapi/pageContactUs/route';
-
 import styles from './styles.module.scss';
+import request from '@/app/utils/request';
 
 export const generateMetadata = async () => {
-  const { SEO } = await pageContactUs();
+  const { data } = await request.get('/api/strapi/page/contact-us');
 
-  return createMetadataFromSeo(SEO);
+  return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
-export default async function PageContactUs() {
-  const { title } = await pageContactUs();
+export default async function ContactUs() {
+  const { data } = await request.get('/api/strapi/page/contact-us');
+
+  const { title } = data.data.attributes;
 
   return (
     <PageTemplate>

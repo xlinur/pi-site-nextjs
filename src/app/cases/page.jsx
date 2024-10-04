@@ -13,7 +13,6 @@ export default async function PageCases() {
 
   return (
     <PageTemplate>
-      {console.log('page', data)}
       <main className={styles.page}>
         <div className="container">
           <SectionHeroOurCases {...HeroOurCasesSection} />

@@ -9,19 +9,20 @@ import SectionPricing from '@/app/components/Sections/SectionPricing';
 import { SectionIndividualReportWrapper } from '@/app/components/Sections/SectionIndividualReport/SectionIndividualReportWrapper';
 
 import SectionAnalyticsServices from '@/app/components/Sections/SectionAnalyticsServices';
-
 import styles from './styles.module.scss';
-import pageAnalytics from '@/app/api/strapi/pageAnalytics/route';
+import request from '@/app/utils/request';
 
 export const generateMetadata = async () => {
-  const { SEO } = await pageAnalytics();
+  const { data } = await request.get('/api/strapi/page/analytics');
 
-  return createMetadataFromSeo(SEO);
+  return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
-export default async function SpheresPage() {
+export default async function Analytics() {
+  const { data } = await request.get('/api/strapi/page/analytics');
+
   const { AnimatedHero, AnalyticsServices, WhyInfoSection, Pricing } =
-    await pageAnalytics();
+    data.data.attributes;
 
   return (
     <PageTemplate>

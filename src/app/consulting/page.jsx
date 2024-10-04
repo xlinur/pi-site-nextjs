@@ -11,21 +11,23 @@ import SectionExamplesOfBestPractices from '@/app/components/Sections/SectionExa
 
 import styles from './styles.module.scss';
 
-import pageConsulting from '@/app/api/strapi/pageConsulting/route';
+import request from '@/app/utils/request';
 
 export const generateMetadata = async () => {
-  const { SEO } = await pageConsulting();
+  const { data } = await request.get('/api/strapi/page/consulting');
 
-  return createMetadataFromSeo(SEO);
+  return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
-export default async function PageConsulting() {
+export default async function Consulting() {
+  const { data } = await request.get('/api/strapi/page/consulting');
+
   const {
     AnimatedHero,
     ConsultingServices,
     WhyInfoSection,
     ExamplesOfBestPractices,
-  } = await pageConsulting();
+  } = data.data.attributes;
 
   return (
     <PageTemplate>

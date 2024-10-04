@@ -13,24 +13,27 @@ import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrap
 import SectionWhyInfo from '@/app/components/Sections/SectionWhyInfo';
 import SectionSocialMedia from '@/app/components/Sections/SectionSocialMedia';
 
-import homePageRequest from '@/app/api/strapi/homePage/route';
+import request from '@/app/utils/request';
+
 import styles from './styles.module.scss';
 import { routes } from '@/config/routes';
 
 export const generateMetadata = async () => {
-  const { SEO } = await homePageRequest();
+  const { data } = await request.get('/api/strapi/page/home');
 
-  return createMetadataFromSeo(SEO);
+  return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function Home() {
+  const { data } = await request.get('/api/strapi/page/home');
+
   const {
     HeroSection,
     SectionWithIndustriesImage,
     WhyInfoSection,
     ExclusiveProcess,
     MeetOurTeam,
-  } = await homePageRequest();
+  } = data.data.attributes;
 
   return (
     <PageTemplate>

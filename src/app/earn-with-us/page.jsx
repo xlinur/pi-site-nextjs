@@ -6,23 +6,25 @@ import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrap
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionPaymentTerms from '@/app/components/Sections/SectionPaymentTerms';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
-import pageEarnWithUs from '@/app/api/strapi/pageEarnWithUs/route';
 import OpenModalFormButton from '@/app/components/OpenModalFormButton';
-
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
 export const generateMetadata = async () => {
-  const { SEO } = await PageEarnWithUs();
+  const { data } = await request.get('/api/strapi/page/earn-with-us');
 
-  return createMetadataFromSeo(SEO);
+  return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageEarnWithUs() {
+  const { data } = await request.get('/api/strapi/page/earn-with-us');
+
   const {
     AnimatedHero,
     Advantages: advantages,
     OurProcessOfInteraction,
-  } = await pageEarnWithUs();
+  } = data.data.attributes;
+
   return (
     <PageTemplate>
       <main className={styles.pageContactUs}>

@@ -4,15 +4,14 @@ import peoples from '@/app/assets/icons/peoples.svg';
 import peoples01 from '@/app/assets/icons/people-1.svg';
 import money from '@/app/assets/icons/money.svg';
 import graph from '@/app/assets/icons/graph.svg';
-
 import { CardWeCanHelp } from '@/app/components/Cards/CardWeCanHelp';
-
-import weCanHelpYouWithRequest from '@/app/api/strapi/weCanHelpYouWith/route';
 import { routes } from '@/config/routes';
-
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
 export default async function SectionWeCanHelp() {
+  const { data } = await request.get('/api/strapi/shared/help-with');
+
   const {
     title,
     recruitment,
@@ -22,7 +21,7 @@ export default async function SectionWeCanHelp() {
     relocation,
     or,
     earnWithUs,
-  } = await weCanHelpYouWithRequest();
+  } = data.data.attributes;
 
   const cards = [
     {

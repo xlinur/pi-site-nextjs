@@ -10,21 +10,21 @@ import SectionSocialMedia from '@/app/components/Sections/SectionSocialMedia';
 import SectionOurFounder from '@/app/components/Sections/SectionOurFounder';
 import SectionOurTeam from '@/app/components/Sections/SectionOurTeam';
 import SectionTrustedMap from '@/app/components/Sections/SectionTrustedMap';
-
-import pageAboutUs from '@/app/api/strapi/pageAboutUs/route';
-
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
 
 export const generateMetadata = async () => {
-  const { SEO } = await pageAboutUs();
+  const { data } = await request.get('/api/strapi/page/about-us');
 
-  return createMetadataFromSeo(SEO);
+  return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
-export default async function PageAboutUs() {
+export default async function AboutUs() {
+  const { data } = await request.get('/api/strapi/page/about-us');
+
   const { AnimatedHero, TreeSection, OurFounder, OurTeam } =
-    await pageAboutUs();
+    data.data.attributes;
 
   return (
     <PageTemplate>

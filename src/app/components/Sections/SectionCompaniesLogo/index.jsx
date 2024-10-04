@@ -1,11 +1,12 @@
 import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import SliderInfinityLogos from '@/app/components/Sliders/SliderInfinityLogos';
-
-import companiesLogoSection from '@/app/api/strapi/companiesLogoSection/route';
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
 export default async function CompaniesLogo() {
-  const { addLogoBtn, logos, title } = await companiesLogoSection();
+  const { data } = await request.get('/api/strapi/shared/companies-logos');
+
+  const { addLogoBtn, logos, title } = data.data.attributes;
 
   return (
     <section className={styles.sectionCompanies}>
