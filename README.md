@@ -1,5 +1,3 @@
-NOTE: This repository does use npm workspaces.
-
 #### Requirements
 
 - need to use node version **>=20.0.0**
@@ -7,17 +5,10 @@ NOTE: This repository does use npm workspaces.
 #### Start NextJS project
 
 ```bash
-npm run dev -w nextjs
+npm run dev
 ```
 
-
-#### Start Strapi project development mode
-
-```bash
-npm run develop -w strapi
-```
-
-#### Run docker compose by following command
+[DEPRECATED] #### Run docker compose by following command
 
 ```bash
 docker-compose up -d
