@@ -1,9 +1,11 @@
 'use client';
 
 import Button from '@/app/components/Button';
-import styles from '../styles.module.scss';
+import Pagination from '@/app/components/Pagination';
 import CardCase from '../components/CardCase';
+
 import { useCases } from './Context';
+import styles from '../styles.module.scss';
 
 const Content = ({ spheresFilterTitle }) => {
   const {
@@ -88,6 +90,17 @@ const Content = ({ spheresFilterTitle }) => {
           </div>
 
           {pagination?.pageCount > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              pageCount={pagination?.pageCount}
+              onPrevPageClick={onPrevPageClick}
+              onNextPageClick={onNextPageClick}
+              onPageNumberChange={onPageNumberChange}
+              disablePrevPaginationBtn={disablePrevPaginationBtn}
+              disableNextPaginationBtn={disableNextPaginationBtn}
+            />
+          )}
+          {/* {pagination?.pageCount > 1 && (
             <div className={styles.pagination}>
               <button
                 disabled={disablePrevPaginationBtn}
@@ -113,7 +126,7 @@ const Content = ({ spheresFilterTitle }) => {
                 &raquo;
               </button>
             </div>
-          )}
+          )} */}
         </section>
       </div>
     </>

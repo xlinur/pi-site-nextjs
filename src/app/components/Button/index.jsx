@@ -10,6 +10,7 @@ const Button = (props) => {
   const {
     onClick,
     children,
+    className,
     name,
     withIcon = false,
     iconRight = false,
@@ -33,6 +34,7 @@ const Button = (props) => {
 
   const stylesBtn = [
     styles.btn,
+    className,
     size && styles[size],
     styles[theme],
     iconRight ? styles.iconRight : '',
