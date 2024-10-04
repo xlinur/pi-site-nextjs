@@ -1,3 +1,5 @@
+@use '../../styles/mixins.scss' as *;
+
 .dialogWrapper {
   position: relative;
   display: flex;
@@ -10,4 +12,9 @@
   right: 20px;
   top: 20px;
   display: inline-flex;
+
+  @include lg {
+    right: 20px;
+    top: 9px;
+  }
 }

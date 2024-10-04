@@ -29,7 +29,7 @@ const Footer = async () => {
 
   const links = [...mainNav, ...secondaryNav].reduce((acc, item) => {
     if (item.childs) {
-      return [...acc, item, ...item.childs];
+      return [...acc, ...item.childs];
     }
 
     return [...acc, item];

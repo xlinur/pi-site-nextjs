@@ -1,0 +1,13 @@
+@use '../../styles//mixins.scss' as *;
+
+.modalForm {
+  padding: 80px 100px 40px;
+
+  @include lg {
+    padding: 50px 20px 40px;
+  }
+
+  @include sm {
+    padding: 40px 12px 40px;
+  }
+}

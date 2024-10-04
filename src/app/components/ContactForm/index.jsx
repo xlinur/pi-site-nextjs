@@ -2,14 +2,10 @@
 
 import Content from './Content';
 
-export const ContactForm = ({
-  isFormModal,
-  sectionFormData,
-  globalSettings,
-}) => {
+export const ContactForm = ({ className, sectionFormData, globalSettings }) => {
   return (
     <Content
-      isFormModal={isFormModal}
+      className={className}
       sectionFormData={sectionFormData}
       globalSettings={globalSettings}
     />

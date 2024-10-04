@@ -41,7 +41,7 @@ export function adoptOptions(inputServicesOptions) {
   });
 }
 
-export const Content = ({ isFormModal, globalSettings, sectionFormData }) => {
+export const Content = ({ className, globalSettings, sectionFormData }) => {
   const { contacts, workingHours } = globalSettings;
   const { phone } = contacts;
   const {
@@ -122,10 +122,7 @@ export const Content = ({ isFormModal, globalSettings, sectionFormData }) => {
 
   return (
     <div
-      className={clsx(
-        isFormModal && styles.modalFormWrapper,
-        styles.formWrapper,
-      )}
+      className={clsx(className, styles.formWrapper)}
       id={ANCHORS.CONTACT_FORM.ID}
     >
       <section className={styles.contacts}>

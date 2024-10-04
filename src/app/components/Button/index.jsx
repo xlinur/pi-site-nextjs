@@ -1,9 +1,73 @@
 'use client';
 
+import { useState } from 'react';
+
 import clsx from 'clsx';
+
 import styles from './styles.module.scss';
-import { useRouter } from 'next/navigation';
-import { handleOpenModal } from '@/app/core/helpers/modalHandlers';
+
+const Button = (props) => {
+  const {
+    onClick,
+    children,
+    name,
+    withIcon = false,
+    iconRight = false,
+    size = 'lg', // lg | default - empty string
+    theme = 'primary', // primary | secondary | default | text | transparent
+    disabled = false,
+    content,
+    type = 'button',
+    url,
+  } = props;
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClick = async (e) => {
+    if (onClick) {
+      setIsLoading(true);
+      await onClick(e);
+      setIsLoading(false);
+    }
+  };
+
+  const stylesBtn = [
+    styles.btn,
+    size && styles[size],
+    styles[theme],
+    iconRight ? styles.iconRight : '',
+    withIcon ? styles.withIcon : '',
+    content === 'center' ? styles.contentCenter : '',
+    isLoading ? styles.loading : '',
+  ];
+
+  const Link = () => (
+    <a href={url} className={clsx(stylesBtn)}>
+      {withIcon && ArrowIcon()}
+      <span>{name || children}</span>
+    </a>
+  );
+
+  const Button = () => (
+    <button
+      disabled={disabled}
+      type={type}
+      onClick={handleClick}
+      className={clsx(stylesBtn)}
+    >
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          {withIcon && ArrowIcon()}
+          <span>{name || children}</span>
+        </>
+      )}
+    </button>
+  );
+
+  return url ? <Link /> : <Button />;
+};
 
 const ArrowIcon = () => (
   <svg
@@ -22,55 +86,26 @@ const ArrowIcon = () => (
   </svg>
 );
 
-const Button = (props) => {
-  const {
-    onClick,
-    children,
-    name,
-    withIcon = false,
-    iconRight = false,
-    size = 'lg', // lg | default - empty string
-    theme = 'primary', // primary | secondary | default | text | transparent
-    disabled = false,
-    content,
-    type = 'button',
-    url,
-  } = props;
-
-  const router = useRouter();
-
-  const stylesBtn = [
-    styles.btn,
-    size && styles[size],
-    styles[theme],
-    iconRight ? styles.iconRight : '',
-    withIcon ? styles.withIcon : '',
-    content === 'center' ? styles.contentCenter : '',
-  ];
-
-  const handleButton = () => {
-    if (url) {
-      router.push(url);
-      return;
-    }
-
-    if (onClick) {
-      onClick();
-      return;
-    }
-  };
-
-  return (
-    <button
-      disabled={disabled}
-      type={type}
-      onClick={handleButton}
-      className={clsx(stylesBtn)}
-    >
-      {withIcon && ArrowIcon()}
-      <span>{name || children}</span>
-    </button>
-  );
-};
+const LoadingSpinner = () => (
+  <svg
+    className={styles.spinner}
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      className={styles.spinnerCircle}
+      cx="12"
+      cy="12"
+      r="10"
+      stroke="currentColor"
+      strokeWidth="4"
+      strokeDasharray="80"
+      strokeDashoffset="60"
+    />
+  </svg>
+);
 
 export default Button;

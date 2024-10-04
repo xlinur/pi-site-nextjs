@@ -110,6 +110,20 @@ dialog {
   padding: 0;
   border: none;
   background: none;
+
+  &::-webkit-scrollbar {
+    width: 0.5em;
+    transform: translateX(-0.5em);
+  }
+  
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--dark-gray-alt);
+    border-radius: 8px;
+  }
 }
 
 ::backdrop {
