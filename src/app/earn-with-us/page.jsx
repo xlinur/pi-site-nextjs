@@ -10,14 +10,16 @@ import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
+const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/earn-with-us';
+
 export const generateMetadata = async () => {
-  const { data } = await request.get('/api/strapi/page/earn-with-us');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageEarnWithUs() {
-  const { data } = await request.get('/api/strapi/page/earn-with-us');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   const {
     AnimatedHero,

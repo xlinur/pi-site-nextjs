@@ -14,14 +14,16 @@ import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
 
+const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/about-us';
+
 export const generateMetadata = async () => {
-  const { data } = await request.get('/api/strapi/page/about-us');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function AboutUs() {
-  const { data } = await request.get('/api/strapi/page/about-us');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   const { AnimatedHero, TreeSection, OurFounder, OurTeam } =
     data.data.attributes;

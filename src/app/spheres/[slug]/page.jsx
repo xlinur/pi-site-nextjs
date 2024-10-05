@@ -12,10 +12,12 @@ import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrap
 import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
+const PAGE_DATA_REQUEST_PATH = (slug) => `/api/strapi/spheres/${slug}`;
+
 export const generateMetadata = async ({ params }) => {
   const { slug } = params;
 
-  const { data } = await request.get(`/api/strapi/spheres/${slug}`);
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH(slug));
 
   return createMetadataFromSeo(data.data[0].attributes.SEO);
 };
@@ -23,7 +25,7 @@ export const generateMetadata = async ({ params }) => {
 export default async function SpheresPage({ params }) {
   const { slug } = params;
 
-  const { data } = await request.get(`/api/strapi/spheres/${slug}`);
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH(slug));
   const { data: casesBySphere } = await request.get('/api/strapi/cases');
 
   const {

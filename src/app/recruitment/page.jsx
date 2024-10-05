@@ -12,14 +12,16 @@ import SectionPricing from '@/app/components/Sections/SectionPricing';
 import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
+const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/recruitment';
+
 export const generateMetadata = async () => {
-  const { data } = await request.get('/api/strapi/page/recruitment');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageRecruitment() {
-  const { data } = await request.get('/api/strapi/page/recruitment');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   const {
     AnimatedHero,

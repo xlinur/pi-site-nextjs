@@ -9,23 +9,22 @@ import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionMeetGallery from '@/app/components/Sections/SectionMeetGallery';
 import SectionTrustedMap from '@/app/components/Sections/SectionTrustedMap';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
-
 import SectionWhyInfo from '@/app/components/Sections/SectionWhyInfo';
 import SectionSocialMedia from '@/app/components/Sections/SectionSocialMedia';
-
 import request from '@/app/utils/request';
-
 import styles from './styles.module.scss';
 import { routes } from '@/config/routes';
 
+const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/home';
+
 export const generateMetadata = async () => {
-  const { data } = await request.get('/api/strapi/page/home');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function Home() {
-  const { data } = await request.get('/api/strapi/page/home');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   const {
     HeroSection,

@@ -7,6 +7,9 @@ import Content from './Content';
 
 import styles from './styles.module.scss';
 
+const PAGE_DATA_REQUEST_PATH = '';
+
+// TODO: strapi integration needed
 export const generateMetadata = async () => {
   return createMetadataFromSeo({});
 };

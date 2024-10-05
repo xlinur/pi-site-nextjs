@@ -1,20 +1,21 @@
+import Markdown from 'react-markdown';
+import Image from 'next/image';
+import Button from '@/app/components/Button';
 import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import { CVFormWrapper } from '@/app/components/CVForm/CVFormWrapper';
-
+import locationPinSVG from '@/app/assets/icons/location-pin.svg';
+import fullTimeSVG from '@/app/assets/icons/full-time.svg';
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
+
+const PAGE_DATA_REQUEST_PATH = '';
 
 export const generateMetadata = async () => {
   return createMetadataFromSeo({});
 };
 
-import locationPinSVG from '@/app/assets/icons/location-pin.svg';
-import fullTimeSVG from '@/app/assets/icons/full-time.svg';
-import Image from 'next/image';
-import Button from '@/app/components/Button';
-import Markdown from 'react-markdown';
-import request from '@/app/utils/request';
-
+// TODO: strapi integration needed
 export default async function PageVacancy({ params }) {
   const data = await request.get(`/api/vacancies/${params.id}`);
   const {

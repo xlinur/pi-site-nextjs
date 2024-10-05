@@ -14,14 +14,16 @@ import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrap
 import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
+const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/executive-search';
+
 export const generateMetadata = async () => {
-  const { data } = await request.get('/api/strapi/page/executive-search');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function ExecutiveSearchPage() {
-  const { data } = await request.get('/api/strapi/page/executive-search');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   const {
     AnimatedHero,

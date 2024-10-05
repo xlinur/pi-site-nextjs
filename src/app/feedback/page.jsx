@@ -6,14 +6,16 @@ import ResultsList from './ResultsList';
 import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
+const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/feedbacks';
+
 export const generateMetadata = async () => {
-  const { data } = await request.get('/api/strapi/page/feedbacks');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageFeedback() {
-  const { data } = await request.get('/api/strapi/page/feedbacks');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
   const feedbacks = await getFeedbacks();
 
   const { title, moreReviewsBtn } = data.data.attributes;

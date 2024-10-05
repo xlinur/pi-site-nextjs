@@ -10,14 +10,16 @@ import SectionProposal from '@/app/components/Sections/SectionProposal';
 import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
+const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/split-recruitment';
+
 export const generateMetadata = async () => {
-  const { data } = await request.get('/api/strapi/page/split-recruitment');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageSplitRecruitment() {
-  const { data } = await request.get('/api/strapi/page/split-recruitment');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   const { AnimatedHero, Proposal, TreeSection } = data.data.attributes;
 

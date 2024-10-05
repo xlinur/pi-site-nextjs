@@ -7,19 +7,20 @@ import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrap
 import SectionWhyInfo from '@/app/components/Sections/SectionWhyInfo';
 import SectionPricing from '@/app/components/Sections/SectionPricing';
 import { SectionIndividualReportWrapper } from '@/app/components/Sections/SectionIndividualReport/SectionIndividualReportWrapper';
-
 import SectionAnalyticsServices from '@/app/components/Sections/SectionAnalyticsServices';
 import styles from './styles.module.scss';
 import request from '@/app/utils/request';
 
+const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/analytics';
+
 export const generateMetadata = async () => {
-  const { data } = await request.get('/api/strapi/page/analytics');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function Analytics() {
-  const { data } = await request.get('/api/strapi/page/analytics');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   const { AnimatedHero, AnalyticsServices, WhyInfoSection, Pricing } =
     data.data.attributes;

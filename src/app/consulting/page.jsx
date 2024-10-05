@@ -3,24 +3,23 @@ import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import SectionFeedbackList from '@/app/components/Sections/SectionFeedbackList';
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
-
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 import SectionConsultingServices from '@/app/components/Sections/SectionConsultingServices';
 import SectionWhyInfo from '@/app/components/Sections/SectionWhyInfo';
 import SectionExamplesOfBestPractices from '@/app/components/Sections/SectionExamplesOfBestPractices';
-
 import styles from './styles.module.scss';
-
 import request from '@/app/utils/request';
 
+const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/consulting';
+
 export const generateMetadata = async () => {
-  const { data } = await request.get('/api/strapi/page/consulting');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function Consulting() {
-  const { data } = await request.get('/api/strapi/page/consulting');
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
 
   const {
     AnimatedHero,
