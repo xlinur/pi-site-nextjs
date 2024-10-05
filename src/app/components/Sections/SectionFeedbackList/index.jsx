@@ -1,17 +1,17 @@
 import Button from '@/app/components/Button';
 import SliderFeedback from '@/app/components/Sliders/SliderFeedback';
-
-import feedbacks from '@/app/api/strapi/feedbacks/route';
-import sectionWhatOurCliensSay from '@/app/api/strapi/sectionWhatOurCliensSay/route';
-
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 import { routes } from '@/config/routes';
 
-// theme = dark | light
-export default async function SectionFeedbackList({ inData, theme }) {
-  const data = await feedbacks();
+export default async function SectionFeedbackList({ inData }) {
+  const { data: clientsFeedbacksData } = await request.get(
+    '/api/strapi/shared/clients-feedbacks',
+  );
+  const { data: feedbacksData } = await request.get('/api/strapi/feedbacks');
 
-  const { title, readMoreBtn, readAllBtn } = await sectionWhatOurCliensSay();
+  const { title, readMoreBtn, readAllBtn } =
+    clientsFeedbacksData.data.attributes;
 
   return (
     <section className={styles.sectionFeedback}>
@@ -28,7 +28,10 @@ export default async function SectionFeedbackList({ inData, theme }) {
       </div>
 
       <div className={styles.slider}>
-        <SliderFeedback data={inData || data} readAllBtn={readAllBtn} />
+        <SliderFeedback
+          data={inData || feedbacksData.data}
+          readAllBtn={readAllBtn}
+        />
       </div>
 
       <div className={styles.readMoreBtn}>

@@ -1,22 +1,29 @@
+import Markdown from 'react-markdown';
 import Image from 'next/image';
 import Button from '@/app/components/Button';
 import { useGetNavigation } from '@/app/hooks/useGetNavigation';
 import logoPng from '@/app/assets/logo.png';
 import clockSvg from '@/app/assets/icons/clock.svg';
 import locationPin from '@/app/assets/icons/location-pin.svg';
-import getGlobalDictionary from '@/app/api/strapi/globalDictionary/route';
-import getGlobalSettings from '@/app/api/strapi/globalSettings/route';
 import { createSocialsData } from '@/app/utils/createSocialsData';
 import { createSupportData } from '@/app/utils/createSupportData';
 import { createWorkingHours } from '@/app/utils/createWorkingHours';
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
-import Markdown from 'react-markdown';
 
 const Footer = async () => {
   const { fetchMenu } = useGetNavigation();
 
   const { mainNav, secondaryNav } = await fetchMenu();
-  const { supportBlockTitle, contactsBlockTitle } = await getGlobalDictionary();
+  const { data: dictionaryData } = await request.get(
+    '/api/strapi/global/dictionary',
+  );
+  const { data: settingsData } = await request.get(
+    '/api/strapi/global/settings',
+  );
+
+  const { supportBlockTitle, contactsBlockTitle } =
+    dictionaryData.data.attributes;
   const {
     contacts,
     address,
@@ -25,7 +32,7 @@ const Footer = async () => {
     registration,
     privacyPolicy,
     candidatePolicy,
-  } = await getGlobalSettings();
+  } = settingsData.data.attributes;
 
   const links = [...mainNav, ...secondaryNav].reduce((acc, item) => {
     if (item.childs) {

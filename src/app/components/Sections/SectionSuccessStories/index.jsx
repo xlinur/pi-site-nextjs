@@ -1,12 +1,12 @@
 import Button from '@/app/components/Button';
 import SliderCases from '@/app/components/Sliders/SliderCases';
-
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
-import sectionSuccessStories from '@/app/api/strapi/sectionSuccessStories/route';
-
 export default async function SectionTalentMatch({ cases }) {
-  const { title, viewAllCasesBtn, contactBtn } = await sectionSuccessStories();
+  const { data } = await request.get('/api/strapi/shared/success-stories');
+
+  const { title, viewAllCasesBtn, contactBtn } = data.data.attributes;
 
   return (
     <section className={styles.sectionMoreCases}>

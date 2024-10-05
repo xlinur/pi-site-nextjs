@@ -1,16 +1,15 @@
 import Image from 'next/image';
 import styles from './styles.module.scss';
-
 import earthSVG from '@/app/assets/icons/earth.svg';
 import countriesSVG from '@/app/assets/icons/countries.svg';
 import countryMap from '@/app/assets/images/countryMap.svg';
-
 import OpenModalFormButton from '@/app/components/OpenModalFormButton';
-
-import sectionTrustedMap from '@/app/api/strapi/sectionTrustedMap/route';
+import request from '@/app/utils/request';
 
 export default async function SectionTrustedMap({ variant = 'bigMap' }) {
-  const { title, contactUsBtn } = await sectionTrustedMap();
+  const { data } = await request.get('/api/strapi/shared/trusted-map');
+
+  const { title, contactUsBtn } = data.data.attributes;
 
   const InlineMap = () => (
     <section className={styles.sectionMapImg}>

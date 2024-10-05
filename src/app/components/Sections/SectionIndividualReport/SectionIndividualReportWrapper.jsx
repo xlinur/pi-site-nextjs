@@ -1,14 +1,14 @@
-import SectionIndividualReport from '@/app/components/Sections/SectionIndividualReport';
-import sectionIndividualReport from '@/app/api/strapi/sectionIndividualReport/route';
 import { Suspense } from 'react';
+import SectionIndividualReport from '@/app/components/Sections/SectionIndividualReport';
+import request from '@/app/utils/request';
 
 export async function SectionIndividualReportWrapper() {
-  const sectionIndividualReportData = await sectionIndividualReport();
+  const { data } = await request.get('/api/strapi/shared/individual-report');
 
   return (
     <Suspense fallback={null}>
       <SectionIndividualReport
-        sectionIndividualReportData={sectionIndividualReportData}
+        sectionIndividualReportData={data.data.attributes}
       />
     </Suspense>
   );

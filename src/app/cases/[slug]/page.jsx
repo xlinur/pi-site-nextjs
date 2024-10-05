@@ -8,12 +8,12 @@ import SectionSuccessStories from '@/app/components/Sections/SectionSuccessStori
 import PageTemplate from '@/app/components/PageTemplate';
 import request from '@/app/utils/request';
 import styles from './styles.module.scss';
-import { casesBySpheres } from '@/app/api/strapi/pageSpheres/route';
 
 export default async function PageCase({ params }) {
   const { slug } = params;
 
-  const { data } = await request.get(`/api/strapi/page/cases/${slug}`);
+  const { data: caseData } = await request.get(`/api/strapi/cases/${slug}`);
+  const { data: casesBySphere } = await request.get('/api/strapi/cases');
 
   const {
     SectionCaseHero: CaseHero,
@@ -21,13 +21,12 @@ export default async function PageCase({ params }) {
     SectionWithFeatures,
     SectionCompleteTask: CompleteTask,
     SectionTalentMatch: TalentMatch,
-  } = data.data[0].attributes;
+  } = caseData.data[0].attributes;
 
-  const cases = await casesBySpheres();
+  const cases = casesBySphere.data;
 
   return (
     <PageTemplate>
-      {console.log({ data })}
       <main className={styles.page}>
         <div className="container">
           <SectionCaseHero {...CaseHero} />
@@ -51,9 +50,11 @@ export default async function PageCase({ params }) {
           </div>
         </div>
 
-        <div className={styles.sectionMoreCasesWrapper}>
-          <SectionSuccessStories cases={cases} />
-        </div>
+        {cases?.length && (
+          <div className={styles.sectionMoreCasesWrapper}>
+            <SectionSuccessStories cases={cases} />
+          </div>
+        )}
 
         <div className="container">
           <section className={styles.sectionForm}>

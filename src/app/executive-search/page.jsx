@@ -11,17 +11,18 @@ import SectionTypesOfRecruitment from '@/app/components/Sections/SectionTypesOfR
 import SectionNeedHelpSection from '@/app/components/Sections/SectionNeedHelpSection';
 import SectionPricing from '@/app/components/Sections/SectionPricing';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
-import pageExecutiveSearch from '@/app/api/strapi/pageExecutiveSearch/route';
-
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
 export const generateMetadata = async () => {
-  const { SEO } = await pageExecutiveSearch();
+  const { data } = await request.get('/api/strapi/page/executive-search');
 
-  return createMetadataFromSeo(SEO);
+  return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function ExecutiveSearchPage() {
+  const { data } = await request.get('/api/strapi/page/executive-search');
+
   const {
     AnimatedHero,
     InfoWithCards,
@@ -30,7 +31,7 @@ export default async function ExecutiveSearchPage() {
     NeedHelpSection,
     SectionWithIndustriesImage,
     Pricing,
-  } = await pageExecutiveSearch();
+  } = data.data.attributes;
 
   return (
     <PageTemplate>

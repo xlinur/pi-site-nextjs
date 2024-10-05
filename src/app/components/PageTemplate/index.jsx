@@ -1,20 +1,23 @@
+import { Suspense } from 'react';
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
-import sectionStartConversation from '@/app/api/strapi/sectionStartConversation/route';
-import getGlobalSettings from '@/app/api/strapi/globalSettings/route';
-import getGlobalDictionary from '@/app/api/strapi/globalDictionary/route';
 import Modal from '@/app/components/Modal';
 import ContactForm from '@/app/components/ContactForm';
 import GdprMessage from '@/app/components/GdprMessage';
 import { CONTACT_FORM_MODAL_ID } from '@/config/contactFormModal';
-
-import { Suspense } from 'react';
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
 const PageTemplate = async ({ children }) => {
-  const sectionFormData = await sectionStartConversation();
-  const globalSettings = await getGlobalSettings();
-  const globalDictionary = await getGlobalDictionary();
+  const { data: startConversationData } = await request.get(
+    '/api/strapi/shared/start-conversation',
+  );
+  const { data: dictionaryData } = await request.get(
+    '/api/strapi/global/dictionary',
+  );
+  const { data: settingsData } = await request.get(
+    '/api/strapi/global/settings',
+  );
 
   return (
     <>
@@ -27,15 +30,15 @@ const PageTemplate = async ({ children }) => {
         <Modal id={CONTACT_FORM_MODAL_ID}>
           <ContactForm
             className={styles.modalForm}
-            sectionFormData={sectionFormData}
-            globalSettings={globalSettings}
+            sectionFormData={startConversationData.data.attributes}
+            globalSettings={settingsData.data.attributes}
           />
         </Modal>
       </Suspense>
 
       {/* GDPR MESSAGE */}
       <Suspense fallback={null}>
-        <GdprMessage globalDictionary={globalDictionary} />
+        <GdprMessage globalDictionary={dictionaryData.data.attributes} />
       </Suspense>
     </>
   );

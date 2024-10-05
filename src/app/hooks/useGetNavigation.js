@@ -1,11 +1,16 @@
 import { routes } from '@/config/routes';
-import getGlobalDictionary from '@/app/api/strapi/globalDictionary/route';
-import { getSpheres } from '@/app/api/strapi/pageSpheres/route';
+import request from '@/app/utils/request';
 
 export const useGetNavigation = () => {
   const fetchMenu = async () => {
-    const { menu } = await getGlobalDictionary();
-    const spheres = await getSpheres();
+    const { data } = await request.get('/api/strapi/spheres');
+    const { data: dictionaryData } = await request.get(
+      '/api/strapi/global/dictionary',
+    );
+
+    const { menu } = dictionaryData.data.attributes;
+
+    const spheres = data.data;
 
     const mainNav = [
       {

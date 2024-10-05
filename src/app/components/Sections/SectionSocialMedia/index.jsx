@@ -4,23 +4,23 @@ import clsx from 'clsx';
 
 import CardSocialMedia from '@/app/components/Cards/CardSocialMedia';
 import locationPin from '@/app/assets/icons/location-pin.svg';
-import getGlobalSettings from '@/app/api/strapi/globalSettings/route';
-import getGlobalDictionary from '@/app/api/strapi/globalDictionary/route';
+import request from '@/app/utils/request';
 import { createSocialsData } from '@/app/utils/createSocialsData';
 import { createSupportData } from '@/app/utils/createSupportData';
 
 import styles from './styles.module.scss';
 
 export default async function SectionSocialMedia(props) {
-  const {
-    socialMediaTitle = 'Follow us on *social media*',
-    withAdditionalInfo = false,
-  } = props;
+  const { socialMediaTitle, withAdditionalInfo = false } = props;
 
-  const globalDictionary = await getGlobalDictionary();
-  const globalSettings = await getGlobalSettings();
+  const { data: dictionaryData } = await request.get(
+    '/api/strapi/global/dictionary',
+  );
+  const { data: settingsData } = await request.get(
+    '/api/strapi/global/settings',
+  );
 
-  const { contacts, address } = globalSettings;
+  const { contacts, address } = settingsData.data.attributes;
 
   const support = createSupportData({ contacts });
   const socials = createSocialsData({ contacts });
@@ -34,7 +34,7 @@ export default async function SectionSocialMedia(props) {
     >
       {withAdditionalInfo && (
         <AdditionalInfo
-          {...globalDictionary}
+          {...dictionaryData.data.attributes}
           support={support}
           contacts={contacts}
           address={address}

@@ -9,28 +9,32 @@ import SectionCompaniesLogo from '@/app/components/Sections/SectionCompaniesLogo
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionSuccessStories from '@/app/components/Sections/SectionSuccessStories';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
-
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
-import { route, casesBySpheres } from '@/app/api/strapi/pageSpheres/route';
+export const generateMetadata = async ({ params }) => {
+  const { slug } = params;
 
-export const generateMetadata = async () => {
-  const { SEO } = await casesBySpheres();
+  const { data } = await request.get(`/api/strapi/spheres/${slug}`);
 
-  return createMetadataFromSeo(SEO);
+  return createMetadataFromSeo(data.data[0].attributes.SEO);
 };
 
 export default async function SpheresPage({ params }) {
   const { slug } = params;
+
+  const { data } = await request.get(`/api/strapi/spheres/${slug}`);
+  const { data: casesBySphere } = await request.get('/api/strapi/cases');
+
   const {
     AnimatedHero,
     InfoWithCards,
     SectorsGrid,
     SectionWithIndustriesImage,
     feedbacks,
-  } = await route(slug);
+  } = data.data[0].attributes;
 
-  const cases = await casesBySpheres();
+  const cases = casesBySphere.data;
 
   return (
     <PageTemplate>

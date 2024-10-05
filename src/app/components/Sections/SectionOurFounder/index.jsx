@@ -1,7 +1,7 @@
 import Markdown from 'react-markdown';
 import Image from 'next/image';
 import { createSocialsData } from '@/app/utils/createSocialsData';
-import getGlobalSettings from '@/app/api/strapi/globalSettings/route';
+import request from '@/app/utils/request';
 
 import styles from './styles.module.scss';
 
@@ -9,8 +9,12 @@ export default async function SectionOurFounder(props) {
   const { title, photo, name, position, li, fb, email, text, description } =
     props;
 
-  const { contacts } = await getGlobalSettings();
-  const socials = createSocialsData({ contacts });
+  const { data: settingsData } = await request.get(
+    '/api/strapi/global/settings',
+  );
+
+  const { contacts } = settingsData.data.attributes;
+  const socials = createSocialsData({ contacts }); // TODO: use li, fb, email from props
 
   return (
     <section className={styles.sectionFounder}>

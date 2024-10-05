@@ -1,4 +1,4 @@
-import { getStrapiData } from '../utils';
+import { request } from '../utils';
 
 const DEFAULT_PAGE_SIZE = 2;
 
@@ -11,7 +11,7 @@ export async function GET(req) {
   const size = params.get('size') || DEFAULT_PAGE_SIZE;
   const filter = JSON.parse(params.get('filter') || '{}');
 
-  const response = await getStrapiData('/api/cases', {
+  const response = await request('/api/cases', {
     populate: 'deep',
     'pagination[page]': page,
     'pagination[pageSize]': size,

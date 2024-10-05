@@ -3,24 +3,23 @@ import PageTemplate from '@/app/components/PageTemplate';
 import SectionAboutPersonalinvest from '@/app/components/Sections/SectionAboutPersonalinvest';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
-
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 import SectionPaymentTerms from '@/app/components/Sections/SectionPaymentTerms';
 import SectionProposal from '@/app/components/Sections/SectionProposal';
-
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
-import pageSplitRecruitment from '@/app/api/strapi/pageSplitRecruitment/route';
-
 export const generateMetadata = async () => {
-  const { SEO } = await pageSplitRecruitment();
+  const { data } = await request.get('/api/strapi/page/split-recruitment');
 
-  return createMetadataFromSeo(SEO);
+  return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageSplitRecruitment() {
-  const { AnimatedHero, Proposal, TreeSection } = await pageSplitRecruitment();
+  const { data } = await request.get('/api/strapi/page/split-recruitment');
+
+  const { AnimatedHero, Proposal, TreeSection } = data.data.attributes;
 
   return (
     <PageTemplate>

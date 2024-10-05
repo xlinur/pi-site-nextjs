@@ -2,26 +2,25 @@ import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
-
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 import SectionKeySectors from '@/app/components/Sections/SectionKeySectors';
-
-import pageIndustries from '@/app/api/strapi/pageIndustries/route';
-
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 import { routes } from '@/config/routes';
 
 export const generateMetadata = async () => {
-  const { SEO } = await pageIndustries();
+  const { data } = await request.get('/api/strapi/page/industries');
 
-  return createMetadataFromSeo(SEO);
+  return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageIndustries() {
+  const { data } = await request.get('/api/strapi/page/industries');
+
   const { AnimatedHero, SectorsGrid, TreeSection, SectionWithIndustriesImage } =
-    await pageIndustries();
+    data.data.attributes;
 
   return (
     <PageTemplate>

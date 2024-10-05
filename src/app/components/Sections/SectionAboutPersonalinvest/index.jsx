@@ -1,12 +1,10 @@
-import Image from 'next/image';
-
-import peopleSVG from '@/app/assets/icons/people-1-white.svg';
-import sectionAboutPersonalinvest from '@/app/api/strapi/sectionAboutPersonalinvest/route';
-
-import styles from './styles.module.scss';
 import clsx from 'clsx';
+import Image from 'next/image';
+import peopleSVG from '@/app/assets/icons/people-1-white.svg';
+import request from '@/app/utils/request';
+import styles from './styles.module.scss';
 
-const CheckCircle = () => (
+const checkCircle = (
   <svg
     width="24"
     height="24"
@@ -32,7 +30,9 @@ const CheckCircle = () => (
 );
 
 export default async function SectionAboutPersonalinvest({ withTitle }) {
-  const { numbers, title, info } = await sectionAboutPersonalinvest();
+  const { data } = await request.get('/api/strapi/shared/about-personalinvest');
+
+  const { numbers, title, info } = data.data.attributes;
 
   return (
     <section className={styles.wrapper}>
@@ -58,9 +58,7 @@ export default async function SectionAboutPersonalinvest({ withTitle }) {
         <ul className={styles.list}>
           {info.map((item, idx) => (
             <li className={styles.listItem} key={idx}>
-              <div className={styles.listItemIcon}>
-                <CheckCircle />
-              </div>
+              <div className={styles.listItemIcon}>{checkCircle}</div>
 
               <div className={styles.listItemContent}>
                 <h4>{item.title}</h4>

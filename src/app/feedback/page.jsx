@@ -1,21 +1,22 @@
 import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
-import pageFeedbacks from '@/app/api/strapi/pageFeedbacks/route';
 import getFeedbacks from '@/app/api/strapi/feedbacks/route';
 import ResultsList from './ResultsList';
-
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
 export const generateMetadata = async () => {
-  const { SEO } = await pageFeedbacks();
+  const { data } = await request.get('/api/strapi/page/feedbacks');
 
-  return createMetadataFromSeo(SEO);
+  return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageFeedback() {
-  const { title, moreReviewsBtn } = await pageFeedbacks();
+  const { data } = await request.get('/api/strapi/page/feedbacks');
   const feedbacks = await getFeedbacks();
+
+  const { title, moreReviewsBtn } = data.data.attributes;
 
   return (
     <PageTemplate>

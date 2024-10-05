@@ -1,7 +1,7 @@
-import { getStrapiData } from '../../utils';
+import { request } from '../../utils';
 
 export async function GET() {
-  const response = await getStrapiData('/api/companies-logo-section', {
+  const response = await request('/api/companies-logo-section', {
     populate: 'deep',
   });
 

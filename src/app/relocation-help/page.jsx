@@ -5,19 +5,19 @@ import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionRelocationHelpHero from '@/app/components/Sections/SectionRelocationHelpHero';
 import SectionBlockStepsPlan from '@/app/components/Sections/SectionBlockStepsPlan';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
-
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
-import pageRelocationHelp from '@/app/api/strapi/pageRelocationHelp/route';
-
 export const generateMetadata = async () => {
-  const { SEO } = await pageRelocationHelp();
+  const { data } = await request.get('/api/strapi/page/relocation');
 
-  return createMetadataFromSeo(SEO);
+  return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function RelocationHelpPage() {
-  const { SectionWithFeatures, BlockStepsPlan } = await pageRelocationHelp();
+  const { data } = await request.get('/api/strapi/page/relocation');
+
+  const { SectionWithFeatures, BlockStepsPlan } = data.data.attributes;
 
   return (
     <PageTemplate>

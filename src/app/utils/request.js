@@ -5,7 +5,7 @@ const headers = {
 
 const request = {
   get: async (path) => {
-    const url = new URL(path, 'http://localhost:3000');
+    const url = new URL(path, process.env.NEXT_HOST);
 
     const response = await fetch(url.href, {
       headers,
