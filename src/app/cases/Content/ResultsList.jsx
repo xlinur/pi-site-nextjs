@@ -6,6 +6,8 @@ import CardCase from '../components/CardCase';
 
 import { useCases } from './Context';
 import styles from '../styles.module.scss';
+import SkeletonCard from '@/app/components/Skeletons/Card';
+import SkeletonButton from '@/app/components/Skeletons/Button';
 
 const Content = ({ spheresFilterTitle }) => {
   const {
@@ -41,7 +43,37 @@ const Content = ({ spheresFilterTitle }) => {
     };
   });
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <>
+        <div className="container">
+          <section className={styles.sectionCasesNav}>
+            <div className={styles.casesNavItem}>
+              <div className={styles.casesNavItemList}>
+                {Array.from(Array(2)).map((_, idx) => (
+                  <SkeletonButton key={idx} />
+                ))}
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div className="container">
+          <section className={styles.sectionListLink}>
+            <div className={styles.list}>
+              {Array.from(Array(3)).map((_, idx) => (
+                <SkeletonCard
+                  addExtraContent
+                  addButton
+                  className={styles.skeletonCard}
+                  key={idx}
+                />
+              ))}
+            </div>
+          </section>
+        </div>
+      </>
+    );
 
   return (
     <>

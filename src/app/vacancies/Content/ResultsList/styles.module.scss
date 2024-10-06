@@ -1,3 +1,4 @@
+@use '../../../styles/mixins.scss' as *;
 
 .sectionWrapper {
   display: flex;
@@ -14,7 +15,11 @@
 .vacancies {
   display: grid;
   grid-template-columns: 316px 1fr;
-  column-gap: 24px;
+  gap: 24px;
+
+  @include md {
+    grid-template-columns: 1fr;
+  }
 
   .vacanciesFilters {
     border: 1px solid var(--gray);
@@ -24,6 +29,11 @@
     flex-direction: column;
     row-gap: 30px;
     max-height: fit-content;
+
+    .skeletonFilter {
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--gray);
+    }
 
 
     .filterActions {

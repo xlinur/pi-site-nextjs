@@ -1,6 +1,7 @@
 'use client';
 import Button from '@/app/components/Button';
 import Pagination from '@/app/components/Pagination';
+import SkeletonCard from '@/app/components/Skeletons/Card';
 
 import { useVacanciesContext } from '../Context';
 import CardVacancy from './CardVacancy';
@@ -49,7 +50,11 @@ const ResultsList = ({ pageData }) => {
       <div className={styles.vacancies}>
         <div className={styles.vacanciesFilters}>
           {isLoadingFilters ? (
-            <>Loading...</>
+            <>
+              {Array.from(Array(2)).map((_, idx) => (
+                <SkeletonCard className={styles.skeletonFilter} key={idx} />
+              ))}
+            </>
           ) : (
             <>
               {filters.map((filter) => {
@@ -100,7 +105,11 @@ const ResultsList = ({ pageData }) => {
 
         <div className={styles.vacanciesList}>
           {isLoadingVacancies ? (
-            <>Loading...</>
+            <>
+              {Array.from(Array(4)).map((_, idx) => (
+                <SkeletonCard addButton key={idx} />
+              ))}
+            </>
           ) : (
             <>
               {vacancies.data.map((item) => (
