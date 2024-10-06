@@ -44,7 +44,6 @@ export const GET = async () => {
 };
 
 export async function POST(req, _) {
-  console.log(43);
   try {
     /**
      * typedef {Object} FormData
@@ -83,7 +82,6 @@ export async function POST(req, _) {
     });
   } catch (error) {
     console.log(error);
-    // console.log(error.response.body.errors[0])
 
     return NextResponse.json({
       success: 42,

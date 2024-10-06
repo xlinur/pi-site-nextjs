@@ -3,20 +3,23 @@ import Button from '@/app/components/Button';
 
 import styles from './styles.module.scss';
 
-export default function index() {
+export default function SectionHeroVacancies({
+  title,
+  description,
+  hireNowBtn,
+}) {
   return (
     <section className={styles.sectionHeroVacancies}>
       <header>
         <h1>
-          <Markdown>Our vacancies</Markdown>
+          <Markdown>{title}</Markdown>
         </h1>
-        <p>
-          We necessarily will contact with you in the case of vacancy appearance
-          which will correspond your professional skills and experience.
-        </p>
+        <div>
+          <Markdown>{description}</Markdown>
+        </div>
       </header>
 
-      <Button withIcon name={'Hire now'} />
+      <Button withIcon name={hireNowBtn.name} />
     </section>
   );
 }

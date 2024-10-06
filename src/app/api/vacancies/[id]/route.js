@@ -3,12 +3,13 @@ import { NextResponse } from 'next/server';
 const mock = {
   id: '9151f21f-43ae-43b4-92f3-f4af67cdf544',
   title: 'Teamlead C++',
-  knowledgeList: ['UML', 'SQL', 'JIRA'],
   location: 'Remote',
   type: 'Full Time',
-  description: `A videogame-creating collective and an international gaming brand launched in 2016 by a handful of people involved with online football. Currently, there are 200+ of us spread over 5 regional offices in various locations across Europe or working from home (yes, we love it too). We are the force behind the UFL, the ongoing online football videogame revolution. Being fans, we aim at offering our players an unprecedented gaming experience available on all major platforms.
-We are looking for a Game Producer to join our Game Design Department!`,
-  fullDescription: `
+  skills: ['UML', 'SQL', 'JIRA'],
+  description: `
+A videogame-creating collective and an international gaming brand launched in 2016 by a handful of people involved with online football. Currently, there are 200+ of us spread over 5 regional offices in various locations across Europe or working from home (yes, we love it too). We are the force behind the UFL, the ongoing online football videogame revolution. Being fans, we aim at offering our players an unprecedented gaming experience available on all major platforms.
+We are looking for a Game Producer to join our Game Design Department!
+  
 **Time zone:**
 GMT+2.
 

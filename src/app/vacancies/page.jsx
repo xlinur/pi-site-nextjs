@@ -4,27 +4,32 @@ import PageTemplate from '@/app/components/PageTemplate';
 import SectionHeroVacancies from '@/app/components/Sections/SectionHeroVacancies';
 import { CVFormWrapper } from '@/app/components/CVForm/CVFormWrapper';
 import Content from './Content';
-
+import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
-const PAGE_DATA_REQUEST_PATH = '';
+const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/vacancies';
 
-// TODO: strapi integration needed
 export const generateMetadata = async () => {
-  return createMetadataFromSeo({});
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+
+  return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageVacancies() {
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+
+  const pageData = data.data.attributes;
+
   return (
     <PageTemplate>
       <main className={styles.page}>
         <div className="container">
-          <SectionHeroVacancies />
+          <SectionHeroVacancies {...pageData} />
         </div>
 
         <div className="container">
           <Suspense fallback={null}>
-            <Content pageData={{}} />
+            <Content pageData={pageData} />
           </Suspense>
         </div>
 

@@ -16,15 +16,6 @@ const emailFields = {
   skills: 'skills',
 };
 
-const mok = {
-  title: 'Get your dream job!',
-  subtile: 'Send your resume and we will find a suitable vacancy for you',
-  formTitle: 'Send CV',
-  uploadBtn: {
-    name: 'Upload',
-  },
-};
-
 function convertFileToBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -36,7 +27,18 @@ function convertFileToBase64(file) {
 }
 
 export const Content = ({ sectionFormData }) => {
-  const { submitBtn, legals } = sectionFormData;
+  const {
+    title,
+    subtitle,
+    formTitle,
+    inputName,
+    inputPosition,
+    inputEmail,
+    inputSkills,
+    uploadBtn,
+    submitBtn,
+    legals,
+  } = sectionFormData;
 
   const form = useForm({
     mode: 'uncontrolled',
@@ -118,8 +120,8 @@ export const Content = ({ sectionFormData }) => {
     <section className={styles.formWrapper}>
       <header>
         <span>CV</span>
-        <h4>{mok.title}</h4>
-        <h5>{mok.subtile}</h5>
+        <h4>{title}</h4>
+        <h5>{subtitle}</h5>
       </header>
 
       <form
@@ -128,15 +130,15 @@ export const Content = ({ sectionFormData }) => {
           await handleSubmitCallback(values);
         })}
       >
-        <h5>{mok.formTitle}</h5>
+        <h5>{formTitle}</h5>
 
-        {createFormInput(emailFields.name, emailFields.name)}
+        {createFormInput(inputName.label, emailFields.name)}
 
-        {createFormInput(emailFields.position, emailFields.position)}
+        {createFormInput(inputPosition.label, emailFields.position)}
 
-        {createFormInput(emailFields.email, emailFields.email)}
+        {createFormInput(inputEmail.label, emailFields.email)}
 
-        {createFormInput(emailFields.skills, emailFields.skills)}
+        {createFormInput(inputSkills.label, emailFields.skills)}
 
         {legals.map((item, idx) => createCheckbox(item.label, idx))}
 
@@ -144,13 +146,13 @@ export const Content = ({ sectionFormData }) => {
           <p>CV</p>
 
           <span className={styles.cvFileTypes}>
-            (Only pdf, zip, doc, docx, txt, rtf, rar)
+            (pdf, zip, doc, docx, txt, rtf, rar)
           </span>
 
           <div className={styles.cvUploadContent}>
             <Button
               theme="secondary"
-              name={mok.uploadBtn.name}
+              name={uploadBtn.name}
               onClick={() => fileInputRef.current.click()}
             />
 
@@ -178,9 +180,12 @@ export const Content = ({ sectionFormData }) => {
           </div>
         </div>
 
-        <Button content="center" size="lg" type="submit">
-          {submitBtn}
-        </Button>
+        <Button
+          content="center"
+          size="lg"
+          type="submit"
+          name={submitBtn?.name}
+        />
       </form>
     </section>
   );

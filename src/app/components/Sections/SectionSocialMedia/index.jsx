@@ -11,7 +11,7 @@ import { createSupportData } from '@/app/utils/createSupportData';
 import styles from './styles.module.scss';
 
 export default async function SectionSocialMedia(props) {
-  const { socialMediaTitle, withAdditionalInfo = false } = props;
+  const { withAdditionalInfo = false } = props;
 
   const { data: dictionaryData } = await request.get(
     '/api/strapi/global/dictionary',
@@ -21,6 +21,8 @@ export default async function SectionSocialMedia(props) {
   );
 
   const { contacts, address } = settingsData.data.attributes;
+  const { followSocialMediaTitle, ...restDictionaryData } =
+    dictionaryData.data.attributes;
 
   const support = createSupportData({ contacts });
   const socials = createSocialsData({ contacts });
@@ -34,7 +36,7 @@ export default async function SectionSocialMedia(props) {
     >
       {withAdditionalInfo && (
         <AdditionalInfo
-          {...dictionaryData.data.attributes}
+          {...restDictionaryData}
           support={support}
           contacts={contacts}
           address={address}
@@ -44,7 +46,7 @@ export default async function SectionSocialMedia(props) {
       <section className={styles.sectionSocialMedia}>
         <header>
           <h3>
-            <Markdown>{socialMediaTitle}</Markdown>
+            <Markdown>{followSocialMediaTitle}</Markdown>
           </h3>
         </header>
 

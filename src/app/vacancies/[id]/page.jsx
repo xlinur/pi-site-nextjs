@@ -9,24 +9,22 @@ import fullTimeSVG from '@/app/assets/icons/full-time.svg';
 import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
-const PAGE_DATA_REQUEST_PATH = '';
+const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/vacancy';
 
 export const generateMetadata = async () => {
-  return createMetadataFromSeo({});
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+
+  return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 // TODO: strapi integration needed
 export default async function PageVacancy({ params }) {
-  const data = await request.get(`/api/vacancies/${params.id}`);
-  const {
-    title,
-    knowledgeList,
-    location,
-    type,
-    description,
-    fullDescription,
-    btnReplay,
-  } = data;
+  const { data: pageData } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const vacancyData = await request.get(`/api/vacancies/${params.id}`);
+
+  const { descriptionTitle, replyBtn } = pageData.data.attributes;
+
+  const { title, skills, location, type, description } = vacancyData;
 
   return (
     <PageTemplate>
@@ -37,7 +35,7 @@ export default async function PageVacancy({ params }) {
 
             <ul className={styles.heroVacancyDetails}>
               <li className={styles.knowledge}>
-                <span>{knowledgeList.join(', ')}</span>
+                <span>{skills.join(', ')}</span>
               </li>
 
               <li>
@@ -61,20 +59,19 @@ export default async function PageVacancy({ params }) {
               </li>
             </ul>
 
-            <Button name={btnReplay.name} />
+            <Button name={replyBtn.name} />
           </section>
 
           <section className={styles.sectionDescription}>
             <header>
-              <h4>Description</h4>
-              <Markdown>{description}</Markdown>
+              <h4>{descriptionTitle}</h4>
             </header>
 
             <div className={styles.content}>
-              <Markdown>{fullDescription}</Markdown>
+              <Markdown>{description}</Markdown>
             </div>
 
-            <Button name={btnReplay.name} />
+            <Button name={replyBtn.name} />
           </section>
         </div>
 

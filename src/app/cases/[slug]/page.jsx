@@ -7,12 +7,23 @@ import SectionRelocationHelpHero from '@/app/components/Sections/SectionRelocati
 import SectionSuccessStories from '@/app/components/Sections/SectionSuccessStories';
 import PageTemplate from '@/app/components/PageTemplate';
 import request from '@/app/utils/request';
+import { createMetadataFromSeo } from '@/app/utils/metadata';
 import styles from './styles.module.scss';
+
+const PAGE_DATA_REQUEST_PATH = (slug) => `/api/strapi/cases/${slug}`;
+
+export const generateMetadata = async ({ params }) => {
+  const { slug } = params;
+
+  const { data } = await request.get(PAGE_DATA_REQUEST_PATH(slug));
+
+  return createMetadataFromSeo(data.data.attributes?.SEO);
+};
 
 export default async function PageCase({ params }) {
   const { slug } = params;
 
-  const { data: caseData } = await request.get(`/api/strapi/cases/${slug}`);
+  const { data: caseData } = await request.get(PAGE_DATA_REQUEST_PATH(slug));
   const { data: casesBySphere } = await request.get('/api/strapi/cases');
 
   const {

@@ -1,9 +1,11 @@
 import { Suspense } from 'react';
-import sectionStartConversation from '@/app/api/strapi/sectionStartConversation/route';
+import request from '@/app/utils/request';
 import CVForm from '@/app/components/CVForm';
 
 export async function CVFormWrapper() {
-  const sectionFormData = await sectionStartConversation();
+  const { data } = await request.get('/api/strapi/shared/send-cv');
+
+  const sectionFormData = data.data.attributes;
 
   return (
     <Suspense fallback={null}>

@@ -12,11 +12,11 @@ import styles from './styles.module.scss';
 
 const ResultsList = ({ pageData }) => {
   const {
-    contentTitle = 'Find your vacancy',
+    contentTitle,
     itemsCountLabel,
-    filterFindBtn = { name: 'Find' },
-    filterResetBtn = { name: 'Reset filters' },
-    noFilterResults = 'No results found',
+    filterFindBtn,
+    filterResetBtn,
+    filterNoResults,
   } = pageData;
 
   const {
@@ -31,8 +31,6 @@ const ResultsList = ({ pageData }) => {
     isLoadingVacancies,
     setCurrentPage,
   } = useVacanciesContext();
-
-  console.log(vacancies);
 
   const onFilterChange = (id) => (value) => {
     setFilter(id, value);
@@ -64,7 +62,7 @@ const ResultsList = ({ pageData }) => {
                         values={selectedFilters[filter.id]}
                         options={filter.values}
                         onChange={onFilterChange(filter.id)}
-                        noFilterText={noFilterResults}
+                        noFilterText={filterNoResults}
                       />
                     );
                   // case 'group-list':
