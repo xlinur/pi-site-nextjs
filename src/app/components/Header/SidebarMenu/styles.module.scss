@@ -25,6 +25,13 @@
   }
 }
 
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  z-index: 99;
+}
+
 .menuList {
   display: flex;
   justify-content: space-between;

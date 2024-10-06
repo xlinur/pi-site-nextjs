@@ -17,6 +17,8 @@ import clockSvg from '@/app/assets/icons/clock.svg';
 import { ANCHORS } from '@/app/core/constants/anchor';
 import { sendEmail } from '@/utils/sendEmail';
 import { createWorkingHours } from '@/app/utils/createWorkingHours';
+import { openModalById } from '@/app/components/Modal/utils';
+import { SUCCESS_MESSAGE_MODAL_ID } from '@/config/successMessageModal';
 
 import styles from './styles.module.scss';
 import clsx from 'clsx';
@@ -113,11 +115,19 @@ export const Content = ({ className, globalSettings, sectionFormData }) => {
 
     const gRecaptchaToken = await executeRecaptcha('inquirySubmit');
 
-    await sendEmail({
-      gRecaptchaToken,
-      emailTemplate: 'ContactSubmission',
-      payload: values,
-    });
+    try {
+      await sendEmail({
+        gRecaptchaToken,
+        emailTemplate: 'ContactSubmission',
+        payload: values,
+      });
+
+      openModalById(SUCCESS_MESSAGE_MODAL_ID);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      console.log('close modal');
+    }
   };
 
   return (

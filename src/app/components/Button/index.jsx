@@ -20,17 +20,8 @@ const Button = (props) => {
     content,
     type = 'button',
     url,
+    isLoading,
   } = props;
-
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleClick = async (e) => {
-    if (onClick) {
-      setIsLoading(true);
-      await onClick(e);
-      setIsLoading(false);
-    }
-  };
 
   const stylesBtn = [
     styles.btn,
@@ -52,9 +43,9 @@ const Button = (props) => {
 
   const Button = () => (
     <button
-      disabled={disabled}
+      disabled={disabled || isLoading}
       type={type}
-      onClick={handleClick}
+      onClick={onClick}
       className={clsx(stylesBtn)}
     >
       {isLoading ? (

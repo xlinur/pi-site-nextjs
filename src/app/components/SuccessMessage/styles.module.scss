@@ -1,0 +1,37 @@
+@use '../../styles/mixins.scss' as *;
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--white);
+  padding: 80px 100px;
+  border-radius: 30px;
+  max-width: 577px;
+
+  .successMessageIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    width: 64px;
+    height: 64px;
+
+    border-radius: 50px;
+    background-color: var(--blue);
+    color: var(--white);
+
+    svg {
+      width: 80%;
+      height: 80%;
+    }
+  }
+
+  @include md {
+    padding: 87px 30px 75px 30px;
+  }
+}

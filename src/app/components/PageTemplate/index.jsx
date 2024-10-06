@@ -3,8 +3,10 @@ import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
 import Modal from '@/app/components/Modal';
 import ContactForm from '@/app/components/ContactForm';
+import SuccessMessage from '@/app/components/SuccessMessage';
 import GdprMessage from '@/app/components/GdprMessage';
 import { CONTACT_FORM_MODAL_ID } from '@/config/contactFormModal';
+import { SUCCESS_MESSAGE_MODAL_ID } from '@/config/successMessageModal';
 import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
@@ -39,6 +41,13 @@ const PageTemplate = async ({ children }) => {
       {/* GDPR MESSAGE */}
       <Suspense fallback={null}>
         <GdprMessage globalDictionary={dictionaryData.data.attributes} />
+      </Suspense>
+
+      {/* SUCCESS MESSAGE */}
+      <Suspense fallback={null}>
+        <Modal id={SUCCESS_MESSAGE_MODAL_ID}>
+          <SuccessMessage />
+        </Modal>
       </Suspense>
     </>
   );
