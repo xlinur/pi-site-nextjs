@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import CardSocialMedia from '@/app/components/Cards/CardSocialMedia';
 import locationPin from '@/app/assets/icons/location-pin.svg';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import { createSocialsData } from '@/app/utils/createSocialsData';
 import { createSupportData } from '@/app/utils/createSupportData';
 
@@ -13,12 +13,10 @@ import styles from './styles.module.scss';
 export default async function SectionSocialMedia(props) {
   const { withAdditionalInfo = false } = props;
 
-  const { data: dictionaryData } = await request.get(
-    '/api/strapi/global/dictionary',
-  );
-  const { data: settingsData } = await request.get(
-    '/api/strapi/global/settings',
-  );
+  const [dictionaryData, settingsData] = await Promise.all([
+    fetchWrapper('/api/global-dictionary?populate=deep'),
+    fetchWrapper('/api/global?populate=deep'),
+  ]);
 
   const { contacts, address } = settingsData.data.attributes;
   const { followSocialMediaTitle, ...restDictionaryData } =

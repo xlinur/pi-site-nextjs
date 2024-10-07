@@ -6,20 +6,20 @@ import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 import SectionKeySectors from '@/app/components/Sections/SectionKeySectors';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 import { routes } from '@/config/routes';
 
-const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/industries';
+const PAGE_DATA_REQUEST_PATH = '/api/page-industries?populate=deep';
 
 export const generateMetadata = async () => {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageIndustries() {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   const { AnimatedHero, SectorsGrid, TreeSection, SectionWithIndustriesImage } =
     data.data.attributes;

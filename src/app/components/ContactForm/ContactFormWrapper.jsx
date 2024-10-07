@@ -1,14 +1,12 @@
 import { Suspense } from 'react';
 import ContactForm from '@/app/components/ContactForm';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 
 export async function ContactFormWrapper() {
-  const { data: sectionFormData } = await request.get(
-    '/api/strapi/shared/start-conversation',
-  );
-  const { data: settingsData } = await request.get(
-    '/api/strapi/global/settings',
-  );
+  const [sectionFormData, settingsData] = await Promise.all([
+    fetchWrapper('/api/section-start-conversation-form?populate=deep'),
+    fetchWrapper('/api/global?populate=deep'),
+  ]);
 
   return (
     <Suspense fallback={null}>

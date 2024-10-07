@@ -9,19 +9,19 @@ import SectionInfoWithCards from '@/app/components/Sections/SectionInfoWithCards
 import SectionTypesOfRecruitment from '@/app/components/Sections/SectionTypesOfRecruitment';
 import SectionNeedHelpSection from '@/app/components/Sections/SectionNeedHelpSection';
 import SectionPricing from '@/app/components/Sections/SectionPricing';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
-const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/recruitment';
+const PAGE_DATA_REQUEST_PATH = '/api/page-recruitment?populate=deep';
 
 export const generateMetadata = async () => {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageRecruitment() {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   const {
     AnimatedHero,

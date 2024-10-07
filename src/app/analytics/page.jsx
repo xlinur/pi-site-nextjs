@@ -9,18 +9,18 @@ import SectionPricing from '@/app/components/Sections/SectionPricing';
 import { SectionIndividualReportWrapper } from '@/app/components/Sections/SectionIndividualReport/SectionIndividualReportWrapper';
 import SectionAnalyticsServices from '@/app/components/Sections/SectionAnalyticsServices';
 import styles from './styles.module.scss';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 
-const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/analytics';
+const PAGE_DATA_REQUEST_PATH = '/api/page-analytics?populate=deep';
 
 export const generateMetadata = async () => {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function Analytics() {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   const { AnimatedHero, AnalyticsServices, WhyInfoSection, Pricing } =
     data.data.attributes;

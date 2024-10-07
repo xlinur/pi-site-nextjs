@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import peopleSVG from '@/app/assets/icons/people-1-white.svg';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
 const checkCircle = (
@@ -30,7 +30,9 @@ const checkCircle = (
 );
 
 export default async function SectionAboutPersonalinvest({ withTitle }) {
-  const { data } = await request.get('/api/strapi/shared/about-personalinvest');
+  const data = await fetchWrapper(
+    '/api/section-about-personalinvest?populate=deep',
+  );
 
   const { numbers, title, info } = data.data.attributes;
 

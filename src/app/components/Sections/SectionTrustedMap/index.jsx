@@ -4,10 +4,10 @@ import earthSVG from '@/app/assets/icons/earth.svg';
 import countriesSVG from '@/app/assets/icons/countries.svg';
 import countryMap from '@/app/assets/images/countrymap.svg';
 import OpenModalFormButton from '@/app/components/OpenModalFormButton';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 
 export default async function SectionTrustedMap({ variant = 'bigMap' }) {
-  const { data } = await request.get('/api/strapi/shared/trusted-map');
+  const data = await fetchWrapper('/api/section-trusted-map?populate=deep');
 
   const { title, contactUsBtn } = data.data.attributes;
 

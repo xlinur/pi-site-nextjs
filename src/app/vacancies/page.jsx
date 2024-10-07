@@ -4,19 +4,19 @@ import PageTemplate from '@/app/components/PageTemplate';
 import SectionHeroVacancies from '@/app/components/Sections/SectionHeroVacancies';
 import { CVFormWrapper } from '@/app/components/CVForm/CVFormWrapper';
 import Content from './Content';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
-const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/vacancies';
+const PAGE_DATA_REQUEST_PATH = '/api/page-vacancies?populate=deep';
 
 export const generateMetadata = async () => {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageVacancies() {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   const pageData = data.data.attributes;
 

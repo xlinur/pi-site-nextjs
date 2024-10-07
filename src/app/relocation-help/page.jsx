@@ -5,19 +5,19 @@ import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionRelocationHelpHero from '@/app/components/Sections/SectionRelocationHelpHero';
 import SectionBlockStepsPlan from '@/app/components/Sections/SectionBlockStepsPlan';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
-const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/relocation';
+const PAGE_DATA_REQUEST_PATH = '/api/page-relocation-help?populate=deep';
 
 export const generateMetadata = async () => {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function RelocationHelpPage() {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   const { SectionWithFeatures, BlockStepsPlan } = data.data.attributes;
 
@@ -33,7 +33,7 @@ export default async function RelocationHelpPage() {
         </div>
 
         <div className={styles.sectionFeedbackWrapper}>
-          <SectionFeedbackList firstSlideTheme="white" />
+          <SectionFeedbackList />
         </div>
 
         <SectionWeCanHelp />

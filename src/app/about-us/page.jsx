@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import SectionHero from '@/app/components/Sections/SectionHero';
@@ -10,23 +11,25 @@ import SectionSocialMedia from '@/app/components/Sections/SectionSocialMedia';
 import SectionOurFounder from '@/app/components/Sections/SectionOurFounder';
 import SectionOurTeam from '@/app/components/Sections/SectionOurTeam';
 import SectionTrustedMap from '@/app/components/Sections/SectionTrustedMap';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
-import clsx from 'clsx';
 
-const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/about-us';
+const PAGE_DATA_REQUEST_PATH = '/api/page-about-us?populate=deep';
 
 export const generateMetadata = async () => {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function AboutUs() {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const [pageData, settingsData] = await Promise.all([
+    fetchWrapper(PAGE_DATA_REQUEST_PATH),
+    fetchWrapper('/api/global?populate=deep'),
+  ]);
 
   const { AnimatedHero, TreeSection, OurFounder, OurTeam } =
-    data.data.attributes;
+    pageData.data.attributes;
 
   return (
     <PageTemplate>
@@ -42,7 +45,7 @@ export default async function AboutUs() {
         </div>
 
         <div className="container">
-          <SectionOurFounder {...OurFounder} />
+          <SectionOurFounder {...OurFounder} settingsData={settingsData} />
         </div>
 
         <div className="container">

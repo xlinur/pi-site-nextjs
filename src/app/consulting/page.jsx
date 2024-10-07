@@ -8,18 +8,18 @@ import SectionConsultingServices from '@/app/components/Sections/SectionConsulti
 import SectionWhyInfo from '@/app/components/Sections/SectionWhyInfo';
 import SectionExamplesOfBestPractices from '@/app/components/Sections/SectionExamplesOfBestPractices';
 import styles from './styles.module.scss';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 
-const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/consulting';
+const PAGE_DATA_REQUEST_PATH = '/api/page-consulting?populate=deep';
 
 export const generateMetadata = async () => {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function Consulting() {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   const {
     AnimatedHero,

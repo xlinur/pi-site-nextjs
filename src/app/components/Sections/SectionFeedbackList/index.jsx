@@ -1,14 +1,14 @@
 import Button from '@/app/components/Button';
 import SliderFeedback from '@/app/components/Sliders/SliderFeedback';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 import { routes } from '@/config/routes';
 
 export default async function SectionFeedbackList({ inData }) {
-  const { data: clientsFeedbacksData } = await request.get(
-    '/api/strapi/shared/clients-feedbacks',
-  );
-  const { data: feedbacksData } = await request.get('/api/strapi/feedbacks');
+  const [clientsFeedbacksData, feedbacksData] = await Promise.all([
+    fetchWrapper('/api/section-what-our-cliens-say?populate=deep'),
+    fetchWrapper('/api/feedbacks?populate=deep'),
+  ]);
 
   const { title, readMoreBtn, readAllBtn } =
     clientsFeedbacksData.data.attributes;

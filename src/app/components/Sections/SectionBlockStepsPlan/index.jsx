@@ -1,4 +1,3 @@
-import Button from '@/app/components/Button';
 import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
@@ -25,7 +24,7 @@ const SectionBlockStepsPlan = ({ title, steps, contactBtn }) => {
       ))}
 
       <div className={styles.btnContactBtn}>
-        <Button theme="primary" name={contactBtn.name} />
+        <OpenModalFormButton theme="primary" name={contactBtn.name} />
       </div>
     </section>
   );

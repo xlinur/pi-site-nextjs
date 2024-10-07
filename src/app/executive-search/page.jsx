@@ -11,19 +11,19 @@ import SectionTypesOfRecruitment from '@/app/components/Sections/SectionTypesOfR
 import SectionNeedHelpSection from '@/app/components/Sections/SectionNeedHelpSection';
 import SectionPricing from '@/app/components/Sections/SectionPricing';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
-const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/executive-search';
+const PAGE_DATA_REQUEST_PATH = '/api/page-executive-search?populate=deep';
 
 export const generateMetadata = async () => {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function ExecutiveSearchPage() {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   const {
     AnimatedHero,

@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import CVForm from '@/app/components/CVForm';
 
 export async function CVFormWrapper() {
-  const { data } = await request.get('/api/strapi/shared/send-cv');
+  const data = await fetchWrapper('/api/section-cv-form?populate=deep');
 
   const sectionFormData = data.data.attributes;
 

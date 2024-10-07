@@ -1,16 +1,12 @@
 import Markdown from 'react-markdown';
 import Image from 'next/image';
 import { createSocialsData } from '@/app/utils/createSocialsData';
-import request from '@/app/utils/request';
 
 import styles from './styles.module.scss';
 
 export default async function SectionOurFounder(props) {
-  const { title, photo, name, position, text, description } = props;
-
-  const { data: settingsData } = await request.get(
-    '/api/strapi/global/settings',
-  );
+  const { title, photo, name, position, text, description, settingsData } =
+    props;
 
   const { contacts } = settingsData.data.attributes;
   const socials = createSocialsData({ contacts }); // TODO: use li, fb, email from props

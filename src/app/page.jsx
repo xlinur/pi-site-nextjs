@@ -11,20 +11,20 @@ import SectionTrustedMap from '@/app/components/Sections/SectionTrustedMap';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 import SectionWhyInfo from '@/app/components/Sections/SectionWhyInfo';
 import SectionSocialMedia from '@/app/components/Sections/SectionSocialMedia';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 import { routes } from '@/config/routes';
 
-const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/home';
+const PAGE_DATA_REQUEST_PATH = '/api/page-home?populate=deep';
 
 export const generateMetadata = async () => {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function Home() {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   const {
     HeroSection,

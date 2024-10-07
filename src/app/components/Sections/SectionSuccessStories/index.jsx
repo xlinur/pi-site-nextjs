@@ -1,10 +1,10 @@
 import Button from '@/app/components/Button';
 import SliderCases from '@/app/components/Sliders/SliderCases';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
 export default async function SectionTalentMatch({ cases }) {
-  const { data } = await request.get('/api/strapi/shared/success-stories');
+  const data = await fetchWrapper('/api/section-success-stories?populate=deep');
 
   const { title, viewAllCasesBtn, contactBtn } = data.data.attributes;
 

@@ -1,24 +1,25 @@
 import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
-import getFeedbacks from '@/app/api/strapi/feedbacks/route';
 import ResultsList from './ResultsList';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
-const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/feedbacks';
+const PAGE_DATA_REQUEST_PATH = '/api/page-feedbacks?populate=deep';
 
 export const generateMetadata = async () => {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageFeedback() {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
-  const feedbacks = await getFeedbacks();
+  const [pageData, feedbacks] = await Promise.all([
+    fetchWrapper(PAGE_DATA_REQUEST_PATH),
+    fetchWrapper('/api/feedbacks?populate=deep'),
+  ]);
 
-  const { title, moreReviewsBtn } = data.data.attributes;
+  const { title, moreReviewsBtn } = pageData.data.attributes;
 
   return (
     <PageTemplate>
@@ -28,7 +29,10 @@ export default async function PageFeedback() {
             <h1>{title}</h1>
           </header>
 
-          <ResultsList feedbacks={feedbacks} moreReviewsBtn={moreReviewsBtn} />
+          <ResultsList
+            feedbacks={feedbacks.data}
+            moreReviewsBtn={moreReviewsBtn}
+          />
         </div>
 
         <div className="container">

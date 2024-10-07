@@ -1,8 +1,8 @@
 'use client';
+
 import { Roboto } from 'next/font/google';
 import GoogleCaptchaWrapper from '@/app/components/GoogleCaptchaWrapper';
 import GoogleAnalytics from '@/app/components/GoogleAnalytics';
-
 import '@/app/styles/globals.scss';
 
 const roboto = Roboto({

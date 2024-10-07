@@ -7,19 +7,16 @@ import SuccessMessage from '@/app/components/SuccessMessage';
 import GdprMessage from '@/app/components/GdprMessage';
 import { CONTACT_FORM_MODAL_ID } from '@/config/contactFormModal';
 import { SUCCESS_MESSAGE_MODAL_ID } from '@/config/successMessageModal';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
 const PageTemplate = async ({ children }) => {
-  const { data: startConversationData } = await request.get(
-    '/api/strapi/shared/start-conversation',
-  );
-  const { data: dictionaryData } = await request.get(
-    '/api/strapi/global/dictionary',
-  );
-  const { data: settingsData } = await request.get(
-    '/api/strapi/global/settings',
-  );
+  const [startConversationData, dictionaryData, settingsData] =
+    await Promise.all([
+      fetchWrapper('/api/section-start-conversation-form?populate=deep'),
+      fetchWrapper('/api/global-dictionary?populate=deep'),
+      fetchWrapper('/api/global?populate=deep'),
+    ]);
 
   return (
     <>

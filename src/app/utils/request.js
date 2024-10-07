@@ -4,15 +4,8 @@ const headers = {
 };
 
 const request = {
-  _gtFullUrl: (path) => {
-    // get base url from location if env does not exist
-    // hack for client requests
-    const url = new URL(path, process.env.NEXT_HOST || window?.location?.href);
-
-    return url;
-  },
   async get(path) {
-    const url = this._gtFullUrl(path);
+    const url = new URL(path, process.env.NEXT_HOST || window?.location?.href);
 
     const response = await fetch(url, {
       method: 'GET',
@@ -22,15 +15,6 @@ const request = {
     const data = await response.json();
 
     return data;
-  },
-  async post(path, props) {
-    const url = this._gtFullUrl(path);
-
-    await fetch(url, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(props),
-    });
   },
 };
 

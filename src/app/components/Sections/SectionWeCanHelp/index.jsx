@@ -6,11 +6,13 @@ import money from '@/app/assets/icons/money.svg';
 import graph from '@/app/assets/icons/graph.svg';
 import { CardWeCanHelp } from '@/app/components/Cards/CardWeCanHelp';
 import { routes } from '@/config/routes';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
 export default async function SectionWeCanHelp() {
-  const { data } = await request.get('/api/strapi/shared/help-with');
+  const data = await fetchWrapper(
+    '/api/shared-we-can-help-you-with?populate=deep',
+  );
 
   const {
     title,

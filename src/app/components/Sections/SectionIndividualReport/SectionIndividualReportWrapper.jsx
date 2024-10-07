@@ -1,9 +1,11 @@
 import { Suspense } from 'react';
 import SectionIndividualReport from '@/app/components/Sections/SectionIndividualReport';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 
 export async function SectionIndividualReportWrapper() {
-  const { data } = await request.get('/api/strapi/shared/individual-report');
+  const data = await fetchWrapper(
+    '/api/section-order-your-report?populate=deep',
+  );
 
   return (
     <Suspense fallback={null}>

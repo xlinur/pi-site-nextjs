@@ -3,11 +3,11 @@ import styles from './styles.module.scss';
 import Image from 'next/image';
 import Button from '@/app/components/Button';
 import dollarsSVG from '@/app/assets/icons/dollars.svg';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import { ANCHORS } from '@/app/core/constants/anchor';
 
 export default async function SectionPaymentTerms() {
-  const { data } = await request.get('/api/strapi/shared/payment-terms');
+  const data = await fetchWrapper('/api/section-payment-terms?populate=deep');
 
   const { title, items, contactBtn } = data.data.attributes;
 

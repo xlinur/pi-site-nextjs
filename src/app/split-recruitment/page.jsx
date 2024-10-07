@@ -7,19 +7,19 @@ import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 import SectionPaymentTerms from '@/app/components/Sections/SectionPaymentTerms';
 import SectionProposal from '@/app/components/Sections/SectionProposal';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
-const PAGE_DATA_REQUEST_PATH = '/api/strapi/page/split-recruitment';
+const PAGE_DATA_REQUEST_PATH = '/api/page-split-recruitment?populate=deep';
 
 export const generateMetadata = async () => {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   return createMetadataFromSeo(data.data.attributes.SEO);
 };
 
 export default async function PageSplitRecruitment() {
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH);
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
   const { AnimatedHero, Proposal, TreeSection } = data.data.attributes;
 

@@ -9,15 +9,16 @@ import SectionCompaniesLogo from '@/app/components/Sections/SectionCompaniesLogo
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionSuccessStories from '@/app/components/Sections/SectionSuccessStories';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
-const PAGE_DATA_REQUEST_PATH = (slug) => `/api/strapi/spheres/${slug}`;
+const PAGE_DATA_REQUEST_PATH = (slug) =>
+  `/api/spheres?populate=deep&filters[slug][$eq]=${slug}`;
 
 export const generateMetadata = async ({ params }) => {
   const { slug } = params;
 
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH(slug));
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH(slug));
 
   return createMetadataFromSeo(data.data[0].attributes.SEO);
 };
@@ -25,8 +26,10 @@ export const generateMetadata = async ({ params }) => {
 export default async function SpheresPage({ params }) {
   const { slug } = params;
 
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH(slug));
-  const { data: casesBySphere } = await request.get('/api/strapi/cases');
+  const [data, casesBySphere] = await Promise.all([
+    fetchWrapper(PAGE_DATA_REQUEST_PATH(slug)),
+    fetchWrapper('/api/cases?populate=deep'),
+  ]);
 
   const {
     AnimatedHero,
