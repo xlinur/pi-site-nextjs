@@ -1,6 +1,7 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Image from 'next/image';
 import { Autoplay } from 'swiper/modules';
 import styles from './styles.module.scss';
 
@@ -39,7 +40,7 @@ export const SliderInfinityLogos = ({ data = [] }) => {
       <Swiper {...config} className={styles.slider}>
         {data.map((image, index) => (
           <SwiperSlide key={index} className={styles['swiper-slide']}>
-            <img
+            <Image
               src={image.attributes.url}
               alt={`Partner Logo ${index + 1}`}
               width={290}
