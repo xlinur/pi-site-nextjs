@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styles from './styles.module.scss';
 import earthSVG from '@/app/assets/icons/earth.svg';
 import countriesSVG from '@/app/assets/icons/countries.svg';
-import countryMap from '@/app/assets/images/countryMap.svg';
+import countryMap from '@/app/assets/images/countrymap.svg';
 import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import request from '@/app/utils/request';
 
