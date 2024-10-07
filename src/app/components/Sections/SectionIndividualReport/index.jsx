@@ -90,7 +90,7 @@ export default function SectionIndividualReport({
     otherPurpose,
     textareaComment,
   } = sectionIndividualReportData;
-  console.log({ purposeOfResearch });
+
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
