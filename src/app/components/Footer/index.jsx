@@ -1,25 +1,26 @@
 import Markdown from 'react-markdown';
 import Image from 'next/image';
 import Button from '@/app/components/Button';
-import { useGetNavigation } from '@/app/hooks/useGetNavigation';
+import { createNavigation } from '@/app/utils/createNavigation';
 import logoPng from '@/app/assets/logo.png';
 import clockSvg from '@/app/assets/icons/clock.svg';
 import locationPin from '@/app/assets/icons/location-pin.svg';
 import { createSocialsData } from '@/app/utils/createSocialsData';
 import { createSupportData } from '@/app/utils/createSupportData';
 import { createWorkingHours } from '@/app/utils/createWorkingHours';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
 const Footer = async () => {
-  const { fetchMenu } = useGetNavigation();
+  const [dictionaryData, settingsData, spheresData] = await Promise.all([
+    fetchWrapper('/api/global-dictionary?populate=deep'),
+    fetchWrapper('/api/global?populate=deep'),
+    fetchWrapper('/api/spheres?populate=deep'),
+  ]);
 
-  const { mainNav, secondaryNav } = await fetchMenu();
-  const { data: dictionaryData } = await request.get(
-    '/api/strapi/global/dictionary',
-  );
-  const { data: settingsData } = await request.get(
-    '/api/strapi/global/settings',
+  const { mainNav, secondaryNav } = createNavigation(
+    dictionaryData,
+    spheresData,
   );
 
   const { supportBlockTitle, contactsBlockTitle } =

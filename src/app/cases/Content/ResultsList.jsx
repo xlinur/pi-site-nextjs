@@ -9,7 +9,7 @@ import styles from '../styles.module.scss';
 import SkeletonCard from '@/app/components/Skeletons/Card';
 import SkeletonButton from '@/app/components/Skeletons/Button';
 
-const Content = ({ spheresFilterTitle }) => {
+const Content = ({ spheresFilterTitle, settingsData }) => {
   const {
     cases,
     loading,
@@ -20,6 +20,8 @@ const Content = ({ spheresFilterTitle }) => {
     resetFilter,
     spheres,
   } = useCases();
+
+  const { locale } = settingsData.data.attributes;
 
   const {
     data,
@@ -100,7 +102,7 @@ const Content = ({ spheresFilterTitle }) => {
         <section className={styles.sectionListLink}>
           <div className={styles.list}>
             {data.map((item, idx) => (
-              <CardCase key={idx} data={item} />
+              <CardCase key={idx} data={item} locale={locale} />
             ))}
           </div>
 

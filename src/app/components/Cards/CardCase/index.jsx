@@ -1,10 +1,13 @@
 import clsx from 'clsx';
+import { getLocalDate } from '@/utils/getLocalDate';
 import styles from './styles.module.scss';
 
-export default function CardCase({ data, className }) {
+export default function CardCase({ data, className, locale }) {
   return (
     <a href={data.attributes.slug} className={clsx([styles.card, className])}>
-      <time dateTime={data.attributes.date}>{data.attributes.date}</time>
+      <time dateTime={data.attributes.date}>
+        {getLocalDate(data.attributes.date, locale)}
+      </time>
 
       <div className={styles.cardContent}>
         <h5>{data.attributes.title}</h5>

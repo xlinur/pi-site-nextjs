@@ -6,16 +6,17 @@ import SectionTalentMatch from '@/app/components/Sections/SectionTalentMatch';
 import SectionRelocationHelpHero from '@/app/components/Sections/SectionRelocationHelpHero';
 import SectionSuccessStories from '@/app/components/Sections/SectionSuccessStories';
 import PageTemplate from '@/app/components/PageTemplate';
-import request from '@/app/utils/request';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import { createMetadataFromSeo } from '@/app/utils/metadata';
 import styles from './styles.module.scss';
 
-const PAGE_DATA_REQUEST_PATH = (slug) => `/api/strapi/cases/${slug}`;
+const PAGE_DATA_REQUEST_PATH = (slug) =>
+  `/api/cases?populate=deep&filters[slug][$eq]=${slug}`;
 
 export const generateMetadata = async ({ params }) => {
   const { slug } = params;
 
-  const { data } = await request.get(PAGE_DATA_REQUEST_PATH(slug));
+  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH(slug));
 
   return createMetadataFromSeo(data.data.attributes?.SEO);
 };
@@ -23,8 +24,11 @@ export const generateMetadata = async ({ params }) => {
 export default async function PageCase({ params }) {
   const { slug } = params;
 
-  const { data: caseData } = await request.get(PAGE_DATA_REQUEST_PATH(slug));
-  const { data: casesBySphere } = await request.get('/api/strapi/cases');
+  const [caseData, casesBySphere, settingsData] = await Promise.all([
+    fetchWrapper(PAGE_DATA_REQUEST_PATH(slug)),
+    fetchWrapper('/api/cases?populate=deep'),
+    fetchWrapper('/api/global?populate=deep'),
+  ]);
 
   const {
     SectionCaseHero: CaseHero,
@@ -61,11 +65,9 @@ export default async function PageCase({ params }) {
           </div>
         </div>
 
-        {cases?.length && (
-          <div className={styles.sectionMoreCasesWrapper}>
-            <SectionSuccessStories cases={cases} />
-          </div>
-        )}
+        <div className={styles.sectionMoreCasesWrapper}>
+          <SectionSuccessStories cases={cases} settingsData={settingsData} />
+        </div>
 
         <div className="container">
           <section className={styles.sectionForm}>

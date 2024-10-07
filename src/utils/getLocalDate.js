@@ -1,11 +1,11 @@
 const options = {
   year: 'numeric',
-  month: 'long',
+  month: 'numeric',
   day: 'numeric',
 };
 
 export const getLocalDate = (date, locale) => {
   const event = new Date(date);
 
-  event.toLocaleDateString(locale, options);
+  return event.toLocaleDateString(locale, options);
 };

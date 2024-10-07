@@ -3,10 +3,11 @@ import SliderCases from '@/app/components/Sliders/SliderCases';
 import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
-export default async function SectionTalentMatch({ cases }) {
+export default async function SectionTalentMatch({ cases, settingsData }) {
   const data = await fetchWrapper('/api/section-success-stories?populate=deep');
 
   const { title, viewAllCasesBtn, contactBtn } = data.data.attributes;
+  const { locale } = settingsData?.data?.attributes || {};
 
   return (
     <section className={styles.sectionMoreCases}>
@@ -19,7 +20,7 @@ export default async function SectionTalentMatch({ cases }) {
       </div>
 
       <div className={styles.slider}>
-        <SliderCases data={cases} btnName={contactBtn.name} />
+        <SliderCases data={cases} btnName={contactBtn.name} locale={locale} />
       </div>
     </section>
   );

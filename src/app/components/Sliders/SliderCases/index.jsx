@@ -89,7 +89,7 @@ const SwiperButtonPrev = ({ children }) => {
   );
 };
 
-export default function SliderCase({ data, btnName }) {
+export default function SliderCase({ data, btnName, locale }) {
   const documentWith = () => {
     if (typeof window !== 'undefined') {
       return (window.innerWidth - 1240) / 2;
@@ -129,6 +129,7 @@ export default function SliderCase({ data, btnName }) {
           <CardCase
             data={item}
             className={clsx(styles.cardHeight, idx === 0 && styles.fistItem)}
+            locale={locale}
           />
         </SwiperSlide>
       ))}

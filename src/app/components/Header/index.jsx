@@ -1,16 +1,17 @@
-import { useGetNavigation } from '@/app/hooks/useGetNavigation';
-import request from '@/app/utils/request';
+import { createNavigation } from '@/app/utils/createNavigation';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import Naviagation from './Naviagation';
 
 const Header = async () => {
-  const { fetchMenu } = useGetNavigation();
+  const [dictionaryData, settingsData, spheresData] = await Promise.all([
+    fetchWrapper('/api/global-dictionary?populate=deep'),
+    fetchWrapper('/api/global?populate=deep'),
+    fetchWrapper('/api/spheres?populate=deep'),
+  ]);
 
-  const { mainNav, secondaryNav } = await fetchMenu();
-  const { data: dictionaryData } = await request.get(
-    '/api/strapi/global/dictionary',
-  );
-  const { data: settingsData } = await request.get(
-    '/api/strapi/global/settings',
+  const { mainNav, secondaryNav } = createNavigation(
+    dictionaryData,
+    spheresData,
   );
 
   return (

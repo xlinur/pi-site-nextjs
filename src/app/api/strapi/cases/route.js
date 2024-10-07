@@ -1,6 +1,6 @@
 import { request } from '../utils';
 
-const DEFAULT_PAGE_SIZE = 2;
+const DEFAULT_PAGE_SIZE = 8;
 
 export async function GET(req) {
   const { url } = req;

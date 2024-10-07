@@ -16,9 +16,12 @@ export const generateMetadata = async () => {
 };
 
 export default async function PageCases() {
-  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
+  const [pageData, settingsData] = await Promise.all([
+    fetchWrapper(PAGE_DATA_REQUEST_PATH),
+    fetchWrapper('/api/global?opulate=deep'),
+  ]);
 
-  const { HeroOurCasesSection, spheresFilterTitle } = data.data.attributes;
+  const { HeroOurCasesSection, spheresFilterTitle } = pageData.data.attributes;
 
   return (
     <PageTemplate>
@@ -28,7 +31,10 @@ export default async function PageCases() {
         </div>
 
         <Suspense fallback={null}>
-          <Content spheresFilterTitle={spheresFilterTitle} />
+          <Content
+            spheresFilterTitle={spheresFilterTitle}
+            settingsData={settingsData}
+          />
         </Suspense>
 
         <div className={styles.sectionFormWrapper}>
