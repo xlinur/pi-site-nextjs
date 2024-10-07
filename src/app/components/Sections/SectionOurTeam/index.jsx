@@ -1,5 +1,6 @@
 import Markdown from 'react-markdown';
 import styles from './styles.module.scss';
+import Image from 'next/image';
 
 export default function SectionOurTeam(props) {
   const { title, description, members } = props;
@@ -16,7 +17,7 @@ export default function SectionOurTeam(props) {
           return (
             <div className={styles.teamGalleryItem} key={`${item.name}_${idx}`}>
               <div className={styles.teamGalleryImage}>
-                <img
+                <Image
                   src={item.photo.data.attributes.url}
                   alt={item.photo.data.attributes.alternativeText}
                   width={390}

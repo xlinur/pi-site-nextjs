@@ -54,7 +54,7 @@ export const SliderInfinityLogos = ({ data = [] }) => {
       <Swiper {...config} dir="rtl" initialSlide={5} className={styles.slider}>
         {data.map((image, index) => (
           <SwiperSlide key={index} className={styles['swiper-slide']}>
-            <img
+            <Image
               src={image.attributes.url}
               alt={`Partner Logo ${index + 1}`}
               width={290}

@@ -6,8 +6,7 @@ import request from '@/app/utils/request';
 import styles from './styles.module.scss';
 
 export default async function SectionOurFounder(props) {
-  const { title, photo, name, position, li, fb, email, text, description } =
-    props;
+  const { title, photo, name, position, text, description } = props;
 
   const { data: settingsData } = await request.get(
     '/api/strapi/global/settings',
@@ -24,7 +23,7 @@ export default async function SectionOurFounder(props) {
         <div className={styles.cardFounderInfo}>
           <div className={styles.wrap}>
             <div className={styles.cardFounderInfoImage}>
-              <img
+              <Image
                 src={photo.data.attributes.url}
                 alt={photo.data.attributes.alternativeText}
                 width={171}

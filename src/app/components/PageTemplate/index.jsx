@@ -46,7 +46,9 @@ const PageTemplate = async ({ children }) => {
       {/* SUCCESS MESSAGE */}
       <Suspense fallback={null}>
         <Modal id={SUCCESS_MESSAGE_MODAL_ID}>
-          <SuccessMessage />
+          <SuccessMessage
+            data={startConversationData.data.attributes.successMessage}
+          />
         </Modal>
       </Suspense>
     </>
