@@ -4,7 +4,7 @@ import Button from '@/app/components/Button';
 import { ANCHORS } from '@/app/core/constants/anchor';
 import styles from './styles.module.scss';
 
-const SectionAnalyticsServices = ({ title, services, contactBtn }) => {
+const SectionAnalyticsServices = ({ title, services }) => {
   return (
     <section className={styles.sectionOurService}>
       <header>

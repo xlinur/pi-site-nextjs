@@ -18,20 +18,11 @@ const HeroAnimateBg = ({ className }) => {
     });
   }, []);
 
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
-
   const options = useMemo(() => config, []);
 
   if (init) {
     return (
-      <Particles
-        id="tsparticles"
-        particlesLoaded={particlesLoaded}
-        options={options}
-        className={className}
-      />
+      <Particles id="tsparticles" options={options} className={className} />
     );
   }
 

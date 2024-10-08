@@ -1,7 +1,6 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Button from '@/app/components/Button';
 import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
 import clsx from 'clsx';
@@ -21,7 +20,7 @@ const config = {
   },
 };
 
-const btnTextConfig = (idx) => {
+const _btnTextConfig = (idx) => {
   if (idx !== 0) {
     return {
       theme: 'text',

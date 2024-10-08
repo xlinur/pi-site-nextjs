@@ -25,11 +25,12 @@ export const CasesProvider = ({ children }) => {
     setSpheres(data.data);
   };
 
-  const fetchCases = async () => {
-    setLoading(true);
+  const fetchCases = useCallback(async () => {
     try {
+      setLoading(true);
+
       const params = new URLSearchParams({
-        page: currentPage,
+        page: currentPage.toString(),
         filter: JSON.stringify(filter),
       });
 
@@ -39,7 +40,7 @@ export const CasesProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, filter]);
 
   useEffect(() => {
     fetchSpheres();
@@ -47,7 +48,7 @@ export const CasesProvider = ({ children }) => {
 
   useEffect(() => {
     fetchCases();
-  }, [currentPage, filter]);
+  }, [fetchCases, currentPage, filter]);
 
   const changePage = useCallback((page) => {
     setCurrentPage(page);
@@ -66,11 +67,9 @@ export const CasesProvider = ({ children }) => {
 
   const resetFilter = useCallback(
     (key) => {
-      const newFilter = { ...filter };
+      const { [key]: _, ...rest } = filter;
 
-      delete newFilter[key];
-
-      setFilter(newFilter);
+      setFilter(rest);
       setCurrentPage(1);
     },
     [filter],

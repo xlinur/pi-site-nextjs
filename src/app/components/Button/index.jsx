@@ -1,11 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-
 import clsx from 'clsx';
 
 import styles from './styles.module.scss';
 
+/**
+ *
+ * @param {string?} props.size lg | default - empty string
+ * @param {string?} props.theme primary | secondary | default | text | transparent
+ * @return {JSX.Element}
+ * @constructor
+ */
 const Button = (props) => {
   const {
     onClick,
@@ -14,8 +19,8 @@ const Button = (props) => {
     name,
     withIcon = false,
     iconRight = false,
-    size = 'lg', // lg | default - empty string
-    theme = 'primary', // primary | secondary | default | text | transparent
+    size = 'lg',
+    theme = 'primary',
     disabled = false,
     content,
     type = 'button',
