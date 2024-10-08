@@ -9,6 +9,13 @@
     display: grid;
     grid-template-columns: 1fr 504px;
     column-gap: 20px;
+    
+    @include lg {
+      grid-template-columns: 1fr 0.8fr;
+    }
+    @include md {
+      grid-template-columns: 1fr;
+    }
   }
 
   .sectionAccordionContentImage {
@@ -16,6 +23,10 @@
     height: 504px;
     display: flex;
     align-items: flex-end;
+
+    @include md {
+      display: none;
+    }
 
     button {
       z-index: 1;

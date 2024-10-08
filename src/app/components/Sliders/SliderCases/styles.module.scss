@@ -51,7 +51,31 @@
     min-height: 232px;
   }
 
-  .fistItem {
+  .firstItem {
     min-height: 300px;
+
+    background-color: var(--light-blue);
+    border-color: transparent;
+  }
+
+  .contactUsBtn {
+    width: 100%;
+    justify-content: center;
+    max-width: calc(33.33% + 12px);
+
+    @include rwd(1024) {
+      max-width: calc(44% + 12px);
+    }
+
+    @include sm {
+      max-width: calc(86% + 12px);
+    }
+
+    // @include lg {
+    //   max-width: 400px;
+    // }
+    // @include md {
+    //   max-width: 288px;
+    // }
   }
 }

@@ -6,6 +6,7 @@ import CardFeedback from '@/app/components/Cards/CardFeedback';
 import Button from '@/app/components/Button';
 import styles from './styles.module.scss';
 import { useEffect, useState } from 'react';
+import clsx from 'clsx';
 
 const SwiperButtonNext = () => {
   const swiper = useSwiper();
@@ -79,7 +80,7 @@ const SwiperButtonPrev = () => {
   );
 };
 
-export const SliderFeedback = ({ data, readAllBtn }) => {
+export const SliderFeedback = ({ data, readAllBtn, className }) => {
   const documentWith = () => {
     if (typeof window !== 'undefined') {
       return (window.innerWidth - 1240) / 2;
@@ -92,11 +93,12 @@ export const SliderFeedback = ({ data, readAllBtn }) => {
     slidesPerView: 1.5,
     spaceBetween: 12,
     freeMode: true,
-    slidesOffsetAfter: 20,
+    slidesOffsetBefore: 16,
     breakpoints: {
-      540: {
+      768: {
         slidesPerView: 2.5,
         spaceBetween: 24,
+        slidesOffsetBefore: 24,
       },
       1440: {
         slidesPerView: 2.5,
@@ -106,7 +108,7 @@ export const SliderFeedback = ({ data, readAllBtn }) => {
   };
 
   return (
-    <Swiper {...config} className={styles.slider}>
+    <Swiper {...config} className={clsx(styles.slider, className)}>
       {data.map((item, idx) => (
         <SwiperSlide key={item.id}>
           <CardFeedback

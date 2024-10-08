@@ -29,10 +29,6 @@
   .slider {
     max-width: 100vw;
     overflow: hidden;
-
-    @include md {
-      padding-inline: 20px;
-    }
   }
 
   .controls {

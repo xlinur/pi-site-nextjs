@@ -3,6 +3,73 @@
 import React, { useRef, useState } from 'react';
 import styles from './styles.module.scss';
 
+const AccordionItem = ({ item, isOpen, onClick }) => {
+  const contentRef = useRef(null); // Реф для измерения высоты контента
+  const { label, title, items } = item;
+
+  const inlineCss = contentRef.current?.scrollHeight
+    ? {
+        maxHeight: isOpen ? `${contentRef.current.scrollHeight}px` : '0px',
+        marginTop: isOpen ? '30px' : '0px',
+      }
+    : {
+        maxHeight: isOpen ? 'fit-content' : '0px',
+        marginTop: isOpen ? '30px' : '0px',
+      };
+
+  return (
+    <div className={styles.accordionItem}>
+      <h5 type="button" tabIndex={1} onClick={onClick}>
+        <span>
+          <ArrowItemSvg />
+        </span>
+
+        {label}
+      </h5>
+
+      <div className={styles.accordionContent} style={inlineCss}>
+        <span>
+          <CheckMarkSvg />
+        </span>
+
+        <div ref={contentRef}>
+          <h5 className="h5">{title}</h5>
+
+          <ul className={styles.accordionContentList}>
+            {items.map((contentItem, index) => (
+              <li key={index}>
+                <strong className="h5">{contentItem.title}</strong>
+                <p>{contentItem.description}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default function Accordion({ data }) {
+  const [openIndex, setOpenIndex] = useState(0);
+
+  const handleItemClick = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <div className={styles.accordion}>
+      {data.map((item, index) => (
+        <AccordionItem
+          key={index}
+          item={item}
+          isOpen={openIndex === index}
+          onClick={() => handleItemClick(index)}
+        />
+      ))}
+    </div>
+  );
+}
+
 const ArrowItemSvg = () => (
   <svg
     width="38"
@@ -42,66 +109,3 @@ const CheckMarkSvg = () => (
     />
   </svg>
 );
-
-const AccordionItem = ({ item, isOpen, onClick }) => {
-  const contentRef = useRef(null); // Реф для измерения высоты контента
-  const { label, title, items } = item;
-
-  return (
-    <div className={styles.accordionItem}>
-      <h5 onClick={onClick} style={{ cursor: 'pointer' }}>
-        <span>
-          <ArrowItemSvg />
-        </span>
-
-        {label}
-      </h5>
-
-      <div
-        className={styles.accordionContent}
-        style={{
-          maxHeight: isOpen ? `${contentRef.current.scrollHeight}px` : '0px',
-          marginTop: isOpen ? '30px' : '0px',
-        }}
-      >
-        <span>
-          <CheckMarkSvg />
-        </span>
-
-        <div ref={contentRef}>
-          <h5 className="h5">{title}</h5>
-
-          <ul className={styles.accordionContentList}>
-            {items.map((contentItem, index) => (
-              <li key={index}>
-                <strong className="h5">{contentItem.title}</strong>
-                <p>{contentItem.description}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default function Accordion({ data }) {
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const handleItemClick = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  return (
-    <div className={styles.accordion}>
-      {data.map((item, index) => (
-        <AccordionItem
-          key={index}
-          item={item}
-          isOpen={openIndex === index}
-          onClick={() => handleItemClick(index)}
-        />
-      ))}
-    </div>
-  );
-}

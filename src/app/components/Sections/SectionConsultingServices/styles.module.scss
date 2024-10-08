@@ -1,8 +1,55 @@
+@use '../../../styles/mixins.scss' as *;
+
 .sectionHowWeWork {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 144px;
   gap: 24px;
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+
+    header {
+      grid-column: 1 / 4;
+    }
+
+    .howWeWorkCard {
+      min-height: 144px;
+    }
+
+    button {
+      grid-column: 1 / 4;
+    }
+  }
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+
+    header {
+      grid-column: 1 / 3;
+    }
+
+    .howWeWorkCard {
+      min-height: 132px;
+    }
+
+    button {
+      grid-column: 1 / 3;
+    }
+  }
+  @include sm {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+
+    header {
+      grid-column: 1;
+    }
+
+    button {
+      grid-column: 1;
+    }
+  }
 
   .howWeWorkCard {
     display: flex;

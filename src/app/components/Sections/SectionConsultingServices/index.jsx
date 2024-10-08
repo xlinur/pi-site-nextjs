@@ -8,7 +8,7 @@ export default function SectionConsultingServices(props) {
   return (
     <section className={styles.sectionHowWeWork}>
       <header>
-        <h4>{title}</h4>
+        <h2>{title}</h2>
       </header>
 
       {services.map((item, idx) => (

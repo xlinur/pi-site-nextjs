@@ -1,3 +1,16 @@
 .sectionHelpWrapper {
   background-color: var(--light-blue);
 }
+
+.sectionFeedbackWrapper {
+  background-color: var(--light-blue);
+
+  .firstSlide {
+    > div {
+      > div:first-child article {
+        background-color: var(--white);
+        border-color: transparent;
+      }
+    }
+  }
+}

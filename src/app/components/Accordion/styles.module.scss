@@ -6,11 +6,12 @@
 .accordionItem {
   margin-bottom: 10px;
 
-  h5 {
+  > h5 {
     display: inline-flex;
     align-items: center;
     gap: 12px;
     font-weight: 500;
+    cursor: pointer;
   }
 
   .accordionContent {

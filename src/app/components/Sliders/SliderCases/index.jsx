@@ -89,7 +89,7 @@ const SwiperButtonPrev = ({ children }) => {
   );
 };
 
-export default function SliderCase({ data, btnName, locale }) {
+export default function SliderCase({ data, btnName, locale, className }) {
   const documentWith = () => {
     if (typeof window !== 'undefined') {
       return (window.innerWidth - 1240) / 2;
@@ -123,12 +123,12 @@ export default function SliderCase({ data, btnName, locale }) {
   };
 
   return (
-    <Swiper {...config} className={styles.slider}>
+    <Swiper {...config} className={clsx(styles.slider, className)}>
       {data?.map((item, idx) => (
         <SwiperSlide className={styles.slide} key={idx}>
           <CardCase
             data={item}
-            className={clsx(styles.cardHeight, idx === 0 && styles.fistItem)}
+            className={clsx(styles.cardHeight, idx === 0 && styles.firstItem)}
             locale={locale}
           />
         </SwiperSlide>
@@ -136,7 +136,11 @@ export default function SliderCase({ data, btnName, locale }) {
 
       <div className="container">
         <div className={styles.swiperNavigation}>
-          <Button name={btnName} url={ANCHORS.CONTACT_FORM.ANCHOR} />
+          <Button
+            className={styles.contactUsBtn}
+            name={btnName}
+            url={ANCHORS.CONTACT_FORM.ANCHOR}
+          />
 
           <div className={styles.swiperActions}>
             <SwiperButtonPrev></SwiperButtonPrev>

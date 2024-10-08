@@ -7,10 +7,13 @@ export async function SectionIndividualReportWrapper() {
     '/api/section-order-your-report?populate=deep',
   );
 
+  const settingsData = await fetchWrapper('/api/global?populate=deep');
+
   return (
     <Suspense fallback={null}>
       <SectionIndividualReport
         sectionIndividualReportData={data.data.attributes}
+        globalSettings={settingsData.data.attributes}
       />
     </Suspense>
   );

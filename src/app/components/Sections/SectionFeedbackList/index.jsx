@@ -3,8 +3,13 @@ import SliderFeedback from '@/app/components/Sliders/SliderFeedback';
 import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 import { routes } from '@/config/routes';
+import clsx from 'clsx';
 
-export default async function SectionFeedbackList({ inData }) {
+export default async function SectionFeedbackList({
+  inData,
+  sliderClass,
+  sectionClass,
+}) {
   const [clientsFeedbacksData, feedbacksData] = await Promise.all([
     fetchWrapper('/api/section-what-our-cliens-say?populate=deep'),
     fetchWrapper('/api/feedbacks?populate=deep'),
@@ -14,7 +19,7 @@ export default async function SectionFeedbackList({ inData }) {
     clientsFeedbacksData.data.attributes;
 
   return (
-    <section className={styles.sectionFeedback}>
+    <section className={clsx(styles.sectionFeedback, sectionClass)}>
       <div className="container">
         <header>
           <h3>{title}</h3>
@@ -31,6 +36,7 @@ export default async function SectionFeedbackList({ inData }) {
         <SliderFeedback
           data={inData || feedbacksData.data}
           readAllBtn={readAllBtn}
+          className={sliderClass}
         />
       </div>
 

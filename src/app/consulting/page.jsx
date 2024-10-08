@@ -33,7 +33,6 @@ export default async function Consulting() {
       <main className={styles.relocationHelpPage}>
         <SectionHero {...AnimatedHero} />
 
-        {/* @Component */}
         <div className="container">
           <SectionConsultingServices {...ConsultingServices} />
         </div>

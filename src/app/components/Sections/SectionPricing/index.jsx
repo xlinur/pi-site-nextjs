@@ -4,6 +4,8 @@ import { routes } from '@/config/routes';
 import { ANCHORS } from '@/app/core/constants/anchor';
 import SliderPricing from '@/app/components/Sliders/SliderPricing';
 import OpenModalFormButton from '@/app/components/OpenModalFormButton';
+import Image from 'next/image';
+import moneyImg from '@/app/assets/icons/money.png';
 import Button from '../../Button';
 import styles from './styles.module.scss';
 
@@ -54,6 +56,8 @@ export default async function SectionPricing(props) {
           </div>
 
           {button}
+
+          {idx === 0 && <Image src={moneyImg} alt="Money bag icon" fill />}
         </div>
       ))}
     </div>
@@ -66,8 +70,9 @@ export default async function SectionPricing(props) {
       </header>
 
       <SliderPricing
-        data={[feeSection, splitRecruitment, subscriptionModel]}
+        data={cards}
         altComponent={<Grid />}
+        className={clsx(styles.cardPricing, styles.specialCard)}
       />
     </section>
   );

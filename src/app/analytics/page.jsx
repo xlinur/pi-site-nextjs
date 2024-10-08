@@ -43,7 +43,7 @@ export default async function Analytics() {
         </div>
 
         <div className={styles.sectionFeedbackWrapper}>
-          <SectionFeedbackList firstSlideTheme="white" />
+          <SectionFeedbackList sliderClass={styles.firstSlide} />
         </div>
 
         <div className="container">

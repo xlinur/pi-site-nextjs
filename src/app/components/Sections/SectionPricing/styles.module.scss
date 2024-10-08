@@ -22,6 +22,12 @@
   padding: 20px;
   height: 251px;
 
+  &:not(.specialCard) {
+    button, a {
+      padding: 0;
+    }
+  }
+
   @include md {
     height: 221px;
   }
@@ -32,11 +38,13 @@
 }
 
 .specialCard {
+  position: relative;
   border-color: transparent;
   background-color: var(--light-blue);
   padding: 30px;
   min-width: 503px;
   height: 322px;
+  z-index: 1;
 
   @include lg {
     padding: 20px;
@@ -48,10 +56,28 @@
     font-weight: 700;
     font-size: 38px;
     line-height: 110%;
+
+    @include lg {
+      font-size: clamp(18px, -5.272rem + 12.027vw, 24px);
+    }
   }
 
   button {
     width: 185px;
     justify-content: center;
+  }
+
+  img {
+    max-width: 205px;
+    max-height: 195px;
+    z-index: -1;
+    inset: initial !important;
+    bottom: 30px !important;
+    right: 30px !important;
+
+    @include lg {
+      bottom: 20px !important;
+      right: 20px !important;
+    }
   }
 }

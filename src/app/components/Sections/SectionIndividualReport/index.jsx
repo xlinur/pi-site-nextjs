@@ -17,6 +17,8 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import styles from './styles.module.scss';
 import Image from 'next/image';
 import { sendEmail } from '../../../../utils/sendEmail';
+import { createWorkingHours } from '@/app/utils/createWorkingHours';
+import { createSocialsData } from '@/app/utils/createSocialsData';
 
 const emailFields = {
   name: 'name',
@@ -40,40 +42,60 @@ export function adoptOptions(inputServicesOptions) {
   });
 }
 
-const ExtraContactContent = ({ text }) => (
-  <>
-    <div className="icon">
-      <Image src={chatSVG} alt="Icon" width={174} height={174} />
-    </div>
-    <ul>
-      <li>
-        <p>{text}</p>
-      </li>
-      <li>
-        <Image src={phoneSVG} alt="Icon" width={38} height={38} />
-        <h5>
-          <a href="#">+ 371-56-548-29</a>
-        </h5>
-      </li>
-      <li>
-        <Image src={whatsappSVG} alt="Icon" width={38} height={38} />
-        <h5>
-          <a href="#">+ 371-xx-xxx-xx</a>
-        </h5>
-      </li>
+const ExtraContactContent = ({ globalSettings, text }) => {
+  const { contacts, workingHours } = globalSettings;
+  const { phone } = contacts;
 
-      <li>
-        <a href="/">
-          <Image src={clockSvg} alt="Clock icon" width={24} height={24} />
-          <div className={styles.workHours}>9:00 - 20:00 UTS +2</div>
-        </a>
-      </li>
-    </ul>
-  </>
-);
+  const socials = createSocialsData({ contacts });
+  const time = createWorkingHours(workingHours);
+
+  return (
+    <>
+      <div className={styles.icon}>
+        <Image src={chatSVG} alt="Icon" width={174} height={174} />
+      </div>
+
+      <div className={styles.listWrapper}>
+        <ul>
+          <li>
+            <p>{text}</p>
+          </li>
+          <li>
+            <Image src={phoneSVG} alt="Icon" width={38} height={38} />
+            <h5>
+              <a href="#">{phone}</a>
+            </h5>
+          </li>
+          <li>
+            <Image src={whatsappSVG} alt="Icon" width={38} height={38} />
+            <h5>
+              <a href="#">{phone}</a>
+            </h5>
+          </li>
+
+          <li>
+            <a href="/">
+              <Image src={clockSvg} alt="Clock icon" width={24} height={24} />
+              <div className={styles.workHours}>{time}</div>
+            </a>
+          </li>
+        </ul>
+
+        <div className={styles.socialMedia}>
+          {socials.map((item) => (
+            <a href={item.link} key={item.link}>
+              <Image src={item.img} alt={item.name} width={24} height={24} />
+            </a>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default function SectionIndividualReport({
   sectionIndividualReportData,
+  globalSettings,
 }) {
   const {
     title,
@@ -227,7 +249,10 @@ export default function SectionIndividualReport({
         </form>
 
         <div className={styles.social}>
-          <ExtraContactContent text={contactsTitle} />
+          <ExtraContactContent
+            globalSettings={globalSettings}
+            text={contactsTitle}
+          />
         </div>
       </div>
     </section>

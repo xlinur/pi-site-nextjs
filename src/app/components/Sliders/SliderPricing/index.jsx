@@ -5,6 +5,8 @@ import Button from '@/app/components/Button';
 import styles from './styles.module.scss';
 import Markdown from 'react-markdown';
 import clsx from 'clsx';
+import Image from 'next/image';
+import moneyImg from '@/app/assets/icons/money.png';
 import { useEffect, useState } from 'react';
 
 const config = {
@@ -58,21 +60,23 @@ export const SliderPricing = ({ data, altComponent }) => {
 
   return showSlider ? (
     <Swiper {...config} className={styles.slider}>
-      {data.map((item, idx) => (
-        <SwiperSlide key={item.id}>
+      {data.map(({ data, button }, idx) => (
+        <SwiperSlide key={data.id}>
           <div
             className={clsx(
               idx === 0 && styles.specialCard,
               styles.cardPricing,
             )}
-            key={item.id}
+            key={data.id}
           >
             <div>
-              <h5>{item.title}</h5>
-              <Markdown>{item.description}</Markdown>
+              <h5>{data.title}</h5>
+              <Markdown>{data.description}</Markdown>
             </div>
 
-            <Button {...btnTextConfig(idx)} name={item.btnName} />
+            {button}
+
+            {idx === 0 && <Image src={moneyImg} alt="Money bag icon" fill />}
           </div>
         </SwiperSlide>
       ))}

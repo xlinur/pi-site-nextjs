@@ -91,6 +91,12 @@ $padding: 30px;
   bottom: $padding;
   right: $padding;
   color: var(--blue);
+
+  @include md {
+    position: initial;
+    bottom: initial;
+    right: initial;
+  }
 }
 
 // MODAL
