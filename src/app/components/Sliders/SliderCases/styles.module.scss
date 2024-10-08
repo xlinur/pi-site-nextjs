@@ -41,9 +41,6 @@
       }
     }
   }
-  // position: absolute;
-  // display: flex;
-  // bottom: -50px;
 }
 
 .slider {
@@ -70,12 +67,5 @@
     @include sm {
       max-width: calc(86% + 12px);
     }
-
-    // @include lg {
-    //   max-width: 400px;
-    // }
-    // @include md {
-    //   max-width: 288px;
-    // }
   }
 }
