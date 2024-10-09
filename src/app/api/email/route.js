@@ -13,10 +13,8 @@ export async function POST(req, _) {
      * @property {payload.string} comment
      */
     const jsonPostData = await req.json();
-    console.log({ jsonPostData: jsonPostData });
 
     await sendEmail({
-      to: 'rgba.panda@gmail.com',
       templateName: 'ContactSubmission',
       dynamicTemplateData: {
         name: jsonPostData.payload.name,

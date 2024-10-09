@@ -16,7 +16,6 @@ export async function POST(req, _) {
      * @property {{checked: boolean, label: string}[]} legalCheckboxes
      */
     const jsonPostData = await req.json();
-    console.log({ jsonPostData: jsonPostData });
 
     const purposeOfResearch = jsonPostData.payload.purposeOfResearch
       .filter(({ checked }) => checked === true)
@@ -26,7 +25,6 @@ export async function POST(req, _) {
       .join(',');
 
     await sendEmailIndividualReport({
-      to: 'rgba.panda@gmail.com',
       templateName: 'ReportSubmission',
       dynamicTemplateData: {
         name: jsonPostData.payload.name,

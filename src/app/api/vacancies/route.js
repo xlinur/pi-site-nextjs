@@ -54,10 +54,8 @@ export async function POST(req, _) {
      * @property {{name:string,type:string,content:string}[]} attachments
      */
     const jsonPostData = await req.json();
-    console.log({ jsonPostData: jsonPostData });
 
     await sendEmailWithCV({
-      to: 'rgba.panda@gmail.com',
       templateName: 'CVSubmission',
       dynamicTemplateData: {
         email: jsonPostData.payload.email,
