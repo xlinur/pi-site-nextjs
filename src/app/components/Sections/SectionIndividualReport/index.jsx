@@ -1,5 +1,7 @@
 'use client';
 
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import Image from 'next/image';
 import { useForm } from '@mantine/form';
 import whatsappSVG from '@/app/assets/icons/social/whatsapp.svg';
 import chatSVG from '@/app/assets/icons/chat-white.svg';
@@ -10,15 +12,16 @@ import InputField from '@/app/components/Form/Input';
 import SelectField from '@/app/components/Form/Select';
 import TextareaField from '@/app/components/Form/Textarea';
 import Checkbox from '@/app/components/Form/Checkbox';
+import SuccessModal from '@/app/components/SuccessModal';
+import { openModalById } from '@/app/components/Modal/utils';
 import Button from '@/app/components/Button';
 
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-
-import styles from './styles.module.scss';
-import Image from 'next/image';
 import { sendEmail } from '../../../../utils/sendEmail';
 import { createWorkingHours } from '@/app/utils/createWorkingHours';
 import { createSocialsData } from '@/app/utils/createSocialsData';
+import styles from './styles.module.scss';
+
+const SUCCESS_MODAL_ID = 'order-analytic-success-modal';
 
 const emailFields = {
   name: 'name',
@@ -111,6 +114,7 @@ export default function SectionIndividualReport({
     purposeOfResearch,
     otherPurpose,
     textareaComment,
+    successMessage,
   } = sectionIndividualReportData;
 
   const form = useForm({
@@ -182,6 +186,8 @@ export default function SectionIndividualReport({
       emailTemplate: 'ReportSubmission',
       payload: values,
     });
+
+    openModalById(SUCCESS_MODAL_ID);
   };
 
   return (
@@ -255,6 +261,12 @@ export default function SectionIndividualReport({
           />
         </div>
       </div>
+
+      <SuccessModal
+        id={SUCCESS_MODAL_ID}
+        title={successMessage?.title}
+        message={successMessage?.message}
+      />
     </section>
   );
 }

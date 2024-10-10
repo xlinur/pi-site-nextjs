@@ -3,6 +3,7 @@ import styles from './styles.module.scss';
 
 const SuccessMessage = async (data) => {
   const { title, message } = data;
+
   return (
     <div className={styles.successMessage}>
       <span className={styles.successMessageIcon}>
@@ -26,7 +27,9 @@ const SuccessMessage = async (data) => {
         <Markdown>{title}</Markdown>
       </h5>
 
-      <p>{message}</p>
+      <div>
+        <Markdown>{message}</Markdown>
+      </div>
     </div>
   );
 };

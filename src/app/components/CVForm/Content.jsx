@@ -1,13 +1,17 @@
 'use client';
 
+import { useRef, useState } from 'react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useForm } from '@mantine/form';
+import { sendEmail } from '@/utils/sendEmail';
+import { openModalById } from '@/app/components/Modal/utils';
 import InputField from '@/app/components/Form/Input';
 import Checkbox from '@/app/components/Form/Checkbox';
 import Button from '@/app/components/Button';
-import { sendEmail } from '@/utils/sendEmail';
+import SuccessModal from '@/app/components/SuccessModal';
 import styles from './styles.module.scss';
-import { useRef, useState } from 'react';
+
+const SUCCESS_MODAL_ID = 'cv-form-success-modal';
 
 const emailFields = {
   name: 'name',
@@ -38,6 +42,7 @@ export const Content = ({ sectionFormData }) => {
     uploadBtn,
     submitBtn,
     legals,
+    successMessage,
   } = sectionFormData;
 
   const form = useForm({
@@ -99,6 +104,8 @@ export const Content = ({ sectionFormData }) => {
       emailTemplate: 'CVSubmission',
       payload: { ...values, attachments: [attachment] }, // Send uploaded file
     });
+
+    openModalById(SUCCESS_MODAL_ID);
   };
 
   const handleFileChange = (event) => {
@@ -187,6 +194,12 @@ export const Content = ({ sectionFormData }) => {
           name={submitBtn?.name}
         />
       </form>
+
+      <SuccessModal
+        id={SUCCESS_MODAL_ID}
+        title={successMessage.title}
+        message={successMessage.message}
+      />
     </section>
   );
 };

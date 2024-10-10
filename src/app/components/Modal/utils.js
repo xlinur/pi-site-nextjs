@@ -3,6 +3,12 @@ export const changeBodyOverflow = (overflow) => {
 };
 
 export const openModalById = (id) => {
-  document.querySelector(`dialog#${id}`).showModal();
-  changeBodyOverflow('hidden');
+  const dialog = document.querySelector(`dialog#${id}`);
+
+  if (dialog) {
+    dialog.showModal();
+    changeBodyOverflow('hidden');
+  } else {
+    console.log(`modal with id "${id}" not found`);
+  }
 };

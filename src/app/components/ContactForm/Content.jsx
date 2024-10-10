@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import clsx from 'clsx';
 import { useForm } from '@mantine/form';
 
 import InputField from '@/app/components/Form/Input';
@@ -13,7 +14,6 @@ import whatsappSVG from '@/app/assets/icons/social/whatsapp.svg';
 import chatSVG from '@/app/assets/icons/chat-white.svg';
 import phoneSVG from '@/app/assets/icons/phone.svg';
 import clockSvg from '@/app/assets/icons/clock.svg';
-
 import { ANCHORS } from '@/app/core/constants/anchor';
 import { sendEmail } from '@/utils/sendEmail';
 import { createWorkingHours } from '@/app/utils/createWorkingHours';
@@ -21,7 +21,6 @@ import { openModalById } from '@/app/components/Modal/utils';
 import { SUCCESS_MESSAGE_MODAL_ID } from '@/config/successMessageModal';
 
 import styles from './styles.module.scss';
-import clsx from 'clsx';
 
 const emailFields = {
   name: 'name',
@@ -113,9 +112,9 @@ export const Content = ({ className, globalSettings, sectionFormData }) => {
       return;
     }
 
-    const gRecaptchaToken = await executeRecaptcha('inquirySubmit');
-
     try {
+      const gRecaptchaToken = await executeRecaptcha('inquirySubmit');
+
       await sendEmail({
         gRecaptchaToken,
         emailTemplate: 'ContactSubmission',
@@ -125,8 +124,6 @@ export const Content = ({ className, globalSettings, sectionFormData }) => {
       openModalById(SUCCESS_MESSAGE_MODAL_ID);
     } catch (error) {
       console.log(error);
-    } finally {
-      console.log('close modal');
     }
   };
 
