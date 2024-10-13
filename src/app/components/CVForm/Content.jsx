@@ -8,10 +8,9 @@ import { openModalById } from '@/app/components/Modal/utils';
 import InputField from '@/app/components/Form/Input';
 import Checkbox from '@/app/components/Form/Checkbox';
 import Button from '@/app/components/Button';
-import SuccessModal from '@/app/components/SuccessModal';
 import styles from './styles.module.scss';
 
-const SUCCESS_MODAL_ID = 'cv-form-success-modal';
+import { SUCCESS_MODAL_ID } from './constants';
 
 const emailFields = {
   name: 'name',
@@ -194,12 +193,6 @@ export const Content = ({ sectionFormData }) => {
           name={submitBtn?.name}
         />
       </form>
-
-      <SuccessModal
-        id={SUCCESS_MODAL_ID}
-        title={successMessage.title}
-        message={successMessage.message}
-      />
     </section>
   );
 };
