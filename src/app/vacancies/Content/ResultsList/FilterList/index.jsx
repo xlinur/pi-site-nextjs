@@ -56,11 +56,11 @@ const FilterItem = ({
   };
 
   const onSelectedValuesToggle = (option) => () => {
-    onChange?.(
-      values.includes(option)
-        ? values.filter((v) => v !== v)
-        : [...values, option],
-    );
+    if (values.includes(option)) {
+      onChange?.(values.filter((item) => item !== option));
+    } else {
+      onChange?.([...values, option]);
+    }
   };
 
   return (

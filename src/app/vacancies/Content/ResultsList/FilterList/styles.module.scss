@@ -29,6 +29,8 @@
     flex-direction: column;
     row-gap: 6px;
     margin-top: 16px;
+    max-height: 280px;
+    overflow-y: auto;
 
     .valueItem {
       label {
