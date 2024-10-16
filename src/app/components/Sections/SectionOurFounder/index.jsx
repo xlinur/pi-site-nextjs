@@ -3,6 +3,12 @@ import Image from 'next/image';
 import { createSocialsData } from '@/app/utils/createSocialsData';
 
 import styles from './styles.module.scss';
+import { Tsukimi_Rounded } from 'next/font/google';
+
+const tsukimi = Tsukimi_Rounded({
+  subsets: ['latin'],
+  weight: ['400'],
+});
 
 export default async function SectionOurFounder(props) {
   const { title, photo, name, position, text, description, settingsData } =
@@ -41,7 +47,10 @@ export default async function SectionOurFounder(props) {
           </div>
         </div>
         <div className={styles.cardFounderContent}>
-          <div className={`h5 ${styles.cardFounderContentText}`}>{text}</div>
+          <div className={`h5 ${styles.cardFounderContentText}`}>
+            <span className={tsukimi.className}>“</span>
+            <blockquote>{text}</blockquote>
+          </div>
 
           <div className={styles.cardFounderContentExperience}>
             <Markdown>{description}</Markdown>

@@ -8,13 +8,16 @@
   display: grid;
   grid-template-columns: 1fr 467px;
 
-  @include md {
-    grid-template-columns: 1fr 2fr;
+  @include lg {
     column-gap: 12px;
+    padding: 40px 20px;
   }
 
-  @include sm {
+  @include md {
     grid-template-columns: 1fr;
+    padding: 0;
+    border: 1px solid var(--gray);
+    border-radius: 30px;
   }
 
   header {
@@ -24,8 +27,14 @@
     justify-content: center;
     position: relative;
     text-align: center;
+    min-width: 247px;
 
-    @include sm {
+    @include rwd(901) {
+      min-width: auto;
+      padding-right: 20px;
+    }
+
+    @include md {
       display: none;
     }
 
@@ -40,7 +49,7 @@
       transform: translate(-50%, -50%);
       z-index: 0;
 
-      font-size: 338px;
+      font-size: clamp(135px, 23vw, 338px);
       font-weight: 700;
       line-height: 1;
       color: var(--white);
@@ -60,6 +69,13 @@
     border: 1px solid var(--gray);
     border-radius: 30px;
     padding: 20px;
+    overflow: hidden;
+    position: relative;
+    background-color: inherit;
+
+    @include md {
+      border: none;
+    }
 
     h5 {
       text-align: center;
