@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './styles.module.scss';
-import Markdown from 'react-markdown';
+import Markdown from '@/app/components/Markdown';
 
 export default function SectionHowWeWork(props) {
   // type 'vertical' | 'horizontal'

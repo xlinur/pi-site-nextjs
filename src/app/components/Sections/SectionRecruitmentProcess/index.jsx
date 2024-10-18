@@ -1,6 +1,6 @@
 import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import styles from './styles.module.scss';
-import Markdown from 'react-markdown';
+import Markdown from '@/app/components/Markdown';
 
 const SectionRecruitmentProcess = ({
   title,

@@ -1,4 +1,4 @@
-import Markdown from 'react-markdown';
+import Markdown from '@/app/components/Markdown';
 import clsx from 'clsx';
 import { routes } from '@/config/routes';
 import { ANCHORS } from '@/app/core/constants/anchor';

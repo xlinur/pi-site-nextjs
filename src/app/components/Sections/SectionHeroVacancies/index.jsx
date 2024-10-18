@@ -1,4 +1,4 @@
-import Markdown from 'react-markdown';
+import Markdown from '@/app/components/Markdown';
 import Button from '@/app/components/Button';
 
 import styles from './styles.module.scss';

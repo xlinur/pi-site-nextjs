@@ -1,4 +1,4 @@
-import Markdown from 'react-markdown';
+import Markdown from '@/app/components/Markdown';
 import Image from 'next/image';
 import Button from '@/app/components/Button';
 import { createNavigation } from '@/app/utils/createNavigation';

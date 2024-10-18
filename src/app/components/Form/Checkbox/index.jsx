@@ -1,6 +1,6 @@
 'use client';
 
-import Markdown from 'react-markdown';
+import Markdown from '@/app/components/Markdown';
 // import { useState } from "react";
 import styles from './styles.module.scss';
 

@@ -1,4 +1,4 @@
-import Markdown from 'react-markdown';
+import Markdown from '@/app/components/Markdown';
 import Button from '@/app/components/Button';
 import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import HeroAnimateBg from './HeroAnimateBg';

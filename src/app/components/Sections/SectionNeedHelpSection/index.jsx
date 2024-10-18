@@ -1,4 +1,4 @@
-import Markdown from 'react-markdown';
+import Markdown from '@/app/components/Markdown';
 import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import chatSVG from '@/app/assets/icons/chat-white.svg';
 import styles from './styles.module.scss';

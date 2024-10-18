@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import Markdown from 'react-markdown';
+import Markdown from '@/app/components/Markdown';
 import clsx from 'clsx';
 
 import Button from '@/app/components/Button';

@@ -3,7 +3,7 @@ import Button from '@/app/components/Button';
 import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import visionSVG from '@/app/assets/icons/vision.svg';
 import styles from './styles.module.scss';
-import Markdown from 'react-markdown';
+import Markdown from '@/app/components/Markdown';
 import clsx from 'clsx';
 
 export default function SectionCustomVision({

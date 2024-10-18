@@ -1,6 +1,6 @@
 import Button from '@/app/components/Button';
 import styles from './styles.module.scss';
-import Markdown from 'react-markdown';
+import Markdown from '@/app/components/Markdown';
 import Image from 'next/image';
 import peopleSVG from '@/app/assets/icons/people-1-white.svg';
 import { ANCHORS } from '@/app/core/constants/anchor';

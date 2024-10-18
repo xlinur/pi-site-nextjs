@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import Markdown from 'react-markdown';
+import Markdown from '@/app/components/Markdown';
 import Image from 'next/image';
 import relocation from '@/app/assets/icons/relocation.png';
 

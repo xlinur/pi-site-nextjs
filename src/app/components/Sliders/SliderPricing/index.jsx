@@ -2,7 +2,7 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './styles.module.scss';
-import Markdown from 'react-markdown';
+import Markdown from '@/app/components/Markdown';
 import clsx from 'clsx';
 import Image from 'next/image';
 import moneyImg from '@/app/assets/icons/money.png';
