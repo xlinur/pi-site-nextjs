@@ -32,6 +32,25 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+
+      .active {
+        background-color: var(--blue);
+        color: var(--white);
+      }
+
+      .skeletonBtn {
+        border-radius: 10px;
+        padding: 10px 20px;
+        height: 33px;
+      }
+
+      :where(button) {
+        color: var(--dark-gray);
+  
+        &:hover {
+          color: var(--white);
+        }
+      }
     }
   }
 }

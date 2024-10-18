@@ -8,6 +8,9 @@ import { useCases } from './Context';
 import styles from '../styles.module.scss';
 import SkeletonCard from '@/app/components/Skeletons/Card';
 import SkeletonButton from '@/app/components/Skeletons/Button';
+import clsx from 'clsx';
+import { style } from 'framer-motion/client';
+import SkeletonTitle from '@/app/components/Skeletons/Title';
 
 const Content = ({ spheresFilterTitle, settingsData }) => {
   const {
@@ -51,9 +54,10 @@ const Content = ({ spheresFilterTitle, settingsData }) => {
         <div className="container">
           <section className={styles.sectionCasesNav}>
             <div className={styles.casesNavItem}>
+              <SkeletonTitle />
               <div className={styles.casesNavItemList}>
                 {Array.from(Array(2)).map((_, idx) => (
-                  <SkeletonButton key={idx} />
+                  <SkeletonButton className={styles.skeletonBtn} key={idx} />
                 ))}
               </div>
             </div>
@@ -63,7 +67,7 @@ const Content = ({ spheresFilterTitle, settingsData }) => {
         <div className="container">
           <section className={styles.sectionListLink}>
             <div className={styles.list}>
-              {Array.from(Array(3)).map((_, idx) => (
+              {Array.from(Array(2)).map((_, idx) => (
                 <SkeletonCard
                   addExtraContent
                   addButton
@@ -88,7 +92,8 @@ const Content = ({ spheresFilterTitle, settingsData }) => {
               {sphereFilterOptions.map(({ key, name }) => (
                 <Button
                   key={key}
-                  theme={filter.sphere === key ? 'primary' : 'secondary'}
+                  theme={'default'}
+                  className={clsx(filter.sphere === key && styles.active)}
                   name={name}
                   onClick={onSphereFilterClick(key)}
                 />

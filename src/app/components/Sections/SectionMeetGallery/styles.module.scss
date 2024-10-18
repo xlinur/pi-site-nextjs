@@ -26,10 +26,18 @@
       position: relative;
       border-radius: var(--rounded-xl);
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      &:nth-child(2) {
+      &:nth-child(2) img {
         border-radius: 50%;
         overflow: hidden;
+        max-width: 90%;
+
+        @include rwd(830) {
+          max-width: 100%;
+        }
       }
     }
 

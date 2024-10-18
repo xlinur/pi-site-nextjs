@@ -11,6 +11,14 @@
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+
+    :where(a) {
+      color: var(--dark-gray);
+
+      &:hover {
+        color: var(--white);
+      }
+    }
   }
 
   .footerContent {
