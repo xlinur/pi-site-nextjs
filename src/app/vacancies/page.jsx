@@ -16,9 +16,13 @@ export const generateMetadata = async () => {
 };
 
 export default async function PageVacancies() {
-  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
+  const [page, settingsData] = await Promise.all([
+    fetchWrapper(PAGE_DATA_REQUEST_PATH),
+    fetchWrapper('/api/global?populate=deep'),
+  ]);
 
-  const pageData = data.data.attributes;
+  const pageData = page.data.attributes;
+  const { locale } = settingsData.data.attributes || {};
 
   return (
     <PageTemplate>
@@ -29,7 +33,7 @@ export default async function PageVacancies() {
 
         <div className="container">
           <Suspense fallback={null}>
-            <Content pageData={pageData} />
+            <Content pageData={pageData} locale={locale} />
           </Suspense>
         </div>
 

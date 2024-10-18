@@ -2,9 +2,9 @@ import { createMetadataFromSeo } from '@/app/utils/metadata';
 import PageTemplate from '@/app/components/PageTemplate';
 import { CVFormWrapper } from '@/app/components/CVForm/CVFormWrapper';
 import fetchWrapper from '@/app/utils/fetchWrapper';
+import vacanciesFetchWrapper from '@/app/utils/vacanciesFetchWrapper';
 import Content from './Content';
 import styles from './styles.module.scss';
-import { Suspense } from 'react';
 
 const PAGE_DATA_REQUEST_PATH = '/api/page-single-vacancy?populate=deep';
 
@@ -15,20 +15,21 @@ export const generateMetadata = async () => {
 };
 
 export default async function PageVacancy({ params }) {
-  const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
+  const [pageData, vacancyData] = await Promise.all([
+    fetchWrapper(PAGE_DATA_REQUEST_PATH),
+    vacanciesFetchWrapper(`/vacancies/${params.id}`),
+  ]);
 
-  const { descriptionTitle, replyBtn } = data.data.attributes;
+  const { descriptionTitle, replyBtn } = pageData.data.attributes;
 
   return (
     <PageTemplate>
       <main className={styles.page}>
-        <Suspense fallback={null}>
-          <Content
-            id={params.id}
-            descriptionTitle={descriptionTitle}
-            replyBtn={replyBtn}
-          />
-        </Suspense>
+        <Content
+          descriptionTitle={descriptionTitle}
+          replyBtn={replyBtn}
+          data={vacancyData}
+        />
 
         <div className="container">
           <CVFormWrapper />

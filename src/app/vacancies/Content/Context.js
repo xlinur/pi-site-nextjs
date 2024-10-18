@@ -13,16 +13,24 @@ import request from '@/app/utils/request';
 const VacanciesContext = createContext();
 
 const defaultVacancies = {
-  data: [],
+  totalCount: 0,
+  totalPages: 0,
+  vacancies: [],
+};
+
+const defaultFilters = {
+  skills: [],
+  types: [],
+  locations: [],
 };
 
 const defaultSelectedFilters = {};
 
 const defaultPage = 1;
 
-export const VacanciesContextProvider = ({ children }) => {
+export const VacanciesContextProvider = ({ children, locale }) => {
   const [vacancies, setVacancies] = useState(defaultVacancies);
-  const [filters, setFilters] = useState([]);
+  const [filters, setFilters] = useState(defaultFilters);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [selectedFilters, setSelectedFilters] = useState(
     defaultSelectedFilters,
@@ -38,23 +46,29 @@ export const VacanciesContextProvider = ({ children }) => {
       const params = new URLSearchParams({
         filters: JSON.stringify(appliedFilters),
         page: currentPage,
+        pageSize: 10,
+        locale,
       });
 
       const data = await request.get(`/api/vacancies?${params}`);
 
-      setVacancies(data);
+      setVacancies(data.data);
     } finally {
       setIsLoadingVacancies(false);
     }
-  }, [currentPage, appliedFilters]);
+  }, [currentPage, appliedFilters, locale]);
 
   const getFilters = async () => {
     try {
       setIsLoadingFilters(true);
 
-      const data = await request.get('/api/vacancies/filters');
+      const params = new URLSearchParams({
+        locale,
+      });
 
-      setFilters(data.filters);
+      const data = await request.get(`/api/vacancies/filters?${params}`);
+
+      setFilters(data.data);
     } finally {
       setIsLoadingFilters(false);
     }

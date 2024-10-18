@@ -1,46 +1,25 @@
 import { NextResponse } from 'next/server';
+import { request } from './utils';
 import { sendEmailWithCV } from '../../../lib/sendEmailWithCV';
 
-const mock = {
-  data: [
-    {
-      id: '9151f21f-43ae-43b4-92f3-f4af67cdf544',
-      title: 'Teamlead C++',
-      location: 'Remote',
-      type: 'Full Time',
-    },
-    {
-      id: '9151f21f-43ae-43b4-92f3-f4af67cdf544',
-      title: 'Teamlead C++',
-      location: 'Remote',
-      type: 'Full Time',
-    },
-    {
-      id: '9151f21f-43ae-43b4-92f3-f4af67cdf544',
-      title: 'Teamlead C++',
-      location: 'Remote',
-      type: 'Full Time',
-    },
-    {
-      id: '9151f21f-43ae-43b4-92f3-f4af67cdf544',
-      title: 'Teamlead C++',
-      location: 'Remote',
-      type: 'Full Time',
-    },
-    {
-      id: '9151f21f-43ae-43b4-92f3-f4af67cdf544',
-      title: 'Teamlead C++',
-      location: 'Remote',
-      type: 'Full Time',
-    },
-  ],
-  totalCount: 45,
-  totalPages: 4,
-  currentPage: 1,
-};
+export const GET = async (req) => {
+  const { url } = req;
 
-export const GET = async () => {
-  return NextResponse.json(mock);
+  const params = new URLSearchParams(url.split('?')[1]);
+
+  const page = params.get('page');
+  const pageSize = params.get('pageSize');
+  const locale = params.get('locale');
+  const filters = JSON.parse(params.get('filters'));
+
+  const response = await request('/vacancies', {
+    ...filters,
+    page,
+    pageSize,
+    locale,
+  });
+
+  return response;
 };
 
 export async function POST(req, _) {

@@ -5,9 +5,9 @@ import SkeletonCard from '@/app/components/Skeletons/Card';
 
 import { useVacanciesContext } from '../Context';
 import CardVacancy from './CardVacancy';
-import FilterBool from './FilterBool';
-import FilterList from './FilterList';
+// import FilterBool from './FilterBool';
 // import FilterGroupList from './FilterGroupList';
+import FilterList from './FilterList';
 
 import styles from './styles.module.scss';
 
@@ -37,6 +37,12 @@ const ResultsList = ({ pageData }) => {
     setFilter(id, value);
   };
 
+  const filtersSectios = Object.entries(filters).map(([key, options]) => ({
+    id: key,
+    title: 'No TITLE FOUND',
+    options,
+  }));
+
   return (
     <section className={styles.sectionWrapper}>
       <header>
@@ -57,35 +63,16 @@ const ResultsList = ({ pageData }) => {
             </>
           ) : (
             <>
-              {filters.map((filter) => {
-                switch (filter.type) {
-                  case 'list':
-                    return (
-                      <FilterList
-                        key={filter.id}
-                        title={filter.title}
-                        values={selectedFilters[filter.id]}
-                        options={filter.values}
-                        onChange={onFilterChange(filter.id)}
-                        noFilterText={filterNoResults}
-                      />
-                    );
-                  // case 'group-list':
-                  //   return <FilterGroupList key={filter.id} {...filter} />;
-                  case 'boolean':
-                    return (
-                      <FilterBool
-                        key={filter.id}
-                        title={filter.title}
-                        checked={selectedFilters[filter.id]}
-                        onChange={onFilterChange(filter.id)}
-                      />
-                    );
-
-                  default:
-                    return null;
-                }
-              })}
+              {filtersSectios.map((filter) => (
+                <FilterList
+                  key={filter.id}
+                  title={filter.title}
+                  values={selectedFilters[filter.id]}
+                  options={filter.options}
+                  onChange={onFilterChange(filter.id)}
+                  noFilterText={filterNoResults}
+                />
+              ))}
 
               <div className={styles.filterActions}>
                 <Button
@@ -112,7 +99,7 @@ const ResultsList = ({ pageData }) => {
             </>
           ) : (
             <>
-              {vacancies.data.map((item) => (
+              {vacancies.vacancies.map((item) => (
                 <CardVacancy key={item.id} {...item} />
               ))}
 

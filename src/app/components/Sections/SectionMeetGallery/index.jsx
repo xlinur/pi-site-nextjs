@@ -1,15 +1,16 @@
 import Image from 'next/image';
-// gallery
-import gallery01JPG from '@/app/assets/images/gallery/1.jpg';
-import gallery02JPG from '@/app/assets/images/gallery/2.jpg';
-import gallery03JPG from '@/app/assets/images/gallery/3.jpg';
-import gallery04JPG from '@/app/assets/images/gallery/4.jpg';
-import gallery05JPG from '@/app/assets/images/gallery/5.jpg';
-import gallery06JPG from '@/app/assets/images/gallery/6.jpg';
-
 import styles from './styles.module.scss';
 
-const SectionMeetGallery = ({ title, text }) => {
+const SectionMeetGallery = ({ title, text, images }) => {
+  const [img1, img2, img3, img4, img5, img6] = images;
+
+  const gallery01JPG = img1.image.data.attributes.url;
+  const gallery02JPG = img2.image.data.attributes.url;
+  const gallery03JPG = img3.image.data.attributes.url;
+  const gallery04JPG = img4.image.data.attributes.url;
+  const gallery05JPG = img5.image.data.attributes.url;
+  const gallery06JPG = img6.image.data.attributes.url;
+
   return (
     <section className={styles.sectionMeet}>
       <header>
