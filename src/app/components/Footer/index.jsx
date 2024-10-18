@@ -114,7 +114,9 @@ const Footer = async () => {
             </div>
 
             <div className={styles.footerContentPhone}>
-              <h5>{contacts.phone}</h5>
+              <h5>
+                <a href={`tel:+${contacts.phone}`}>{contacts.phone}</a>
+              </h5>
 
               <div className={styles.socialMedia}>
                 {socials.map((item) => (

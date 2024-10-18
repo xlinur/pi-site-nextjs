@@ -87,6 +87,10 @@ main {
   }
 }
 
+a[href^="mailto:"], a[href^="tel:"] {
+  text-wrap: nowrap;
+}
+
 strong {
   font-weight: 700;
 }

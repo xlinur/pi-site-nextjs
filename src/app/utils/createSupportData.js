@@ -15,7 +15,7 @@ export const createSupportData = ({ contacts }) => [
   },
   {
     img: emailSvg,
-    link: contacts.email,
+    link: `mailto:${contacts.email}`,
     name: contacts.email,
   },
 ];
