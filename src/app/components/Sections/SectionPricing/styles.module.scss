@@ -1,5 +1,15 @@
 @use '../../../styles/mixins.scss' as *;
 
+.sectionPricing {
+  header {
+    margin-bottom: 40px;
+
+    @include md {
+      margin-bottom: 30px;
+    }
+  }
+}
+
 .sectionPricingGrid {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;

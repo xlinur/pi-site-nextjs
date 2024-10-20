@@ -18,6 +18,9 @@ const ResultsList = ({ pageData }) => {
     filterFindBtn,
     filterResetBtn,
     filterNoResults,
+    filterLocationsTitle,
+    filterSkillsTitle,
+    filterTypesTitle,
   } = pageData;
 
   const {
@@ -39,7 +42,11 @@ const ResultsList = ({ pageData }) => {
 
   const filtersSectios = Object.entries(filters).map(([key, options]) => ({
     id: key,
-    title: 'No TITLE FOUND',
+    title: {
+      locations: filterLocationsTitle,
+      skills: filterSkillsTitle,
+      types: filterTypesTitle,
+    }[key],
     options,
   }));
 

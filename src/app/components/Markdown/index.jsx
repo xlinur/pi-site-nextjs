@@ -2,12 +2,22 @@ import MDComponent from 'react-markdown';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
 
-const Markdown = ({ children, className }) => {
-  return (
-    <MDComponent className={clsx(styles.markdown, className)}>
-      {children}
-    </MDComponent>
-  );
+const isHtmlCode = (data) =>
+  data.includes('<!--strapi-plugin-rich-text-output-->');
+
+const Markdown = ({ children = '', className }) => {
+  const typographyClsx = clsx(styles.markdown, className);
+
+  if (isHtmlCode(children)) {
+    return (
+      <div
+        className={typographyClsx}
+        dangerouslySetInnerHTML={{ __html: children }}
+      />
+    );
+  }
+
+  return <MDComponent className={typographyClsx}>{children}</MDComponent>;
 };
 
 export default Markdown;
