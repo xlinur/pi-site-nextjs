@@ -31,7 +31,6 @@ export default async function Home() {
     SectionWithIndustriesImage,
     WhyInfoSection,
     ExclusiveProcess,
-    MeetOurTeam,
   } = data.data.attributes;
 
   return (
@@ -76,7 +75,7 @@ export default async function Home() {
 
         <div className={styles.sectionMeetWrapper}>
           <div className="container">
-            <SectionMeetGallery {...MeetOurTeam} />
+            <SectionMeetGallery />
           </div>
         </div>
 

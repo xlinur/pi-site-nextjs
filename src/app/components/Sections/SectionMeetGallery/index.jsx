@@ -1,7 +1,13 @@
 import Image from 'next/image';
+import Markdown from '@/app/components/Markdown';
+import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
-const SectionMeetGallery = ({ title, text, images }) => {
+const SectionMeetGallery = async () => {
+  const data = await fetchWrapper('/api/section-meet-our-team?populate=deep');
+
+  const { title, text, images } = data.data.attributes;
+
   const [img1, img2, img3, img4, img5, img6] = images;
 
   const gallery01JPG = img1.image.data.attributes.url;
@@ -54,7 +60,7 @@ const SectionMeetGallery = ({ title, text, images }) => {
           <Image src={gallery05JPG} alt="Gallery Image" fill />
         </div>
         <div className={styles.galleryCard}>
-          <p>{text}</p>
+          <Markdown>{text}</Markdown>
         </div>
         <div>
           <Image

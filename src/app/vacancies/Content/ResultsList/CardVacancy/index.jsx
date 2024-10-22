@@ -24,8 +24,8 @@ const CardVacancy = ({ id, title, type, location }) => {
         <h5>{title}</h5>
 
         <ul className={styles.info}>
-          <li>{location}</li>
-          <li>{type}</li>
+          <li>{location?.join(', ')}</li>
+          <li>{type?.join(', ')}</li>
         </ul>
       </div>
 

@@ -44,7 +44,16 @@ export const createNavigation = (dictionaryData, spheresData) => {
     },
     {
       title: menu.earnWithUs,
-      url: routes.earnWithUs(),
+      childs: [
+        {
+          title: menu?.referalProgram,
+          url: routes.earnWithUs(),
+        },
+        {
+          title: menu.splitRecruitment,
+          url: routes.splitRecruitment(),
+        },
+      ],
     },
     {
       title: menu.contacts,
@@ -56,10 +65,6 @@ export const createNavigation = (dictionaryData, spheresData) => {
     {
       title: menu.reviews,
       url: routes.feedbacks(),
-    },
-    {
-      title: menu.splitRecruitment,
-      url: routes.splitRecruitment(),
     },
     {
       title: menu.cases,

@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import peopleSVG from '@/app/assets/icons/people-1-white.svg';
 import fetchWrapper from '@/app/utils/fetchWrapper';
+import Markdown from '@/app/components/Markdown';
 import styles from './styles.module.scss';
 
 const checkCircle = (
@@ -64,7 +65,7 @@ export default async function SectionAboutPersonalinvest({ withTitle }) {
 
               <div className={styles.listItemContent}>
                 <h4>{item.title}</h4>
-                <p>{item?.description}</p>
+                <Markdown>{item?.description}</Markdown>
               </div>
             </li>
           ))}

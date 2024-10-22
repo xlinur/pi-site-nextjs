@@ -9,8 +9,8 @@ import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrap
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
 import SectionSocialMedia from '@/app/components/Sections/SectionSocialMedia';
 import SectionOurFounder from '@/app/components/Sections/SectionOurFounder';
-import SectionOurTeam from '@/app/components/Sections/SectionOurTeam';
 import SectionTrustedMap from '@/app/components/Sections/SectionTrustedMap';
+import SectionMeetGallery from '@/app/components/Sections/SectionMeetGallery';
 import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 
@@ -28,8 +28,7 @@ export default async function AboutUs() {
     fetchWrapper('/api/global?populate=deep'),
   ]);
 
-  const { AnimatedHero, TreeSection, OurFounder, OurTeam } =
-    pageData.data.attributes;
+  const { AnimatedHero, TreeSection, OurFounder } = pageData.data.attributes;
 
   return (
     <PageTemplate>
@@ -49,7 +48,7 @@ export default async function AboutUs() {
         </div>
 
         <div className="container">
-          <SectionOurTeam {...OurTeam} />
+          <SectionMeetGallery />
         </div>
 
         <div className={clsx('container', styles.smSkipPadding)}>

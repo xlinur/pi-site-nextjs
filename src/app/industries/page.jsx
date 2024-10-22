@@ -5,7 +5,7 @@ import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrap
 import SectionWeCanHelp from '@/app/components/Sections/SectionWeCanHelp';
 import SectionCustomVision from '@/app/components/Sections/SectionCustomVision';
 import SectionHowWeWork from '@/app/components/Sections/SectionHowWeWork';
-import SectionKeySectors from '@/app/components/Sections/SectionKeySectors';
+import IndustriesWeWorkSection from '@/app/components/Sections/IndustriesWeWork';
 import fetchWrapper from '@/app/utils/fetchWrapper';
 import styles from './styles.module.scss';
 import { routes } from '@/config/routes';
@@ -21,8 +21,12 @@ export const generateMetadata = async () => {
 export default async function PageIndustries() {
   const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
-  const { AnimatedHero, SectorsGrid, TreeSection, SectionWithIndustriesImage } =
-    data.data.attributes;
+  const {
+    AnimatedHero,
+    IndustriesWeWork,
+    TreeSection,
+    SectionWithIndustriesImage,
+  } = data.data.attributes;
 
   return (
     <PageTemplate>
@@ -30,7 +34,7 @@ export default async function PageIndustries() {
         <SectionHero {...AnimatedHero} />
 
         <div className="container">
-          <SectionKeySectors {...SectorsGrid} />
+          <IndustriesWeWorkSection {...IndustriesWeWork} />
         </div>
 
         <div className="container">
