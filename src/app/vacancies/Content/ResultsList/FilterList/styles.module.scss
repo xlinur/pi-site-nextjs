@@ -34,8 +34,8 @@
 
     .valueItem {
       label {
-        align-items: center;
-        color: var(--dark);
+        align-items: flex-start;
+        color: var(--dark-gray);
       }
     }
   }

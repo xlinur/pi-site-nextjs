@@ -16,16 +16,11 @@ function CardFeedback(props) {
     company,
     authorName,
     authorPosition,
-    firstSlideTheme,
     readAllBtn,
     className,
   } = props;
 
-  const cardClsx = clsx(
-    styles.card,
-    styles[`bg-${firstSlideTheme}`],
-    className,
-  );
+  const cardClsx = clsx(styles.card, className);
 
   const openModal = () => {
     openModalById(id);

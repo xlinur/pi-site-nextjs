@@ -32,7 +32,7 @@ export default async function RelocationHelpPage() {
           <SectionBlockStepsPlan {...BlockStepsPlan} />
         </div>
 
-        <SectionFeedbackList sliderClass={styles.firstSlide} />
+        <SectionFeedbackList firstSlideTheme="dark" />
 
         <SectionWeCanHelp />
 

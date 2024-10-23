@@ -52,3 +52,21 @@
     }
   }
 }
+
+.first-slide--dark {
+  > div {
+    > div:first-child article {
+      background-color: var(--light-blue);
+      border-color: transparent;
+    }
+  }
+}
+
+.first-slide--white {
+  > div {
+    > div:first-child article {
+      background-color: var(--white);
+      border-color: transparent;
+    }
+  }
+}

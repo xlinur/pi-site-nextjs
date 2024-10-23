@@ -9,6 +9,7 @@ export default async function SectionFeedbackList({
   inData,
   sliderClass,
   sectionClass,
+  firstSlideTheme,
 }) {
   const [clientsFeedbacksData, feedbacksData] = await Promise.all([
     fetchWrapper('/api/section-what-our-cliens-say?populate=deep'),
@@ -36,7 +37,10 @@ export default async function SectionFeedbackList({
         <SliderFeedback
           data={inData || feedbacksData.data}
           readAllBtn={readAllBtn}
-          className={sliderClass}
+          className={clsx(
+            sliderClass,
+            styles[`first-slide--${firstSlideTheme}`],
+          )}
         />
       </div>
 

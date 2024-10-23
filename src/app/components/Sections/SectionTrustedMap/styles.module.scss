@@ -6,13 +6,18 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  row-gap: 40px;
 
   > h2 {
     position: absolute;
     text-align: center;
-    top: 77px;
+    top: 20px;
     z-index: 1;
     max-width: 771px;
+
+    @include lg {
+      top: 3%;
+    }
 
     @include md {
       position: initial;

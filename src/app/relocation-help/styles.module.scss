@@ -11,12 +11,3 @@
     margin-top: 40px;
   }
 }
-
-.firstSlide {
-  > div {
-    > div:first-child article {
-      background-color: var(--light-blue);
-      border-color: transparent;
-    }
-  }
-}

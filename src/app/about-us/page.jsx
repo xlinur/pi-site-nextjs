@@ -55,7 +55,7 @@ export default async function AboutUs() {
           <SectionTrustedMap variant="some" />
         </div>
 
-        <SectionFeedbackList />
+        <SectionFeedbackList firstSlideTheme="dark" />
 
         <SectionWeCanHelp />
 
