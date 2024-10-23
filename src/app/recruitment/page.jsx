@@ -36,10 +36,12 @@ export default async function PageRecruitment() {
   return (
     <PageTemplate>
       <main className={styles.pageRecruitment}>
-        <SectionHero {...AnimatedHero} />
+        <div className={styles.customGapHero}>
+          <SectionHero {...AnimatedHero} />
 
-        <div className="container">
-          <SectionInfoWithCards {...InfoWithCards} />
+          <div className="container">
+            <SectionInfoWithCards {...InfoWithCards} />
+          </div>
         </div>
 
         <div className="container">

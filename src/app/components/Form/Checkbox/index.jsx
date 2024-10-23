@@ -29,7 +29,7 @@ const Checkbox = ({ label, ...props }) => {
 
       <div className={styles.label}>
         <Markdown>{label}</Markdown>
-        <span>{props.required && '*'}</span>
+        {/* <span>{props.required}</span> */}
       </div>
     </label>
   );

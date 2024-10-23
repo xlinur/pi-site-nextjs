@@ -31,10 +31,12 @@ export default async function Consulting() {
   return (
     <PageTemplate>
       <main className={styles.relocationHelpPage}>
-        <SectionHero {...AnimatedHero} />
+        <div className={styles.customGapHero}>
+          <SectionHero {...AnimatedHero} />
 
-        <div className="container">
-          <SectionConsultingServices {...ConsultingServices} />
+          <div className="container">
+            <SectionConsultingServices {...ConsultingServices} />
+          </div>
         </div>
 
         <div className={styles.sectionWhyWrapper}>

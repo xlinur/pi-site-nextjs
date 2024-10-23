@@ -292,7 +292,7 @@ export const config = {
         mode: 'delete',
         value: 0,
       },
-      value: 100,
+      value: 110,
     },
     opacity: {
       value: {
@@ -461,7 +461,7 @@ export const config = {
         value: '#BFBFBF',
       },
       consent: false,
-      distance: 210,
+      distance: 320,
       enable: true,
       frequency: 1,
       opacity: 0.6,

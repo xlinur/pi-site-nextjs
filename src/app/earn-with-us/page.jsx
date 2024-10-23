@@ -30,10 +30,12 @@ export default async function PageEarnWithUs() {
   return (
     <PageTemplate>
       <main className={styles.pageContactUs}>
-        <SectionHero {...AnimatedHero} />
+        <div>
+          <SectionHero {...AnimatedHero} />
 
-        <div className="container">
-          <Advantages advantages={advantages.advantage} />
+          <div className="container">
+            <Advantages advantages={advantages.advantage} />
+          </div>
         </div>
 
         <div className="container">

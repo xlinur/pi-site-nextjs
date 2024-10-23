@@ -44,10 +44,12 @@ export default async function SpheresPage({ params }) {
   return (
     <PageTemplate>
       <main>
-        <SectionHero {...AnimatedHero} />
+        <div className={styles.customGapHero}>
+          <SectionHero {...AnimatedHero} />
 
-        <div className="container">
-          <SectionInfoWithCards {...InfoWithCards} />
+          <div className="container">
+            <SectionInfoWithCards {...InfoWithCards} />
+          </div>
         </div>
 
         <div className="container">

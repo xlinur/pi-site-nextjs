@@ -2,6 +2,11 @@
 
 .sectionWrapper {
   position: relative;
+  min-height: 628px;
+
+  @include md {
+    min-height: auto;
+  }
 
   @include sm {
     overflow: hidden;

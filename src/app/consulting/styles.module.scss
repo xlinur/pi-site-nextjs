@@ -1,6 +1,18 @@
 @use '../styles/mixins.scss' as *;
 
-.sectionHelpWrapper {
+.sectionHelpWrapper, .sectionFeedbackWrapper {
   background-color: var(--light-blue);
-  // margin-bottom: 160px;
+}
+
+.customGapHero {
+  display: flex;
+  flex-direction: column;
+  row-gap: 80px;
+
+  @include md {
+    row-gap: 40px;
+  }
+  @include md {
+    row-gap: 32px;
+  }
 }

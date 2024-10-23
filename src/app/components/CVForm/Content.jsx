@@ -1,5 +1,5 @@
 'use client';
-
+import crossSvg from '@/app/assets/icons/cross.svg';
 import { useRef, useState } from 'react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useForm } from '@mantine/form';
@@ -11,6 +11,7 @@ import Button from '@/app/components/Button';
 import styles from './styles.module.scss';
 
 import { SUCCESS_MODAL_ID } from './constants';
+import Image from 'next/image';
 
 const emailFields = {
   name: 'name',
@@ -146,45 +147,52 @@ export const Content = ({ sectionFormData }) => {
 
         {createFormInput(inputSkills.label, emailFields.skills)}
 
-        {legals.map((item, idx) => createCheckbox(item.label, idx))}
-
         <div className={styles.cvUploadBlock}>
-          <p>CV</p>
+          <div>
+            <p>SV</p>
 
-          <span className={styles.cvFileTypes}>
-            (pdf, zip, doc, docx, txt, rtf, rar)
-          </span>
-
-          <div className={styles.cvUploadContent}>
-            <Button
-              theme="secondary"
-              name={uploadBtn.name}
-              onClick={() => fileInputRef.current.click()}
-            />
-
-            <input
-              type="file"
-              accept=".pdf,.zip,.doc,.docx,.txt,.rtf,.rar"
-              ref={fileInputRef}
-              style={{ display: 'none' }}
-              onChange={handleFileChange}
-            />
-
-            {uploadedFile && (
-              <div className={styles.cvFileDisplay}>
-                <span className={styles.cvFileName}>{uploadedFile.name}</span>
-
-                <button
-                  type="button"
-                  className={styles.cvFileRemove}
-                  onClick={handleRemoveFile}
-                >
-                  X
-                </button>
-              </div>
-            )}
+            <span className={styles.cvFileTypes}>
+              (Only pdf, zip, doc, docx, txt, rtf, rar)
+            </span>
           </div>
+
+          {/* <div className={styles.cvUploadContent}></div> */}
+          <Button
+            theme="secondary"
+            name={uploadBtn.name}
+            className={styles.uploadBtn}
+            onClick={() => fileInputRef.current.click()}
+          />
+
+          <input
+            type="file"
+            accept=".pdf,.zip,.doc,.docx,.txt,.rtf,.rar"
+            ref={fileInputRef}
+            style={{ display: 'none' }}
+            onChange={handleFileChange}
+          />
+
+          {uploadedFile && (
+            <div className={styles.cvFileDisplay}>
+              <span className={styles.cvFileName}>{uploadedFile.name}</span>
+
+              <button
+                type="button"
+                className={styles.cvFileRemove}
+                onClick={handleRemoveFile}
+              >
+                <Image
+                  src={crossSvg}
+                  alt="Button remove CV file"
+                  width={24}
+                  height={24}
+                />
+              </button>
+            </div>
+          )}
         </div>
+
+        {legals.map((item, idx) => createCheckbox(item.label, idx))}
 
         <Button
           content="center"

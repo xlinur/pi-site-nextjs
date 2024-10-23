@@ -1,9 +1,25 @@
+@use '../styles/mixins.scss' as *;
+
+.customGapHero {
+  display: flex;
+  flex-direction: column;
+  row-gap: 80px;
+
+  @include md {
+    row-gap: 40px;
+  }
+  @include md {
+    row-gap: 32px;
+  }
+}
+
 .sectionMoreCases {
   header {
     display: flex;
     justify-content: space-between;
-    // margin-bottom: 80px;
   }
+}
 
-  // margin-bottom: 160px;
+.sectionFeedbackWrapper {
+  background-color: var(--light-blue);
 }

@@ -14,6 +14,11 @@
   }
 
   @include md {
+    grid-template-columns: 1fr 340px;
+    column-gap: 5%;
+  }
+
+  @include sm {
     grid-template-columns: 1fr;
     padding: 0;
     border: 1px solid var(--gray);
@@ -35,11 +40,18 @@
     }
 
     @include md {
+      align-items: flex-start;
+      text-align: left;
+      row-gap: 10px;
+    }
+
+    @include sm {
       display: none;
     }
 
     > * {
       z-index: 1;
+      max-width: 440px;
     }
 
     span {
@@ -58,6 +70,8 @@
 
       @include md {
         font-size: 135px;
+        left: 0;
+        transform: translate(0, -50%);
       }
     }
   }
@@ -68,13 +82,14 @@
     row-gap: 12px;
     border: 1px solid var(--gray);
     border-radius: 30px;
-    padding: 20px;
+    padding: 27px 35px;
     overflow: hidden;
     position: relative;
     background-color: inherit;
 
     @include md {
       border: none;
+      padding: 48px 12px;
     }
 
     h5 {
@@ -84,10 +99,19 @@
 }
 
 .cvUploadBlock {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  margin-bottom: 32px;
   margin-top: 20px;
+
+  @include md {
+    grid-template-columns: 2fr 1fr;
+    & > div {
+      display: block;
+    }
+  }
 
   .cvFileTypes {
     font-size: 10px;
@@ -96,38 +120,66 @@
     margin-top: 2px;
     color: var(--gray);
   }
-}
 
-.cvUploadContent {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 16px;
-
-  > button {
+  .uploadBtn {
     justify-content: center;
     width: 143px;
+    border-color: transparent;
+    color: var(--dark-gray);
+    grid-column: 1;
+    grid-row: 2;
+
+    @include md {
+      grid-column: 2;
+      grid-row: 1;
+      width: 111px;
+    }
+
+    &:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background-color: var(--white);
+    }
+  }
+}
+
+.cvFileDisplay {
+  grid-column: 2;
+  grid-row: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 50px;
+  width: 100%;
+  max-width: 203px;
+  border: 1px solid var(--gray);
+  padding-left: 20px;
+  padding-right: 12px;
+  background-color: var(--white);
+  color: var(--gray);
+
+  @include md {
+    grid-row: 2;
+    grid-column: 1 / 3;
+    max-width: 100%;
+    height: 44px;
+    display: flex;
   }
 
-  .cvFileDisplay {
-    display: flex;
+  .cvFileName {
+    user-select: none;
+    @include clampLine(1);
+  }
+
+  .cvFileRemove {
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
-    border-radius: 50px;
-    width: 100%;
-    max-width: 203px;
-    border: 1px solid var(--gray);
-    padding-left: 20px;
-    padding-right: 12px;
-    background-color: var(--white);
-    color: var(--gray);
-
-    .cvFileName {
-      user-select: none;
-    }
-    .cvFileRemove {
-      cursor: pointer;
-      color: initial;
-    }
+    cursor: pointer;
+    color: initial;
+    min-width: 24px;
   }
 }

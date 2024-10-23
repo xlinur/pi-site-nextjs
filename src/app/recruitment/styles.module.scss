@@ -1,3 +1,18 @@
+@use '../styles/mixins' as *;
+
 .sectionHelpWrapper {
   background-color: var(--light-blue);
+}
+
+.customGapHero {
+  display: flex;
+  flex-direction: column;
+  row-gap: 80px;
+
+  @include md {
+    row-gap: 40px;
+  }
+  @include md {
+    row-gap: 32px;
+  }
 }

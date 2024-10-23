@@ -33,10 +33,12 @@ export default async function AboutUs() {
   return (
     <PageTemplate>
       <main>
-        <SectionHero {...AnimatedHero} />
+        <div>
+          <SectionHero {...AnimatedHero} />
 
-        <div className="container">
-          <SectionAboutPersonalinvest />
+          <div className="container">
+            <SectionAboutPersonalinvest />
+          </div>
         </div>
 
         <div className="container">
