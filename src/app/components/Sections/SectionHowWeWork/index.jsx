@@ -4,7 +4,13 @@ import Markdown from '@/app/components/Markdown';
 
 export default function SectionHowWeWork(props) {
   // type 'vertical' | 'horizontal'
-  const { type = 'vertical', title, items = [], fitContent = false } = props;
+  const {
+    type = 'vertical',
+    title,
+    items = [],
+    fitContent = false,
+    className,
+  } = props;
 
   const gridStyles = clsx(
     [styles.treeGrid, styles[type]],
@@ -12,7 +18,7 @@ export default function SectionHowWeWork(props) {
   );
 
   return (
-    <section className={styles.sectionHowWeWork}>
+    <section className={clsx(styles.sectionHowWeWork, className)}>
       <header>
         <h3>{title}</h3>
       </header>

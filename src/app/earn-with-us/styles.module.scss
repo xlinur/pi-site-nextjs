@@ -4,6 +4,13 @@
   background-color: var(--light-blue);
 }
 
+.componentSectionHowWeWork {
+  header {
+    max-width: 600px;
+    text-align: center;
+  }
+}
+
 .wrapperSectionHowWeWork {
   display: flex;
   flex-direction: column;

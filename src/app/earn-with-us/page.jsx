@@ -42,6 +42,7 @@ export default async function PageEarnWithUs() {
           <div className={styles.wrapperSectionHowWeWork}>
             <SectionHowWeWork
               {...OurProcessOfInteraction.treeSection}
+              className={styles.componentSectionHowWeWork}
               type="horizontal"
             />
 
