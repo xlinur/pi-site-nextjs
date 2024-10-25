@@ -17,6 +17,8 @@ import { routes } from '@/config/routes';
 
 const PAGE_DATA_REQUEST_PATH = '/api/page-home?populate=deep';
 
+export const revalidate = 60;
+
 export const generateMetadata = async () => {
   const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
