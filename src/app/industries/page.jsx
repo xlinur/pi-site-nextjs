@@ -12,6 +12,8 @@ import { routes } from '@/config/routes';
 
 const PAGE_DATA_REQUEST_PATH = '/api/page-industries?populate=deep';
 
+export const dynamic = 'force-dynamic';
+
 export const generateMetadata = async () => {
   const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 

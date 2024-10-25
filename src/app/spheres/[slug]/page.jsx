@@ -15,6 +15,8 @@ import styles from './styles.module.scss';
 const PAGE_DATA_REQUEST_PATH = (slug) =>
   `/api/spheres?populate=deep&filters[slug][$eq]=${slug}`;
 
+export const dynamic = 'force-dynamic';
+
 export const generateMetadata = async ({ params }) => {
   const { slug } = params;
 

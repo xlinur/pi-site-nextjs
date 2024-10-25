@@ -7,6 +7,8 @@ import styles from './styles.module.scss';
 
 const PAGE_DATA_REQUEST_PATH = '/api/page-feedbacks?populate=deep';
 
+export const dynamic = 'force-dynamic';
+
 export const generateMetadata = async () => {
   const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 

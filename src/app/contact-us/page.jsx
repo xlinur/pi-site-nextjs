@@ -7,6 +7,8 @@ import fetchWrapper from '@/app/utils/fetchWrapper';
 
 const PAGE_DATA_REQUEST_PATH = '/api/page-contact-us?populate=deep';
 
+export const dynamic = 'force-dynamic';
+
 export const generateMetadata = async () => {
   const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
