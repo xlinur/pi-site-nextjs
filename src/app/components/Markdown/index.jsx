@@ -8,7 +8,7 @@ const isHtmlCode = (data) =>
 const Markdown = ({ children = '', className }) => {
   const typographyClsx = clsx(styles.markdown, className);
 
-  if (isHtmlCode(children)) {
+  if (children && isHtmlCode(children)) {
     return (
       <div
         className={typographyClsx}
