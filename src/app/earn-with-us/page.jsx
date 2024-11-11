@@ -27,6 +27,7 @@ export default async function PageEarnWithUs() {
     AnimatedHero,
     Advantages: advantages,
     OurProcessOfInteraction,
+    PaymentTerms,
   } = data.data.attributes;
 
   return (
@@ -45,7 +46,6 @@ export default async function PageEarnWithUs() {
             <SectionHowWeWork
               {...OurProcessOfInteraction.treeSection}
               className={styles.componentSectionHowWeWork}
-              type="horizontal"
             />
 
             <OpenModalFormButton
@@ -56,7 +56,7 @@ export default async function PageEarnWithUs() {
         </div>
 
         <div className="container">
-          <SectionPaymentTerms />
+          <SectionPaymentTerms {...PaymentTerms} />
         </div>
 
         <SectionWeCanHelp />

@@ -23,7 +23,8 @@ export const generateMetadata = async () => {
 export default async function PageSplitRecruitment() {
   const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
 
-  const { AnimatedHero, Proposal, TreeSection } = data.data.attributes;
+  const { AnimatedHero, Proposal, TreeSection, PaymentTerms } =
+    data.data.attributes;
 
   return (
     <PageTemplate>
@@ -43,7 +44,7 @@ export default async function PageSplitRecruitment() {
         </div>
 
         <div className="container">
-          <SectionPaymentTerms />
+          <SectionPaymentTerms {...PaymentTerms} />
         </div>
 
         <div className="container">

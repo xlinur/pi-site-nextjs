@@ -14,6 +14,14 @@
     .treeGridItem {
       position: relative;
       display: grid;
+
+      .title {
+        min-height: 30px;
+      }
+
+      .text {
+        max-width: 400px;
+      }
     }
 
     .treeGridWrapper {
@@ -65,25 +73,28 @@
       }
 
       &:nth-child(odd of div.treeGridItem) {
-        grid-template-columns: 1fr 209px;
         grid-column: 1;
+        text-align: right;
+
         .title {
           grid-column: 2;
         }
 
         .text {
+          justify-self: end;
           grid-column: 2;
         }
       }
 
       &:nth-child(even of div.treeGridItem) {
-        grid-template-columns: 1fr 209px;
         grid-column: 3;
+
         .title {
           grid-column: 1;
         }
 
         .text {
+          justify-self: start;
           grid-column: 1;
         }
       }
@@ -97,15 +108,14 @@
 
     .treeGridWrapper {
       grid-column: 2;
-      min-height: 101px;
-      height: 190px;
+      height: 150px;
 
       &:last-child {
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        min-height: initial;
-        height: initial;
+        height: 80px;
+
+        &::before {
+          height: 0;
+        }
 
         .treeGridCount {
           padding-bottom: 0;
@@ -120,7 +130,7 @@
     }
 
     &.fitContent .treeGridWrapper {
-      height: initial;
+      height: 100px;
     }
 
     .treeGridCount {

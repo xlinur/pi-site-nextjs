@@ -2,21 +2,17 @@ import SliderPaymentTerms from '@/app/components/Sliders/SliderPaymentTerms';
 import styles from './styles.module.scss';
 import Image from 'next/image';
 import Button from '@/app/components/Button';
+import Markdown from '@/app/components/Markdown';
 import dollarsSVG from '@/app/assets/icons/dollars.svg';
-import fetchWrapper from '@/app/utils/fetchWrapper';
 import { ANCHORS } from '@/app/core/constants/anchor';
 
-export default async function SectionPaymentTerms() {
-  const data = await fetchWrapper('/api/section-payment-terms?populate=deep');
-
-  const { title, items, contactBtn } = data.data.attributes;
-
+export default function SectionPaymentTerms({ title, items, contactBtn }) {
   const altComponent = () => (
     <div className={styles.paymentTermsSectionGrid}>
       {items.map((item, idx) => (
         <div className={styles.cardTerms} key={idx}>
           <h5>{item.title}</h5>
-          <p>{item.description}</p>
+          <Markdown>{item.description}</Markdown>
         </div>
       ))}
       <div className={styles.cardContact}>

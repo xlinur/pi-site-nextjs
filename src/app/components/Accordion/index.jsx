@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
+import Markdown from '@/app/components/Markdown';
 import styles from './styles.module.scss';
 
 const AccordionItem = ({ item, isOpen, onClick }) => {
@@ -39,7 +40,7 @@ const AccordionItem = ({ item, isOpen, onClick }) => {
             {items.map((contentItem, index) => (
               <li key={index}>
                 <strong className="h5">{contentItem.title}</strong>
-                <p>{contentItem.description}</p>
+                <Markdown>{contentItem.description}</Markdown>
               </li>
             ))}
           </ul>

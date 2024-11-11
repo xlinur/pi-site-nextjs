@@ -64,7 +64,7 @@ export default async function SectionAboutPersonalinvest({ withTitle }) {
               <div className={styles.listItemIcon}>{checkCircle}</div>
 
               <div className={styles.listItemContent}>
-                <h4>{item.title}</h4>
+                <h5>{item.title}</h5>
                 <Markdown>{item?.description}</Markdown>
               </div>
             </li>

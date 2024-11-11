@@ -39,14 +39,14 @@ export default function SectionInfoWithCards(props) {
 
       <div className={styles.grid}>
         {achivements.map((item, idx) => (
-          <a className={styles.card} href={item.url} key={idx}>
+          <div className={styles.card} key={idx}>
             <span>{svgCheckCircle}</span>
 
             <div>
               <h5>{item.title}</h5>
-              <p>{item.description}</p>
+              <Markdown>{item.description}</Markdown>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </section>
