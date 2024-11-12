@@ -11,11 +11,11 @@ const tsukimi = Tsukimi_Rounded({
 });
 
 export default async function SectionOurFounder(props) {
-  const { title, photo, name, position, text, description, settingsData } =
-    props;
+  const { title, photo, name, position, text, description, li, fb } = props;
 
-  const { contacts } = settingsData.data.attributes;
-  const socials = createSocialsData({ contacts }); // TODO: use li, fb, email from props
+  const socials = createSocialsData({
+    contacts: { linkedin: li, facebook: fb },
+  });
 
   return (
     <section className={styles.sectionFounder}>
@@ -49,7 +49,9 @@ export default async function SectionOurFounder(props) {
         <div className={styles.cardFounderContent}>
           <div className={`h5 ${styles.cardFounderContentText}`}>
             <span className={tsukimi.className}>“</span>
-            <blockquote>{text}</blockquote>
+            <blockquote>
+              <Markdown>{text}</Markdown>
+            </blockquote>
           </div>
 
           <div className={styles.cardFounderContentExperience}>

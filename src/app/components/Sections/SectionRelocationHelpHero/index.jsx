@@ -23,7 +23,7 @@ const SectionRelocationHelpHero = ({
           </h1>
         )}
 
-        <p>{description}</p>
+        <Markdown>{description}</Markdown>
       </header>
 
       <div className={styles.content}>

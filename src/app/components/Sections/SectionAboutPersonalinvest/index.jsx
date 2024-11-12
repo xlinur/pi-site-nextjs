@@ -30,17 +30,15 @@ const checkCircle = (
   </svg>
 );
 
-export default async function SectionAboutPersonalinvest({ withTitle }) {
+export default async function SectionAboutPersonalinvest() {
   const data = await fetchWrapper(
     '/api/section-about-personalinvest?populate=deep',
   );
 
-  const { numbers, title, info } = data.data.attributes;
+  const { numbers, info } = data.data.attributes;
 
   return (
     <section className={styles.wrapper}>
-      {withTitle && <h2>{title}</h2>}
-
       <div className={styles.first}>
         {numbers.map((item, idx) => (
           <article className={styles.item} key={idx}>
