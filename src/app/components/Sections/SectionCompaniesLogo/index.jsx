@@ -8,6 +8,8 @@ export default async function CompaniesLogo() {
 
   const { addLogoBtn, logos, title } = data.data.attributes;
 
+  console.log(logos.data);
+
   return (
     <section className={styles.sectionCompanies}>
       <div className="container">

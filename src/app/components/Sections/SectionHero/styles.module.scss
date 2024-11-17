@@ -45,8 +45,8 @@
     }
 
     h1 {
-      font-size: 75px;
-      line-height: 82.5px;
+      font-size: 60px;
+      line-height: 66px;
 
       @include md {
         font-size: 38px;
@@ -54,13 +54,13 @@
       }
     }
 
-    > p {
-      font-size: 24px;
-      line-height: 31.2px;
+    .p {
+      font-size: 20px;
+      line-height: 28px;
 
       @include md {
-        font-size: 18px;
-        line-height: 21.6px;
+        font-size: 16px;
+        line-height: 24px;
       }
     }
   }

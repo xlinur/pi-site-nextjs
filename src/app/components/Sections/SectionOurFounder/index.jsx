@@ -1,5 +1,6 @@
 import Markdown from '@/app/components/Markdown';
 import Image from 'next/image';
+import emailSvg from '@/app/assets/icons/social/email.svg';
 import { createSocialsData } from '@/app/utils/createSocialsData';
 
 import styles from './styles.module.scss';
@@ -11,7 +12,8 @@ const tsukimi = Tsukimi_Rounded({
 });
 
 export default async function SectionOurFounder(props) {
-  const { title, photo, name, position, text, description, li, fb } = props;
+  const { title, photo, name, position, text, description, li, fb, email } =
+    props;
 
   const socials = createSocialsData({
     contacts: { linkedin: li, facebook: fb },
@@ -39,11 +41,16 @@ export default async function SectionOurFounder(props) {
           </div>
 
           <div className={styles.cardFounderInfoSocial}>
-            {socials.map((item) => (
-              <a href={item.link} key={item.link}>
+            {socials.map((item, id) => (
+              <a href={item.link} key={item?.link + `_${id}`}>
                 <Image src={item.img} alt={item.name} width={24} height={24} />
               </a>
             ))}
+            {email && (
+              <a className={styles.socialEmail} href={`mailto:${email}`}>
+                <Image src={emailSvg} alt={email} width={24} height={24} />
+              </a>
+            )}
           </div>
         </div>
         <div className={styles.cardFounderContent}>

@@ -104,6 +104,10 @@ export const SliderFeedback = ({ data, readAllBtn, className }) => {
         slidesPerView: 2.5,
         slidesOffsetBefore: documentWith(),
       },
+      1600: {
+        slidesPerView: 3.5,
+        slidesOffsetBefore: documentWith(),
+      },
     },
   };
 

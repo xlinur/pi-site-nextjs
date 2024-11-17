@@ -3,6 +3,7 @@
 .sectionProposal {
   $gaps: 24px;
   $radius: 30px;
+  $h5-weight: 500;
 
   @include md {
     $gaps: 12px;
@@ -52,6 +53,10 @@
       align-items: center;
       justify-content: center;
       min-height: 146px;
+      
+      h5 {
+        font-weight: $h5-weight;
+      }
 
       @include sm {
         min-height: 100px;
@@ -73,6 +78,16 @@
       @include sm {
         min-height: 146px;
         justify-content: flex-start;
+      }
+
+      strong {
+        font-weight: $h5-weight;
+        font-size: clamp(18px, -5.272rem + 12.027vw, 24px);
+        line-height: 130%;
+
+        @include lg {
+          line-height: 120%;
+        }
       }
     }
 

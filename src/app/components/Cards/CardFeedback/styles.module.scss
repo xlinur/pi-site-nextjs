@@ -25,6 +25,10 @@ $padding: 30px;
     border-color: transparent;
   }
 
+  @include xl {
+    max-width: 608px;
+  }
+
   .cardContent {
     display: inline-flex;
     flex-direction: column;

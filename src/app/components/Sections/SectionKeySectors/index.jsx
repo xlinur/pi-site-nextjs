@@ -6,9 +6,9 @@ export default function SectionKeySectors({ title, sectors }) {
   return (
     <section className={styles.sectionKeySectors}>
       <header>
-        <h5>
+        <h3>
           <Markdown>{title}</Markdown>
-        </h5>
+        </h3>
       </header>
 
       {sectors.map((item) => (

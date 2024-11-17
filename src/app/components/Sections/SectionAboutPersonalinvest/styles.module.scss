@@ -36,6 +36,7 @@
       border: 1px solid var(--gray);
       border-radius: var(--rounded-xl);
       padding: var(--item-pt) 40px;
+      padding-right: 30px;
       min-height: 176px;
 
       @include md {
@@ -66,21 +67,26 @@
 
       .text {
         color: var(--dark-gray);
+        font-weight: 500;
       }
     }
   }
 
   .second {
     display: grid;
-    grid-template-columns: 265px 1fr;
+    grid-template-columns: 1fr 2fr;
     column-gap: 26px;
 
     background-color: var(--light-blue);
     border-radius: 20px;
-    padding: 40px 20px;
+    padding: 40px 67px;
+
+    @include rwd(1024) {
+      padding: 40px 30px;
+    }
 
     @include rwd(767.9) {
-      grid-template-columns: 0.7fr 2fr;
+      grid-template-columns: 198px 1fr;
     }
 
     header {
@@ -100,6 +106,10 @@
         left: 50%;
         transform: translateX(-50%);
         z-index: 0;
+
+        @include rwd(767.9) {
+          height: initial;
+        }
       }
     }
 
@@ -107,7 +117,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-auto-flow: dense;
-      column-gap: 30px;
+      column-gap: 80px;
 
       .listItem {
         display: flex;
@@ -122,6 +132,17 @@
         flex-direction: column;
         row-gap: 10px;
       }
+
+      @include rwd(1024) {
+        column-gap: 40px;
+      }
+      @include md {
+        column-gap: 30px;
+      }
+    }
+
+    @include md {
+
     }
 
     @include sm {

@@ -1,3 +1,5 @@
+@use './mixins.scss' as *;
+
 .d-none-important {
   display: none !important;
 }

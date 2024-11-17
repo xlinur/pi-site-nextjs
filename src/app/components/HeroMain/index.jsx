@@ -28,9 +28,9 @@ export default async function HeroMain({
               <Markdown>{title}</Markdown>
             </h1>
 
-            <h5>
+            <p className={styles.heroDescription}>
               <Markdown>{description}</Markdown>
-            </h5>
+            </p>
           </header>
 
           <div className={styles.sectionHeroActions}>
