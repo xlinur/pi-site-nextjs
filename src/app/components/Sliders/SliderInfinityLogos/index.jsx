@@ -43,8 +43,8 @@ export const SliderInfinityLogos = ({ data = [] }) => {
             <Image
               src={image.attributes.url}
               alt={`Partner Logo ${index + 1}`}
-              width={image.width || 290}
-              height={image.height || 50}
+              width={290}
+              height={150}
               className={styles[`image-${index + 1}`]}
             />
           </SwiperSlide>
@@ -58,7 +58,7 @@ export const SliderInfinityLogos = ({ data = [] }) => {
               src={image.attributes.url}
               alt={`Partner Logo ${index + 1}`}
               width={290}
-              height={50}
+              height={150}
               className={styles[`image-${index + 1}`]}
             />
           </SwiperSlide>

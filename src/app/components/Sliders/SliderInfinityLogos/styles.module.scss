@@ -11,12 +11,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 45px 0;
+    padding: 20px 12px;
     background-color: var(--light-blue);
     border-radius: 20px;
+    height: 150px;
 
     @include md {
-      padding: 21px 0;
+      padding: 10px;
+      height: 96px;
     }
   }
 
