@@ -6,7 +6,12 @@ const headers = {
 const fetchWrapper = async (path, options = {}) => {
   const url = new URL(path, process.env.NEXT_STRAPI_API);
 
-  const res = await fetch(url, { method: 'GET', headers, ...options });
+  const res = await fetch(url, {
+    method: 'GET',
+    headers,
+    cache: 'no-cache',
+    ...options,
+  });
 
   return await res.json();
 };

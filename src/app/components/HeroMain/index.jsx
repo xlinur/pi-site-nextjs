@@ -19,6 +19,7 @@ export default async function HeroMain({
   candidateBtn,
   advantages,
 }) {
+  console.log({ title, description });
   return (
     <div className={styles.sectionWrapper}>
       <div className="container">

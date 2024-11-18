@@ -27,13 +27,13 @@ export const generateMetadata = async () => {
 
 export default async function Home() {
   const data = await fetchWrapper(PAGE_DATA_REQUEST_PATH);
-
   const {
     HeroSection,
     SectionWithIndustriesImage,
     WhyInfoSection,
     ExclusiveProcess,
   } = data.data.attributes;
+  console.log({ HeroSection });
 
   return (
     <PageTemplate>

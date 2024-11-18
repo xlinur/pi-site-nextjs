@@ -8,6 +8,9 @@ RUN npm install
 
 COPY . .
 
+RUN rm .env
+RUN rm .env.local
+
 RUN npm run build
 
 

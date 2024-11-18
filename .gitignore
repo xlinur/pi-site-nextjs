@@ -147,6 +147,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# asciinema
+*.cast
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

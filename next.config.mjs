@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
+  logging: {
+    fetches: {
+      fullUrl: true,
+      hmrRefreshes: true,
+    },
+  },
   images: {
-    disableStaticImages: true,
     unoptimized: true,
     domains: ['localhost'],
     remotePatterns: [

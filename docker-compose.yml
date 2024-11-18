@@ -4,7 +4,7 @@ services:
     container_name: strapiDB
     platform: linux/amd64 #for platform error on Apple M1 chips
     restart: always
-    env_file: ./.env.production
+    env_file: ./.env
     image: postgres:12.0-alpine
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
@@ -40,7 +40,7 @@ services:
       TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
       JWT_SECRET: ${JWT_SECRET}
     volumes:
-      - ./.env.production:/app/.env
+      - ./.env:/app/.env
       - ./public/uploads:/app/public/uploads
     ports:
       - "1337:1337"
@@ -54,7 +54,7 @@ services:
       dockerfile: ./Dockerfile
     image: nextjs:latest
     restart: always
-    env_file: ./.env.production
+    env_file: ./.env
     environment:
       # TODO: when the project is done
       #       NEXT_STRAPI_API need to be changed on strapi
