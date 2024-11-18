@@ -44,9 +44,10 @@ export default async function Analytics() {
           <SectionPricing {...Pricing} />
         </div>
 
-        <div className={styles.sectionFeedbackWrapper}>
-          <SectionFeedbackList firstSlideTheme="white" />
-        </div>
+        <SectionFeedbackList
+          firstSlideTheme="white"
+          sectionClass={styles.sectionFeedbackWrapper}
+        />
 
         <div className="container">
           <SectionIndividualReportWrapper />

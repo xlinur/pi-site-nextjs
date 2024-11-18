@@ -68,9 +68,10 @@ export default async function ExecutiveSearchPage() {
           </div>
         </div>
 
-        <div className={styles.sectionFeedbackWrapper}>
-          <SectionFeedbackList firstSlideTheme="white" />
-        </div>
+        <SectionFeedbackList
+          firstSlideTheme="white"
+          sectionClass={styles.sectionFeedbackWrapper}
+        />
 
         <SectionCompaniesLogo />
 

@@ -70,12 +70,11 @@ export default async function SpheresPage({ params }) {
 
         <SectionCompaniesLogo />
 
-        <div className={styles.sectionFeedbackWrapper}>
-          <SectionFeedbackList
-            inData={feedbacks.data}
-            firstSlideTheme="white"
-          />
-        </div>
+        <SectionFeedbackList
+          inData={feedbacks.data}
+          firstSlideTheme="white"
+          sectionClass={styles.sectionFeedbackWrapper}
+        />
 
         <div className={styles.sectionMoreCasesWrapper}>
           <SectionSuccessStories cases={cases} />

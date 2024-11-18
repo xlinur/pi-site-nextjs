@@ -51,9 +51,10 @@ export default async function Consulting() {
           <SectionExamplesOfBestPractices {...ExamplesOfBestPractices} />
         </div>
 
-        <div className={styles.sectionFeedbackWrapper}>
-          <SectionFeedbackList firstSlideTheme="white" />
-        </div>
+        <SectionFeedbackList
+          firstSlideTheme="white"
+          sectionClass={styles.sectionFeedbackWrapper}
+        />
 
         <SectionWeCanHelp />
 

@@ -6,7 +6,7 @@ import { routes } from '@/config/routes';
 import clsx from 'clsx';
 
 export default async function SectionFeedbackList({
-  inData,
+  inData = null,
   sliderClass,
   sectionClass,
   firstSlideTheme,
@@ -18,6 +18,14 @@ export default async function SectionFeedbackList({
 
   const { title, readMoreBtn, readAllBtn } =
     clientsFeedbacksData.data.attributes;
+
+  const hasDataToRender =
+    (Array.isArray(inData) && inData.length > 0) ||
+    (Array.isArray(feedbacksData?.data) && feedbacksData.data.length > 0);
+
+  if (!hasDataToRender) {
+    return null;
+  }
 
   return (
     <section className={clsx(styles.sectionFeedback, sectionClass)}>

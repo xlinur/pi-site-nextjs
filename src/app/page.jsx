@@ -71,9 +71,10 @@ export default async function Home() {
 
         <SectionCompaniesLogo />
 
-        <div className={styles.sectionFeedbackWrapper}>
-          <SectionFeedbackList firstSlideTheme="white" />
-        </div>
+        <SectionFeedbackList
+          firstSlideTheme="white"
+          sectionClass={styles.sectionFeedbackWrapper}
+        />
 
         <div className={styles.sectionMeetWrapper}>
           <div className="container">
