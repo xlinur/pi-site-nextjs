@@ -71,7 +71,7 @@ export default async function SpheresPage({ params }) {
         <SectionCompaniesLogo />
 
         <SectionFeedbackList
-          inData={feedbacks.data}
+          externalData={feedbacks}
           firstSlideTheme="white"
           sectionClass={styles.sectionFeedbackWrapper}
         />

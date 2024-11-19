@@ -6,24 +6,20 @@ import { routes } from '@/config/routes';
 import clsx from 'clsx';
 
 export default async function SectionFeedbackList({
-  inData = null,
+  externalData,
   sliderClass,
   sectionClass,
   firstSlideTheme,
 }) {
   const [clientsFeedbacksData, feedbacksData] = await Promise.all([
     fetchWrapper('/api/section-what-our-cliens-say?populate=deep'),
-    fetchWrapper('/api/feedbacks?populate=deep'),
+    externalData ? externalData : fetchWrapper('/api/feedbacks?populate=deep'),
   ]);
 
   const { title, readMoreBtn, readAllBtn } =
     clientsFeedbacksData.data.attributes;
 
-  const hasDataToRender =
-    (Array.isArray(inData) && inData.length > 0) ||
-    (Array.isArray(feedbacksData?.data) && feedbacksData.data.length > 0);
-
-  if (!hasDataToRender) {
+  if (!feedbacksData?.data?.length) {
     return null;
   }
 
@@ -43,7 +39,7 @@ export default async function SectionFeedbackList({
 
       <div className={styles.slider}>
         <SliderFeedback
-          data={inData || feedbacksData.data}
+          data={feedbacksData.data}
           readAllBtn={readAllBtn}
           className={clsx(
             sliderClass,
