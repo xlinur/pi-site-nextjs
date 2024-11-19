@@ -9,6 +9,10 @@ export default async function SectionSuccessStories({ cases, settingsData }) {
   const { title, viewAllCasesBtn, contactBtn } = data.data.attributes;
   const { locale } = settingsData?.data?.attributes || {};
 
+  if (!cases) {
+    return null;
+  }
+
   return (
     <section className={styles.sectionMoreCases}>
       <div className="container">
