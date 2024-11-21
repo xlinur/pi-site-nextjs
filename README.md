@@ -33,6 +33,8 @@ The purpose of this file is to download strapi repository from github.
 
 IMPORTANT: ssh key is not provides due to the fact that the repository is public. In case weather you need to download from private repository you should pass the ssh key as well.
 
+NOTE: Make sure that permission for ~/.ssh is granted to read and copy on host machine within docker compose is executed
+
 ```dockerfile
 FROM node:18-alpine AS base
 
