@@ -1,22 +1,15 @@
 @use '../../styles/mixins.scss' as *;
 
 .sectionHeroAdvantages {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr;
   align-items: center;
-  justify-content: space-between;
 
-  gap: 20px;
   height: 200px;
   border: 1px solid var(--blue);
   border-radius: var(--rounded-xl);
   background-color: var(--white);
-  padding-inline: 42px;
   font-weight: 400;
-
-  .itemWrapper {
-    flex: 1 0 25%;
-    display: contents;
-  }
 
   .sectionHeroAdvantagesDivider {
     width: 1px;
@@ -32,10 +25,7 @@
     display: inline-flex;
     flex-direction: column;
     text-align: center;
-
-    h5 {
-      font-weight: 400;
-    }
+    padding-inline: 30px;
 
     strong {
       display: block;
@@ -54,6 +44,7 @@
 
   @include rwd(730) {
     display: grid;
+    gap: 10px;
     grid-template-columns: 1fr 1px 1fr;
     grid-template-rows: 1fr 1px 1fr;
     height: initial;
@@ -74,8 +65,10 @@
   }
 
   @include md {
-    padding-inline: 20px;
-    padding-bottom: 40px;
-    padding-top: 40px;
+    padding: 10px;
+
+    .sectionHeroAdvantagesItem {
+      padding-inline: 10px;
+    }
   }
 }
