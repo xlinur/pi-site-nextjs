@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Button from '@/app/components/Button';
 import locationPinSVG from '@/app/assets/icons/location-pin.svg';
 import fullTimeSVG from '@/app/assets/icons/full-time.svg';
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import styles from './styles.module.scss';
 
 export default function Content({ data, descriptionTitle, replyBtn }) {
@@ -41,7 +42,7 @@ export default function Content({ data, descriptionTitle, replyBtn }) {
           </li>
         </ul>
 
-        <Button name={replyBtn.name} />
+        <OpenModalFormButton name={replyBtn.name} />
       </section>
 
       <section className={styles.sectionDescription}>
@@ -53,7 +54,7 @@ export default function Content({ data, descriptionTitle, replyBtn }) {
           <Markdown>{description}</Markdown>
         </div>
 
-        <Button name={replyBtn.name} />
+        <OpenModalFormButton name={replyBtn.name} />
       </section>
     </div>
   );
