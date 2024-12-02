@@ -1,6 +1,5 @@
 import Markdown from '@/app/components/Markdown';
-import Button from '@/app/components/Button';
-
+import OpenModalFormButton from '@/app/components/OpenModalFormButton';
 import styles from './styles.module.scss';
 
 export default function SectionHeroVacancies({
@@ -19,7 +18,7 @@ export default function SectionHeroVacancies({
         </div>
       </header>
 
-      <Button withIcon name={hireNowBtn.name} />
+      <OpenModalFormButton withIcon name={hireNowBtn.name} />
     </section>
   );
 }
