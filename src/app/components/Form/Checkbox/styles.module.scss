@@ -39,6 +39,10 @@
   .label {
     user-select: none;
 
+    a {
+      text-decoration: underline;
+    }
+
     p {
       display: inline;
     }
