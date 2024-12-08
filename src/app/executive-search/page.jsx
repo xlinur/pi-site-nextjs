@@ -12,6 +12,7 @@ import SectionNeedHelpSection from '@/app/components/Sections/SectionNeedHelpSec
 import SectionPricing from '@/app/components/Sections/SectionPricing';
 import { ContactFormWrapper } from '@/app/components/ContactForm/ContactFormWrapper';
 import fetchWrapper from '@/app/utils/fetchWrapper';
+import { routes } from '@/config/routes';
 import styles from './styles.module.scss';
 
 const PAGE_DATA_REQUEST_PATH = '/api/page-executive-search?populate=deep';
@@ -64,7 +65,10 @@ export default async function ExecutiveSearchPage() {
 
         <div className={styles.sectionCustomVisionWrapper}>
           <div className="container">
-            <SectionCustomVision {...SectionWithIndustriesImage} />
+            <SectionCustomVision
+              {...SectionWithIndustriesImage}
+              url={routes.industries()}
+            />
           </div>
         </div>
 

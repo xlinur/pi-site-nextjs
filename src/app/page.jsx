@@ -33,7 +33,6 @@ export default async function Home() {
     WhyInfoSection,
     ExclusiveProcess,
   } = data.data.attributes;
-  console.log({ HeroSection });
 
   return (
     <PageTemplate>

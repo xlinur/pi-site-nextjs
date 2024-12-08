@@ -10,6 +10,7 @@ import SectionTypesOfRecruitment from '@/app/components/Sections/SectionTypesOfR
 import SectionNeedHelpSection from '@/app/components/Sections/SectionNeedHelpSection';
 import SectionPricing from '@/app/components/Sections/SectionPricing';
 import fetchWrapper from '@/app/utils/fetchWrapper';
+import { routes } from '@/config/routes';
 import styles from './styles.module.scss';
 
 const PAGE_DATA_REQUEST_PATH = '/api/page-recruitment?populate=deep';
@@ -62,7 +63,10 @@ export default async function PageRecruitment() {
 
         <div className={styles.sectionCustomVisionWrapper}>
           <div className="container">
-            <SectionCustomVision {...SectionWithIndustriesImage} />
+            <SectionCustomVision
+              {...SectionWithIndustriesImage}
+              url={routes.industries()}
+            />
           </div>
         </div>
 

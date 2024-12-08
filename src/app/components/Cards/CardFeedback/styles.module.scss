@@ -33,6 +33,7 @@ $padding: 30px;
     display: inline-flex;
     flex-direction: column;
     row-gap: 12px;
+    min-height: 180px;
 
     .cardContentEssence {
       font-weight: 600;
@@ -77,6 +78,10 @@ $padding: 30px;
   }
 
   .cardUser {
+    h5 {
+      min-height: 32px;
+    }
+
     .cardUserAbout {
       display: flex;
       flex-direction: column;
