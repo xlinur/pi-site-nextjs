@@ -16,7 +16,7 @@ export default function SectionRecruitmentSummary({
         <h3>
           <Markdown>{title}</Markdown>
         </h3>
-        <Markdown>{subtitle}</Markdown>
+        {subtitle && <Markdown>{subtitle}</Markdown>}
       </header>
 
       <div className={styles.list}>
@@ -55,22 +55,24 @@ export default function SectionRecruitmentSummary({
         ))}
       </div>
 
-      <div className={styles.companyOffered}>
-        <div>
-          <h5>{companyOffered}</h5>
-          <Image
-            src={relocation}
-            alt="location image"
-            width={200}
-            height={170}
-          />
-        </div>
+      {companyOffered && companyOfferedText && (
+          <div className={styles.companyOffered}>
+            <div>
+              <h5>{companyOffered}</h5>
+              <Image
+                src={relocation}
+                alt="location image"
+                width={200}
+                height={170}
+              />
+            </div>
 
-        <div className={styles.companyOfferedDescription}>
-          <h5>{companyOffered}</h5>
-          {companyOfferedText}
-        </div>
-      </div>
+            <div className={styles.companyOfferedDescription}>
+              <h5>{companyOffered}</h5>
+              {companyOfferedText}
+            </div>
+          </div>
+      )}
     </section>
   );
 }

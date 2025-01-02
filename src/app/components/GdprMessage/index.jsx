@@ -20,12 +20,45 @@ const checkIfAccepted = () => {
   return false;
 };
 
+const checkNeedShow = () => {
+  try {
+    const data = JSON.parse(localStorage.getItem(gdprKey));
+
+    return data?.date ? true : false;
+  } catch (err) {
+    console.log(err);
+  }
+
+  return false;
+};
+
 const accept = () => {
   try {
     localStorage.setItem(
       gdprKey,
       JSON.stringify({
         accepted: true,
+        date: new Date().toDateString(),
+      }),
+    );
+  } catch (err) {
+    console.log(err);
+  }
+
+  return false;
+};
+
+const disableAnalytics = () => {
+  window['ga-disable-' + process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID] = true;
+}
+
+const decline = () => {
+  disableAnalytics();
+  try {
+    localStorage.setItem(
+      gdprKey,
+      JSON.stringify({
+        accepted: false,
         date: new Date().toDateString(),
       }),
     );
@@ -43,8 +76,12 @@ const GdprMessage = ({ globalDictionary }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      if (!checkIfAccepted()) {
+      if (!checkNeedShow()) {
         setShowModal(true);
+      }
+      
+      if (!checkIfAccepted()) {
+        disableAnalytics();
       }
     }
   }, []);
@@ -54,17 +91,29 @@ const GdprMessage = ({ globalDictionary }) => {
     setShowModal(false);
   };
 
+  const onDecline = () => {
+    decline();
+    setShowModal(false);
+  };
+
   return showModal ? (
     <div className={styles.wrapper}>
       <div className={styles.message}>
         <Markdown>{gdprMessage}</Markdown>
       </div>
 
-      <Button
-        theme="transparent"
-        onClick={onAccept}
-        name={gdprAcceptBtn?.name}
-      />
+      <div className={styles.buttons}>
+        <Button
+          theme="primary"
+          onClick={onAccept}
+          name="Yes, I accept all cookies"
+        />
+        <Button
+          theme="transparent"
+          onClick={onDecline}
+          name='No, thanks. Accept only essential cookies'
+        />
+      </div>
     </div>
   ) : null;
 };

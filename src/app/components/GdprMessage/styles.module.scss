@@ -6,7 +6,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 744px;
+  max-width: 944px;
   margin-inline: 50px;
 
   background-color: var(--light-blue);
@@ -52,5 +52,13 @@
 
   button {
     text-wrap: nowrap;
+  }
+}
+
+.buttons {
+  text-align: center;
+
+  button:first-child {
+    margin-bottom: 8px
   }
 }
