@@ -79,7 +79,7 @@ const GdprMessage = ({ globalDictionary }) => {
       if (!checkNeedShow()) {
         setShowModal(true);
       }
-      
+
       if (!checkIfAccepted()) {
         disableAnalytics();
       }
@@ -111,7 +111,7 @@ const GdprMessage = ({ globalDictionary }) => {
         <Button
           theme="transparent"
           onClick={onDecline}
-          name='No, thanks. Accept only essential cookies'
+          name="No, thanks. Accept only essential cookies"
         />
       </div>
     </div>
