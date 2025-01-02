@@ -56,22 +56,22 @@ export default function SectionRecruitmentSummary({
       </div>
 
       {companyOffered && companyOfferedText && (
-          <div className={styles.companyOffered}>
-            <div>
-              <h5>{companyOffered}</h5>
-              <Image
-                src={relocation}
-                alt="location image"
-                width={200}
-                height={170}
-              />
-            </div>
-
-            <div className={styles.companyOfferedDescription}>
-              <h5>{companyOffered}</h5>
-              {companyOfferedText}
-            </div>
+        <div className={styles.companyOffered}>
+          <div>
+            <h5>{companyOffered}</h5>
+            <Image
+              src={relocation}
+              alt="location image"
+              width={200}
+              height={170}
+            />
           </div>
+
+          <div className={styles.companyOfferedDescription}>
+            <h5>{companyOffered}</h5>
+            {companyOfferedText}
+          </div>
+        </div>
       )}
     </section>
   );

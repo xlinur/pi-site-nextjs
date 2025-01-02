@@ -50,7 +50,7 @@ const accept = () => {
 
 const disableAnalytics = () => {
   window['ga-disable-' + process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID] = true;
-}
+};
 
 const decline = () => {
   disableAnalytics();
