@@ -69,12 +69,12 @@ const ExtraContactContent = ({ globalSettings, text }) => {
               <a href="#">{phone}</a>
             </h5>
           </li>
-          <li>
+          {/*<li>
             <Image src={whatsappSVG} alt="Icon" width={38} height={38} />
             <h5>
               <a href="#">{phone}</a>
             </h5>
-          </li>
+          </li>*/}
 
           <li>
             <a href="/">

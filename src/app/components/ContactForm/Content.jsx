@@ -152,10 +152,10 @@ export const Content = ({ className, globalSettings, sectionFormData }) => {
               <a href={`tel:${phone}`}>{phone}</a>
             </h3>
           </li>
-          <li>
+          {/*<li>
             <Image src={whatsappSVG} alt="Icon" width={38} height={38} />
             <h3>{phone}</h3>
-          </li>
+          </li>*/}
 
           <li>
             <a href="/">
