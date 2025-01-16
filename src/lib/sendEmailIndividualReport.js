@@ -19,11 +19,11 @@ export async function sendEmailIndividualReport(data) {
   sgMail.setApiKey(process.env.NEXT_SENDGRID_API_KEY);
 
   const msg = {
-    to: contacts.email,
-    from: contacts.email,
-    subject: 'Test subject',
+    to: 'consulting@personalinvest.org',
+    from: 'consulting@personalinvest.org',
+    subject: 'PersonalInvest.org - Report Request',
     text: data.message,
-    templateId: 'd-e3e5956cf63a445aa7893cb7dd725168',
+    templateId: 'd-8169bad3db034ab8b65312f102ae2b02',
     dynamicTemplateData: data.dynamicTemplateData,
   };
 

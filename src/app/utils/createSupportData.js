@@ -8,11 +8,11 @@ export const createSupportData = ({ contacts }) => [
     link: contacts.telegram,
     name: 'Telegram',
   },
-  {
+  /*{
     img: whatsappSvg,
     link: contacts.whatsapp,
     name: 'WhatsApp',
-  },
+  },*/
   {
     img: emailSvg,
     link: `mailto:${contacts.email}`,

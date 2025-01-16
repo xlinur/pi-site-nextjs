@@ -149,7 +149,7 @@ export const Content = ({ sectionFormData }) => {
 
         <div className={styles.cvUploadBlock}>
           <div>
-            <p>SV</p>
+            <p>CV / Resume</p>
 
             <span className={styles.cvFileTypes}>
               (Only pdf, zip, doc, docx, txt, rtf, rar)

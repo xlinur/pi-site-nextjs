@@ -21,15 +21,17 @@ export default function Content({ data, descriptionTitle, replyBtn }) {
             <span>{skills?.join(', ')}</span>
           </li>
 
-          <li>
-            <Image
-              src={locationPinSVG}
-              alt="Location icon"
-              width={24}
-              height={24}
-            />
-            <div>{location}</div>
-          </li>
+          {location && (
+            <li>
+              <Image
+                src={locationPinSVG}
+                alt="Location icon"
+                width={24}
+                height={24}
+              />
+              <div>{location?.join(', ')}</div>
+            </li>
+          )}
 
           <li>
             <Image

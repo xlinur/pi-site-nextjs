@@ -20,16 +20,20 @@ const arrowIcon = (
 const CardVacancy = ({ id, title, type, location }) => {
   return (
     <div className={styles.card}>
-      <div className={styles.content}>
+      <a className={styles.content} href={routes.vacancy(id)}>
         <h5>{title}</h5>
 
         <ul className={styles.info}>
           <li>{location?.join(', ')}</li>
           <li>{type?.join(', ')}</li>
         </ul>
-      </div>
+      </a>
 
-      <Button theme="transparent" url={routes.vacancy(id)}>
+      <Button
+        className={styles.more}
+        theme="transparent"
+        url={routes.vacancy(id)}
+      >
         {arrowIcon}
       </Button>
     </div>

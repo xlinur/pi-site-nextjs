@@ -23,11 +23,11 @@ export async function sendEmailWithCV(data) {
   sgMail.setApiKey(process.env.NEXT_SENDGRID_API_KEY);
 
   const msg = {
-    to: contacts.email,
-    from: contacts.email,
-    subject: 'Test subject',
+    to: 'resume@personalinvest.org',
+    from: 'resume@personalinvest.org',
+    subject: 'PersonalInvest.org - Message from CV form',
     text: data.message,
-    templateId: 'd-113f990e09df4328aca2d72356411f72',
+    templateId: 'd-feaab77cb5da4988bf934f2a82a6b52b',
     dynamicTemplateData: data.dynamicTemplateData,
     attachments: data.attachments,
   };
@@ -36,7 +36,6 @@ export async function sendEmailWithCV(data) {
     await sgMail.send(msg);
   } catch (error) {
     console.log(error);
-    // console.log(error.response.body);
-    console.log('sendEmail() ', error);
+    console.log('sendEmail() ', error, error.response.body.errors);
   }
 }
