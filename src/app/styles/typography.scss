@@ -3,7 +3,7 @@
 h1,
 .h1 {
   font-weight: 700;
-  font-size: clamp(38px, -0.875rem + 8.333vw, 75px);
+  font-size: clamp(38px, -0.875rem + 8.333vw, 58px);
   line-height: 110%;
 
   @include lg() {
@@ -14,7 +14,7 @@ h1,
 h2,
 .h2 {
   font-weight: 700;
-  font-size: clamp(28px, -0.875rem + 6.833vw, 60px);
+  font-size: clamp(28px, -0.875rem + 6.833vw, 50px);
   line-height: 110%;
 
   @include lg() {
@@ -25,7 +25,7 @@ h2,
 h3,
 .h3 {
   font-weight: 700;
-  font-size: clamp(24px, -0.875rem + 6.233vw, 48px);
+  font-size: clamp(24px, -0.875rem + 6.233vw, 42px);
   line-height: 110%;
 
   @include lg() {
